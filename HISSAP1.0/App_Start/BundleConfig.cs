@@ -51,7 +51,7 @@ namespace HISSAP1._0
                 "~/Content/components/image-button.css",
                 /*Localized code tied to locations on a webpage*/
                 "~/Content/modules/header.css",
-                "~/Content/modules/footer.css"
+                "~/Content/modules/login.css"
                 ));
     }
   }

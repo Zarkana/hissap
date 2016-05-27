@@ -294,8 +294,6 @@
     <Content Include="Content\base\table.css" />
     <Content Include="Content\base\text.css" />
     <Content Include="Content\base\variables.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\components\alert.css" />
     <Content Include="Content\components\breadcrumb.css" />
     <Content Include="Content\components\grp-button.css" />
@@ -322,19 +320,12 @@
     <Content Include="obj\Debug\HISSAP1.0.pdb" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="config.rb" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\HISSAP1.0.csprojResolveAssemblyReference.cache" />
-    <Content Include="Models\.sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\ie.scssc" />
-    <Content Include="Models\.sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\print.scssc" />
-    <Content Include="Models\.sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\screen.scssc" />
-    <Content Include="Models\.sass-cache\8b1de0fb964996dfca872842620703baaa5efa9b\_utilities.scssc" />
-    <Content Include="Models\.sass-cache\c17044e14c0b02252815f0ff968911ec47c759ba\_reset.scssc" />
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\HISSAP1.0.dll.config" />
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
@@ -421,14 +412,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\images\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="stylesheets\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
