@@ -1,0 +1,11 @@
+/*Colors*/
+/*Heights*/
+/*Navbar height*/
+/*Fonts*/
+@font-face {
+  font-family: 'AvantGarde';
+  src: url("../fonts/avantgarde.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+}

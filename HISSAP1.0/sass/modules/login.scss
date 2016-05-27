@@ -1,0 +1,30 @@
+﻿.section .login{
+ 
+}
+
+.section.announcements{
+  h4{
+    margin: 0;
+    /*Lowers h4 on this page to match both sides hr tag*/
+    margin: 6px 0 6px 0;
+  }
+  .panel-body{
+    max-height: 275px;
+    overflow-y: scroll;
+    .announcement{
+      .announcement-header{
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      hr{
+        margin: 2px 0 10px 0;
+      }
+      .announcement-body{
+        font-size: 12.5px;
+        line-height: 1.35;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}

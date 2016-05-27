@@ -1,0 +1,392 @@
+/*@import "Compass/Reset";*/
+/*Colors*/
+/*Heights*/
+/*Navbar height*/
+/*Fonts*/
+@font-face {
+  font-family: 'AvantGarde';
+  src: url("../fonts/avantgarde.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+}
+/* line 6, ../../sass/base/global.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 12, ../../sass/base/global.scss */
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* line 17, ../../sass/base/global.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  margin: 0;
+  /*TODO: need?*/
+  padding-bottom: 20px;
+}
+
+/* line 28, ../../sass/base/global.scss */
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+/* line 35, ../../sass/base/global.scss */
+.fade.in {
+  opacity: 1;
+}
+
+/* line 39, ../../sass/base/global.scss */
+.collapse {
+  display: none;
+}
+
+/* line 43, ../../sass/base/global.scss */
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+/* line 55, ../../sass/base/global.scss */
+img {
+  vertical-align: middle;
+}
+
+/* line 59, ../../sass/base/global.scss */
+.img-rounded {
+  border-radius: 6px;
+}
+
+/* line 63, ../../sass/base/global.scss */
+.img-circle {
+  border-radius: 50%;
+}
+
+/* line 67, ../../sass/base/global.scss */
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* line 74, ../../sass/base/global.scss */
+p {
+  margin: 0 0 10px;
+}
+
+/* line 78, ../../sass/base/global.scss */
+small,
+.small {
+  font-size: 85%;
+}
+
+/* line 83, ../../sass/base/global.scss */
+mark,
+.mark {
+  padding: .2em;
+  background-color: #fcf8e3;
+}
+
+/* line 89, ../../sass/base/global.scss */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* line 98, ../../sass/base/global.scss */
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 105, ../../sass/base/global.scss */
+.body-content {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+@media (min-width: 768px) {
+  /* line 111, ../../sass/base/global.scss */
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 117, ../../sass/base/global.scss */
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 123, ../../sass/base/global.scss */
+  .container {
+    width: 970px;
+  }
+}
+/* line 128, ../../sass/base/global.scss */
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*Links*/
+/* line 136, ../../sass/base/global.scss */
+a {
+  color: #64ac20;
+  text-decoration: none;
+  outline-color: #58971c;
+}
+
+/* line 142, ../../sass/base/global.scss */
+a:hover,
+a:focus {
+  color: #4b8118;
+  text-decoration: underline;
+}
+
+/* line 148, ../../sass/base/global.scss */
+[role="button"] {
+  cursor: pointer;
+}
+
+/* line 153, ../../sass/base/global.scss */
+address {
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 1.42857143;
+}
+
+/* line 159, ../../sass/base/global.scss */
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* line 164, ../../sass/base/global.scss */
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+/* line 172, ../../sass/base/global.scss */
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* line 187, ../../sass/base/global.scss */
+.row {
+  /*Don't know that it is needed*/
+  /*margin-right: -15px;
+  margin-left: -15px;*/
+  /*Testing out*/
+  display: block;
+}
+
+/* line 195, ../../sass/base/global.scss */
+.testclass {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: solid 1px silver;
+  padding: 3px;
+  color: #28AF21;
+}
+
+/* As hex codes */
+/* line 205, ../../sass/base/global.scss */
+.color-primary-0 {
+  color: #28AF21;
+}
+
+/* Main Primary color */
+/* line 206, ../../sass/base/global.scss */
+.color-primary-1 {
+  color: #70D46B;
+}
+
+/* line 207, ../../sass/base/global.scss */
+.color-primary-2 {
+  color: #48BD41;
+}
+
+/* line 208, ../../sass/base/global.scss */
+.color-primary-3 {
+  color: #158D0F;
+}
+
+/* line 209, ../../sass/base/global.scss */
+.color-primary-4 {
+  color: #056D00;
+}
+
+/* line 211, ../../sass/base/global.scss */
+.color-secondary-1-0 {
+  color: #1C955E;
+}
+
+/* Main Secondary color (1) */
+/* line 212, ../../sass/base/global.scss */
+.color-secondary-1-1 {
+  color: #5DBA90;
+}
+
+/* line 213, ../../sass/base/global.scss */
+.color-secondary-1-2 {
+  color: #38A171;
+}
+
+/* line 214, ../../sass/base/global.scss */
+.color-secondary-1-3 {
+  color: #0D7847;
+}
+
+/* line 215, ../../sass/base/global.scss */
+.color-secondary-1-4 {
+  color: #005D33;
+}
+
+/* line 217, ../../sass/base/global.scss */
+.color-secondary-2-0 {
+  color: #71C224;
+}
+
+/* Main Secondary color (2) */
+/* line 218, ../../sass/base/global.scss */
+.color-secondary-2-1 {
+  color: #ADE874;
+}
+
+/* line 219, ../../sass/base/global.scss */
+.color-secondary-2-2 {
+  color: #8BD249;
+}
+
+/* line 220, ../../sass/base/global.scss */
+.color-secondary-2-3 {
+  color: #559C11;
+}
+
+/* line 221, ../../sass/base/global.scss */
+.color-secondary-2-4 {
+  color: #3B7900;
+}
+
+/* As RGBa codes */
+/* line 227, ../../sass/base/global.scss */
+.rgba-primary-0 {
+  color: #28af21;
+}
+
+/* Main Primary color */
+/* line 228, ../../sass/base/global.scss */
+.rgba-primary-1 {
+  color: #70d46b;
+}
+
+/* line 229, ../../sass/base/global.scss */
+.rgba-primary-2 {
+  color: #48bd41;
+}
+
+/* line 230, ../../sass/base/global.scss */
+.rgba-primary-3 {
+  color: #158d0f;
+}
+
+/* line 231, ../../sass/base/global.scss */
+.rgba-primary-4 {
+  color: #056d00;
+}
+
+/* line 233, ../../sass/base/global.scss */
+.rgba-secondary-1-0 {
+  color: #1c955e;
+}
+
+/* Main Secondary color (1) */
+/* line 234, ../../sass/base/global.scss */
+.rgba-secondary-1-1 {
+  color: #5dba90;
+}
+
+/* line 235, ../../sass/base/global.scss */
+.rgba-secondary-1-2 {
+  color: #38a171;
+}
+
+/* line 236, ../../sass/base/global.scss */
+.rgba-secondary-1-3 {
+  color: #0d7847;
+}
+
+/* line 237, ../../sass/base/global.scss */
+.rgba-secondary-1-4 {
+  color: #005d33;
+}
+
+/* line 239, ../../sass/base/global.scss */
+.rgba-secondary-2-0 {
+  color: #71c224;
+}
+
+/* Main Secondary color (2) */
+/* line 240, ../../sass/base/global.scss */
+.rgba-secondary-2-1 {
+  color: #ade874;
+}
+
+/* line 241, ../../sass/base/global.scss */
+.rgba-secondary-2-2 {
+  color: #8bd249;
+}
+
+/* line 242, ../../sass/base/global.scss */
+.rgba-secondary-2-3 {
+  color: #559c11;
+}
+
+/* line 243, ../../sass/base/global.scss */
+.rgba-secondary-2-4 {
+  color: #3b7900;
+}

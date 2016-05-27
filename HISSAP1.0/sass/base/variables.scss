@@ -1,0 +1,26 @@
+﻿/*Colors*/
+
+$first-color: #28AF21;
+$second-color: #1C955E;
+$third-color: #64ac20;
+
+$gray: #767676;
+$light-gray: lighten($gray,20%);
+
+/*Heights*/
+
+/*Navbar height*/
+$navbar-min-height: 50px;
+$parent-navbar-added-height: 20px;
+$parent-navbar-height: $navbar-min-height + $parent-navbar-added-height;
+
+/*Fonts*/
+@font-face {
+  font-family: 'AvantGarde';
+
+  src: url('../fonts/avantgarde.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/avantgarde.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/avantgarde.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/avantgarde.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/avantgarde.svg#svgFontName') format('svg'); /* Legacy iOS */
+}

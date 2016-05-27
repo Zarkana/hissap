@@ -24,8 +24,35 @@ namespace HISSAP1._0
                 "~/Scripts/respond.js"));
 
       bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/site.css"));
+                /* Base code that is general and present on potentially every page */
+                "~/Content/base/normalize.css",
+                "~/Content/base/global.css",
+                "~/Content/base/list.css",
+                "~/Content/base/text.css",
+                "~/Content/base/table.css",
+                "~/Content/base/form.css",
+                "~/Content/base/btn.css",
+                "~/Content/base/section.css",
+                /*Large chunks of code dedicated to a single aspect of a webpage*/
+                "~/Content/components/alert.css",
+                "~/Content/components/breadcrumb.css",
+                "~/Content/components/grp-button.css",
+                "~/Content/components/grp-input.css",
+                "~/Content/components/grp-list.css",
+                "~/Content/components/header.css",
+                "~/Content/components/label.css",
+                "~/Content/components/modal.css",
+                "~/Content/components/pager.css",
+                "~/Content/components/pagination.css",
+                "~/Content/components/panel.css",
+                "~/Content/components/progress-bar.css",
+                "~/Content/components/tooltip.css",
+                "~/Content/components/well.css",
+                "~/Content/components/image-button.css",
+                /*Localized code tied to locations on a webpage*/
+                "~/Content/modules/header.css",
+                "~/Content/modules/footer.css"
+                ));
     }
   }
 }

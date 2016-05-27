@@ -1,0 +1,51 @@
+/* line 1, ../../sass/components/pager.scss */
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+}
+
+/* line 7, ../../sass/components/pager.scss */
+.pager li {
+  display: inline;
+}
+
+/* line 10, ../../sass/components/pager.scss */
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+/* line 18, ../../sass/components/pager.scss */
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+/* line 23, ../../sass/components/pager.scss */
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+
+/* line 27, ../../sass/components/pager.scss */
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+/* line 31, ../../sass/components/pager.scss */
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+}

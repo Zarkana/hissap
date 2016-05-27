@@ -1,0 +1,162 @@
+/* line 1, ../../sass/components/label.scss */
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+/* line 13, ../../sass/components/label.scss */
+a.label:hover,
+a.label:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 19, ../../sass/components/label.scss */
+.label:empty {
+  display: none;
+}
+
+/* line 22, ../../sass/components/label.scss */
+.btn .label {
+  position: relative;
+  top: -1px;
+}
+
+/* line 26, ../../sass/components/label.scss */
+.label-default {
+  background-color: #777;
+}
+
+/* line 29, ../../sass/components/label.scss */
+.label-default[href]:hover,
+.label-default[href]:focus {
+  background-color: #5e5e5e;
+}
+
+/* line 33, ../../sass/components/label.scss */
+.label-primary {
+  background-color: #337ab7;
+}
+
+/* line 36, ../../sass/components/label.scss */
+.label-primary[href]:hover,
+.label-primary[href]:focus {
+  background-color: #286090;
+}
+
+/* line 40, ../../sass/components/label.scss */
+.label-success {
+  background-color: #5cb85c;
+}
+
+/* line 43, ../../sass/components/label.scss */
+.label-success[href]:hover,
+.label-success[href]:focus {
+  background-color: #449d44;
+}
+
+/* line 47, ../../sass/components/label.scss */
+.label-info {
+  background-color: #5bc0de;
+}
+
+/* line 50, ../../sass/components/label.scss */
+.label-info[href]:hover,
+.label-info[href]:focus {
+  background-color: #31b0d5;
+}
+
+/* line 54, ../../sass/components/label.scss */
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+/* line 57, ../../sass/components/label.scss */
+.label-warning[href]:hover,
+.label-warning[href]:focus {
+  background-color: #ec971f;
+}
+
+/* line 61, ../../sass/components/label.scss */
+.label-danger {
+  background-color: #d9534f;
+}
+
+/* line 64, ../../sass/components/label.scss */
+.label-danger[href]:hover,
+.label-danger[href]:focus {
+  background-color: #c9302c;
+}
+
+/* line 69, ../../sass/components/label.scss */
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+}
+
+/* line 83, ../../sass/components/label.scss */
+.badge:empty {
+  display: none;
+}
+
+/* line 86, ../../sass/components/label.scss */
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
+/* line 90, ../../sass/components/label.scss */
+.btn-xs .badge,
+.btn-group-xs > .btn .badge {
+  top: 0;
+  padding: 1px 5px;
+}
+
+/* line 95, ../../sass/components/label.scss */
+a.badge:hover,
+a.badge:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 101, ../../sass/components/label.scss */
+.list-group-item.active > .badge,
+.nav-pills > .active > a > .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+
+/* line 106, ../../sass/components/label.scss */
+.list-group-item > .badge {
+  float: right;
+}
+
+/* line 109, ../../sass/components/label.scss */
+.list-group-item > .badge + .badge {
+  margin-right: 5px;
+}
+
+/* line 112, ../../sass/components/label.scss */
+.nav-pills > li > a > .badge {
+  margin-left: 3px;
+}

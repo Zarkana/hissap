@@ -1,0 +1,155 @@
+/* line 2, ../../sass/base/text.scss */
+.text-left {
+  text-align: left;
+}
+
+/* line 5, ../../sass/base/text.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 8, ../../sass/base/text.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 11, ../../sass/base/text.scss */
+.text-justify {
+  text-align: justify;
+}
+
+/* line 14, ../../sass/base/text.scss */
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/* line 17, ../../sass/base/text.scss */
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+/* line 20, ../../sass/base/text.scss */
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* line 23, ../../sass/base/text.scss */
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+/* line 26, ../../sass/base/text.scss */
+.text-muted {
+  color: #777;
+}
+
+/* line 29, ../../sass/base/text.scss */
+.text-primary {
+  color: #337ab7;
+}
+
+/* line 32, ../../sass/base/text.scss */
+a.text-primary:hover,
+a.text-primary:focus {
+  color: #286090;
+}
+
+/* line 36, ../../sass/base/text.scss */
+.text-success {
+  color: #3c763d;
+}
+
+/* line 39, ../../sass/base/text.scss */
+a.text-success:hover,
+a.text-success:focus {
+  color: #2b542c;
+}
+
+/* line 43, ../../sass/base/text.scss */
+.text-info {
+  color: #31708f;
+}
+
+/* line 46, ../../sass/base/text.scss */
+a.text-info:hover,
+a.text-info:focus {
+  color: #245269;
+}
+
+/* line 50, ../../sass/base/text.scss */
+.text-warning {
+  color: #8a6d3b;
+}
+
+/* line 53, ../../sass/base/text.scss */
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #66512c;
+}
+
+/* line 57, ../../sass/base/text.scss */
+.text-danger {
+  color: #a94442;
+}
+
+/* line 60, ../../sass/base/text.scss */
+a.text-danger:hover,
+a.text-danger:focus {
+  color: #843534;
+}
+
+/* line 64, ../../sass/base/text.scss */
+.bg-primary {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+/* line 68, ../../sass/base/text.scss */
+a.bg-primary:hover,
+a.bg-primary:focus {
+  background-color: #286090;
+}
+
+/* line 72, ../../sass/base/text.scss */
+.bg-success {
+  background-color: #dff0d8;
+}
+
+/* line 75, ../../sass/base/text.scss */
+a.bg-success:hover,
+a.bg-success:focus {
+  background-color: #c1e2b3;
+}
+
+/* line 79, ../../sass/base/text.scss */
+.bg-info {
+  background-color: #d9edf7;
+}
+
+/* line 82, ../../sass/base/text.scss */
+a.bg-info:hover,
+a.bg-info:focus {
+  background-color: #afd9ee;
+}
+
+/* line 86, ../../sass/base/text.scss */
+.bg-warning {
+  background-color: #fcf8e3;
+}
+
+/* line 89, ../../sass/base/text.scss */
+a.bg-warning:hover,
+a.bg-warning:focus {
+  background-color: #f7ecb5;
+}
+
+/* line 93, ../../sass/base/text.scss */
+.bg-danger {
+  background-color: #f2dede;
+}
+
+/* line 96, ../../sass/base/text.scss */
+a.bg-danger:hover,
+a.bg-danger:focus {
+  background-color: #e4b9b9;
+}

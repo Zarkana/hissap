@@ -1,0 +1,197 @@
+/*Colors*/
+/*Heights*/
+/*Navbar height*/
+/*Fonts*/
+@font-face {
+  font-family: 'AvantGarde';
+  src: url("../fonts/avantgarde.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+}
+/* line 9, ../../sass/modules/header.scss */
+.navbar {
+  min-height: 50px;
+  margin-bottom: 20px;
+  background-color: #28AF21;
+  border: 1px solid #196f15;
+  /*Styling for the center banner description of website*/
+  /*Differentiation*/
+  /*Differentiation*/
+}
+/* line 15, ../../sass/modules/header.scss */
+.navbar .navbar-home {
+  float: left;
+}
+/* line 18, ../../sass/modules/header.scss */
+.navbar .navbar-home a {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: block;
+  font-size: 2.75em;
+  color: white;
+  text-align: center;
+  padding: 7px 8px;
+}
+/* line 26, ../../sass/modules/header.scss */
+.navbar .navbar-home a:hover {
+  text-decoration: underline;
+}
+/* line 32, ../../sass/modules/header.scss */
+.navbar .navbar-description {
+  max-width: 425px;
+}
+/* line 35, ../../sass/modules/header.scss */
+.navbar .navbar-description .navbar-description-text {
+  display: block;
+  max-height: 70px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 11px 16px;
+  font-family: AvantGarde, sans-serif;
+}
+@media screen and (max-width: 960px) {
+  /* line 45, ../../sass/modules/header.scss */
+  .navbar .navbar-description .navbar-description-text {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+}
+@media screen and (max-width: 760px) {
+  /* line 52, ../../sass/modules/header.scss */
+  .navbar .navbar-description .navbar-description-text {
+    font-size: 12px;
+    padding: 18px 4px;
+  }
+}
+@media screen and (max-width: 720px) {
+  /* line 59, ../../sass/modules/header.scss */
+  .navbar .navbar-description .navbar-description-text {
+    font-size: 11px;
+    padding: 20px 0px;
+  }
+}
+@media screen and (max-width: 625px) {
+  /* line 66, ../../sass/modules/header.scss */
+  .navbar .navbar-description .navbar-description-text {
+    display: none;
+  }
+}
+/* line 74, ../../sass/modules/header.scss */
+.navbar .navbar-sections {
+  /*div*/
+}
+/* line 75, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section {
+  /*ul*/
+  list-style-type: none;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+/* line 80, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section.left {
+  float: left;
+  padding-left: 20px;
+}
+/* line 85, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section.right {
+  float: right;
+  padding-right: 20px;
+}
+/* line 90, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section.middle {
+  /*Must set a specific width for div somewhere else to center*/
+  margin: 0 auto;
+}
+/* line 95, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section .navbar-item {
+  /*li*/
+  float: left;
+}
+/* line 98, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section .navbar-item a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* line 104, ../../sass/modules/header.scss */
+.navbar .navbar-sections .navbar-section .navbar-item a:hover {
+  background-color: #7dd728;
+}
+/* line 112, ../../sass/modules/header.scss */
+.navbar.parent {
+  height: 70px;
+  margin-bottom: auto;
+}
+/* line 116, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections {
+  /*div*/
+}
+/* line 117, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section {
+  /*ul*/
+}
+/* line 118, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item {
+  /*li*/
+  /* For positioning */
+}
+/* line 119, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item a {
+  margin-top: 10px;
+  color: white;
+  text-decoration: underline;
+}
+/* line 5, ../../sass/components/image-button.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 50% 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  background-image: url(../images/logout-green.png);
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* line 16, ../../sass/components/image-button.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button:hover {
+  background-color: #7dd728;
+  background-image: url(../images/logout-white.png);
+}
+/* line 20, ../../sass/components/image-button.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button span {
+  display: none;
+}
+/* line 129, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button {
+  margin-top: 14px;
+  margin-left: 15px;
+}
+/* line 138, ../../sass/modules/header.scss */
+.navbar.child {
+  background-color: gainsboro;
+  border: 1px solid #b6b6b6;
+}
+/* line 142, ../../sass/modules/header.scss */
+.navbar.child .navbar-sections {
+  /*div*/
+}
+/* line 143, ../../sass/modules/header.scss */
+.navbar.child .navbar-sections .navbar-section {
+  /*ul*/
+}
+/* line 144, ../../sass/modules/header.scss */
+.navbar.child .navbar-sections .navbar-section .navbar-item {
+  /*li*/
+}
+/* line 145, ../../sass/modules/header.scss */
+.navbar.child .navbar-sections .navbar-section .navbar-item a {
+  color: black;
+}
+/* line 148, ../../sass/modules/header.scss */
+.navbar.child .navbar-sections .navbar-section .navbar-item a:hover {
+  background-color: #cfcfcf;
+}

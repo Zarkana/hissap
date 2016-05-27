@@ -1,0 +1,9 @@
+/* line 1, ../../sass/base/section.scss */
+.section {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 4, ../../sass/base/section.scss */
+.section.half {
+  width: 49%;
+}

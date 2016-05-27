@@ -1,0 +1,24 @@
+﻿
+@mixin image-button-color($background-color, $hover-color, $button-size, $image-percentage, $image-path, $hover-path){
+  $image-decimal: $image-percentage / 100;
+
+  .image-button {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: percentage($image-decimal) percentage($image-decimal);
+    border: none;
+    width: #{$button-size}px;
+    height: #{$button-size}px;
+    background-color: $background-color;
+    background-image: url(#{$image-path});
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover{
+      background-color: $hover-color;
+      background-image: url(#{$hover-path});
+    }
+    span {
+      display: none;
+    }
+  }
+}
