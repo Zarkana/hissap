@@ -318,6 +318,7 @@
     <Content Include=".sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\screen.scssc" />
     <Content Include=".sass-cache\8b1de0fb964996dfca872842620703baaa5efa9b\_utilities.scssc" />
     <Content Include=".sass-cache\c17044e14c0b02252815f0ff968911ec47c759ba\_reset.scssc" />
+    <Content Include="sass\StyleSheet1.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -368,7 +369,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="sass\" />
     <Folder Include="stylesheets\" />
   </ItemGroup>
   <ItemGroup>
