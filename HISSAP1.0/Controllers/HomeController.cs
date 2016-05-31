@@ -27,5 +27,12 @@ namespace HISSAP1._0.Controllers
 
       return View();
     }
+
+    public ActionResult Administration()
+    {
+      //ViewBag.Message = "Your administration page.";
+
+      return View();
+    }
   }
 }
