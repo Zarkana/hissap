@@ -1,0 +1,259 @@
+﻿/*@import "Compass/Reset";*/
+@import "Compass/CSS3/Shared";
+@import "Compass/CSS3/border-radius";
+@import "variables.scss";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  margin: 0;
+  /*TODO: need?*/
+  padding-bottom: 20px;
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.collapse {
+  display: none;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-rounded {
+  border-radius: 6px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+small,
+.small {
+  font-size: 85%;
+}
+
+mark,
+.mark {
+  padding: .2em;
+  background-color: #fcf8e3;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.body-content {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*Links*/
+a {
+  color: $third-color;
+  text-decoration: none;
+  outline-color: darken($third-color, 5%);
+}
+
+a:hover,
+a:focus {
+  color: darken($third-color, 10%);
+  text-decoration: underline;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+
+address {
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 1.42857143;
+}
+
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+dl {
+  margin-bottom: 20px;
+}
+
+dt,
+dd {
+  line-height: 1.428571429;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+.row {
+/*Don't know that it is needed*/
+  /*margin-right: -15px;
+  margin-left: -15px;*/
+/*Testing out*/
+  display: block;
+}
+
+.testclass {
+  @include border-radius(3px);
+  border: solid 1px silver;
+  padding: 3px;
+  color: $first-color;
+}
+
+
+/* As hex codes */
+
+.color-primary-0 { color: #28AF21 }	/* Main Primary color */
+.color-primary-1 { color: #70D46B }
+.color-primary-2 { color: #48BD41 }
+.color-primary-3 { color: #158D0F }
+.color-primary-4 { color: #056D00 }
+
+.color-secondary-1-0 { color: #1C955E }	/* Main Secondary color (1) */
+.color-secondary-1-1 { color: #5DBA90 }
+.color-secondary-1-2 { color: #38A171 }
+.color-secondary-1-3 { color: #0D7847 }
+.color-secondary-1-4 { color: #005D33 }
+
+.color-secondary-2-0 { color: #71C224 }	/* Main Secondary color (2) */
+.color-secondary-2-1 { color: #ADE874 }
+.color-secondary-2-2 { color: #8BD249 }
+.color-secondary-2-3 { color: #559C11 }
+.color-secondary-2-4 { color: #3B7900 }
+
+
+
+/* As RGBa codes */
+
+.rgba-primary-0 { color: rgba( 40,175, 33,1) }	/* Main Primary color */
+.rgba-primary-1 { color: rgba(112,212,107,1) }
+.rgba-primary-2 { color: rgba( 72,189, 65,1) }
+.rgba-primary-3 { color: rgba( 21,141, 15,1) }
+.rgba-primary-4 { color: rgba(  5,109,  0,1) }
+
+.rgba-secondary-1-0 { color: rgba( 28,149, 94,1) }	/* Main Secondary color (1) */
+.rgba-secondary-1-1 { color: rgba( 93,186,144,1) }
+.rgba-secondary-1-2 { color: rgba( 56,161,113,1) }
+.rgba-secondary-1-3 { color: rgba( 13,120, 71,1) }
+.rgba-secondary-1-4 { color: rgba(  0, 93, 51,1) }
+
+.rgba-secondary-2-0 { color: rgba(113,194, 36,1) }	/* Main Secondary color (2) */
+.rgba-secondary-2-1 { color: rgba(173,232,116,1) }
+.rgba-secondary-2-2 { color: rgba(139,210, 73,1) }
+.rgba-secondary-2-3 { color: rgba( 85,156, 17,1) }
+.rgba-secondary-2-4 { color: rgba( 59,121,  0,1) }

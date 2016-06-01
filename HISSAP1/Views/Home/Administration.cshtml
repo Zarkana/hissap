@@ -1,0 +1,39 @@
+﻿@{
+  ViewData["Title"] = "Administration";
+}
+
+<div class="row">
+  <div class="col-md-3">
+    <h2>Administration</h2>
+    <ul class="site-tree">
+      <li>
+        <h4 class="branch">@Html.ActionLink("Manage Organizational Info", "Index", "Organizations")</h4>
+        <p class="branch-description">Change various organizational details including address and contact information.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("Create & Manage Contracts", "Index", "Role")</h4>
+        <p class="branch-description">Manage contract details including names, dates, ASO Log No, and Status.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("Create a New Site", "Index", "Role")</h4>
+        <p class="branch-description">Create additional sites for the contract.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("Manage Users", "Index", "Role")</h4>
+        <p class="branch-description">Manage users within the organization.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("Create Announcements", "Index", "Role")</h4>
+        <p class="branch-description">Create new organizational announcements.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("Manipulate Data", "Index", "Role")</h4>
+        <p class="branch-description">Copy entire plan or select components of plan from a contract.</p>
+      </li>
+      <li>
+        <h4 class="branch">@Html.ActionLink("View Collaborators", "Index", "Role")</h4>
+        <p class="branch-description">Show public profiles of Organization and Staff.</p>
+      </li>
+    </ul>
+  </div>
+</div>
