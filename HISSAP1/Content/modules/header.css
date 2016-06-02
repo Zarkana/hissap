@@ -165,33 +165,61 @@
 .navbar.parent .navbar-sections .navbar-section .navbar-item .image-button span {
   display: none;
 }
-/* line 129, ../../sass/modules/header.scss */
+/* line 130, ../../sass/modules/header.scss */
 .navbar.parent .navbar-sections .navbar-section .navbar-item .image-button {
   margin-top: 14px;
   margin-left: 15px;
 }
-/* line 138, ../../sass/modules/header.scss */
+/* line 136, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .login-item {
+  float: left;
+  max-width: 250px;
+  text-align: center;
+}
+/* line 140, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .login-item p {
+  margin-top: 15px;
+  /*To vertically center more */
+  margin-bottom: -5px;
+  font-size: 17px;
+  color: white;
+  /*To keep contained*/
+  max-height: 20px;
+  overflow: hidden;
+}
+/* line 152, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .login-item a {
+  margin-top: 0;
+  text-decoration: underline;
+  font-size: 10px;
+  color: white;
+}
+/* line 158, ../../sass/modules/header.scss */
+.navbar.parent .navbar-sections .navbar-section .login-item a:hover {
+  color: #ace575;
+}
+/* line 167, ../../sass/modules/header.scss */
 .navbar.child {
   background-color: gainsboro;
   border: 1px solid #b6b6b6;
 }
-/* line 142, ../../sass/modules/header.scss */
+/* line 171, ../../sass/modules/header.scss */
 .navbar.child .navbar-sections {
   /*div*/
 }
-/* line 143, ../../sass/modules/header.scss */
+/* line 172, ../../sass/modules/header.scss */
 .navbar.child .navbar-sections .navbar-section {
   /*ul*/
 }
-/* line 144, ../../sass/modules/header.scss */
+/* line 173, ../../sass/modules/header.scss */
 .navbar.child .navbar-sections .navbar-section .navbar-item {
   /*li*/
 }
-/* line 145, ../../sass/modules/header.scss */
+/* line 174, ../../sass/modules/header.scss */
 .navbar.child .navbar-sections .navbar-section .navbar-item a {
   color: black;
 }
-/* line 148, ../../sass/modules/header.scss */
+/* line 177, ../../sass/modules/header.scss */
 .navbar.child .navbar-sections .navbar-section .navbar-item a:hover {
   background-color: #cfcfcf;
 }

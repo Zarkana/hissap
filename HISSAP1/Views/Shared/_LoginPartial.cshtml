@@ -6,8 +6,9 @@
     @Html.AntiForgeryToken()
 
     <ul class="navbar-section right">
-      <li class="navbar-item">
-        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+      <li class="login-item">
+        <p>@Html.Raw(String.Format("Hello " + User.Identity.GetUserName() + "!"))</p>
+        @Html.ActionLink("Manage My Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
       </li>
       <li class="navbar-item"><a class="image-button logout" href="javascript:document.getElementById('logoutForm').submit()"></a></li>
     </ul>

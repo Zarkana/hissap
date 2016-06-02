@@ -237,11 +237,11 @@ dd {
 
 /* Used to style the generated details page */
 /* line 204, ../../sass/base/global.scss */
-.dl-horizontal {
-  margin-left: 15px;
+.dl-horizontal.details-list {
+  margin-left: 10px;
 }
 /* line 207, ../../sass/base/global.scss */
-.dl-horizontal dt {
+.dl-horizontal.details-list dt {
   float: left;
   clear: left;
   min-width: 150px;
@@ -250,11 +250,11 @@ dd {
   height: 20px;
 }
 /* line 215, ../../sass/base/global.scss */
-.dl-horizontal dt:after {
+.dl-horizontal.details-list dt:after {
   content: ":";
 }
 /* line 220, ../../sass/base/global.scss */
-.dl-horizontal dd {
+.dl-horizontal.details-list dd {
   height: 20px;
 }
 

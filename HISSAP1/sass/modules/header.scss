@@ -120,7 +120,8 @@ $child-navbar-color: lighten($light-gray, 20%);
             margin-top: ($parent-navbar-added-height / 2);
             color: white;
             text-decoration: underline;
-            &:hover{
+
+            &:hover {
             }
           }
 
@@ -129,6 +130,34 @@ $child-navbar-color: lighten($light-gray, 20%);
           .image-button {
             margin-top: 14px;
             margin-left: 15px;
+          }
+        }
+
+        .login-item {
+          float: left;
+          max-width: 250px;
+          text-align: center;
+          p {
+            margin-top: ($parent-navbar-added-height / 2) + 5px;
+            /*To vertically center more */
+            margin-bottom: -5px;
+            font-size: 17px;
+            color: white;
+
+            /*To keep contained*/
+            max-height: 20px;
+            overflow: hidden;          
+          }
+
+          a {
+            margin-top: 0;
+            text-decoration: underline;
+            font-size: 10px;
+            color: white;
+
+            &:hover {
+              color: lighten($hover-color, 18%);
+            }
           }
         }
       }

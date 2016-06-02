@@ -201,8 +201,8 @@ dd {
 }
 
 /* Used to style the generated details page */
-.dl-horizontal {
-  margin-left: 15px;
+.dl-horizontal.details-list{
+  margin-left: 10px;
 
   dt {
     float: left;
