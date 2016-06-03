@@ -133,11 +133,11 @@ h6,
 
 /* line 118, ../../sass/components/header.scss */
 .buddy-header {
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 
 /* line 122, ../../sass/components/header.scss */
 .buddy-link {
-  margin-left: 7px;
+  margin-left: 6px;
   margin-bottom: 20px;
 }

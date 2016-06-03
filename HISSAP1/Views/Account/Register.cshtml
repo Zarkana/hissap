@@ -27,7 +27,7 @@
     <div class="form-group">
       @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
-        @Html.DropDownList("Name")
+        @Html.DropDownList("Name", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "input-sm" })
       </div>
     </div>
     <!--Ends Here-->

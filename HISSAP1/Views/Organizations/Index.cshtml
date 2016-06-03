@@ -4,9 +4,8 @@
   ViewBag.Title = "Index";
 }
 
-<h2>Organizations</h2>
-
-<p>
+<h2 class="buddy-header">Organizations</h2>
+<p class="buddy-link">
   @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -41,7 +40,7 @@
       <td>
         @Html.DisplayFor(modelItem => item.ContactPerson)
       </td>
-      <td>
+      <td class="minimum">
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.ID })

@@ -10,15 +10,19 @@ namespace HISSAP1.Models
   {
     public int ID { get; set; }
     [Required]
+    [StringLength(70, MinimumLength = 3)]
     public string Name { get; set; }
     [Required]
+    [StringLength(50, MinimumLength = 3)]
     [Display(Name = "Address 1st Line")]
     public string Line1 { get; set; }
     [Display(Name = "Address 2nd Line")]
     public string Line2 { get; set; }
     [Required]
+    [StringLength(25, MinimumLength = 3)]
     public string City { get; set; }
     [Required]
+    [StringLength(2, MinimumLength = 2)]
     public string State { get; set; }
     [Required]
     [RegularExpression(@"^\d{5}(-\d{4})?", ErrorMessage = "Please enter a valid US Zip")]
