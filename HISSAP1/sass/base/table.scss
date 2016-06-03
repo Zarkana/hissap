@@ -1,15 +1,27 @@
 ﻿
 table {
-  background-color: transparent;
+  
 }
 th {
   text-align: left;
 }
-.table {
+
+table {
+  background-color: transparent;
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+
+  .minimum{
+    width: auto;
+    white-space: nowrap;
+  }
+  .maximum{
+    width: 100%;
+  }
 }
+
+
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,

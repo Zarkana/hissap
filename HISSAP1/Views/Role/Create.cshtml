@@ -1,26 +1,19 @@
 ﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
-@{
-  ViewBag.Title = "Create";
-}
 
-<h2>Create</h2>
-
-<style type="text/css">
-  #tbrole, .c {
-    border: double;
-  }
-</style>
-
+<h2 class="buddy-header">Create Role</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
 
 @using (Html.BeginForm())
 {
-  <table id="tbrole">
+  <table>
     <tr>
-      <td class="c">Enter Role Name To be Created:</td>
-      <td class="c">
+      <td class="minimum">Enter Role Name To be Created:</td>
+      <td class="maximum">
         @Html.EditorFor(m => m.Name)
       </td>
     </tr>
   </table>
-    <input type="submit" value="Create Role" />
+  <input class="btn btn-default" type="submit" value="Create Role" />
 }

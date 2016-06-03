@@ -130,3 +130,14 @@ h6,
 .h6 {
   font-size: 12px;
 }
+
+/* line 118, ../../sass/components/header.scss */
+.buddy-header {
+  margin-bottom: 0;
+}
+
+/* line 122, ../../sass/components/header.scss */
+.buddy-link {
+  margin-left: 7px;
+  margin-bottom: 20px;
+}

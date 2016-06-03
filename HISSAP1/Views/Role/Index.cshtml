@@ -3,27 +3,26 @@
   ViewBag.Title = "Index";
 }
 
-<h2>Available Roles For Application</h2>
-
-@Html.ActionLink("Create Role", "Create", "Role")
-
-<style type="text/css">
-  #tbrole, .c {
-    border: double;
-  }
-</style>
-
-<table id="tbrole">
+<h2>System Roles</h2>
+<p>
+  @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
   <tr>
-    <td class="c">
-      Role Name
-    </td>
+    <th class="minimum">
+      @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th class="maximum"></th>
   </tr>
+
   @foreach (var item in Model)
   {
     <tr>
-      <td class="c">
-        @item.Name
+      <td class="minimum">
+        @Html.DisplayFor(modelItem => item.Name)
+      </td>
+      <td class="maximum">
+        @Html.ActionLink("Delete", "Delete", new { id = item.Name })
       </td>
     </tr>
   }
