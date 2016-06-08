@@ -143,6 +143,7 @@ namespace HISSAP1.Controllers
     public ActionResult Register()
     {
       ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
+      ViewBag.Organization = new SelectList(context.Organizations.ToList(), "Name", "Name");
       return View();
     }
 
