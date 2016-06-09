@@ -7,6 +7,7 @@ using HISSAP1.Models;
 
 namespace A11_RBS.Controllers
 {
+  [Authorize(Roles = "systemAdministrator")]
   public class RoleController : Controller
   {
     ApplicationDbContext context;

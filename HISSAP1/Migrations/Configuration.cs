@@ -1,5 +1,6 @@
 namespace HISSAP1.Migrations
 {
+  using Microsoft.AspNet.Identity;
   using Microsoft.AspNet.Identity.EntityFramework;
   using Models;
   using System;
@@ -30,6 +31,41 @@ namespace HISSAP1.Migrations
           new IdentityRole { Id = "5", Name = "stateAdministrator" },
           new IdentityRole { Id = "6", Name = "systemAdministrator" }
         );
+
+      /*
+       First approach
+       using the entity framework LINQ to Entity
+       */
+
+      var passwordHash = new PasswordHasher();
+      string password = passwordHash.HashPassword("Hissap123!");
+      context.Users.AddOrUpdate(u => u.UserName,
+          new ApplicationUser
+          {
+            Email = "jsc940@gmail.com",
+            //EmailConfirmed = false,
+            PasswordHash = password,
+            PhoneNumber = "",
+            //TwoFactorEnabled = false,
+            //LockoutEndDateUtc = null,
+            //LockoutEnabled = true,
+            //AccessFailedCount = 0,
+            UserName = "admin"
+          });
+
+      /*
+       Second approach
+       insert a user is using the UserStore
+       */
+
+      if (!(context.Users.Any(u => u.UserName == "dj")))
+      {
+        var userStore = new UserStore<ApplicationUser>(context);
+        var userManager = new UserManager<ApplicationUser>(userStore);
+        var userToInsert = new ApplicationUser { UserName = "dj", Email = "dj@dj.com", PhoneNumber = "0797697898" };
+        userManager.Create(userToInsert, "Password@123");
+      }
+
 
       //  This method will be called after migrating to the latest version.
 

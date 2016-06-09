@@ -143,7 +143,6 @@ namespace HISSAP1.Controllers
     public ActionResult Register()
     {
       ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
-      ViewBag.Organization = new SelectList(context.Organizations.ToList(), "Name", "Name");
       return View();
     }
 
@@ -156,10 +155,11 @@ namespace HISSAP1.Controllers
     {
       if (ModelState.IsValid)
       {
-        var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
         var result = await UserManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
+
           //Assign Role to user Here 
           await this.UserManager.AddToRoleAsync(user.Id, model.Name);
           //Ends Here

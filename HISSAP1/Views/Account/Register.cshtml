@@ -27,15 +27,7 @@
     <div class="form-group">
       @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
-        @Html.DropDownList("Name", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "input-sm" })
-      </div>
-    </div>
-    <!--Ends Here-->
-    <!--Select the Organization associated with the User-->
-    <div class="form-group">
-      @Html.Label("Select User's Organization", new { @class = "col-md-2 control-label" })
-      <div class="col-md-10">
-        @Html.DropDownList("Organization", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "input-sm" })
+        @Html.DropDownList("Name")
       </div>
     </div>
     <!--Ends Here-->
