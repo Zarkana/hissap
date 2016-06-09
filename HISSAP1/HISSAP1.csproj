@@ -201,6 +201,7 @@
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomFilters\AuthLogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -449,6 +450,7 @@
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Organizations\Delete.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

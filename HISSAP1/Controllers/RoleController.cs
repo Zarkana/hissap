@@ -4,10 +4,11 @@ using System.Web.Mvc;
 
 using Microsoft.AspNet.Identity.EntityFramework;
 using HISSAP1.Models;
+using HISSAP1.CustomFilters;
 
 namespace A11_RBS.Controllers
 {
-  [Authorize(Roles = "systemAdministrator")]
+  [AuthLog(Roles = "systemAdministrator")]
   public class RoleController : Controller
   {
     ApplicationDbContext context;
