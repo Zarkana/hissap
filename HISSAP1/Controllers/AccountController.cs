@@ -139,9 +139,12 @@ namespace HISSAP1.Controllers
 
     //
     // GET: /Account/Register
+    [HttpGet]
     [AllowAnonymous]
     public ActionResult Register()
     {
+      //ViewBag.Organizations = new SelectList(context.Organizations.ToList(), "Name", "Name");
+      ViewBag.Organizations = new SelectList(context.Organizations, "ID", "Name");
       ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
       return View();
     }
@@ -155,7 +158,11 @@ namespace HISSAP1.Controllers
     {
       if (ModelState.IsValid)
       {
-        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        var user = new ApplicationUser {
+          UserName = model.Email,
+          Email = model.Email,
+          OrganizationId = model.SelectedOrganization //Should work?
+        };
         var result = await UserManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {

@@ -25,12 +25,21 @@
     </div>
     <!--Select the Role Type for the User-->
     <div class="form-group">
-      @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
+      @Html.Label("Select The User Type", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
-        @Html.DropDownList("Name")
+        @Html.DropDownList("Name", null, new { @class = "input-sm" })
       </div>
     </div>
     <!--Ends Here-->
+    <!--Associate an organization with the account-->
+  <div class="form-group">
+    @Html.Label("Associate an Organization", new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+      @*@Html.DropDownListFor(m => m.SelectedOrganization, Model.OrganizationList, "Please select")*@
+      @Html.DropDownListFor(m => m.SelectedOrganization, ViewBag.Organizations as SelectList, new {@class = "input-sm"} )
+    </div>
+  </div>
+    <!--Ends Here-->  
     <div class="form-group">
       @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
       <div class="col-md-10">

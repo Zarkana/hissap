@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace HISSAP1.Models
 {
@@ -77,6 +78,13 @@ namespace HISSAP1.Models
     public string Name { get; set; }
 
     [Required]
+    public int SelectedOrganization { get; set; }
+
+    /*Retrieve list of names*/
+    public IEnumerable<SelectListItem> OrganizationList { get; set; }
+
+
+    [Required]
     [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
     [DataType(DataType.Password)]
     [Display(Name = "Password")]
@@ -84,7 +92,7 @@ namespace HISSAP1.Models
 
     [DataType(DataType.Password)]
     [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
   }
 
@@ -103,7 +111,7 @@ namespace HISSAP1.Models
 
     [DataType(DataType.Password)]
     [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
     public string Code { get; set; }

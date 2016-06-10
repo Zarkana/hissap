@@ -16,6 +16,7 @@ namespace HISSAP1.Models
       // Add custom user claims here
       return userIdentity;
     }
+    public int OrganizationId { get; set; }//Added to allow for Organizations...
   }
 
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
