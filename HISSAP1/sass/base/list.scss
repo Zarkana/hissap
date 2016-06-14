@@ -3,32 +3,39 @@ ol {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
 ul ul,
 ol ul,
 ul ol,
 ol ol {
   margin-bottom: 0;
 }
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
 }
+
 .list-inline {
   padding-left: 0;
   margin-left: -5px;
   list-style: none;
 }
+
 .list-inline > li {
   display: inline-block;
   padding-right: 5px;
   padding-left: 5px;
 }
 
-.site-tree{
-  .branch{
+.site-tree {
+  margin-top: 25px;
+
+  .branch {
     margin-bottom: 5px;
   }
-  .branch-description{
+
+  .branch-description {
     margin: 0 0 25px 0;
   }
 }
