@@ -46,6 +46,7 @@ namespace HISSAP1.Migrations
             //EmailConfirmed = false,
             PasswordHash = password,
             PhoneNumber = "",
+            SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
             //TwoFactorEnabled = false,
             //LockoutEndDateUtc = null,
             //LockoutEnabled = true,

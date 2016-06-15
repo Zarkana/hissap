@@ -1,0 +1,75 @@
+﻿@model HISSAP1.Models.ApplicationUser
+
+@{
+  ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">User Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+  <hr />
+  <dl class="dl-horizontal details-list">
+    <dt>
+      @Html.DisplayNameFor(model => model.UserName)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.UserName)
+    </dd>
+    <dt>
+      @Html.DisplayNameFor(model => model.OrganizationId)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.OrganizationId)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.Email)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.Email)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.EmailConfirmed)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.EmailConfirmed)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.PhoneNumber)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.PhoneNumber)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.LockoutEnabled)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.LockoutEnabled)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.AccessFailedCount)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.AccessFailedCount)
+    </dd>
+
+  </dl>
+</div>
+<p>
+  @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+  @Html.ActionLink("Back to List", "Index")
+</p>

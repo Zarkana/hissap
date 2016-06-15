@@ -78,7 +78,7 @@ namespace HISSAP1.Controllers
 
       // This doesn't count login failures towards account lockout
       // To enable password failures to trigger account lockout, change to shouldLockout: true
-      var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
+      var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
       switch (result)
       {
         case SignInStatus.Success:
@@ -152,7 +152,7 @@ namespace HISSAP1.Controllers
     //
     // POST: /Account/Register
     [HttpPost]
-    [AllowAnonymous]
+    [AllowAnonymous]//TODO Remove
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
@@ -161,7 +161,7 @@ namespace HISSAP1.Controllers
         var user = new ApplicationUser {
           UserName = model.Email,
           Email = model.Email,
-          OrganizationId = model.SelectedOrganization //Should work?
+          OrganizationId = model.SelectedOrganization
         };
         var result = await UserManager.CreateAsync(user, model.Password);
         if (result.Succeeded)

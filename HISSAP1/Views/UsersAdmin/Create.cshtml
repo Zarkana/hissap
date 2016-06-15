@@ -1,0 +1,73 @@
+﻿@model HISSAP1.Models.RegisterViewModel
+@{
+  ViewBag.Title = "Create";
+}
+
+<h2 class="buddy-header">Create User</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary()
+
+  <div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+      @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+      <div class="controls">
+        @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control" } })
+      </div>
+    </div>
+
+    <div class="form-group">
+      @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+      <div class="controls">
+        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+      </div>
+    </div>
+
+    <div class="form-group">
+      @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+      <div class="controls">
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+      </div>
+    </div>
+
+    <div class="form-group">
+      @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+      <div class="controls">
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+      </div>
+    </div>
+    <!--Associate an organization with the account-->
+    <div class="form-group">
+      @Html.Label("Associate an Organization", new { @class = "col-md-2 control-label" })
+      <div class="col-md-10">
+        @*@Html.DropDownListFor(m => m.SelectedOrganization, Model.OrganizationList, "Please select")*@
+        @Html.DropDownListFor(m => m.SelectedOrganization, ViewBag.Organizations as SelectList, new { @class = "input-sm" })
+      </div>
+    </div>
+    <!--Ends Here-->
+    <div class="form-group">
+      @Html.Label("Select The User Type", new { @class = "control-label" })
+      <div class="col-md-10">
+        @*@Html.DropDownList("RoleId", "No Roles")*@
+        @Html.DropDownListFor(m => m.Name, ViewBag.RoleId as SelectList, new { @class = "input-sm" })
+        @*@Html.DropDownListFor(m => m.SelectedOrganization, ViewBag.Organizations as SelectList, new { @class = "input-sm" })*@
+        @*@Html.DropDownList("Name", null, new { @class = "input-sm" })*@
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-default" value="Create" />
+    </div>
+  </div>
+}
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+}

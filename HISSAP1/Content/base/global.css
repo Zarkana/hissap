@@ -233,14 +233,15 @@ dt {
 /* line 199, ../../sass/base/global.scss */
 dd {
   margin-left: 0;
+  margin-bottom: 5px;
 }
 
 /* Used to style the generated details page */
-/* line 204, ../../sass/base/global.scss */
+/* line 205, ../../sass/base/global.scss */
 .dl-horizontal.details-list {
   margin-left: 10px;
 }
-/* line 207, ../../sass/base/global.scss */
+/* line 208, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt {
   float: left;
   clear: left;
@@ -249,16 +250,16 @@ dd {
   margin-right: 5px;
   height: 20px;
 }
-/* line 215, ../../sass/base/global.scss */
+/* line 216, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt:after {
   content: ":";
 }
-/* line 220, ../../sass/base/global.scss */
+/* line 221, ../../sass/base/global.scss */
 .dl-horizontal.details-list dd {
   height: 20px;
 }
 
-/* line 225, ../../sass/base/global.scss */
+/* line 226, ../../sass/base/global.scss */
 .row {
   /*Don't know that it is needed*/
   /*margin-right: -15px;
@@ -267,7 +268,7 @@ dd {
   display: block;
 }
 
-/* line 233, ../../sass/base/global.scss */
+/* line 234, ../../sass/base/global.scss */
 .testclass {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -278,159 +279,159 @@ dd {
 }
 
 /* As hex codes */
-/* line 243, ../../sass/base/global.scss */
+/* line 244, ../../sass/base/global.scss */
 .color-primary-0 {
   color: #28AF21;
 }
 
 /* Main Primary color */
-/* line 247, ../../sass/base/global.scss */
+/* line 248, ../../sass/base/global.scss */
 .color-primary-1 {
   color: #70D46B;
 }
 
-/* line 251, ../../sass/base/global.scss */
+/* line 252, ../../sass/base/global.scss */
 .color-primary-2 {
   color: #48BD41;
 }
 
-/* line 255, ../../sass/base/global.scss */
+/* line 256, ../../sass/base/global.scss */
 .color-primary-3 {
   color: #158D0F;
 }
 
-/* line 259, ../../sass/base/global.scss */
+/* line 260, ../../sass/base/global.scss */
 .color-primary-4 {
   color: #056D00;
 }
 
-/* line 263, ../../sass/base/global.scss */
+/* line 264, ../../sass/base/global.scss */
 .color-secondary-1-0 {
   color: #1C955E;
 }
 
 /* Main Secondary color (1) */
-/* line 267, ../../sass/base/global.scss */
+/* line 268, ../../sass/base/global.scss */
 .color-secondary-1-1 {
   color: #5DBA90;
 }
 
-/* line 271, ../../sass/base/global.scss */
+/* line 272, ../../sass/base/global.scss */
 .color-secondary-1-2 {
   color: #38A171;
 }
 
-/* line 275, ../../sass/base/global.scss */
+/* line 276, ../../sass/base/global.scss */
 .color-secondary-1-3 {
   color: #0D7847;
 }
 
-/* line 279, ../../sass/base/global.scss */
+/* line 280, ../../sass/base/global.scss */
 .color-secondary-1-4 {
   color: #005D33;
 }
 
-/* line 283, ../../sass/base/global.scss */
+/* line 284, ../../sass/base/global.scss */
 .color-secondary-2-0 {
   color: #71C224;
 }
 
 /* Main Secondary color (2) */
-/* line 287, ../../sass/base/global.scss */
+/* line 288, ../../sass/base/global.scss */
 .color-secondary-2-1 {
   color: #ADE874;
 }
 
-/* line 291, ../../sass/base/global.scss */
+/* line 292, ../../sass/base/global.scss */
 .color-secondary-2-2 {
   color: #8BD249;
 }
 
-/* line 295, ../../sass/base/global.scss */
+/* line 296, ../../sass/base/global.scss */
 .color-secondary-2-3 {
   color: #559C11;
 }
 
-/* line 299, ../../sass/base/global.scss */
+/* line 300, ../../sass/base/global.scss */
 .color-secondary-2-4 {
   color: #3B7900;
 }
 
 /* As RGBa codes */
-/* line 307, ../../sass/base/global.scss */
+/* line 308, ../../sass/base/global.scss */
 .rgba-primary-0 {
   color: #28af21;
 }
 
 /* Main Primary color */
-/* line 311, ../../sass/base/global.scss */
+/* line 312, ../../sass/base/global.scss */
 .rgba-primary-1 {
   color: #70d46b;
 }
 
-/* line 315, ../../sass/base/global.scss */
+/* line 316, ../../sass/base/global.scss */
 .rgba-primary-2 {
   color: #48bd41;
 }
 
-/* line 319, ../../sass/base/global.scss */
+/* line 320, ../../sass/base/global.scss */
 .rgba-primary-3 {
   color: #158d0f;
 }
 
-/* line 323, ../../sass/base/global.scss */
+/* line 324, ../../sass/base/global.scss */
 .rgba-primary-4 {
   color: #056d00;
 }
 
-/* line 327, ../../sass/base/global.scss */
+/* line 328, ../../sass/base/global.scss */
 .rgba-secondary-1-0 {
   color: #1c955e;
 }
 
 /* Main Secondary color (1) */
-/* line 331, ../../sass/base/global.scss */
+/* line 332, ../../sass/base/global.scss */
 .rgba-secondary-1-1 {
   color: #5dba90;
 }
 
-/* line 335, ../../sass/base/global.scss */
+/* line 336, ../../sass/base/global.scss */
 .rgba-secondary-1-2 {
   color: #38a171;
 }
 
-/* line 339, ../../sass/base/global.scss */
+/* line 340, ../../sass/base/global.scss */
 .rgba-secondary-1-3 {
   color: #0d7847;
 }
 
-/* line 343, ../../sass/base/global.scss */
+/* line 344, ../../sass/base/global.scss */
 .rgba-secondary-1-4 {
   color: #005d33;
 }
 
-/* line 347, ../../sass/base/global.scss */
+/* line 348, ../../sass/base/global.scss */
 .rgba-secondary-2-0 {
   color: #71c224;
 }
 
 /* Main Secondary color (2) */
-/* line 351, ../../sass/base/global.scss */
+/* line 352, ../../sass/base/global.scss */
 .rgba-secondary-2-1 {
   color: #ade874;
 }
 
-/* line 355, ../../sass/base/global.scss */
+/* line 356, ../../sass/base/global.scss */
 .rgba-secondary-2-2 {
   color: #8bd249;
 }
 
-/* line 359, ../../sass/base/global.scss */
+/* line 360, ../../sass/base/global.scss */
 .rgba-secondary-2-3 {
   color: #559c11;
 }
 
-/* line 363, ../../sass/base/global.scss */
+/* line 364, ../../sass/base/global.scss */
 .rgba-secondary-2-4 {
   color: #3b7900;
 }
