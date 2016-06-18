@@ -32,8 +32,6 @@ namespace HISSAP1.Models
     }
 
     public System.Data.Entity.DbSet<HISSAP1.Models.Organization> Organizations { get; set; }
-
-    public System.Data.Entity.DbSet<HISSAP1.Models.Movie> Movies { get; set; }
-
+  
   }
 }

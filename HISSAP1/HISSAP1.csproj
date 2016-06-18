@@ -199,7 +199,6 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="CustomFilters\AuthLogAttribute.cs" />
@@ -222,11 +221,14 @@
     <Compile Include="Migrations\201606140438157_User Admin.Designer.cs">
       <DependentUpon>201606140438157_User Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606180203397_Rename ID.cs" />
+    <Compile Include="Migrations\201606180203397_Rename ID.Designer.cs">
+      <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -451,11 +453,6 @@
     <Content Include="Views\Organizations\Details.cshtml" />
     <Content Include="Views\Organizations\Edit.cshtml" />
     <Content Include="Views\Organizations\Index.cshtml" />
-    <Content Include="Views\Movies\Create.cshtml" />
-    <Content Include="Views\Movies\Delete.cshtml" />
-    <Content Include="Views\Movies\Details.cshtml" />
-    <Content Include="Views\Movies\Edit.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Organizations\Delete.cshtml" />
     <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
     <Content Include="Views\UsersAdmin\Create.cshtml" />
@@ -463,6 +460,8 @@
     <Content Include="Views\UsersAdmin\Details.cshtml" />
     <Content Include="Views\UsersAdmin\Delete.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -487,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606140438157_User Admin.resx">
       <DependentUpon>201606140438157_User Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606180203397_Rename ID.resx">
+      <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

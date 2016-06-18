@@ -306,7 +306,7 @@ fieldset[disabled] .checkbox label {
 }
 
 /* line 262, ../../sass/base/form.scss */
-.input-sm {
+.input-sm, .input-sm-parent > select {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -314,7 +314,7 @@ fieldset[disabled] .checkbox label {
   border-radius: 3px;
 }
 /* line 269, ../../sass/base/form.scss */
-.input-sm:focus {
+.input-sm:focus, .input-sm-parent > select:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-color: #71c224;

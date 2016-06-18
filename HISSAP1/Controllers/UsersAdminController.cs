@@ -13,6 +13,7 @@ using System.Net;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using HISSAP1.Models;
+using System.Web.Security;
 
 namespace HISSAP1.Controllers
 {
@@ -63,42 +64,45 @@ namespace HISSAP1.Controllers
     public async Task<ActionResult> Create()
     {
       //Get the list of Roles
-      ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
+      //ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
+      ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
       //Alternate method
       //ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
-      ViewBag.Organizations = new SelectList(context.Organizations, "ID", "Name");
+      ViewBag.Organizations = new SelectList(context.Organizations, "Id", "Name");
       return View();
     }
 
     //
     // POST: /Users/Create
     [HttpPost]
-    public async Task<ActionResult> Create(RegisterViewModel userViewModel, string RoleId)
+    public async Task<ActionResult> Create(RegisterViewModel model, string RoleId)
     {
       if (ModelState.IsValid)
       {
         var user = new ApplicationUser();
-        user.UserName = userViewModel.UserName;
-        user.Email = userViewModel.Email;
-        user.OrganizationId = userViewModel.SelectedOrganization;//Added
+        user.UserName = model.UserName;
+        user.Email = model.Email;
+        user.OrganizationId = model.SelectedOrganization;//Added
 
-        var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
+        var adminresult = await UserManager.CreateAsync(user, model.Password);
 
         //Add User Admin to Role Admin
         if (adminresult.Succeeded)
         {
-          if (!String.IsNullOrEmpty(RoleId))
-          {
+          //if (!String.IsNullOrEmpty(RoleId))
+          //{
+
             //Find Role Admin
-            var role = await RoleManager.FindByIdAsync(RoleId);
-            var result = await UserManager.AddToRoleAsync(user.Id, role.Name);
-            if (!result.Succeeded)
-            {
-              ModelState.AddModelError("", result.Errors.First().ToString());
-              ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
-              return View();
-            }
-          }
+            //var role = await RoleManager.FindByIdAsync(RoleId);
+            //var result = await UserManager.AddToRoleAsync(user.Id, role.Name);
+            await UserManager.AddToRoleAsync(user.Id, model.Name);
+            //if (!result.Succeeded)
+            //{
+            //  ModelState.AddModelError("", result.Errors.First().ToString());
+            //  ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
+            //  return View();
+            //}
+          //}
         }
         else
         {
@@ -124,11 +128,38 @@ namespace HISSAP1.Controllers
       if (id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      }     
+      ViewBag.Organizations = new SelectList(context.Organizations, "Id", "Name");
+
+      //Document   
+      if (Request.IsAuthenticated)
+      {
+        //var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        var userRoles = UserManager.GetRoles(User.Identity.GetUserId());
+        var role = userRoles[0];
+        ViewBag.MyRole = role;
       }
-      ViewBag.RoleId = new SelectList(RoleManager.Roles, "Id", "Name");
-      ViewBag.Organizations = new SelectList(context.Organizations, "ID", "Name");
 
       var user = await UserManager.FindByIdAsync(id);
+
+      string selected = "0";
+      foreach ( var item in user.Roles)
+      {
+        //If the userid of the item in userRoles matches the current users id
+        if(item.UserId == user.Id)
+        {
+          //Put the items roleid into selected
+          selected = item.RoleId;
+        }
+      }
+
+      //Could be a bit wonky
+      //Select -> selected 
+      //This uses viewbag
+      /*ViewBag.RoleId = new SelectList(context.Roles, "Id", "Name", selected);*/
+      //This uses view data
+      ViewBag.RoleId = new SelectList(context.Roles, "Id", "Name", selected);
+
       if (user == null)
       {
         return HttpNotFound();
@@ -146,7 +177,7 @@ namespace HISSAP1.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      ViewBag.RoleId = new SelectList(RoleManager.Roles, "Id", "Name");
+      //ViewBag.RoleId = new SelectList(RoleManager.Roles, "Id", "Name");
       var user = await UserManager.FindByIdAsync(id);
       user.UserName = formuser.UserName;
       user.Email = formuser.Email;

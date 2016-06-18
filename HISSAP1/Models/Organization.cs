@@ -8,7 +8,7 @@ namespace HISSAP1.Models
 {
   public class Organization
   {
-    public int ID { get; set; }
+    public int Id { get; set; }
     [Required]
     [StringLength(70, MinimumLength = 3)]
     public string Name { get; set; }

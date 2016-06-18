@@ -45,7 +45,7 @@ namespace HISSAP1.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
+        public ActionResult Create([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace HISSAP1.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
+        public ActionResult Edit([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
         {
             if (ModelState.IsValid)
             {

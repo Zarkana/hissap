@@ -19,8 +19,8 @@ namespace HISSAP1.Migrations
     protected override void Seed(HISSAP1.Models.ApplicationDbContext context)
     {
       context.Organizations.AddOrUpdate(
-        new Organization { ID = 1, Name = "Boys and Girls Club", Line1 = "345 Queen Street, Ste.900", Line2 = "lolol", City = "Honolulu", State = "HI", Zip = "96813", Phone = "(808)-949-4203", Website = "https://www.bgch.com", Email = "ronald@bolub.com", ContactPerson = "Ronald" },
-          new Organization { ID = 2, Name = "Alchoholic Rehabilitation Services of Hawaii, Inc", Line1 = "45-845 Po'Okela Street", Line2 = "", City = "Kaneohe", State = "HI", Zip = "96744", Phone = "(808)-236-2600", Website = "http://www.bgch.com/", Email = "moreinfo@hinamauka.org", ContactPerson = "Jim" }
+        new Organization { Id = 1, Name = "Boys and Girls Club", Line1 = "345 Queen Street, Ste.900", Line2 = "lolol", City = "Honolulu", State = "HI", Zip = "96813", Phone = "(808)-949-4203", Website = "https://www.bgch.com", Email = "ronald@bolub.com", ContactPerson = "Ronald" },
+          new Organization { Id = 2, Name = "Alchoholic Rehabilitation Services of Hawaii, Inc", Line1 = "45-845 Po'Okela Street", Line2 = "", City = "Kaneohe", State = "HI", Zip = "96744", Phone = "(808)-236-2600", Website = "http://www.bgch.com/", Email = "moreinfo@hinamauka.org", ContactPerson = "Jim" }
         );
 
       context.Roles.AddOrUpdate(
