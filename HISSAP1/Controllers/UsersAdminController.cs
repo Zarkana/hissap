@@ -17,7 +17,6 @@ using System.Web.Security;
 
 namespace HISSAP1.Controllers
 {
-  //[Authorize(Roles = "Admin")]
   public class UsersAdminController : Controller
   {
     public UsersAdminController()
