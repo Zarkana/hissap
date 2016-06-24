@@ -1,0 +1,91 @@
+﻿@model IEnumerable<HISSAP1.Models.Contract>
+
+@{
+  ViewBag.Title = "Index";
+}
+
+<h2 class="buddy-header">Organizations</h2>
+<p class="buddy-link">
+  @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.ContractName)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.OrganizationId)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.ContractNumber)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.Status)
+    </th>
+    <th>Total Files</th>
+    <th></th>
+  </tr>
+
+  @foreach (var item in Model)
+  {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.ContractName)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.OrganizationId)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.ContractNumber)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Status)
+      </td>
+      <td>
+        @if (item.ContractFiles.Count() == 0)
+        {
+          <span>No File</span>
+        }
+        else
+        {
+          <span>@item.ContractFiles.Count() File(s)</span>
+        }
+      </td>
+      <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @* TODO Add details *@
+        @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+        <a href="javascript:void(0);" data-id="@item.Id" class="deleteContract">Delete</a>
+      </td>
+    </tr>
+  }
+
+</table>
+
+@section Scripts {
+  <script>
+    $('.deleteContract').click(function (e) {
+      e.preventDefault();
+      var $ctrl = $(this);
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+          url: '@Url.Action("Delete")',
+          type: 'POST',
+          data: { id: $(this).data('id') }
+        }).done(function (data) {
+          if (data.Result == "OK") {
+            $ctrl.closest('tr').remove();
+          }
+          else if (data.Result.Message) {
+            alert(data.Result.Message);
+          }
+        }).fail(function () {
+          alert("There is something wrong. Please try again.");
+        })
+
+      }
+    });
+  </script>
+}

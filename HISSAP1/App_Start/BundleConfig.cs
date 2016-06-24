@@ -23,7 +23,11 @@ namespace HISSAP1
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js"));
 
+      bundles.Add(new ScriptBundle("~/bundles/site").Include(
+          "~/Scripts/js/contract.js"));
+
       bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/Site.css",
                 /* Base code that is general and present on potentially every page */
                 "~/Content/base/normalize.css",
                 "~/Content/base/global.css",

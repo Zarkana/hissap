@@ -24,12 +24,12 @@ namespace HISSAP1.Migrations
         );
 
       context.Roles.AddOrUpdate(
-          new IdentityRole { Id = "1", Name = "providerObserver" },
-          new IdentityRole { Id = "2", Name = "providerAgent" },
-          new IdentityRole { Id = "3", Name = "providerFiscal" },
-          new IdentityRole { Id = "4", Name = "providerAdministrator" },
-          new IdentityRole { Id = "5", Name = "stateAdministrator" },
-          new IdentityRole { Id = "6", Name = "systemAdministrator" }
+          new IdentityRole { Id = "1", Name = "Provider Observer" },
+          new IdentityRole { Id = "2", Name = "Provider Agent" },
+          new IdentityRole { Id = "3", Name = "Provider Fiscal" },
+          new IdentityRole { Id = "4", Name = "Provider Administrator" },
+          new IdentityRole { Id = "5", Name = "State Administrator" },
+          new IdentityRole { Id = "6", Name = "System Administrator" }
         );
 
       /*

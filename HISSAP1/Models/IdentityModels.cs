@@ -32,6 +32,20 @@ namespace HISSAP1.Models
     }
 
     public System.Data.Entity.DbSet<HISSAP1.Models.Organization> Organizations { get; set; }
-  
+
+
+    //public class ContractContext : DbContext
+    //{
+    //  public ContractContext()
+    //      : base("name=DefaultConnection")
+    //  {
+    //  }
+    //  public DbSet<Contract> Contracts { get; set; }
+    //  public DbSet<ContractFile> ContractFiles { get; set; }
+    //}
+
+    public DbSet<Contract> Contracts { get; set; }
+    public DbSet<ContractFile> ContractFiles { get; set; }
+    //public System.Data.Entity.DbSet<HISSAP1.Models.Contract> Contracts { get; set; }
   }
 }

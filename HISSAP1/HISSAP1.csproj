@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -225,8 +226,33 @@
     <Compile Include="Migrations\201606180203397_Rename ID.Designer.cs">
       <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606220259487_adding contracts.cs" />
+    <Compile Include="Migrations\201606220259487_adding contracts.Designer.cs">
+      <DependentUpon>201606220259487_adding contracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606220307510_adding contracts descriptions.cs" />
+    <Compile Include="Migrations\201606220307510_adding contracts descriptions.Designer.cs">
+      <DependentUpon>201606220307510_adding contracts descriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606220319330_adding contracts files.cs" />
+    <Compile Include="Migrations\201606220319330_adding contracts files.Designer.cs">
+      <DependentUpon>201606220319330_adding contracts files.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606230152584_remove old work.cs" />
+    <Compile Include="Migrations\201606230152584_remove old work.Designer.cs">
+      <DependentUpon>201606230152584_remove old work.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606230230103_some changes to file upload.cs" />
+    <Compile Include="Migrations\201606230230103_some changes to file upload.Designer.cs">
+      <DependentUpon>201606230230103_some changes to file upload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606230237215_some changes to file upload 2.cs" />
+    <Compile Include="Migrations\201606230237215_some changes to file upload 2.Designer.cs">
+      <DependentUpon>201606230237215_some changes to file upload 2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Organization.cs" />
@@ -463,12 +489,19 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Contracts\Create.cshtml" />
+    <Content Include="Views\Contracts\Delete.cshtml" />
+    <Content Include="Views\Contracts\Details.cshtml" />
+    <Content Include="Views\Contracts\Edit.cshtml" />
+    <Content Include="Views\Contracts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Upload\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Helpers\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Scripts\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -490,6 +523,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606180203397_Rename ID.resx">
       <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220259487_adding contracts.resx">
+      <DependentUpon>201606220259487_adding contracts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220307510_adding contracts descriptions.resx">
+      <DependentUpon>201606220307510_adding contracts descriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220319330_adding contracts files.resx">
+      <DependentUpon>201606220319330_adding contracts files.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606230152584_remove old work.resx">
+      <DependentUpon>201606230152584_remove old work.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606230230103_some changes to file upload.resx">
+      <DependentUpon>201606230230103_some changes to file upload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606230237215_some changes to file upload 2.resx">
+      <DependentUpon>201606230237215_some changes to file upload 2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
