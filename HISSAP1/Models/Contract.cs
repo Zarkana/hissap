@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,12 +14,15 @@ namespace HISSAP1.Models
     [Required]
     [Display(Name = "Contract Name")]
     [MaxLength(100)]
-    public string ContractName { get; set; }   
+    public string ContractName { get; set; }
 
     [Required]
     [Display(Name = "Organization")]
-    /*TODO: Make sure associating correctly*/
-    public int OrganizationId { get; set; }
+    public int ContractsOrganizationId { get; set; }
+
+    //Foreign Key
+    [ForeignKey("ContractsOrganizationId")]
+    public virtual Organization ContractsOrganization { get; set; }
 
     [Required]
     [Display(Name = "Contract Number")]
@@ -29,6 +33,7 @@ namespace HISSAP1.Models
     /*TODO: Add validation*/
     public string Status { get; set; }
 
+    //Navigation property
     public virtual ICollection<ContractFile> ContractFiles { get; set; }
   }
 

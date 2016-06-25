@@ -37,22 +37,24 @@ namespace HISSAP1.Migrations
        using the entity framework LINQ to Entity
        */
 
-      var passwordHash = new PasswordHasher();
-      string password = passwordHash.HashPassword("Hissap123!");
-      context.Users.AddOrUpdate(u => u.UserName,
-          new ApplicationUser
-          {
-            Email = "jsc940@gmail.com",
-            //EmailConfirmed = false,
-            PasswordHash = password,
-            PhoneNumber = "",
-            SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
-            //TwoFactorEnabled = false,
-            //LockoutEndDateUtc = null,
-            //LockoutEnabled = true,
-            //AccessFailedCount = 0,
-            UserName = "admin"
-          });
+      //var passwordHash = new PasswordHasher();
+      //string password = passwordHash.HashPassword("Hissap123!");
+
+      //var adminUser = new ApplicationUser
+      //{
+      //  Email = "jsc940@gmail.com",
+      //  //EmailConfirmed = false,
+      //  PasswordHash = password,
+      //  PhoneNumber = "",
+      //  SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+      //  //TwoFactorEnabled = false,
+      //  //LockoutEndDateUtc = null,
+      //  //LockoutEnabled = true,
+      //  //AccessFailedCount = 0,
+      //  UserName = "admin"
+      //};
+
+      //context.Users.AddOrUpdate(u => u.UserName, adminUser);
 
       /*
        Second approach
@@ -63,8 +65,39 @@ namespace HISSAP1.Migrations
       {
         var userStore = new UserStore<ApplicationUser>(context);
         var userManager = new UserManager<ApplicationUser>(userStore);
-        var userToInsert = new ApplicationUser { UserName = "dj", Email = "dj@dj.com", PhoneNumber = "0797697898" };
-        userManager.Create(userToInsert, "Password@123");
+
+        var ProviderObserver = new ApplicationUser {
+          UserName = "john",
+          Email = "john@gmail.com",
+          SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          PhoneNumber = "0797697898"
+        };
+
+        userManager.Create(ProviderObserver, "Hissap123!");
+        userManager.AddToRole(ProviderObserver.Id, "Provider Observer");
+
+        var ProviderAdministrator = new ApplicationUser
+        {
+          UserName = "ron",
+          Email = "ronn@gmail.com",
+          SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          PhoneNumber = "",
+        };
+
+        userManager.Create(ProviderAdministrator, "Hissap123!");
+        userManager.AddToRole(ProviderAdministrator.Id, "Provider Administrator");
+
+        var SystemAdministrator = new ApplicationUser
+        {
+          UserName = "admin",
+          Email = "jsc940@gmail.com",
+          SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          PhoneNumber = "",
+        };
+
+        userManager.Create(SystemAdministrator, "Hissap123!");
+        userManager.AddToRole(SystemAdministrator.Id, "System Administrator");
+
       }
 
 

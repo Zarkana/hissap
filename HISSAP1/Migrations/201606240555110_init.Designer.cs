@@ -7,13 +7,13 @@ namespace HISSAP1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addingcontracts : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addingcontracts));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606220259487_adding contracts"; }
+            get { return "201606240555110_init"; }
         }
         
         string IMigrationMetadata.Source

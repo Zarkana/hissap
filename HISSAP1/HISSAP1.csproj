@@ -206,49 +206,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606030208266_init.cs" />
-    <Compile Include="Migrations\201606030208266_init.Designer.cs">
-      <DependentUpon>201606030208266_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606080409473_Revert.cs" />
-    <Compile Include="Migrations\201606080409473_Revert.Designer.cs">
-      <DependentUpon>201606080409473_Revert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606100107252_user organization.cs" />
-    <Compile Include="Migrations\201606100107252_user organization.Designer.cs">
-      <DependentUpon>201606100107252_user organization.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606140438157_User Admin.cs" />
-    <Compile Include="Migrations\201606140438157_User Admin.Designer.cs">
-      <DependentUpon>201606140438157_User Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606180203397_Rename ID.cs" />
-    <Compile Include="Migrations\201606180203397_Rename ID.Designer.cs">
-      <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606220259487_adding contracts.cs" />
-    <Compile Include="Migrations\201606220259487_adding contracts.Designer.cs">
-      <DependentUpon>201606220259487_adding contracts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606220307510_adding contracts descriptions.cs" />
-    <Compile Include="Migrations\201606220307510_adding contracts descriptions.Designer.cs">
-      <DependentUpon>201606220307510_adding contracts descriptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606220319330_adding contracts files.cs" />
-    <Compile Include="Migrations\201606220319330_adding contracts files.Designer.cs">
-      <DependentUpon>201606220319330_adding contracts files.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606230152584_remove old work.cs" />
-    <Compile Include="Migrations\201606230152584_remove old work.Designer.cs">
-      <DependentUpon>201606230152584_remove old work.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606230230103_some changes to file upload.cs" />
-    <Compile Include="Migrations\201606230230103_some changes to file upload.Designer.cs">
-      <DependentUpon>201606230230103_some changes to file upload.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606230237215_some changes to file upload 2.cs" />
-    <Compile Include="Migrations\201606230237215_some changes to file upload 2.Designer.cs">
-      <DependentUpon>201606230237215_some changes to file upload 2.cs</DependentUpon>
+    <Compile Include="Migrations\201606240555110_init.cs" />
+    <Compile Include="Migrations\201606240555110_init.Designer.cs">
+      <DependentUpon>201606240555110_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -509,38 +469,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606030208266_init.resx">
-      <DependentUpon>201606030208266_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606080409473_Revert.resx">
-      <DependentUpon>201606080409473_Revert.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606100107252_user organization.resx">
-      <DependentUpon>201606100107252_user organization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606140438157_User Admin.resx">
-      <DependentUpon>201606140438157_User Admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606180203397_Rename ID.resx">
-      <DependentUpon>201606180203397_Rename ID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606220259487_adding contracts.resx">
-      <DependentUpon>201606220259487_adding contracts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606220307510_adding contracts descriptions.resx">
-      <DependentUpon>201606220307510_adding contracts descriptions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606220319330_adding contracts files.resx">
-      <DependentUpon>201606220319330_adding contracts files.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606230152584_remove old work.resx">
-      <DependentUpon>201606230152584_remove old work.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606230230103_some changes to file upload.resx">
-      <DependentUpon>201606230230103_some changes to file upload.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606230237215_some changes to file upload 2.resx">
-      <DependentUpon>201606230237215_some changes to file upload 2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606240555110_init.resx">
+      <DependentUpon>201606240555110_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

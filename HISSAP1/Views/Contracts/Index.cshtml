@@ -15,7 +15,7 @@
       @Html.DisplayNameFor(model => model.ContractName)
     </th>
     <th>
-      @Html.DisplayNameFor(model => model.OrganizationId)
+      @Html.DisplayNameFor(model => model.ContractsOrganization.Name)
     </th>
     <th>
       @Html.DisplayNameFor(model => model.ContractNumber)
@@ -34,7 +34,7 @@
         @Html.DisplayFor(modelItem => item.ContractName)
       </td>
       <td>
-        @Html.DisplayFor(modelItem => item.OrganizationId)
+        @Html.DisplayFor(modelItem => item.ContractsOrganization.Name)
       </td>
       <td>
         @Html.DisplayFor(modelItem => item.ContractNumber)
@@ -61,7 +61,6 @@
       </td>
     </tr>
   }
-
 </table>
 
 @section Scripts {

@@ -38,5 +38,8 @@ namespace HISSAP1.Models
     public string Phone { get; set; }
     [Url]
     public string Website { get; set; }
+
+    //Navigation property
+    public virtual ICollection<Organization> Organizations { get; set; }
   }
 }
