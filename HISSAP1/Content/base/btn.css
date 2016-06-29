@@ -9,6 +9,9 @@
   src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
   /* Legacy iOS */
 }
+/* z-index */
+/*$child-navbar-index: 3;
+$site-select-index: 1;*/
 /* line 3, ../../sass/base/btn.scss */
 .btn {
   display: inline-block;

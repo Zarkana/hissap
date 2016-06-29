@@ -107,30 +107,45 @@ textarea {
   padding-left: 30px;
 }
 
-@media (min-width: 768px) {
+/* TODO: Make this right */
+
+/*@media (min-width: 768px) {
   .container {
     width: 750px;
   }
-}
+}*/
 
-@media (min-width: 992px) {
+/* If > than 750 */
+/*@media (min-width: 850px) {
   .container {
-    width: 750px;
+    width: 820px;
   }
-}
+}*/
 
-@media (min-width: 1200px) {
+/* If > than 990 */
+/*@media (min-width: 990px) {
   .container {
-    width: 970px;
+    width: 950px;
   }
+}*/
+
+/* If > than 1200 */
+/*@media (min-width: 1000px) {
+  .container {
+    width: 1070px;
+  }
+}*/
+
+.container{
+  max-width: 1000px;
 }
 
-.container-fluid {
+/*.container-fluid {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
+}*/
 
 /*Links*/
 a {
@@ -231,21 +246,25 @@ dd {
   display: block;
 }
 
-.testclass {
-  @include border-radius(3px);
-  border: solid 1px silver;
-  padding: 3px;
-  color: $first-color;
+.inline-block{
+  display: inline-block;
 }
 
+.block{
+  display: block;
+}
+
+.none{
+  display: none;
+}
 
 /* As hex codes */
 
-.color-primary-0 {
+/*.color-primary-0 {
   color: #28AF21;
-}
+}*/
 /* Main Primary color */
-.color-primary-1 {
+/*.color-primary-1 {
   color: #70D46B;
 }
 
@@ -263,9 +282,9 @@ dd {
 
 .color-secondary-1-0 {
   color: #1C955E;
-}
+}*/
 /* Main Secondary color (1) */
-.color-secondary-1-1 {
+/*.color-secondary-1-1 {
   color: #5DBA90;
 }
 
@@ -283,9 +302,9 @@ dd {
 
 .color-secondary-2-0 {
   color: #71C224;
-}
+}*/
 /* Main Secondary color (2) */
-.color-secondary-2-1 {
+/*.color-secondary-2-1 {
   color: #ADE874;
 }
 
@@ -299,17 +318,19 @@ dd {
 
 .color-secondary-2-4 {
   color: #3B7900;
-}
+}*/
+
+
 
 
 
 /* As RGBa codes */
 
-.rgba-primary-0 {
+/*.rgba-primary-0 {
   color: rgba( 40,175, 33,1);
-}
+}*/
 /* Main Primary color */
-.rgba-primary-1 {
+/*.rgba-primary-1 {
   color: rgba(112,212,107,1);
 }
 
@@ -327,9 +348,9 @@ dd {
 
 .rgba-secondary-1-0 {
   color: rgba( 28,149, 94,1);
-}
+}*/
 /* Main Secondary color (1) */
-.rgba-secondary-1-1 {
+/*.rgba-secondary-1-1 {
   color: rgba( 93,186,144,1);
 }
 
@@ -347,9 +368,9 @@ dd {
 
 .rgba-secondary-2-0 {
   color: rgba(113,194, 36,1);
-}
+}*/
 /* Main Secondary color (2) */
-.rgba-secondary-2-1 {
+/*.rgba-secondary-2-1 {
   color: rgba(173,232,116,1);
 }
 
@@ -363,4 +384,4 @@ dd {
 
 .rgba-secondary-2-4 {
   color: rgba( 59,121, 0,1);
-}
+}*/

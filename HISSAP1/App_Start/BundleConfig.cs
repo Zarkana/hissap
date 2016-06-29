@@ -24,7 +24,7 @@ namespace HISSAP1
                 "~/Scripts/respond.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/site").Include(
-          "~/Scripts/js/contract.js"));
+          "~/Scripts/js/header.js"));
 
       bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Site.css",

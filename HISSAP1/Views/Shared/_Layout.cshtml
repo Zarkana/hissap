@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - HISSAP</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewBag.Title - HISSAP</title>
+  @Styles.Render("~/Content/css")
+  @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
@@ -18,36 +18,35 @@
         @Html.Partial("_LoginPartial")
         <ul class="navbar-section navbar-description middle"><li class="navbar-item"><p class="navbar-description-text">Hawaii Information System for Substance Abuse Prevention</p></li></ul>
         @*<ul class="nav navbar-nav">
-          <li>@Html.ActionLink("Home", "Index", "Home")</li>
-          <li>@Html.ActionLink("About", "About", "Home")</li>
-          <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        </ul>*@        
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+          </ul>*@
       </div>
     </div>
   </div>
-@if (Request.IsAuthenticated)
-{
-  <div class="navbar child">
-    <div class="container">
-      <div class="navbar-sections">
+  @if (Request.IsAuthenticated)
+  {
+    <div class="navbar child">
+      <div class="container">
         <ul class="navbar-section left">
           <li class="navbar-item">@Html.ActionLink("Assess & Plan", "Index", "Home")</li>
           <li class="navbar-item">@Html.ActionLink("Manage", "Index", "Home")</li>
           <li class="navbar-item">@Html.ActionLink("Track", "Index", "Home")</li>
         </ul>
-        @*<ul class="navbar-section left">
-            <li class="navbar-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="navbar-item"><a asp-controller="Home" asp-action="About">About</a></li>
-            <li class="navbar-item"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-          </ul>*@
-        <ul class="navbar-section right">          
+        <ul class="navbar-section right">
           <li class="navbar-item">@Html.ActionLink("Reports", "About", "Home")</li>
           <li class="navbar-item">@Html.ActionLink("Administration", "Administration", "Home")</li>
+          <li class="navbar-item change-site">
+            <a href="">Current Site <b><span class="arrow-down">&#9662;</span></b></a>
+            <div class="drop-down select-site">
+                @Html.Partial("_ChangeSitePartial")
+            </div>
+          </li>
         </ul>
       </div>
     </div>
-  </div>
-}
+  }
   <div class="container body-content">
     @RenderBody()
     <hr />

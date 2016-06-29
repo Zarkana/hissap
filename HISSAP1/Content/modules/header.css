@@ -9,9 +9,13 @@
   src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
   /* Legacy iOS */
 }
+/* z-index */
+/*$child-navbar-index: 3;
+$site-select-index: 1;*/
 /* line 9, ../../sass/modules/header.scss */
 .navbar {
-  min-height: 50px;
+  height: 50px;
+  /*min-height: $navbar-min-height;*/
   margin-bottom: 40px;
   background-color: #28AF21;
   border: 1px solid #196f15;
@@ -19,11 +23,11 @@
   /*Differentiation*/
   /*Differentiation*/
 }
-/* line 15, ../../sass/modules/header.scss */
+/* line 16, ../../sass/modules/header.scss */
 .navbar .navbar-home {
   float: left;
 }
-/* line 18, ../../sass/modules/header.scss */
+/* line 19, ../../sass/modules/header.scss */
 .navbar .navbar-home a {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: block;
@@ -32,15 +36,15 @@
   text-align: center;
   padding: 7px 8px;
 }
-/* line 26, ../../sass/modules/header.scss */
+/* line 27, ../../sass/modules/header.scss */
 .navbar .navbar-home a:hover {
   text-decoration: underline;
 }
-/* line 32, ../../sass/modules/header.scss */
+/* line 33, ../../sass/modules/header.scss */
 .navbar .navbar-description {
   max-width: 425px;
 }
-/* line 35, ../../sass/modules/header.scss */
+/* line 36, ../../sass/modules/header.scss */
 .navbar .navbar-description .navbar-description-text {
   display: block;
   max-height: 70px;
@@ -49,102 +53,90 @@
   text-align: center;
   padding: 11px 16px;
   font-family: AvantGarde, sans-serif;
+  margin: 0;
 }
 @media screen and (max-width: 960px) {
-  /* line 45, ../../sass/modules/header.scss */
+  /* line 47, ../../sass/modules/header.scss */
   .navbar .navbar-description .navbar-description-text {
     font-size: 14px;
     padding: 14px 16px;
   }
 }
 @media screen and (max-width: 760px) {
-  /* line 52, ../../sass/modules/header.scss */
+  /* line 54, ../../sass/modules/header.scss */
   .navbar .navbar-description .navbar-description-text {
     font-size: 12px;
     padding: 18px 4px;
   }
 }
 @media screen and (max-width: 720px) {
-  /* line 59, ../../sass/modules/header.scss */
+  /* line 61, ../../sass/modules/header.scss */
   .navbar .navbar-description .navbar-description-text {
     font-size: 11px;
     padding: 20px 0px;
   }
 }
 @media screen and (max-width: 625px) {
-  /* line 66, ../../sass/modules/header.scss */
+  /* line 68, ../../sass/modules/header.scss */
   .navbar .navbar-description .navbar-description-text {
     display: none;
   }
 }
-/* line 74, ../../sass/modules/header.scss */
-.navbar .navbar-sections {
-  /*div*/
-}
 /* line 75, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section {
+.navbar .navbar-section {
   /*ul*/
   list-style-type: none;
-  overflow: hidden;
   margin-bottom: 0;
 }
-/* line 80, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section.left {
+/* line 79, ../../sass/modules/header.scss */
+.navbar .navbar-section.left {
   float: left;
   padding-left: 20px;
 }
-/* line 85, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section.right {
+/* line 84, ../../sass/modules/header.scss */
+.navbar .navbar-section.right {
   float: right;
   padding-right: 20px;
 }
-/* line 90, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section.middle {
+/* line 89, ../../sass/modules/header.scss */
+.navbar .navbar-section.middle {
   /*Must set a specific width for div somewhere else to center*/
   margin: 0 auto;
 }
-/* line 95, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section .navbar-item {
+/* line 94, ../../sass/modules/header.scss */
+.navbar .navbar-section .navbar-item {
   /*li*/
   float: left;
 }
-/* line 98, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section .navbar-item a {
+/* line 97, ../../sass/modules/header.scss */
+.navbar .navbar-section .navbar-item a {
   display: block;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 12px;
   text-decoration: none;
 }
-/* line 104, ../../sass/modules/header.scss */
-.navbar .navbar-sections .navbar-section .navbar-item a:hover {
+/* line 103, ../../sass/modules/header.scss */
+.navbar .navbar-section .navbar-item a:hover {
   background-color: #7dd728;
 }
-/* line 112, ../../sass/modules/header.scss */
+/* line 111, ../../sass/modules/header.scss */
 .navbar.parent {
   height: 70px;
   margin-bottom: auto;
 }
-/* line 116, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections {
-  /*div*/
-}
-/* line 117, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section {
-  /*ul*/
-}
-/* line 118, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item {
+/* line 115, ../../sass/modules/header.scss */
+.navbar.parent .navbar-item {
   /*li*/
   /* For positioning */
 }
-/* line 119, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item a {
+/* line 116, ../../sass/modules/header.scss */
+.navbar.parent .navbar-item a {
   margin-top: 10px;
   color: white;
   text-decoration: underline;
 }
 /* line 5, ../../sass/components/image-button.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button {
+.navbar.parent .navbar-item .image-button {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 50% 50%;
@@ -157,27 +149,27 @@
   cursor: pointer;
 }
 /* line 16, ../../sass/components/image-button.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button:hover {
+.navbar.parent .navbar-item .image-button:hover {
   background-color: #7dd728;
   background-image: url(../images/logout-white.png);
 }
 /* line 20, ../../sass/components/image-button.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button span {
+.navbar.parent .navbar-item .image-button span {
   display: none;
 }
-/* line 130, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .navbar-item .image-button {
+/* line 127, ../../sass/modules/header.scss */
+.navbar.parent .navbar-item .image-button {
   margin-top: 14px;
   margin-left: 15px;
 }
-/* line 136, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .login-item {
+/* line 133, ../../sass/modules/header.scss */
+.navbar.parent .login-item {
   float: left;
   max-width: 250px;
   text-align: center;
 }
-/* line 140, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .login-item p {
+/* line 138, ../../sass/modules/header.scss */
+.navbar.parent .login-item p {
   margin-top: 15px;
   /*To vertically center more */
   margin-bottom: -5px;
@@ -187,39 +179,92 @@
   max-height: 20px;
   overflow: hidden;
 }
-/* line 152, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .login-item a {
+/* line 149, ../../sass/modules/header.scss */
+.navbar.parent .login-item a {
   margin-top: 0;
   text-decoration: underline;
   font-size: 10px;
   color: white;
 }
-/* line 158, ../../sass/modules/header.scss */
-.navbar.parent .navbar-sections .navbar-section .login-item a:hover {
+/* line 155, ../../sass/modules/header.scss */
+.navbar.parent .login-item a:hover {
   color: #c3ed9c;
 }
-/* line 167, ../../sass/modules/header.scss */
+/* line 162, ../../sass/modules/header.scss */
 .navbar.child {
   background-color: gainsboro;
   border: 1px solid #b6b6b6;
+  /* For the currently selected site */
 }
-/* line 171, ../../sass/modules/header.scss */
-.navbar.child .navbar-sections {
-  /*div*/
-}
-/* line 172, ../../sass/modules/header.scss */
-.navbar.child .navbar-sections .navbar-section {
-  /*ul*/
-}
-/* line 173, ../../sass/modules/header.scss */
-.navbar.child .navbar-sections .navbar-section .navbar-item {
+/* line 165, ../../sass/modules/header.scss */
+.navbar.child .navbar-item, .navbar.child .change-site {
   /*li*/
+  position: relative;
 }
-/* line 174, ../../sass/modules/header.scss */
-.navbar.child .navbar-sections .navbar-section .navbar-item a {
+/* line 167, ../../sass/modules/header.scss */
+.navbar.child .navbar-item a, .navbar.child .change-site a {
   color: black;
 }
-/* line 177, ../../sass/modules/header.scss */
-.navbar.child .navbar-sections .navbar-section .navbar-item a:hover {
+/* line 170, ../../sass/modules/header.scss */
+.navbar.child .navbar-item a:hover, .navbar.child .change-site a:hover {
   background-color: #cfcfcf;
+}
+/* line 176, ../../sass/modules/header.scss */
+.navbar.child .change-site {
+  height: 48px;
+}
+/* line 178, ../../sass/modules/header.scss */
+.navbar.child .change-site a {
+  height: 48px;
+  max-width: 175px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-left: double 4px darkgray;
+  border-right: double 4px darkgray;
+  /*To make spacing better between down triangle and edge*/
+  padding-right: 9px;
+}
+/* line 187, ../../sass/modules/header.scss */
+.navbar.child .change-site a .arrow-down {
+  font-size: 15px;
+  color: dimgray;
+}
+/* line 191, ../../sass/modules/header.scss */
+.navbar.child .change-site a:hover {
+  /*background-color: $child-navbar-color;*/
+}
+/* line 197, ../../sass/modules/header.scss */
+.navbar.child .change-site a.selected {
+  background-color: #cfcfcf;
+}
+/* line 202, ../../sass/modules/header.scss */
+.navbar.child .drop-down {
+  position: absolute;
+  top: 49px;
+  right: 0;
+  border-left: 4px double dimgray;
+  border-right: 4px double dimgray;
+  border-bottom: 1px solid dimgray;
+  width: auto;
+  white-space: nowrap;
+  padding: 0 30px;
+  display: none;
+  background-color: #cfcfcf;
+}
+/* line 214, ../../sass/modules/header.scss */
+.navbar.child .drop-down.select-site {
+  height: 55px;
+}
+/* line 217, ../../sass/modules/header.scss */
+.navbar.child .drop-down select {
+  margin: 11px 15px 0 0;
+  max-width: 100px;
+}
+/* line 220, ../../sass/modules/header.scss */
+.navbar.child .drop-down select:focus {
+  /*Reset to normal*/
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-color: auto;
+  outline-offset: -2px;
 }

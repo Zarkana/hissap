@@ -11,6 +11,7 @@ namespace HISSAP1.Models
     public int Id { get; set; }
     [Required]
     [StringLength(70, MinimumLength = 3)]
+    [Display(Name = "Provider Name")]
     public string Name { get; set; }
     [Required]
     [StringLength(50, MinimumLength = 3)]

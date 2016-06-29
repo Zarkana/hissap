@@ -10,6 +10,9 @@
   src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
   /* Legacy iOS */
 }
+/* z-index */
+/*$child-navbar-index: 3;
+$site-select-index: 1;*/
 /* line 6, ../../sass/base/global.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -131,66 +134,75 @@ textarea {
   padding-left: 30px;
 }
 
-@media (min-width: 768px) {
-  /* line 111, ../../sass/base/global.scss */
+/* TODO: Make this right */
+/*@media (min-width: 768px) {
   .container {
     width: 750px;
   }
-}
-@media (min-width: 992px) {
-  /* line 117, ../../sass/base/global.scss */
+}*/
+/* If > than 750 */
+/*@media (min-width: 850px) {
   .container {
-    width: 750px;
+    width: 820px;
   }
-}
-@media (min-width: 1200px) {
-  /* line 123, ../../sass/base/global.scss */
+}*/
+/* If > than 990 */
+/*@media (min-width: 990px) {
   .container {
-    width: 970px;
+    width: 950px;
   }
+}*/
+/* If > than 1200 */
+/*@media (min-width: 1000px) {
+  .container {
+    width: 1070px;
+  }
+}*/
+/* line 139, ../../sass/base/global.scss */
+.container {
+  max-width: 1000px;
 }
-/* line 128, ../../sass/base/global.scss */
-.container-fluid {
+
+/*.container-fluid {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
-
+}*/
 /*Links*/
-/* line 136, ../../sass/base/global.scss */
+/* line 151, ../../sass/base/global.scss */
 a {
   color: #64ac20;
   text-decoration: none;
   outline-color: #58971c;
 }
 
-/* line 142, ../../sass/base/global.scss */
+/* line 157, ../../sass/base/global.scss */
 a:hover,
 a:focus {
   color: #4b8118;
   text-decoration: underline;
 }
 
-/* line 148, ../../sass/base/global.scss */
+/* line 163, ../../sass/base/global.scss */
 [role="button"] {
   cursor: pointer;
 }
 
-/* line 153, ../../sass/base/global.scss */
+/* line 168, ../../sass/base/global.scss */
 address {
   margin-bottom: 20px;
   font-style: normal;
   line-height: 1.42857143;
 }
 
-/* line 159, ../../sass/base/global.scss */
+/* line 174, ../../sass/base/global.scss */
 pre,
 samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* line 164, ../../sass/base/global.scss */
+/* line 179, ../../sass/base/global.scss */
 code {
   padding: 2px 4px;
   font-size: 90%;
@@ -199,7 +211,7 @@ code {
   border-radius: 4px;
 }
 
-/* line 172, ../../sass/base/global.scss */
+/* line 187, ../../sass/base/global.scss */
 pre {
   display: block;
   padding: 9.5px;
@@ -214,34 +226,34 @@ pre {
   border-radius: 4px;
 }
 
-/* line 186, ../../sass/base/global.scss */
+/* line 201, ../../sass/base/global.scss */
 dl {
   margin-bottom: 20px;
 }
 
-/* line 190, ../../sass/base/global.scss */
+/* line 205, ../../sass/base/global.scss */
 dt,
 dd {
   line-height: 1.428571429;
 }
 
-/* line 195, ../../sass/base/global.scss */
+/* line 210, ../../sass/base/global.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 199, ../../sass/base/global.scss */
+/* line 214, ../../sass/base/global.scss */
 dd {
   margin-left: 0;
   margin-bottom: 5px;
 }
 
 /* Used to style the generated details page */
-/* line 205, ../../sass/base/global.scss */
+/* line 220, ../../sass/base/global.scss */
 .dl-horizontal.details-list {
   margin-left: 10px;
 }
-/* line 208, ../../sass/base/global.scss */
+/* line 223, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt {
   float: left;
   clear: left;
@@ -250,16 +262,16 @@ dd {
   margin-right: 5px;
   height: 20px;
 }
-/* line 216, ../../sass/base/global.scss */
+/* line 231, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt:after {
   content: ":";
 }
-/* line 221, ../../sass/base/global.scss */
+/* line 236, ../../sass/base/global.scss */
 .dl-horizontal.details-list dd {
   height: 20px;
 }
 
-/* line 226, ../../sass/base/global.scss */
+/* line 241, ../../sass/base/global.scss */
 .row {
   /*Don't know that it is needed*/
   /*margin-right: -15px;
@@ -268,170 +280,138 @@ dd {
   display: block;
 }
 
-/* line 234, ../../sass/base/global.scss */
-.testclass {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  border: solid 1px silver;
-  padding: 3px;
-  color: #28AF21;
+/* line 249, ../../sass/base/global.scss */
+.inline-block {
+  display: inline-block;
+}
+
+/* line 253, ../../sass/base/global.scss */
+.block {
+  display: block;
+}
+
+/* line 257, ../../sass/base/global.scss */
+.none {
+  display: none;
 }
 
 /* As hex codes */
-/* line 244, ../../sass/base/global.scss */
-.color-primary-0 {
+/*.color-primary-0 {
   color: #28AF21;
-}
-
+}*/
 /* Main Primary color */
-/* line 248, ../../sass/base/global.scss */
-.color-primary-1 {
+/*.color-primary-1 {
   color: #70D46B;
 }
 
-/* line 252, ../../sass/base/global.scss */
 .color-primary-2 {
   color: #48BD41;
 }
 
-/* line 256, ../../sass/base/global.scss */
 .color-primary-3 {
   color: #158D0F;
 }
 
-/* line 260, ../../sass/base/global.scss */
 .color-primary-4 {
   color: #056D00;
 }
 
-/* line 264, ../../sass/base/global.scss */
 .color-secondary-1-0 {
   color: #1C955E;
-}
-
+}*/
 /* Main Secondary color (1) */
-/* line 268, ../../sass/base/global.scss */
-.color-secondary-1-1 {
+/*.color-secondary-1-1 {
   color: #5DBA90;
 }
 
-/* line 272, ../../sass/base/global.scss */
 .color-secondary-1-2 {
   color: #38A171;
 }
 
-/* line 276, ../../sass/base/global.scss */
 .color-secondary-1-3 {
   color: #0D7847;
 }
 
-/* line 280, ../../sass/base/global.scss */
 .color-secondary-1-4 {
   color: #005D33;
 }
 
-/* line 284, ../../sass/base/global.scss */
 .color-secondary-2-0 {
   color: #71C224;
-}
-
+}*/
 /* Main Secondary color (2) */
-/* line 288, ../../sass/base/global.scss */
-.color-secondary-2-1 {
+/*.color-secondary-2-1 {
   color: #ADE874;
 }
 
-/* line 292, ../../sass/base/global.scss */
 .color-secondary-2-2 {
   color: #8BD249;
 }
 
-/* line 296, ../../sass/base/global.scss */
 .color-secondary-2-3 {
   color: #559C11;
 }
 
-/* line 300, ../../sass/base/global.scss */
 .color-secondary-2-4 {
   color: #3B7900;
-}
-
+}*/
 /* As RGBa codes */
-/* line 308, ../../sass/base/global.scss */
-.rgba-primary-0 {
-  color: #28af21;
-}
-
+/*.rgba-primary-0 {
+  color: rgba( 40,175, 33,1);
+}*/
 /* Main Primary color */
-/* line 312, ../../sass/base/global.scss */
-.rgba-primary-1 {
-  color: #70d46b;
+/*.rgba-primary-1 {
+  color: rgba(112,212,107,1);
 }
 
-/* line 316, ../../sass/base/global.scss */
 .rgba-primary-2 {
-  color: #48bd41;
+  color: rgba( 72,189, 65,1);
 }
 
-/* line 320, ../../sass/base/global.scss */
 .rgba-primary-3 {
-  color: #158d0f;
+  color: rgba( 21,141, 15,1);
 }
 
-/* line 324, ../../sass/base/global.scss */
 .rgba-primary-4 {
-  color: #056d00;
+  color: rgba( 5,109, 0,1);
 }
 
-/* line 328, ../../sass/base/global.scss */
 .rgba-secondary-1-0 {
-  color: #1c955e;
-}
-
+  color: rgba( 28,149, 94,1);
+}*/
 /* Main Secondary color (1) */
-/* line 332, ../../sass/base/global.scss */
-.rgba-secondary-1-1 {
-  color: #5dba90;
+/*.rgba-secondary-1-1 {
+  color: rgba( 93,186,144,1);
 }
 
-/* line 336, ../../sass/base/global.scss */
 .rgba-secondary-1-2 {
-  color: #38a171;
+  color: rgba( 56,161,113,1);
 }
 
-/* line 340, ../../sass/base/global.scss */
 .rgba-secondary-1-3 {
-  color: #0d7847;
+  color: rgba( 13,120, 71,1);
 }
 
-/* line 344, ../../sass/base/global.scss */
 .rgba-secondary-1-4 {
-  color: #005d33;
+  color: rgba( 0, 93, 51,1);
 }
 
-/* line 348, ../../sass/base/global.scss */
 .rgba-secondary-2-0 {
-  color: #71c224;
-}
-
+  color: rgba(113,194, 36,1);
+}*/
 /* Main Secondary color (2) */
-/* line 352, ../../sass/base/global.scss */
-.rgba-secondary-2-1 {
-  color: #ade874;
+/*.rgba-secondary-2-1 {
+  color: rgba(173,232,116,1);
 }
 
-/* line 356, ../../sass/base/global.scss */
 .rgba-secondary-2-2 {
-  color: #8bd249;
+  color: rgba(139,210, 73,1);
 }
 
-/* line 360, ../../sass/base/global.scss */
 .rgba-secondary-2-3 {
-  color: #559c11;
+  color: rgba( 85,156, 17,1);
 }
 
-/* line 364, ../../sass/base/global.scss */
 .rgba-secondary-2-4 {
-  color: #3b7900;
-}
+  color: rgba( 59,121, 0,1);
+}*/

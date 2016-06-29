@@ -5,6 +5,7 @@ $second-color: #1C955E;
 $third-color: #64ac20;
 
 $gray: #767676;
+$dark-gray: darken($gray,5%);
 $light-gray: lighten($gray,20%);
 
 /*Heights*/
@@ -24,3 +25,8 @@ $parent-navbar-height: $navbar-min-height + $parent-navbar-added-height;
        url('../fonts/avantgarde.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('../fonts/avantgarde.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
+
+
+/* z-index */
+/*$child-navbar-index: 3;
+$site-select-index: 1;*/
