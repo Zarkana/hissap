@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HISSAP1.Models
 {
-  public class Organization
+  public class Provider
   {
     public int Id { get; set; }
     [Required]
@@ -41,6 +41,6 @@ namespace HISSAP1.Models
     public string Website { get; set; }
 
     //Navigation property
-    public virtual ICollection<Organization> Organizations { get; set; }
+    public virtual ICollection<Provider> Providers { get; set; }
   }
 }

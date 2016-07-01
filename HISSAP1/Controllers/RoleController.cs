@@ -8,11 +8,12 @@ using HISSAP1.CustomFilters;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Net;
+using HISSAP1.Controllers;
 
 namespace A11_RBS.Controllers
 {
   //[AuthLog(Roles = "systemAdministrator")]
-  public class RoleController : Controller
+  public class RoleController : MyBaseController
   {
     ApplicationDbContext context;
     //May need to remove

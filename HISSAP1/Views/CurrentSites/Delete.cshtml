@@ -1,10 +1,10 @@
-﻿@model HISSAP1.Models.Contract
+﻿@model HISSAP1.Models.CurrentSite
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2 class="buddy-header">Delete Contract</h2>
+<h2 class="buddy-header">Delete CurrentSite</h2>
 <div class="buddy-link">
   @Html.ActionLink("Back to List", "Index")
 </div>
@@ -13,35 +13,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ContractName)
+            @Html.DisplayNameFor(model => model.User.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ContractName)
+            @Html.DisplayFor(model => model.User.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProviderId)
+            @Html.DisplayNameFor(model => model.SelectedProvider)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProviderId)
+            @Html.DisplayFor(model => model.SelectedProvider)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ContractNumber)
+            @Html.DisplayNameFor(model => model.SelectedContract)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ContractNumber)
+            @Html.DisplayFor(model => model.SelectedContract)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.SelectedSite)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.SelectedSite)
         </dd>
 
     </dl>

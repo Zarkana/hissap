@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HISSAP1.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,24 +10,24 @@ using System.Web.Mvc;
 
 namespace HISSAP1.Models
 {
-    public class OrganizationsController : Controller
+    public class ProvidersController : MyBaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Organizations
+        // GET: Providers
         public ActionResult Index()
         {
-            return View(db.Organizations.ToList());
+            return View(db.Providers.ToList());
         }
 
-        // GET: Organizations/Details/5
+        // GET: Providers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = db.Organizations.Find(id);
+            Provider organization = db.Providers.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -34,37 +35,37 @@ namespace HISSAP1.Models
             return View(organization);
         }
 
-        // GET: Organizations/Create
+        // GET: Providers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Organizations/Create
+        // POST: Providers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
+        public ActionResult Create([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Provider provider)
         {
             if (ModelState.IsValid)
             {
-                db.Organizations.Add(organization);
+                db.Providers.Add(provider);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(organization);
+            return View(provider);
         }
 
-        // GET: Organizations/Edit/5
+        // GET: Providers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = db.Organizations.Find(id);
+            Provider organization = db.Providers.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -72,44 +73,44 @@ namespace HISSAP1.Models
             return View(organization);
         }
 
-        // POST: Organizations/Edit/5
+        // POST: Providers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Organization organization)
+        public ActionResult Edit([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Provider provider)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organization).State = EntityState.Modified;
+                db.Entry(provider).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(organization);
+            return View(provider);
         }
 
-        // GET: Organizations/Delete/5
+        // GET: Providers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organization organization = db.Organizations.Find(id);
-            if (organization == null)
+            Provider provider = db.Providers.Find(id);
+            if (provider == null)
             {
                 return HttpNotFound();
             }
-            return View(organization);
+            return View(provider);
         }
 
-        // POST: Organizations/Delete/5
+        // POST: Providers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Organization organization = db.Organizations.Find(id);
-            db.Organizations.Remove(organization);
+            Provider provider = db.Providers.Find(id);
+            db.Providers.Remove(provider);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

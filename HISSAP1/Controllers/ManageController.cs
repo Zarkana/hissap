@@ -13,7 +13,7 @@ using System.Net;
 namespace HISSAP1.Controllers
 {
   [Authorize]
-  public class ManageController : Controller
+  public class ManageController : MyBaseController
   {
     private ApplicationSignInManager _signInManager;
     private ApplicationUserManager _userManager;
@@ -101,7 +101,7 @@ namespace HISSAP1.Controllers
       var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
       user.UserName = formuser.UserName;
       user.Email = formuser.Email;
-      //user.OrganizationId = formuser.SelectedOrganization;//Added
+      //user.ProviderId = formuser.SelectedProvider;//Added
       if (ModelState.IsValid)
       {
         //Update the user details

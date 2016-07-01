@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HISSAP1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,8 +8,10 @@ using System.Web.Mvc;
 namespace HISSAP1.Controllers
 {
   [Authorize]
-  public class HomeController : Controller
+  public class HomeController : MyBaseController
   {
+    private ApplicationDbContext db = new ApplicationDbContext();
+
     public ActionResult Index()
     {
       return View();

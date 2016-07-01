@@ -11,7 +11,7 @@ using System.IO;
 
 namespace HISSAP1.Controllers
 {
-  public class ContractsController : Controller
+  public class ContractsController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -39,7 +39,7 @@ namespace HISSAP1.Controllers
     // GET: Contracts/Create
     public ActionResult Create()
     {
-      ViewBag.Organizations = new SelectList(db.Organizations, "Id", "Name");
+      ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
       return View();
     }
 
@@ -92,7 +92,7 @@ namespace HISSAP1.Controllers
       {
         return HttpNotFound();
       }
-      ViewBag.Organizations = new SelectList(db.Organizations, "Id", "Name");
+      ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
       return View(contract);
     }
 

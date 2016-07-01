@@ -17,7 +17,7 @@ using System.Web.Security;
 
 namespace HISSAP1.Controllers
 {
-  public class UsersAdminController : Controller
+  public class UsersAdminController : MyBaseController
   {
     public UsersAdminController()
     {
@@ -67,7 +67,7 @@ namespace HISSAP1.Controllers
       ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
       //Alternate method
       //ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
-      ViewBag.Organizations = new SelectList(context.Organizations, "Id", "Name");
+      ViewBag.Providers = new SelectList(context.Providers, "Id", "Name");
       return View();
     }
 
@@ -81,7 +81,7 @@ namespace HISSAP1.Controllers
         var user = new ApplicationUser();
         user.UserName = model.UserName;
         user.Email = model.Email;
-        user.OrganizationId = model.SelectedOrganization;//Added
+        user.ProviderId = model.SelectedProvider;//Added
 
         var adminresult = await UserManager.CreateAsync(user, model.Password);
 
@@ -128,7 +128,7 @@ namespace HISSAP1.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }     
-      ViewBag.Organizations = new SelectList(context.Organizations, "Id", "Name");
+      ViewBag.Providers = new SelectList(context.Providers, "Id", "Name");
 
       //Document   
       if (Request.IsAuthenticated)
@@ -170,7 +170,7 @@ namespace HISSAP1.Controllers
     // POST: /Users/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,OrganizationId")] ApplicationUser formuser, string id, string RoleId)
+    public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,ProviderId")] ApplicationUser formuser, string id, string RoleId)
     {
       if (id == null)
       {
@@ -180,8 +180,7 @@ namespace HISSAP1.Controllers
       var user = await UserManager.FindByIdAsync(id);
       user.UserName = formuser.UserName;
       user.Email = formuser.Email;
-      user.OrganizationId = formuser.OrganizationId;//Added
-      //user.OrganizationId = formuser.SelectedOrganization;//Added
+      user.ProviderId = formuser.ProviderId;//Added
       if (ModelState.IsValid)
       {
         //Update the user details

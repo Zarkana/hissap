@@ -13,7 +13,7 @@ using HISSAP1.Models;
 namespace HISSAP1.Controllers
 {
   [Authorize]
-  public class AccountController : Controller
+  public class AccountController : MyBaseController
   {
     private ApplicationSignInManager _signInManager;
     private ApplicationUserManager _userManager;
@@ -143,8 +143,7 @@ namespace HISSAP1.Controllers
     [AllowAnonymous]
     public ActionResult Register()
     {
-      //ViewBag.Organizations = new SelectList(context.Organizations.ToList(), "Name", "Name");
-      ViewBag.Organizations = new SelectList(context.Organizations, "ID", "Name");
+      ViewBag.Providers = new SelectList(context.Providers, "ID", "Name");
       ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
       return View();
     }
@@ -161,7 +160,7 @@ namespace HISSAP1.Controllers
         var user = new ApplicationUser {
           UserName = model.Email,
           Email = model.Email,
-          OrganizationId = model.SelectedOrganization
+          ProviderId = model.SelectedProvider
         };
         var result = await UserManager.CreateAsync(user, model.Password);
         if (result.Succeeded)

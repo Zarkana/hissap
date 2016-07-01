@@ -17,12 +17,12 @@ namespace HISSAP1.Models
     public string ContractName { get; set; }
 
     [Required]
-    [Display(Name = "Organization")]
-    public int ContractsOrganizationId { get; set; }
+    [Display(Name = "Provider")]
+    public int ContractsProviderId { get; set; }
 
     //Foreign Key
-    [ForeignKey("ContractsOrganizationId")]
-    public virtual Organization ContractsOrganization { get; set; }
+    [ForeignKey("ContractsProviderId")]
+    public virtual Provider ContractsProvider { get; set; }
 
     [Required]
     [Display(Name = "Contract Number")]

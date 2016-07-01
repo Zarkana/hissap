@@ -18,9 +18,38 @@ namespace HISSAP1.Migrations
 
     protected override void Seed(HISSAP1.Models.ApplicationDbContext context)
     {
-      context.Organizations.AddOrUpdate(
-        new Organization { Id = 1, Name = "Boys and Girls Club", Line1 = "345 Queen Street, Ste.900", Line2 = "lolol", City = "Honolulu", State = "HI", Zip = "96813", Phone = "(808)-949-4203", Website = "https://www.bgch.com", Email = "ronald@bolub.com", ContactPerson = "Ronald" },
-          new Organization { Id = 2, Name = "Alchoholic Rehabilitation Services of Hawaii, Inc", Line1 = "45-845 Po'Okela Street", Line2 = "", City = "Kaneohe", State = "HI", Zip = "96744", Phone = "(808)-236-2600", Website = "http://www.bgch.com/", Email = "moreinfo@hinamauka.org", ContactPerson = "Jim" }
+      var Prov1 = new Provider
+      {
+        Id = 1,
+        Name = "Boys and Girls Club",
+        Line1 = "345 Queen Street, Ste.900",
+        Line2 = "lolol",
+        City = "Honolulu",
+        State = "HI",
+        Zip = "96813",
+        Phone = "(808)-949-4203",
+        Website = "https://www.bgch.com",
+        Email = "ronald@bolub.com",
+        ContactPerson = "Ronald"
+      };
+
+      var Prov2 = new Provider
+      {
+        Id = 2,
+        Name = "Alchoholic Rehabilitation Services of Hawaii, Inc",
+        Line1 = "45-845 Po'Okela Street",
+        Line2 = "",
+        City = "Kaneohe",
+        State = "HI",
+        Zip = "96744",
+        Phone = "(808)-236-2600",
+        Website = "http://www.bgch.com/",
+        Email = "moreinfo@hinamauka.org",
+        ContactPerson = "Jim"
+      };
+
+      context.Providers.AddOrUpdate(
+        Prov1, Prov2
         );
 
       context.Roles.AddOrUpdate(
@@ -32,45 +61,17 @@ namespace HISSAP1.Migrations
           new IdentityRole { Id = "6", Name = "System Administrator" }
         );
 
-      /*
-       First approach
-       using the entity framework LINQ to Entity
-       */
-
-      //var passwordHash = new PasswordHasher();
-      //string password = passwordHash.HashPassword("Hissap123!");
-
-      //var adminUser = new ApplicationUser
+      //if (!(context.Users.Any(u => u.UserName == "admin")))
       //{
-      //  Email = "jsc940@gmail.com",
-      //  //EmailConfirmed = false,
-      //  PasswordHash = password,
-      //  PhoneNumber = "",
-      //  SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
-      //  //TwoFactorEnabled = false,
-      //  //LockoutEndDateUtc = null,
-      //  //LockoutEnabled = true,
-      //  //AccessFailedCount = 0,
-      //  UserName = "admin"
-      //};
-
-      //context.Users.AddOrUpdate(u => u.UserName, adminUser);
-
-      /*
-       Second approach
-       insert a user is using the UserStore
-       */
-
-      if (!(context.Users.Any(u => u.UserName == "dj")))
-      {
         var userStore = new UserStore<ApplicationUser>(context);
         var userManager = new UserManager<ApplicationUser>(userStore);
 
-        var ProviderObserver = new ApplicationUser {
+        var ProviderObserver = new ApplicationUser
+        {
           UserName = "john",
           Email = "john@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
-          PhoneNumber = "0797697898"
+          ProviderId = 1
         };
 
         userManager.Create(ProviderObserver, "Hissap123!");
@@ -81,7 +82,7 @@ namespace HISSAP1.Migrations
           UserName = "ron",
           Email = "ronn@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
-          PhoneNumber = "",
+          ProviderId = 1
         };
 
         userManager.Create(ProviderAdministrator, "Hissap123!");
@@ -92,14 +93,18 @@ namespace HISSAP1.Migrations
           UserName = "admin",
           Email = "jsc940@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
-          PhoneNumber = "",
+          ProviderId = 2
         };
 
         userManager.Create(SystemAdministrator, "Hissap123!");
         userManager.AddToRole(SystemAdministrator.Id, "System Administrator");
+      //}
 
-      }
-
+      context.CurrentSite.AddOrUpdate(
+        new CurrentSite { UserId = ProviderAdministrator.Id, ContractsProviderId = ProviderAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderAdministrator },
+        new CurrentSite { UserId = ProviderObserver.Id, ContractsProviderId = ProviderObserver.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderObserver },
+        new CurrentSite { UserId = SystemAdministrator.Id, ContractsProviderId = SystemAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = SystemAdministrator }
+        );
 
       //  This method will be called after migrating to the latest version.
 

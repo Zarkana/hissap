@@ -78,10 +78,10 @@ namespace HISSAP1.Models
     public string Name { get; set; }
 
     [Required]
-    public int SelectedOrganization { get; set; }
+    public int SelectedProvider { get; set; }
 
     /*Retrieve list of names*/
-    public IEnumerable<SelectListItem> OrganizationList { get; set; }
+    public IEnumerable<SelectListItem> ProviderList { get; set; }
 
 
     [Required]

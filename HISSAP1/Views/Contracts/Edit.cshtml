@@ -29,18 +29,18 @@
     @* TODO Make dropdown *@
     <!--Associate an organization with the account-->
     <div class="form-group">
-      @Html.Label("Associate an Organization", new { @class = "col-md-2 control-label" })
+      @Html.Label("Associate an Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
-        @*@Html.DropDownListFor(m => m.SelectedOrganization, Model.OrganizationList, "Please select")*@
-        @Html.DropDownListFor(m => m.ContractsOrganizationId, ViewBag.Organizations as SelectList, new { @class = "input-sm" })
+        @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
+        @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
       </div>
     </div>
     <!--Ends Here-->
     @*<div class="form-group">
-      @Html.LabelFor(model => model.OrganizationId, htmlAttributes: new { @class = "control-label col-md-2" })
+      @Html.LabelFor(model => model.ProviderId, htmlAttributes: new { @class = "control-label col-md-2" })
       <div class="col-md-10">
-        @Html.EditorFor(model => model.OrganizationId, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.ProviderId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ProviderId, "", new { @class = "text-danger" })
       </div>
     </div>*@
 

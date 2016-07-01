@@ -36,10 +36,10 @@
 
     <!--Associate an organization with the account-->
     <div class="form-group">
-      @Html.Label("Associate an Organization", new { @class = "col-md-2 control-label" })
+      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
-        @*@Html.DropDownListFor(m => m.SelectedOrganization, Model.OrganizationList, "Please select")*@
-        @Html.DropDownListFor(m => m.OrganizationId, ViewBag.Organizations as SelectList, new { @class = "input-sm" })
+        @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
+        @Html.DropDownListFor(m => m.ProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
       </div>
     </div>
     <!--Ends Here-->

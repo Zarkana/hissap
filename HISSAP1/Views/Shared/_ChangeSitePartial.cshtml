@@ -1,33 +1,52 @@
-﻿<form>
-  <div class="form-group inline-block">
-    <label class="control-label col-md-2" for="">
-      Provider:
-    </label>
-    <select class="input-sm">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
-    </select>
-  </div>
-  <div class="form-group inline-block">
-    <label class="control-label col-md-2" for="">
-      Contract:
-    </label>
-    <select class="input-sm">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
-    </select>
-  </div>
-  <div class="form-group inline-block">
-    <label class="control-label col-md-2" for="">
-      Site:
-    </label>
-    <select class="input-sm">
-      <option>One</option>
-      <option>Two</option>
-      <option>Three</option>
-    </select>
-  </div>
-  <input class="btn btn-default" value="Switch" type="submit" />
-</form>
+﻿@model HISSAP1.Models.CurrentSite
+@if (Request.IsAuthenticated)
+{
+  //Html.Action("Test", "CurrentSites");
+  using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.UserId)
+    @*<div class="form-group inline-block">*@
+    @*<label class="control-label col-md-2" for="">
+        Provider:
+      </label>*@
+    @*@Html.LabelFor(model => model.SelectedProvider.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <select class="input-sm">
+          <option>One</option>
+          <option>Two</option>
+          <option>Three</option>
+        </select>
+      </div>*@    
+    <div class="form-group inline-block">
+      @Html.Label("Provider: ", new { @class = "control-label col-md-2" })      
+      @*@Html.DropDownListFor(m => m.ContractsProviderId, new SelectList(ViewBag.Providers as SelectList), new { @class = "input-sm" })*@
+      @Html.DropDownListFor(m => m.ContractsProviderId, (SelectList)ViewBag.Providers, new { @class = "input-sm" })
+
+      @ViewBag.something
+
+    </div>
+
+    <div class="form-group inline-block">
+      @*<label class="control-label col-md-2" for="">
+          Contract:
+        </label>*@
+      @Html.Label("Contract: ", new { @class = "control-label col-md-2" })
+      <select class="input-sm">
+        <option>One</option>
+        <option>Two</option>
+        <option>Three</option>
+      </select>
+    </div>
+    <div class="form-group inline-block">
+      @*<label class="control-label col-md-2" for="">
+          Site:
+        </label>*@
+      @Html.Label("Site: ", new { @class = "control-label col-md-2" })
+      <select class="input-sm">
+        <option>One</option>
+        <option>Two</option>
+        <option>Three</option>
+      </select>
+    </div>
+    <input class="btn btn-default" value="Switch" type="submit" />
+  }
+}

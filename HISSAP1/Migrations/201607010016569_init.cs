@@ -26,16 +26,16 @@ namespace HISSAP1.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ContractName = c.String(nullable: false, maxLength: 100),
-                        ContractsOrganizationId = c.Int(nullable: false),
+                        ContractsProviderId = c.Int(nullable: false),
                         ContractNumber = c.String(nullable: false),
                         Status = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Organizations", t => t.ContractsOrganizationId, cascadeDelete: true)
-                .Index(t => t.ContractsOrganizationId);
+                .ForeignKey("dbo.Providers", t => t.ContractsProviderId, cascadeDelete: true)
+                .Index(t => t.ContractsProviderId);
             
             CreateTable(
-                "dbo.Organizations",
+                "dbo.Providers",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -49,41 +49,33 @@ namespace HISSAP1.Migrations
                         Email = c.String(nullable: false),
                         Phone = c.String(nullable: false),
                         Website = c.String(),
-                        Organization_Id = c.Int(),
+                        Provider_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Organizations", t => t.Organization_Id)
-                .Index(t => t.Organization_Id);
+                .ForeignKey("dbo.Providers", t => t.Provider_Id)
+                .Index(t => t.Provider_Id);
             
             CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
+                "dbo.CurrentSites",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
+                        ContractsProviderId = c.Int(nullable: false),
+                        SelectedContract = c.Int(nullable: false),
+                        SelectedSite = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.Providers", t => t.ContractsProviderId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .Index(t => t.ContractsProviderId);
             
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        OrganizationId = c.Int(nullable: false),
+                        ProviderId = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -124,32 +116,60 @@ namespace HISSAP1.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.CurrentSites", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Contracts", "ContractsOrganizationId", "dbo.Organizations");
-            DropForeignKey("dbo.Organizations", "Organization_Id", "dbo.Organizations");
+            DropForeignKey("dbo.CurrentSites", "ContractsProviderId", "dbo.Providers");
+            DropForeignKey("dbo.Contracts", "ContractsProviderId", "dbo.Providers");
+            DropForeignKey("dbo.Providers", "Provider_Id", "dbo.Providers");
             DropForeignKey("dbo.ContractFiles", "ContractId", "dbo.Contracts");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Organizations", new[] { "Organization_Id" });
-            DropIndex("dbo.Contracts", new[] { "ContractsOrganizationId" });
+            DropIndex("dbo.CurrentSites", new[] { "ContractsProviderId" });
+            DropIndex("dbo.CurrentSites", new[] { "UserId" });
+            DropIndex("dbo.Providers", new[] { "Provider_Id" });
+            DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
             DropIndex("dbo.ContractFiles", new[] { "ContractId" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Organizations");
+            DropTable("dbo.CurrentSites");
+            DropTable("dbo.Providers");
             DropTable("dbo.Contracts");
             DropTable("dbo.ContractFiles");
         }
