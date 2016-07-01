@@ -40,8 +40,8 @@
           <li class="navbar-item change-site">
             <a href="">Current Site <b><span class="arrow-down">&#9662;</span></b></a>
             <div class="drop-down select-site">
-                @* Temporary till viewmodel change *@
-                @*@Html.Partial("_ChangeSitePartial")*@
+              @*@Html.Partial("_ChangeSitePartial")*@
+              @Html.Action("ChangeSitePartial", "Partials")
             </div>
           </li>
         </ul>
