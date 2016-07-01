@@ -214,9 +214,9 @@
     <Compile Include="Migrations\201607010016569_init.Designer.cs">
       <DependentUpon>201607010016569_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607010106322_adding viewmodel stuff.cs" />
-    <Compile Include="Migrations\201607010106322_adding viewmodel stuff.Designer.cs">
-      <DependentUpon>201607010106322_adding viewmodel stuff.cs</DependentUpon>
+    <Compile Include="Migrations\201607010252359_provider stuff.cs" />
+    <Compile Include="Migrations\201607010252359_provider stuff.Designer.cs">
+      <DependentUpon>201607010252359_provider stuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -478,7 +478,6 @@
     <Folder Include="Content\images\" />
     <Folder Include="Helpers\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
@@ -490,8 +489,8 @@
     <EmbeddedResource Include="Migrations\201607010016569_init.resx">
       <DependentUpon>201607010016569_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201607010106322_adding viewmodel stuff.resx">
-      <DependentUpon>201607010106322_adding viewmodel stuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607010252359_provider stuff.resx">
+      <DependentUpon>201607010252359_provider stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

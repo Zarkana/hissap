@@ -28,7 +28,7 @@
         @Html.Label("Associate an Provider", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
           @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
-          @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
+          @Html.DropDownListFor(m => m.SelectedProvider, ViewBag.Providers as SelectList, new { @class = "input-sm" })
         </div>
       </div>
 

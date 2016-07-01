@@ -38,11 +38,7 @@
           <li class="navbar-item">@Html.ActionLink("Reports", "About", "Home")</li>
           <li class="navbar-item">@Html.ActionLink("Administration", "Administration", "Home")</li>
           <li class="navbar-item change-site">
-            <a href="">Current Site <b><span class="arrow-down">&#9662;</span></b></a>
-            <div class="drop-down select-site">
-              @*@Html.Partial("_ChangeSitePartial")*@
-              @Html.Action("ChangeSitePartial", "Partials")
-            </div>
+            @Html.Action("ChangeSitePartial", "Partials")
           </li>
         </ul>
       </div>

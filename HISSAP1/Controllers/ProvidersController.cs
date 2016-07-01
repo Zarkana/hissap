@@ -1,4 +1,5 @@
 ﻿using HISSAP1.Controllers;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +18,7 @@ namespace HISSAP1.Models
 
     // GET: Providers
     public ActionResult Index()
-    {
+    {      
       return View(db.Providers.ToList());
     }
 

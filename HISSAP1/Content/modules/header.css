@@ -247,7 +247,7 @@ $site-select-index: 1;*/
   border-bottom: 1px solid dimgray;
   width: auto;
   white-space: nowrap;
-  padding: 0 30px;
+  padding: 0 25px;
   display: none;
   background-color: #cfcfcf;
 }
@@ -258,7 +258,7 @@ $site-select-index: 1;*/
 /* line 217, ../../sass/modules/header.scss */
 .navbar.child .drop-down select {
   margin: 11px 15px 0 0;
-  max-width: 100px;
+  max-width: 200px;
 }
 /* line 220, ../../sass/modules/header.scss */
 .navbar.child .drop-down select:focus {
@@ -267,4 +267,8 @@ $site-select-index: 1;*/
   outline: 5px auto -webkit-focus-ring-color;
   outline-color: auto;
   outline-offset: -2px;
+}
+/* line 231, ../../sass/modules/header.scss */
+.navbar.child .drop-down #change-site-input {
+  margin-left: 15px;
 }

@@ -3,7 +3,7 @@ namespace HISSAP1.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addingviewmodelstuff : DbMigration
+    public partial class providerstuff : DbMigration
     {
         public override void Up()
         {

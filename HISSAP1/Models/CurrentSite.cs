@@ -19,13 +19,13 @@ namespace HISSAP1.Models
     //TODO: Set by default
     [Required]
     [Display(Name = "Provider")]
-    public int ContractsProviderId { get; set; }
+    public int SelectedProvider { get; set; }
 
     public int SelectedContract { get; set; }
     public int SelectedSite { get; set; }
 
     //Storing lists
-    [ForeignKey("ContractsProviderId")]
+    [ForeignKey("SelectedProvider")]
     public virtual Provider ContractsProvider { get; set; }
     //public IEnumerable<SelectListItem> ContractList { get; set; }
     //public IEnumerable<SelectListItem> SiteList { get; set; }

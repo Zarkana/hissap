@@ -208,7 +208,7 @@ $child-navbar-color: lighten($light-gray, 20%);
       border-bottom: 1px solid $dark-gray;
       width: auto;
       white-space: nowrap;
-      padding: 0 30px;
+      padding: 0 25px;
       display: none;
       background-color: darken($child-navbar-color,5%);
        &.select-site {
@@ -216,7 +216,7 @@ $child-navbar-color: lighten($light-gray, 20%);
        }
        select {
          margin: 11px 15px 0 0;
-         max-width: 100px;
+         max-width: 200px;
          &:focus{
           /*Reset to normal*/
           outline: thin dotted;
@@ -227,6 +227,9 @@ $child-navbar-color: lighten($light-gray, 20%);
        }
        input[type=submit]{
          
+       }
+       #change-site-input{
+         margin-left: 15px;
        }
     }
 

@@ -101,9 +101,9 @@ namespace HISSAP1.Migrations
       //}
 
       context.CurrentSite.AddOrUpdate(
-        new CurrentSite { UserId = ProviderAdministrator.Id, ContractsProviderId = ProviderAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderAdministrator },
-        new CurrentSite { UserId = ProviderObserver.Id, ContractsProviderId = ProviderObserver.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderObserver },
-        new CurrentSite { UserId = SystemAdministrator.Id, ContractsProviderId = SystemAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = SystemAdministrator }
+        new CurrentSite { UserId = ProviderAdministrator.Id, SelectedProvider = ProviderAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderAdministrator },
+        new CurrentSite { UserId = ProviderObserver.Id, SelectedProvider = ProviderObserver.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderObserver },
+        new CurrentSite { UserId = SystemAdministrator.Id, SelectedProvider = SystemAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = SystemAdministrator }
         );
 
       //  This method will be called after migrating to the latest version.

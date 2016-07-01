@@ -7,13 +7,13 @@ namespace HISSAP1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addingviewmodelstuff : IMigrationMetadata
+    public sealed partial class providerstuff : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addingviewmodelstuff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(providerstuff));
         
         string IMigrationMetadata.Id
         {
-            get { return "201607010106322_adding viewmodel stuff"; }
+            get { return "201607010252359_provider stuff"; }
         }
         
         string IMigrationMetadata.Source
