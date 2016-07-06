@@ -14,16 +14,10 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Site.SiteName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.User.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SelectedProvider)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SelectedContract)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SelectedSite)
         </th>
         <th></th>
     </tr>
@@ -31,16 +25,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Site.SiteName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.User.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectedProvider)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectedContract)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectedSite)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |

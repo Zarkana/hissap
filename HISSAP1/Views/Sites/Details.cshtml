@@ -1,0 +1,68 @@
+﻿@model HISSAP1.Models.Site
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">Site Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal details-list">
+        <dt>
+            @Html.DisplayNameFor(model => model.SitesContract.ContractName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitesContract.ContractName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zip)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

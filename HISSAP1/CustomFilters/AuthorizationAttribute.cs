@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace HISSAP1.CustomFilters
 {
-  public class AuthLogAttribute : AuthorizeAttribute
+  public class AuthorizationAttribute : AuthorizeAttribute
   {
-    public AuthLogAttribute()
+    public AuthorizationAttribute()
     {
       View = "AuthorizeFailed";
     }
@@ -45,7 +45,7 @@ namespace HISSAP1.CustomFilters
         vr.ViewName = View;
 
         ViewDataDictionary dict = new ViewDataDictionary();
-        dict.Add("Message", "Sorry you are not Authorized to Perform this Action");
+        dict.Add("Message", "Sorry, you are not Authorized to view this page.");
 
         vr.ViewData = dict;
 

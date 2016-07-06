@@ -12,23 +12,30 @@ namespace HISSAP1.Models
 {
   public class CurrentSite
   {
-    [Key, ForeignKey("User")]
+    [Key, ForeignKey("User")]//Acts as both the key to the table, and foreign key to users
     public string UserId { get; set; }
-    //Named CurrentSite to possibly not conflict with Id of the User
 
     //TODO: Set by default
-    [Required]
-    [Display(Name = "Provider")]
-    public int SelectedProvider { get; set; }
+    //[Required]
+    //[Display(Name = "Provider")]
+    //public int SelectedProvider { get; set; }
 
-    public int SelectedContract { get; set; }
+    //[Required]
+    //[Display(Name = "Contract")]
+    //public int SelectedContract { get; set; }
+
+    [Required]
+    [Display(Name = "Site")]
     public int SelectedSite { get; set; }
 
-    //Storing lists
-    [ForeignKey("SelectedProvider")]
-    public virtual Provider ContractsProvider { get; set; }
-    //public IEnumerable<SelectListItem> ContractList { get; set; }
-    //public IEnumerable<SelectListItem> SiteList { get; set; }
+    //[ForeignKey("SelectedProvider")]
+    //public virtual Provider Provider { get; set; }
+
+    //[ForeignKey("SelectedContract")]
+    //public virtual Contract Contract { get; set; }
+
+    [ForeignKey("SelectedSite")]
+    public virtual Site Site { get; set; }
 
     public virtual ApplicationUser User { get; set; }
   }
@@ -36,11 +43,12 @@ namespace HISSAP1.Models
   public class MyContext : DbContext
   {
 
+    //TODO: Evaluate
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       modelBuilder.Entity<ApplicationUser>()
-                      .HasOptional(u => u.CurrentSite)
-                      .WithRequired(s => s.User);
+          .HasOptional(u => u.CurrentSite)
+          .WithRequired(s => s.User);
     }
 
     public virtual DbSet<ApplicationUser> User { get; set; }

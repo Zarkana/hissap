@@ -49,26 +49,58 @@ namespace HISSAP1.Migrations
                         Email = c.String(nullable: false),
                         Phone = c.String(nullable: false),
                         Website = c.String(),
-                        Provider_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Sites",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        SiteName = c.String(nullable: false, maxLength: 100),
+                        SitesContractId = c.Int(nullable: false),
+                        Status = c.String(nullable: false),
+                        Address = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        Zip = c.String(nullable: false),
+                        SiteContact_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Providers", t => t.Provider_Id)
-                .Index(t => t.Provider_Id);
+                .ForeignKey("dbo.SiteContacts", t => t.SiteContact_Id)
+                .ForeignKey("dbo.Contracts", t => t.SitesContractId, cascadeDelete: true)
+                .Index(t => t.SitesContractId)
+                .Index(t => t.SiteContact_Id);
+            
+            CreateTable(
+                "dbo.SiteContacts",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        WorkPhone = c.String(),
+                        Email = c.String(),
+                        Site_Id = c.Int(),
+                        Site_Id1 = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Sites", t => t.Site_Id)
+                .ForeignKey("dbo.Sites", t => t.Site_Id1)
+                .Index(t => t.Site_Id)
+                .Index(t => t.Site_Id1);
             
             CreateTable(
                 "dbo.CurrentSites",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
-                        ContractsProviderId = c.Int(nullable: false),
-                        SelectedContract = c.Int(nullable: false),
                         SelectedSite = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.Providers", t => t.ContractsProviderId, cascadeDelete: true)
+                .ForeignKey("dbo.Sites", t => t.SelectedSite, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId)
-                .Index(t => t.ContractsProviderId);
+                .Index(t => t.SelectedSite);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -148,9 +180,12 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.CurrentSites", "ContractsProviderId", "dbo.Providers");
+            DropForeignKey("dbo.CurrentSites", "SelectedSite", "dbo.Sites");
+            DropForeignKey("dbo.Sites", "SitesContractId", "dbo.Contracts");
+            DropForeignKey("dbo.SiteContacts", "Site_Id1", "dbo.Sites");
+            DropForeignKey("dbo.Sites", "SiteContact_Id", "dbo.SiteContacts");
+            DropForeignKey("dbo.SiteContacts", "Site_Id", "dbo.Sites");
             DropForeignKey("dbo.Contracts", "ContractsProviderId", "dbo.Providers");
-            DropForeignKey("dbo.Providers", "Provider_Id", "dbo.Providers");
             DropForeignKey("dbo.ContractFiles", "ContractId", "dbo.Contracts");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -158,9 +193,12 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.CurrentSites", new[] { "ContractsProviderId" });
+            DropIndex("dbo.CurrentSites", new[] { "SelectedSite" });
             DropIndex("dbo.CurrentSites", new[] { "UserId" });
-            DropIndex("dbo.Providers", new[] { "Provider_Id" });
+            DropIndex("dbo.SiteContacts", new[] { "Site_Id1" });
+            DropIndex("dbo.SiteContacts", new[] { "Site_Id" });
+            DropIndex("dbo.Sites", new[] { "SiteContact_Id" });
+            DropIndex("dbo.Sites", new[] { "SitesContractId" });
             DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
             DropIndex("dbo.ContractFiles", new[] { "ContractId" });
             DropTable("dbo.AspNetRoles");
@@ -169,6 +207,8 @@ namespace HISSAP1.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.CurrentSites");
+            DropTable("dbo.SiteContacts");
+            DropTable("dbo.Sites");
             DropTable("dbo.Providers");
             DropTable("dbo.Contracts");
             DropTable("dbo.ContractFiles");

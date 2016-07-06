@@ -47,6 +47,8 @@ namespace HISSAP1.Migrations
         Email = "moreinfo@hinamauka.org",
         ContactPerson = "Jim"
       };
+      
+      //TODO: Seed contracts and sites
 
       context.Providers.AddOrUpdate(
         Prov1, Prov2
@@ -99,11 +101,16 @@ namespace HISSAP1.Migrations
         userManager.Create(SystemAdministrator, "Hissap123!");
         userManager.AddToRole(SystemAdministrator.Id, "System Administrator");
       //}
+      Contract Contract = new Contract { ContractName = "Boys and Girls", ContractsProviderId = Prov1.Id, ContractsProvider = Prov1, ContractNumber="123", Status = "active" };
+      context.Contracts.AddOrUpdate(Contract);
+
+      Site Site = new Site { SiteName = "Manoa", SitesContractId = Contract.Id, Address = "74-4489", Zip = "96740", City = "Honolulu", Status = "active", };
+      context.Sites.AddOrUpdate(Site);
 
       context.CurrentSite.AddOrUpdate(
-        new CurrentSite { UserId = ProviderAdministrator.Id, SelectedProvider = ProviderAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderAdministrator },
-        new CurrentSite { UserId = ProviderObserver.Id, SelectedProvider = ProviderObserver.ProviderId, SelectedContract = 0, SelectedSite = 0, User = ProviderObserver },
-        new CurrentSite { UserId = SystemAdministrator.Id, SelectedProvider = SystemAdministrator.ProviderId, SelectedContract = 0, SelectedSite = 0, User = SystemAdministrator }
+        new CurrentSite { UserId = ProviderAdministrator.Id, SelectedSite = Site.Id, User = ProviderAdministrator },
+        new CurrentSite { UserId = ProviderObserver.Id, SelectedSite = Site.Id, User = ProviderObserver },
+        new CurrentSite { UserId = SystemAdministrator.Id, SelectedSite = Site.Id, User = SystemAdministrator }
         );
 
       //  This method will be called after migrating to the latest version.

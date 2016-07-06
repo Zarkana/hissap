@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HISSAP1.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 
 namespace HISSAP1.Controllers
 {
@@ -15,85 +18,76 @@ namespace HISSAP1.Controllers
     private ApplicationDbContext db = new ApplicationDbContext();
 
     // GET: CurrentSites
-    //public ActionResult Index()
-    //{
-    //    var currentSite = db.CurrentSite.Include(c => c.User);
-    //    return View(currentSite.ToList());
-    //}
+    public ActionResult Index()
+    {
+      var currentSite = db.CurrentSite.Include(c => c.Site).Include(c => c.User);
+      return View(currentSite.ToList());
+    }
 
     // GET: CurrentSites/Details/5
-    //public ActionResult Details(string id)
-    //{
-    //    if (id == null)
-    //    {
-    //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-    //    }
-    //    CurrentSite currentSite = db.CurrentSite.Find(id);
-    //    if (currentSite == null)
-    //    {
-    //        return HttpNotFound();
-    //    }
-    //    return View(currentSite);
-    //}
-
-    // GET: CurrentSites/Create
-    //public ActionResult Create()
-    //{
-    //    ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
-    //    return View();
-    //}
-
-    // POST: CurrentSites/Create
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult Create([Bind(Include = "UserId,SelectedProvider,SelectedContract,SelectedSite")] CurrentSite currentSite)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        db.CurrentSite.Add(currentSite);
-    //        db.SaveChanges();
-    //        return RedirectToAction("Index");
-    //    }
-
-    //    ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
-    //    return View(currentSite);
-    //}
-
-
-    // GET: CurrentSites/Edit/5
-    public ActionResult Edit(string id)
+    public ActionResult Details(string id)
     {
       if (id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-      }      
-      
+      }
       CurrentSite currentSite = db.CurrentSite.Find(id);
       if (currentSite == null)
       {
         return HttpNotFound();
       }
-      ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
-      ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
       return View(currentSite);
     }
 
-    //TODO: evaluate if needed?
-    public IList<Provider> GetProviders()
+    // GET: CurrentSites/Create
+    public ActionResult Create()
     {
-      return (from c in db.Providers
-              select c).ToList();
-
+      ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName");
+      ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
+      return View();
     }
 
-    // POST: CurrentSites/Edit/5
+    // POST: CurrentSites/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "UserId,SelectedProvider,SelectedContract,SelectedSite")] CurrentSite currentSite)
+    public ActionResult Create([Bind(Include = "UserId,SelectedSite")] CurrentSite currentSite)
+    {
+      if (ModelState.IsValid)
+      {
+        db.CurrentSite.Add(currentSite);
+        db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+
+      ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
+      ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
+      return View(currentSite);
+    }
+
+    // GET: CurrentSites/Edit/5
+    public ActionResult Edit(/*string id*/)
+    {
+      string id = User.Identity.GetUserId();
+      if (id == null)
+      {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      }
+      CurrentSite currentSite = db.CurrentSite.Find(id);
+      if (currentSite == null)
+      {
+        return HttpNotFound();
+      }
+      ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
+      ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
+      return View(currentSite);
+    }
+
+    // POST: CurrentSites/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit([Bind(Include = "UserId,SelectedSite")] CurrentSite currentSite)
     {
       if (ModelState.IsValid)
       {
@@ -101,9 +95,54 @@ namespace HISSAP1.Controllers
         db.SaveChanges();
         return RedirectToAction("Index");
       }
+      //This action method is used for the edit page, not for the dropdown. Go to the partials controller for the dropdown
+      ViewBag.SelectedContract = new SelectList(db.Contracts, "Id", "ContractName", currentSite.Site.SitesContract.Id);
+      ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
       ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
       return View(currentSite);
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Switch([Bind(Include = "UserId,SelectedSite")] CurrentSite currentSite, string returnUrl)
+    {
+      if (ModelState.IsValid)
+      {
+        db.Entry(currentSite).State = EntityState.Modified;
+        db.SaveChanges();
+        return Redirect(returnUrl);
+      }
+      //This action method is used for the edit page, not for the dropdown. Go to the partials controller for the dropdown
+      ViewBag.SelectedContract = new SelectList(db.Contracts, "Id", "ContractName", currentSite.Site.SitesContract.Id);
+      ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
+      ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
+      return Redirect(returnUrl);
+    }
+
+    [HttpGet]
+    public ActionResult FillSite(int contract)
+    {
+      var sites = db.Sites.Where(c => c.SitesContractId == contract)
+        .Select(u => new {
+          Id = u.Id,
+          SiteName = u.SiteName
+        });     
+
+      return Json(sites, JsonRequestBehavior.AllowGet);
+    }
+
+    [HttpGet]
+    public ActionResult FillContract(int provider)
+    {
+      var contracts = db.Contracts.Where(c => c.ContractsProviderId == provider)
+        .Select(u => new {
+          Id = u.Id,
+          ContractName = u.ContractName
+        });
+
+      return Json(contracts, JsonRequestBehavior.AllowGet);
+    }
+
 
     // GET: CurrentSites/Delete/5
     public ActionResult Delete(string id)

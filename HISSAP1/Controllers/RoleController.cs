@@ -12,7 +12,7 @@ using HISSAP1.Controllers;
 
 namespace A11_RBS.Controllers
 {
-  //[AuthLog(Roles = "systemAdministrator")]
+  [Authorization(Roles = "systemAdministrator")]
   public class RoleController : MyBaseController
   {
     ApplicationDbContext context;

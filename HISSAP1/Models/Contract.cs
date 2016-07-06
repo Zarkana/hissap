@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,7 @@ namespace HISSAP1.Models
     [Display(Name = "Provider")]
     public int ContractsProviderId { get; set; }
 
-    //Foreign Key
+    //Foreign Key to the parent provider
     [ForeignKey("ContractsProviderId")]
     public virtual Provider ContractsProvider { get; set; }
 
@@ -35,6 +36,9 @@ namespace HISSAP1.Models
 
     //Navigation property
     public virtual ICollection<ContractFile> ContractFiles { get; set; }
+
+    //Navigation property
+    public virtual ICollection<Site> Sites { get; set; }
   }
 
   public class ContractFile
@@ -45,4 +49,5 @@ namespace HISSAP1.Models
     public int ContractId { get; set; }
     public virtual Contract Contract { get; set; }
   }
+
 }

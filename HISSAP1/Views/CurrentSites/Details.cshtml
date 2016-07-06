@@ -13,35 +13,19 @@
     <hr />
     <dl class="dl-horizontal details-list">
         <dt>
+            @Html.DisplayNameFor(model => model.Site.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Site.SiteName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.User.Email)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.User.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SelectedProvider)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SelectedProvider)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SelectedContract)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SelectedContract)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SelectedSite)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SelectedSite)
         </dd>
 
     </dl>

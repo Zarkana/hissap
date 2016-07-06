@@ -14,7 +14,9 @@ namespace HISSAP1.Controllers
       ApplicationDbContext db = new ApplicationDbContext();
       ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
       ViewBag.Contracts = new SelectList(db.Contracts, "Id", "ContractName");
+      ViewBag.Sites = new SelectList(db.Sites, "Id", "SiteName");
       /*ViewBag.someThing = "someThing";*/ //Add whatever
+
       base.OnActionExecuting(filterContext);
     }
   }
