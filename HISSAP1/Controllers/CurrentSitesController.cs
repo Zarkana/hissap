@@ -10,9 +10,11 @@ using HISSAP1.Models;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HISSAP1.Controllers
 {
+  [Authorize]
   public class CurrentSitesController : Controller
   {
     private ApplicationDbContext db = new ApplicationDbContext();
@@ -126,7 +128,16 @@ namespace HISSAP1.Controllers
         .Select(u => new {
           Id = u.Id,
           SiteName = u.SiteName
-        });     
+        });
+
+      //To validate use
+      var userStore = new UserStore<ApplicationUser>(db);
+      var userManager = new UserManager<ApplicationUser>(userStore);
+
+      var user = userManager.FindById(User.Identity.GetUserId());
+
+      var providerId = user.ProviderId;
+      //TODO: Validate!!!
 
       return Json(sites, JsonRequestBehavior.AllowGet);
     }

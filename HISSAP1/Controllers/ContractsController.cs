@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using HISSAP1.Models;
 using System.IO;
+using HISSAP1.CustomFilters;
 
 namespace HISSAP1.Controllers
 {
+  [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
   public class ContractsController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,7 +22,7 @@ namespace HISSAP1.Controllers
     {
       return View(db.Contracts.ToList());
     }
-
+    //TODO: implement?
     // GET: Contracts/Details/5
     //public ActionResult Details(int? id)
     //{

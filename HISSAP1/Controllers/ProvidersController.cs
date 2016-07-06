@@ -1,4 +1,5 @@
 ﻿using HISSAP1.Controllers;
+using HISSAP1.CustomFilters;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Security;
 
 namespace HISSAP1.Models
 {
+  [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
   public class ProvidersController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();

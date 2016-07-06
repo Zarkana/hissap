@@ -185,24 +185,30 @@ a:focus {
 }
 
 /* line 163, ../../sass/base/global.scss */
+.back-link {
+  display: block;
+  margin-top: 10px;
+}
+
+/* line 168, ../../sass/base/global.scss */
 [role="button"] {
   cursor: pointer;
 }
 
-/* line 168, ../../sass/base/global.scss */
+/* line 173, ../../sass/base/global.scss */
 address {
   margin-bottom: 20px;
   font-style: normal;
   line-height: 1.42857143;
 }
 
-/* line 174, ../../sass/base/global.scss */
+/* line 179, ../../sass/base/global.scss */
 pre,
 samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* line 179, ../../sass/base/global.scss */
+/* line 184, ../../sass/base/global.scss */
 code {
   padding: 2px 4px;
   font-size: 90%;
@@ -211,7 +217,7 @@ code {
   border-radius: 4px;
 }
 
-/* line 187, ../../sass/base/global.scss */
+/* line 192, ../../sass/base/global.scss */
 pre {
   display: block;
   padding: 9.5px;
@@ -226,34 +232,34 @@ pre {
   border-radius: 4px;
 }
 
-/* line 201, ../../sass/base/global.scss */
+/* line 206, ../../sass/base/global.scss */
 dl {
   margin-bottom: 20px;
 }
 
-/* line 205, ../../sass/base/global.scss */
+/* line 210, ../../sass/base/global.scss */
 dt,
 dd {
   line-height: 1.428571429;
 }
 
-/* line 210, ../../sass/base/global.scss */
+/* line 215, ../../sass/base/global.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 214, ../../sass/base/global.scss */
+/* line 219, ../../sass/base/global.scss */
 dd {
   margin-left: 0;
   margin-bottom: 5px;
 }
 
 /* Used to style the generated details page */
-/* line 220, ../../sass/base/global.scss */
+/* line 225, ../../sass/base/global.scss */
 .dl-horizontal.details-list {
   margin-left: 10px;
 }
-/* line 223, ../../sass/base/global.scss */
+/* line 228, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt {
   float: left;
   clear: left;
@@ -262,16 +268,16 @@ dd {
   margin-right: 5px;
   height: 20px;
 }
-/* line 231, ../../sass/base/global.scss */
+/* line 236, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt:after {
   content: ":";
 }
-/* line 236, ../../sass/base/global.scss */
+/* line 241, ../../sass/base/global.scss */
 .dl-horizontal.details-list dd {
   height: 20px;
 }
 
-/* line 241, ../../sass/base/global.scss */
+/* line 246, ../../sass/base/global.scss */
 .row {
   /*Don't know that it is needed*/
   /*margin-right: -15px;
@@ -280,17 +286,17 @@ dd {
   display: block;
 }
 
-/* line 249, ../../sass/base/global.scss */
+/* line 254, ../../sass/base/global.scss */
 .inline-block {
   display: inline-block;
 }
 
-/* line 253, ../../sass/base/global.scss */
+/* line 258, ../../sass/base/global.scss */
 .block {
   display: block;
 }
 
-/* line 257, ../../sass/base/global.scss */
+/* line 262, ../../sass/base/global.scss */
 .none {
   display: none;
 }

@@ -14,9 +14,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using HISSAP1.Models;
 using System.Web.Security;
+using HISSAP1.CustomFilters;
 
 namespace HISSAP1.Controllers
 {
+  [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
   public class UsersAdminController : MyBaseController
   {
     public UsersAdminController()

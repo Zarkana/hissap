@@ -1,4 +1,5 @@
-﻿using HISSAP1.Models;
+﻿using HISSAP1.CustomFilters;
+using HISSAP1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace HISSAP1.Controllers
   {
     private ApplicationDbContext db = new ApplicationDbContext();
 
+    //TODO: Add content
     public ActionResult Index()
     {
       return View();
     }
 
+    //TODO: remove?
     public ActionResult About()
     {
       ViewBag.Message = "Your application description page.";
@@ -24,6 +27,8 @@ namespace HISSAP1.Controllers
       return View();
     }
 
+
+    //TODO: remove?
     public ActionResult Contact()
     {
       ViewBag.Message = "Your contact page.";
@@ -31,7 +36,7 @@ namespace HISSAP1.Controllers
       return View();
     }
 
-    [Authorize(Roles = "System Administrator, State Administrator, Provider Administrator")]
+    [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
     public ActionResult Administration()
     {
       //ViewBag.Message = "Your administration page.";
