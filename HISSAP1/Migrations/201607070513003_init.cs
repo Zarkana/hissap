@@ -8,6 +8,25 @@ namespace HISSAP1.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Addresses",
+                c => new
+                    {
+                        AddressId = c.Int(nullable: false, identity: true),
+                        AddressLine1 = c.String(nullable: false),
+                        AddressLine2 = c.String(),
+                        City = c.String(nullable: false),
+                        State = c.String(nullable: false),
+                        Zip = c.String(nullable: false),
+                        Provider_Id = c.Int(),
+                        Site_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.AddressId)
+                .ForeignKey("dbo.Providers", t => t.Provider_Id)
+                .ForeignKey("dbo.Sites", t => t.Site_Id)
+                .Index(t => t.Provider_Id)
+                .Index(t => t.Site_Id);
+            
+            CreateTable(
                 "dbo.ContractFiles",
                 c => new
                     {
@@ -40,17 +59,15 @@ namespace HISSAP1.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 70),
-                        Line1 = c.String(nullable: false, maxLength: 50),
-                        Line2 = c.String(),
-                        City = c.String(nullable: false, maxLength: 25),
-                        State = c.String(nullable: false, maxLength: 2),
-                        Zip = c.String(nullable: false),
                         ContactPerson = c.String(),
                         Email = c.String(nullable: false),
                         Phone = c.String(nullable: false),
                         Website = c.String(),
+                        Address_AddressId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Addresses", t => t.Address_AddressId)
+                .Index(t => t.Address_AddressId);
             
             CreateTable(
                 "dbo.Sites",
@@ -60,15 +77,15 @@ namespace HISSAP1.Migrations
                         SiteName = c.String(nullable: false, maxLength: 100),
                         SitesContractId = c.Int(nullable: false),
                         Status = c.String(nullable: false),
-                        Address = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        Zip = c.String(nullable: false),
+                        Address_AddressId = c.Int(),
                         SiteContact_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Addresses", t => t.Address_AddressId)
                 .ForeignKey("dbo.SiteContacts", t => t.SiteContact_Id)
                 .ForeignKey("dbo.Contracts", t => t.SitesContractId, cascadeDelete: true)
                 .Index(t => t.SitesContractId)
+                .Index(t => t.Address_AddressId)
                 .Index(t => t.SiteContact_Id);
             
             CreateTable(
@@ -185,7 +202,11 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.SiteContacts", "Site_Id1", "dbo.Sites");
             DropForeignKey("dbo.Sites", "SiteContact_Id", "dbo.SiteContacts");
             DropForeignKey("dbo.SiteContacts", "Site_Id", "dbo.Sites");
+            DropForeignKey("dbo.Addresses", "Site_Id", "dbo.Sites");
+            DropForeignKey("dbo.Sites", "Address_AddressId", "dbo.Addresses");
             DropForeignKey("dbo.Contracts", "ContractsProviderId", "dbo.Providers");
+            DropForeignKey("dbo.Addresses", "Provider_Id", "dbo.Providers");
+            DropForeignKey("dbo.Providers", "Address_AddressId", "dbo.Addresses");
             DropForeignKey("dbo.ContractFiles", "ContractId", "dbo.Contracts");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
@@ -198,9 +219,13 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.SiteContacts", new[] { "Site_Id1" });
             DropIndex("dbo.SiteContacts", new[] { "Site_Id" });
             DropIndex("dbo.Sites", new[] { "SiteContact_Id" });
+            DropIndex("dbo.Sites", new[] { "Address_AddressId" });
             DropIndex("dbo.Sites", new[] { "SitesContractId" });
+            DropIndex("dbo.Providers", new[] { "Address_AddressId" });
             DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
             DropIndex("dbo.ContractFiles", new[] { "ContractId" });
+            DropIndex("dbo.Addresses", new[] { "Site_Id" });
+            DropIndex("dbo.Addresses", new[] { "Provider_Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
@@ -212,6 +237,7 @@ namespace HISSAP1.Migrations
             DropTable("dbo.Providers");
             DropTable("dbo.Contracts");
             DropTable("dbo.ContractFiles");
+            DropTable("dbo.Addresses");
         }
     }
 }

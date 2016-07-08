@@ -161,6 +161,7 @@ textarea {
 /* line 139, ../../sass/base/global.scss */
 .container {
   max-width: 1000px;
+  min-width: 875px;
 }
 
 /*.container-fluid {
@@ -170,45 +171,45 @@ textarea {
   margin-left: auto;
 }*/
 /*Links*/
-/* line 151, ../../sass/base/global.scss */
+/* line 153, ../../sass/base/global.scss */
 a {
   color: #64ac20;
   text-decoration: none;
   outline-color: #58971c;
 }
 
-/* line 157, ../../sass/base/global.scss */
+/* line 159, ../../sass/base/global.scss */
 a:hover,
 a:focus {
   color: #4b8118;
   text-decoration: underline;
 }
 
-/* line 163, ../../sass/base/global.scss */
+/* line 165, ../../sass/base/global.scss */
 .back-link {
   display: block;
   margin-top: 10px;
 }
 
-/* line 168, ../../sass/base/global.scss */
+/* line 170, ../../sass/base/global.scss */
 [role="button"] {
   cursor: pointer;
 }
 
-/* line 173, ../../sass/base/global.scss */
+/* line 175, ../../sass/base/global.scss */
 address {
   margin-bottom: 20px;
   font-style: normal;
   line-height: 1.42857143;
 }
 
-/* line 179, ../../sass/base/global.scss */
+/* line 181, ../../sass/base/global.scss */
 pre,
 samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* line 184, ../../sass/base/global.scss */
+/* line 186, ../../sass/base/global.scss */
 code {
   padding: 2px 4px;
   font-size: 90%;
@@ -217,7 +218,7 @@ code {
   border-radius: 4px;
 }
 
-/* line 192, ../../sass/base/global.scss */
+/* line 194, ../../sass/base/global.scss */
 pre {
   display: block;
   padding: 9.5px;
@@ -232,34 +233,34 @@ pre {
   border-radius: 4px;
 }
 
-/* line 206, ../../sass/base/global.scss */
+/* line 208, ../../sass/base/global.scss */
 dl {
   margin-bottom: 20px;
 }
 
-/* line 210, ../../sass/base/global.scss */
+/* line 212, ../../sass/base/global.scss */
 dt,
 dd {
   line-height: 1.428571429;
 }
 
-/* line 215, ../../sass/base/global.scss */
+/* line 217, ../../sass/base/global.scss */
 dt {
   font-weight: bold;
 }
 
-/* line 219, ../../sass/base/global.scss */
+/* line 221, ../../sass/base/global.scss */
 dd {
   margin-left: 0;
   margin-bottom: 5px;
 }
 
 /* Used to style the generated details page */
-/* line 225, ../../sass/base/global.scss */
+/* line 227, ../../sass/base/global.scss */
 .dl-horizontal.details-list {
   margin-left: 10px;
 }
-/* line 228, ../../sass/base/global.scss */
+/* line 230, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt {
   float: left;
   clear: left;
@@ -268,16 +269,16 @@ dd {
   margin-right: 5px;
   height: 20px;
 }
-/* line 236, ../../sass/base/global.scss */
+/* line 238, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt:after {
   content: ":";
 }
-/* line 241, ../../sass/base/global.scss */
+/* line 243, ../../sass/base/global.scss */
 .dl-horizontal.details-list dd {
   height: 20px;
 }
 
-/* line 246, ../../sass/base/global.scss */
+/* line 248, ../../sass/base/global.scss */
 .row {
   /*Don't know that it is needed*/
   /*margin-right: -15px;
@@ -286,17 +287,17 @@ dd {
   display: block;
 }
 
-/* line 254, ../../sass/base/global.scss */
+/* line 256, ../../sass/base/global.scss */
 .inline-block {
   display: inline-block;
 }
 
-/* line 258, ../../sass/base/global.scss */
+/* line 260, ../../sass/base/global.scss */
 .block {
   display: block;
 }
 
-/* line 262, ../../sass/base/global.scss */
+/* line 264, ../../sass/base/global.scss */
 .none {
   display: none;
 }

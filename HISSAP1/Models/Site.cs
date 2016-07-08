@@ -28,21 +28,14 @@ namespace HISSAP1.Models
     /*TODO: Add validation*/
     public string Status { get; set; }
 
-    [Required]
-    /*TODO: Add validation*/
-    public string Address { get; set; }
+    public virtual Address Address { get; set; }//TODO: keep?
+    //Navigation property
+    public virtual ICollection<Address> Addresses { get; set; }
 
-    [Required]
-    /*TODO: Add validation*/
-    public string City { get; set; }
-
-    [Required]
-    /*TODO: Add validation*/
-    public string Zip { get; set; }
-
-    public virtual SiteContact SiteContact { get; set; }
+    public virtual SiteContact SiteContact { get; set; }//TODO: keep?
     //Navigation property
     public virtual ICollection<SiteContact> SiteContacts { get; set; }
+
   }
 
   public class SiteContact

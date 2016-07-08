@@ -211,12 +211,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607041939354_init.cs" />
-    <Compile Include="Migrations\201607041939354_init.Designer.cs">
-      <DependentUpon>201607041939354_init.cs</DependentUpon>
+    <Compile Include="Migrations\201607070513003_init.cs" />
+    <Compile Include="Migrations\201607070513003_init.Designer.cs">
+      <DependentUpon>201607070513003_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -224,6 +225,18 @@
     <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Models\CurrentSite.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\SiteModels\Budget.cs" />
+    <Compile Include="Models\SiteModels\Invoice.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\AdministrativeContractualServices.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\AirfareOutOfState.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\EquipmentPurchase.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\FringeBenefit.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\InterIslandAirfare.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\OtherBudgetInvoice.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\PayrollTaxesAssessment.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\PerDiem.cs" />
+    <Compile Include="Models\SiteModels\InvoiceBudgetModels\SubcontractsContractualServices.cs" />
+    <Compile Include="ViewModels\SiteAndAddressViewModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -473,6 +486,9 @@
     <Content Include="Views\Sites\Details.cshtml" />
     <Content Include="Views\Sites\Edit.cshtml" />
     <Content Include="Views\Sites\Index.cshtml" />
+    <Content Include="Views\Home\AssessAndPlan.cshtml" />
+    <Content Include="Views\Home\Manage.cshtml" />
+    <Content Include="Views\Home\Track.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
@@ -480,6 +496,7 @@
     <Folder Include="Content\images\" />
     <Folder Include="Helpers\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\AssessAndPlan\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
@@ -488,8 +505,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607041939354_init.resx">
-      <DependentUpon>201607041939354_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607070513003_init.resx">
+      <DependentUpon>201607070513003_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

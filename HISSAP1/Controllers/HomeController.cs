@@ -36,6 +36,26 @@ namespace HISSAP1.Controllers
       return View();
     }
 
+    public ActionResult AssessAndPlan()
+    {
+      return View();
+    }
+
+    public ActionResult Manage()
+    {
+      return View();
+    }
+
+    public ActionResult Track()
+    {
+      return View();
+    }
+
+    public ActionResult Reports()
+    {
+      return View();
+    }
+
     [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
     public ActionResult Administration()
     {

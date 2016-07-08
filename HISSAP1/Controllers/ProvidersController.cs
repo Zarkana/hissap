@@ -50,11 +50,15 @@ namespace HISSAP1.Models
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Provider provider)
+    public ActionResult Create([Bind(Include = "Id,Name,Address,ContactPerson,Phone,Website,Email")] Provider provider)
     {
       if (ModelState.IsValid)
       {
+
+        Address address = provider.Address;
+        
         db.Providers.Add(provider);
+        db.Address.Add(address);
         db.SaveChanges();
         return RedirectToAction("Index");
       }
@@ -82,11 +86,12 @@ namespace HISSAP1.Models
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "Id,Name,Line1,Line2,City,State,Zip,ContactPerson,Phone,Website,Email")] Provider provider)
+    public ActionResult Edit([Bind(Include = "Id,Name,Address,ContactPerson,Phone,Website,Email")] Provider provider)
     {
       if (ModelState.IsValid)
       {
         db.Entry(provider).State = EntityState.Modified;
+        db.Entry(provider.Address).State = EntityState.Modified;
         db.SaveChanges();
         return RedirectToAction("Index");
       }
@@ -114,7 +119,9 @@ namespace HISSAP1.Models
     public ActionResult DeleteConfirmed(int id)
     {
       Provider provider = db.Providers.Find(id);
+      Address address = db.Address.Find(provider.Address.AddressId);
       db.Providers.Remove(provider);
+      db.Address.Remove(address);
       db.SaveChanges();
       return RedirectToAction("Index");
     }

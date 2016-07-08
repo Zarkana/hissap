@@ -50,11 +50,15 @@ namespace HISSAP1.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "Id,SiteName,SitesContractId,Status,Address,City,Zip")] Site site)
+    public ActionResult Create([Bind(Include = "Id,SiteName,SitesContractId,Status,Address")] Site site)
     {
       if (ModelState.IsValid)
       {
+
+        Address address = site.Address;
+
         db.Sites.Add(site);
+        db.Address.Add(address);
         db.SaveChanges();
         return RedirectToAction("Index");
       }
@@ -84,11 +88,12 @@ namespace HISSAP1.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "Id,SiteName,SitesContractId,Status,Address,City,Zip")] Site site)
+    public ActionResult Edit([Bind(Include = "Id,SiteName,SitesContractId,Status,Address")] Site site)
     {
       if (ModelState.IsValid)
       {
         db.Entry(site).State = EntityState.Modified;
+        db.Entry(site.Address).State = EntityState.Modified;
         db.SaveChanges();
         return RedirectToAction("Index");
       }
@@ -117,7 +122,9 @@ namespace HISSAP1.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Site site = db.Sites.Find(id);
+      Address address = db.Address.Find(site.Address.AddressId);
       db.Sites.Remove(site);
+      db.Address.Remove(address);
       db.SaveChanges();
       return RedirectToAction("Index");
     }

@@ -26,9 +26,13 @@ namespace HISSAP1.Models
     public virtual Provider ContractsProvider { get; set; }
 
     [Required]
-    [Display(Name = "Contract Number")]
+    [Display(Name = "ASO Log Number")]
     /*TODO: Add validation*/
     public string ContractNumber { get; set; }
+
+    [Required]
+    [Display(Name = "Year")]
+    public int Year { get; set; }
 
     [Required]
     /*TODO: Add validation*/

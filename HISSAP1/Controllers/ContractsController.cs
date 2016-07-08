@@ -42,6 +42,7 @@ namespace HISSAP1.Controllers
     public ActionResult Create()
     {
       ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
+
       return View();
     }
 

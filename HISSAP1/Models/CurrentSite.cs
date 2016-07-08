@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -46,10 +47,13 @@ namespace HISSAP1.Models
     //TODO: Evaluate
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
+      
       modelBuilder.Entity<ApplicationUser>()
           .HasOptional(u => u.CurrentSite)
           .WithRequired(s => s.User);
     }
+
+
 
     public virtual DbSet<ApplicationUser> User { get; set; }
     public virtual DbSet<CurrentSite> CurrentSite { get; set; }

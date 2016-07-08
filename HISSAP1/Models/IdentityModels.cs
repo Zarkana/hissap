@@ -38,6 +38,7 @@ namespace HISSAP1.Models
     public DbSet<ContractFile> ContractFiles { get; set; }
     public DbSet<Site> Sites { get; set; }
     public DbSet<SiteContact> SiteContacts { get; set; }
+    public DbSet<Address> Address { get; set; }
 
     public DbSet<CurrentSite> CurrentSite { get; set; }
 
