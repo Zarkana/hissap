@@ -1,0 +1,94 @@
+﻿@import "../base/variables.scss";
+
+.budget-header {
+  display: inline-block;
+  padding: 5px 25px;
+  background-color: lighten($light-gray, 30%);
+
+  .form-group {
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  @media screen and (max-width: 960px) {
+    & {
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    & {
+    }
+  }
+}
+
+.form-page {
+  padding-left: 40px;
+}
+
+.budget-table {
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: 3%;
+
+  tr {
+
+    &:nth-of-type(even) {
+      background-color: #eeeeee;
+    }
+
+    th {
+      background-color: lighten($third-color, 5%);
+      padding: 8px 10px;
+    }
+
+    td {
+      display: table-cell;
+      padding: 6px 8px;
+    }
+
+    td:nth-of-type(1), th:nth-of-type(1) {
+      width: 35%;
+      min-width: 275px;
+    }
+
+    td.amount, th.amount {
+      width: 25%;
+      padding-left: 2.5%;
+
+      label {
+        padding-left: 15px;
+        padding-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      span.amount-padding{
+        padding-left: 10px;
+      }
+
+    }
+
+    td:nth-of-type(3), th:nth-of-type(3) {
+      padding-left: 2.5%;
+    }
+
+    td:nth-of-type(4), th:nth-of-type(4) {
+    }
+  }
+}
+
+
+.form-table-container{
+  /*position: relative;
+  margin-bottom: 75px;*/
+}
+
+.form-options {
+  padding-left: 30px;
+
+  input, button {
+    margin-left: 10px;
+  }
+}

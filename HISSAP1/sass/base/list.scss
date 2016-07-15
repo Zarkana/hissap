@@ -38,4 +38,8 @@ ol ol {
   .branch-description {
     margin: 0 0 25px 0;
   }
+  &.sub-list{
+    margin-top: 0;
+    padding-left: 22px;
+  }
 }

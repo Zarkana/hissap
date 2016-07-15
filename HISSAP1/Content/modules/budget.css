@@ -1,0 +1,93 @@
+/*Colors*/
+/*Heights*/
+/*Navbar height*/
+/*Fonts*/
+@font-face {
+  font-family: 'AvantGarde';
+  src: url("../fonts/avantgarde.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/avantgarde.eot?#iefix") format("embedded-opentype"), url("../fonts/avantgarde.woff") format("woff"), url("../fonts/avantgarde.ttf") format("truetype"), url("../fonts/avantgarde.svg#svgFontName") format("svg");
+  /* Legacy iOS */
+}
+/* z-index */
+/*$child-navbar-index: 3;
+$site-select-index: 1;*/
+/* line 3, ../../sass/modules/budget.scss */
+.budget-header {
+  display: inline-block;
+  padding: 5px 25px;
+  background-color: #f6f6f6;
+}
+/* line 8, ../../sass/modules/budget.scss */
+.budget-header .form-group {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+/* line 24, ../../sass/modules/budget.scss */
+.form-page {
+  padding-left: 40px;
+}
+
+/* line 28, ../../sass/modules/budget.scss */
+.budget-table {
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: 3%;
+}
+/* line 35, ../../sass/modules/budget.scss */
+.budget-table tr:nth-of-type(even) {
+  background-color: #eeeeee;
+}
+/* line 39, ../../sass/modules/budget.scss */
+.budget-table tr th {
+  background-color: #71c224;
+  padding: 8px 10px;
+}
+/* line 44, ../../sass/modules/budget.scss */
+.budget-table tr td {
+  display: table-cell;
+  padding: 6px 8px;
+}
+/* line 49, ../../sass/modules/budget.scss */
+.budget-table tr td:nth-of-type(1), .budget-table tr th:nth-of-type(1) {
+  width: 35%;
+  min-width: 275px;
+}
+/* line 54, ../../sass/modules/budget.scss */
+.budget-table tr td.amount, .budget-table tr th.amount {
+  width: 25%;
+  padding-left: 2.5%;
+}
+/* line 58, ../../sass/modules/budget.scss */
+.budget-table tr td.amount label, .budget-table tr th.amount label {
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+/* line 63, ../../sass/modules/budget.scss */
+.budget-table tr td.amount input, .budget-table tr th.amount input {
+  width: 100%;
+}
+/* line 67, ../../sass/modules/budget.scss */
+.budget-table tr td.amount span.amount-padding, .budget-table tr th.amount span.amount-padding {
+  padding-left: 10px;
+}
+/* line 73, ../../sass/modules/budget.scss */
+.budget-table tr td:nth-of-type(3), .budget-table tr th:nth-of-type(3) {
+  padding-left: 2.5%;
+}
+
+/* line 83, ../../sass/modules/budget.scss */
+.form-table-container {
+  /*position: relative;
+  margin-bottom: 75px;*/
+}
+
+/* line 88, ../../sass/modules/budget.scss */
+.form-options {
+  padding-left: 30px;
+}
+/* line 91, ../../sass/modules/budget.scss */
+.form-options input, .form-options button {
+  margin-left: 10px;
+}

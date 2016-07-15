@@ -18,10 +18,13 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     [Display(Name = "Life & Long-term Disability Insurance")]
     public float LifeLongDisabilityInsurance { get; set; }
 
-    [Display(Name = "Sum")]
-    public float Sum1 { get; set; }
+    //[Display(Name = "Sum")]
+    //public float Sum1 { get; set; }
 
-    [Display(Name = "Sum")]
-    public float Sum2 { get; set; }
+    //[Display(Name = "Sum")]
+    //public float Sum2 { get; set; }
+
+    [Display(Name = "Sum Total")]
+    public float SumTotal { get; set; }
   }
 }

@@ -1,0 +1,84 @@
+﻿@model HISSAP1.Models.SiteModels.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">Budget Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal details-list">
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetsSite.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetsSite.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalContractAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalContractAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalExpenses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalExpenses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonnelCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonnelCost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

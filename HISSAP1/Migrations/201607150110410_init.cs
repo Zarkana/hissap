@@ -17,57 +17,52 @@ namespace HISSAP1.Migrations
                         City = c.String(nullable: false),
                         State = c.String(nullable: false),
                         Zip = c.String(nullable: false),
-                        Provider_Id = c.Int(),
                         Site_Id = c.Int(),
+                        Provider_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.AddressId)
-                .ForeignKey("dbo.Providers", t => t.Provider_Id)
                 .ForeignKey("dbo.Sites", t => t.Site_Id)
-                .Index(t => t.Provider_Id)
-                .Index(t => t.Site_Id);
+                .ForeignKey("dbo.Providers", t => t.Provider_Id)
+                .Index(t => t.Site_Id)
+                .Index(t => t.Provider_Id);
             
             CreateTable(
-                "dbo.ContractFiles",
+                "dbo.Budgets",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Temp = c.String(),
+                        BudgetsSiteId = c.Int(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                        ContractNumber = c.String(nullable: false),
+                        BudgetStatus = c.String(),
+                        TotalContractAmount = c.Single(nullable: false),
+                        TotalExpenses = c.Single(nullable: false),
+                        Salary = c.Single(nullable: false),
+                        PayrollTaxesAssessmentTotal = c.Single(nullable: false),
+                        PersonnelCost = c.Single(nullable: false),
+                        FringeBenefit_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Sites", t => t.BudgetsSiteId, cascadeDelete: true)
+                .ForeignKey("dbo.FringeBenefits", t => t.FringeBenefit_Id)
+                .Index(t => t.BudgetsSiteId)
+                .Index(t => t.FringeBenefit_Id);
+            
+            CreateTable(
+                "dbo.BudgetFiles",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        FileName = c.String(),
+                        BudgetFileName = c.String(),
                         Extension = c.String(),
-                        ContractId = c.Int(nullable: false),
+                        RecepitId = c.Int(nullable: false),
+                        Budget_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Contracts", t => t.ContractId, cascadeDelete: true)
-                .Index(t => t.ContractId);
-            
-            CreateTable(
-                "dbo.Contracts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ContractName = c.String(nullable: false, maxLength: 100),
-                        ContractsProviderId = c.Int(nullable: false),
-                        ContractNumber = c.String(nullable: false),
-                        Status = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Providers", t => t.ContractsProviderId, cascadeDelete: true)
-                .Index(t => t.ContractsProviderId);
-            
-            CreateTable(
-                "dbo.Providers",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 70),
-                        ContactPerson = c.String(),
-                        Email = c.String(nullable: false),
-                        Phone = c.String(nullable: false),
-                        Website = c.String(),
-                        Address_AddressId = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Addresses", t => t.Address_AddressId)
-                .Index(t => t.Address_AddressId);
+                .ForeignKey("dbo.Budgets", t => t.Budget_Id)
+                .Index(t => t.Budget_Id);
             
             CreateTable(
                 "dbo.Sites",
@@ -105,6 +100,92 @@ namespace HISSAP1.Migrations
                 .ForeignKey("dbo.Sites", t => t.Site_Id1)
                 .Index(t => t.Site_Id)
                 .Index(t => t.Site_Id1);
+            
+            CreateTable(
+                "dbo.Contracts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ContractName = c.String(nullable: false, maxLength: 100),
+                        ContractsProviderId = c.Int(nullable: false),
+                        ContractNumber = c.String(nullable: false),
+                        Year = c.Int(nullable: false),
+                        Status = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Providers", t => t.ContractsProviderId, cascadeDelete: true)
+                .Index(t => t.ContractsProviderId);
+            
+            CreateTable(
+                "dbo.ContractFiles",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        FileName = c.String(),
+                        Extension = c.String(),
+                        ContractId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Contracts", t => t.ContractId, cascadeDelete: true)
+                .Index(t => t.ContractId);
+            
+            CreateTable(
+                "dbo.Providers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 70),
+                        ContactPerson = c.String(),
+                        Email = c.String(nullable: false),
+                        Phone = c.String(nullable: false),
+                        Website = c.String(),
+                        Address_AddressId = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Addresses", t => t.Address_AddressId)
+                .Index(t => t.Address_AddressId);
+            
+            CreateTable(
+                "dbo.FringeBenefits",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        HealthInsurance = c.Single(nullable: false),
+                        Retirement = c.Single(nullable: false),
+                        LifeLongDisabilityInsurance = c.Single(nullable: false),
+                        SumTotal = c.Single(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.PayrollTaxesAssessments",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        SocialSecurity = c.Single(nullable: false),
+                        UnemploymentInsuranceFederal = c.Single(nullable: false),
+                        UnemploymentInsuranceState = c.Single(nullable: false),
+                        WorkersCompensation = c.Single(nullable: false),
+                        TemporaryDisabilityInsurance = c.Single(nullable: false),
+                        SumTotal = c.Single(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Budgets", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
+                "dbo.PayrollItems",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                        Amount = c.Single(nullable: false),
+                        Justification = c.String(),
+                        PayrollTaxesAssessmentId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.PayrollTaxesAssessments", t => t.PayrollTaxesAssessmentId, cascadeDelete: true)
+                .Index(t => t.PayrollTaxesAssessmentId);
             
             CreateTable(
                 "dbo.CurrentSites",
@@ -198,16 +279,21 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CurrentSites", "SelectedSite", "dbo.Sites");
+            DropForeignKey("dbo.PayrollItems", "PayrollTaxesAssessmentId", "dbo.PayrollTaxesAssessments");
+            DropForeignKey("dbo.PayrollTaxesAssessments", "Id", "dbo.Budgets");
+            DropForeignKey("dbo.Budgets", "FringeBenefit_Id", "dbo.FringeBenefits");
             DropForeignKey("dbo.Sites", "SitesContractId", "dbo.Contracts");
-            DropForeignKey("dbo.SiteContacts", "Site_Id1", "dbo.Sites");
-            DropForeignKey("dbo.Sites", "SiteContact_Id", "dbo.SiteContacts");
-            DropForeignKey("dbo.SiteContacts", "Site_Id", "dbo.Sites");
-            DropForeignKey("dbo.Addresses", "Site_Id", "dbo.Sites");
-            DropForeignKey("dbo.Sites", "Address_AddressId", "dbo.Addresses");
             DropForeignKey("dbo.Contracts", "ContractsProviderId", "dbo.Providers");
             DropForeignKey("dbo.Addresses", "Provider_Id", "dbo.Providers");
             DropForeignKey("dbo.Providers", "Address_AddressId", "dbo.Addresses");
             DropForeignKey("dbo.ContractFiles", "ContractId", "dbo.Contracts");
+            DropForeignKey("dbo.SiteContacts", "Site_Id1", "dbo.Sites");
+            DropForeignKey("dbo.Sites", "SiteContact_Id", "dbo.SiteContacts");
+            DropForeignKey("dbo.SiteContacts", "Site_Id", "dbo.Sites");
+            DropForeignKey("dbo.Budgets", "BudgetsSiteId", "dbo.Sites");
+            DropForeignKey("dbo.Addresses", "Site_Id", "dbo.Sites");
+            DropForeignKey("dbo.Sites", "Address_AddressId", "dbo.Addresses");
+            DropForeignKey("dbo.BudgetFiles", "Budget_Id", "dbo.Budgets");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -216,27 +302,37 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.CurrentSites", new[] { "SelectedSite" });
             DropIndex("dbo.CurrentSites", new[] { "UserId" });
+            DropIndex("dbo.PayrollItems", new[] { "PayrollTaxesAssessmentId" });
+            DropIndex("dbo.PayrollTaxesAssessments", new[] { "Id" });
+            DropIndex("dbo.Providers", new[] { "Address_AddressId" });
+            DropIndex("dbo.ContractFiles", new[] { "ContractId" });
+            DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
             DropIndex("dbo.SiteContacts", new[] { "Site_Id1" });
             DropIndex("dbo.SiteContacts", new[] { "Site_Id" });
             DropIndex("dbo.Sites", new[] { "SiteContact_Id" });
             DropIndex("dbo.Sites", new[] { "Address_AddressId" });
             DropIndex("dbo.Sites", new[] { "SitesContractId" });
-            DropIndex("dbo.Providers", new[] { "Address_AddressId" });
-            DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
-            DropIndex("dbo.ContractFiles", new[] { "ContractId" });
-            DropIndex("dbo.Addresses", new[] { "Site_Id" });
+            DropIndex("dbo.BudgetFiles", new[] { "Budget_Id" });
+            DropIndex("dbo.Budgets", new[] { "FringeBenefit_Id" });
+            DropIndex("dbo.Budgets", new[] { "BudgetsSiteId" });
             DropIndex("dbo.Addresses", new[] { "Provider_Id" });
+            DropIndex("dbo.Addresses", new[] { "Site_Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.CurrentSites");
+            DropTable("dbo.PayrollItems");
+            DropTable("dbo.PayrollTaxesAssessments");
+            DropTable("dbo.FringeBenefits");
+            DropTable("dbo.Providers");
+            DropTable("dbo.ContractFiles");
+            DropTable("dbo.Contracts");
             DropTable("dbo.SiteContacts");
             DropTable("dbo.Sites");
-            DropTable("dbo.Providers");
-            DropTable("dbo.Contracts");
-            DropTable("dbo.ContractFiles");
+            DropTable("dbo.BudgetFiles");
+            DropTable("dbo.Budgets");
             DropTable("dbo.Addresses");
         }
     }

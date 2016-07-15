@@ -1,0 +1,52 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">PayrollItem Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal details-list">
+        <dt>
+            @Html.DisplayNameFor(model => model.PayrollTaxesAssessment.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayrollTaxesAssessment.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Justification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Justification)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

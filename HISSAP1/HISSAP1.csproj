@@ -198,12 +198,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\BudgetControllers\PayrollItemsController.cs" />
+    <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CurrentSitesController.cs" />
     <Compile Include="Controllers\MyBaseController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
+    <Compile Include="Controllers\PayrollTaxesAssessmentsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
@@ -211,9 +214,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607070513003_init.cs" />
-    <Compile Include="Migrations\201607070513003_init.Designer.cs">
-      <DependentUpon>201607070513003_init.cs</DependentUpon>
+    <Compile Include="Helpers\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Migrations\201607150110410_init.cs" />
+    <Compile Include="Migrations\201607150110410_init.Designer.cs">
+      <DependentUpon>201607150110410_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -236,7 +240,6 @@
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\PayrollTaxesAssessment.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\PerDiem.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\SubcontractsContractualServices.cs" />
-    <Compile Include="ViewModels\SiteAndAddressViewModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -406,6 +409,8 @@
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
+    <Content Include="sass\components\thumbnail.scss" />
+    <None Include="sass\modules\budget.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -414,6 +419,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\budgetInvoice.js" />
     <Content Include="Scripts\js\header.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -489,15 +495,33 @@
     <Content Include="Views\Home\AssessAndPlan.cshtml" />
     <Content Include="Views\Home\Manage.cshtml" />
     <Content Include="Views\Home\Track.cshtml" />
+    <Content Include="Views\Budgets\Create.cshtml" />
+    <Content Include="Views\Budgets\Delete.cshtml" />
+    <Content Include="Views\Budgets\Details.cshtml" />
+    <Content Include="Views\Budgets\Edit.cshtml" />
+    <Content Include="Views\Budgets\Index.cshtml" />
+    <Content Include="Views\Budgets\Details\PayrollTaxesAssessment.cshtml" />
+    <Content Include="Views\Budgets\Details\FringeBenefits.cshtml" />
+    <Content Include="Views\PayrollTaxesAssessments\Create.cshtml" />
+    <Content Include="Views\PayrollTaxesAssessments\Delete.cshtml" />
+    <Content Include="Views\PayrollTaxesAssessments\Details.cshtml" />
+    <Content Include="Views\PayrollTaxesAssessments\Edit.cshtml" />
+    <Content Include="Views\PayrollTaxesAssessments\Index.cshtml" />
+    <Content Include="Views\Budgets\Modify.cshtml" />
+    <Content Include="Views\PayrollItems\Create.cshtml" />
+    <Content Include="Views\PayrollItems\Delete.cshtml" />
+    <Content Include="Views\PayrollItems\Details.cshtml" />
+    <Content Include="Views\PayrollItems\Edit.cshtml" />
+    <Content Include="Views\PayrollItems\Index.cshtml" />
+    <Content Include="Views\Partials\Budgets\PayrollItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Helpers\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Views\AssessAndPlan\" />
-    <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -505,8 +529,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607070513003_init.resx">
-      <DependentUpon>201607070513003_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607150110410_init.resx">
+      <DependentUpon>201607150110410_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

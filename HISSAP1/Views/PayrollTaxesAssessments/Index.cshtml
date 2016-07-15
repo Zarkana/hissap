@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollTaxesAssessment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="buddy-header">Index</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SocialSecurity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnemploymentInsuranceFederal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnemploymentInsuranceState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkersCompensation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TemporaryDisabilityInsurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SumTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialSecurity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnemploymentInsuranceFederal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnemploymentInsuranceState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkersCompensation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemporaryDisabilityInsurance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SumTotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -53,12 +53,9 @@ namespace HISSAP1.Models
     public ActionResult Create([Bind(Include = "Id,Name,Address,ContactPerson,Phone,Website,Email")] Provider provider)
     {
       if (ModelState.IsValid)
-      {
-
-        Address address = provider.Address;
-        
+      {        
         db.Providers.Add(provider);
-        db.Address.Add(address);
+        db.Address.Add(provider.Address);
         db.SaveChanges();
         return RedirectToAction("Index");
       }

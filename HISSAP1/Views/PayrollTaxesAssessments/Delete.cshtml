@@ -1,0 +1,73 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollTaxesAssessment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="buddy-header">Delete PayrollTaxesAssessment</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialSecurity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SocialSecurity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnemploymentInsuranceFederal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnemploymentInsuranceFederal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnemploymentInsuranceState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnemploymentInsuranceState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkersCompensation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkersCompensation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporaryDisabilityInsurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporaryDisabilityInsurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SumTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SumTotal)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HISSAP1.Models.SiteModels.Budget>
+
+@{
+  ViewBag.Title = "Budget";
+}
+
+<h2 class="buddy-header">Budget Index</h2>
+<br />
+@*<p>
+      @Html.ActionLink("Create New", "CreateInitialBudget")
+  </p>*@
+@using (Html.BeginForm("CreateInitialBudget", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+{
+  //If no budgets make create button
+  if (Model.Count() == 0)
+  {
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create" class="btn btn-default" />
+      </div>
+    </div>
+  }
+}
+<table class="table">
+  <tr>
+    <th>
+      @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.DateCreated)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.ContractNumber)
+    </th>
+    <th>
+      @Html.DisplayNameFor(model => model.BudgetStatus)
+    </th>
+    <th></th>
+  </tr>
+  @{
+    var i = Model.Count();
+    var total = Model.Count();
+   }
+  @foreach (var item in Model)
+  {
+    <tr>
+      <td>
+        @Html.DisplayFor(modelItem => item.Name) - Revision @i
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.DateCreated)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.ContractNumber)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.BudgetStatus)
+      </td>
+      <td style="text-align: center">
+        @if (i == total)
+        {
+          @Html.ActionLink("Modify", "Modify", new { id = item.Id })
+          @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id })*@
+          <span>|</span>
+          @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        }
+        else
+        {
+          @Html.ActionLink("Details", "Details", new { id = item.Id })
+        }
+      </td>
+    </tr>
+    i--;
+  }
+
+</table>

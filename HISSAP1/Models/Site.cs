@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HISSAP1.Models.SiteModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +28,9 @@ namespace HISSAP1.Models
     [Required]
     /*TODO: Add validation*/
     public string Status { get; set; }
+
+    //Navigation property
+    public virtual ICollection<Budget> Budgets { get; set; }
 
     public virtual Address Address { get; set; }//TODO: keep?
     //Navigation property

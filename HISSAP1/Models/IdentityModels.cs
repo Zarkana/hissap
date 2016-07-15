@@ -42,5 +42,12 @@ namespace HISSAP1.Models
 
     public DbSet<CurrentSite> CurrentSite { get; set; }
 
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.Budget> Budgets { get; set; }
+
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollTaxesAssessment> PayrollTaxesAssessments { get; set; }
+
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollItem> PayrollItems { get; set; }
+
+    //public System.Data.Entity.DbSet<HISSAP1.ViewModels.BudgetViewModel> BudgetViewModels { get; set; }
   }
 }

@@ -1,0 +1,61 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollItem
+
+@{
+  ViewBag.Title = "Create";
+}
+
+<h2 class="buddy-header">Add Item</h2>
+
+@using (Html.BeginForm("AddPayrollItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+{
+  @Html.AntiForgeryToken()
+
+  <div class="form-horizontal">
+    <hr />
+
+    <table class="budget-table">
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <tr>
+        <th>Invoice Item</th>
+        <th class="amount">Amount</th>
+        <th>Justification</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </td>
+
+        <td class="amount">
+          @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+        </td>
+
+        <td>
+          @Html.EditorFor(model => model.Justification, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Justification, "", new { @class = "text-danger" })
+        </td>
+        <td><input type="submit" value="Add" class="btn btn-default" /></td>
+      </tr>
+      @* TODO make better, currently should just be hidden value but now dropdown *@
+      <tr style="display: none;">
+        <td>
+          @Html.LabelFor(model => model.PayrollTaxesAssessmentId, "PayrollTaxesAssessmentId", htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td>
+          @Html.DropDownList("PayrollTaxesAssessmentId", null, htmlAttributes: new { @class = "form-control" })
+          @Html.ValidationMessageFor(model => model.PayrollTaxesAssessmentId, "", new { @class = "text-danger" })
+        </td>
+      </tr>
+    </table>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+
+      </div>
+    </div>
+  </div>
+}
+
+
+

@@ -1,0 +1,51 @@
+﻿@model HISSAP1.Models.SiteModels.Budget
+
+@{
+  ViewBag.Title = "Modify";
+}
+
+<div class="row">
+  <div class="col-md-3">
+    <h2 class="buddy-header">Modify Budget</h2>
+    <div class="buddy-link">
+      @Html.ActionLink("Back to List", "Index")
+    </div>
+    <ul class="site-tree">
+      <li>        
+        <h4 class="branch">@Html.ActionLink("SPO-H-205 - Modify Budget", "Create", new { id = Model.Id })</h4>
+      </li>
+      <ul class="site-tree sub-list">
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206B - Payroll Taxes & Assessments", "EditPayrollTaxesAssessment", new { id = Model.Id })</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206B - Fringe Benefits", "Index", "Sites")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206E - Contractual Services - Asministrative", "Index", "UsersAdmin")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206F - Contractual Services - Subcontracts", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-205D - Other", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206C - Airfare, Inter-island", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206D - Airfare, Out of State", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206G - Subsistence/Per Diem", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206H - Equipment Purchases", "Index", "Role")</h5>
+        </li>
+        <li>
+          <h5 class="branch">@Html.ActionLink("SPO-H-206J - Motor Vehicle Purchases", "Index", "Role")</h5>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</div>

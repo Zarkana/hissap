@@ -24,7 +24,9 @@ namespace HISSAP1
                 "~/Scripts/respond.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/site").Include(
-          "~/Scripts/js/header.js"));
+          "~/Scripts/js/header.js",
+          "~/Scripts/js/budgetInvoice.js"
+          ));
 
       bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Site.css",
@@ -50,12 +52,14 @@ namespace HISSAP1
                 "~/Content/components/pagination.css",
                 "~/Content/components/panel.css",
                 "~/Content/components/progress-bar.css",
+                "~/Content/components/thumbnail.css",
                 "~/Content/components/tooltip.css",
                 "~/Content/components/well.css",
                 "~/Content/components/image-button.css",
                 /*Localized code tied to locations on a webpage*/
                 "~/Content/modules/header.css",
-                "~/Content/modules/login.css"
+                "~/Content/modules/login.css",
+                "~/Content/modules/budget.css"
                 ));
     }
   }

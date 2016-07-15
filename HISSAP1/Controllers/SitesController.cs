@@ -12,7 +12,7 @@ using HISSAP1.CustomFilters;
 namespace HISSAP1.Controllers
 {
   [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
-  public class SitesController : Controller
+  public class SitesController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -54,11 +54,8 @@ namespace HISSAP1.Controllers
     {
       if (ModelState.IsValid)
       {
-
-        Address address = site.Address;
-
         db.Sites.Add(site);
-        db.Address.Add(address);
+        db.Address.Add(site.Address);
         db.SaveChanges();
         return RedirectToAction("Index");
       }

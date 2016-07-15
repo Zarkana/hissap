@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,19 @@ namespace HISSAP1.Models.SiteModels
   {
     /* BUDGET INFORMATION */
     public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    //Important variable to determine if budget is simply temporary to allow for overwriting or canceling changes to the original
+    //public string Temp { get; set; }
+
+    [Required]
+    [Display(Name = "Provider")]
+    public int BudgetsSiteId { get; set; }
+    
+    [ForeignKey("BudgetsSiteId")]//Foreign Key to the parent Site
+    public virtual Site BudgetsSite { get; set; }
+
     [Display(Name = "Date Created")]
     public DateTime DateCreated { get; set; }
 
@@ -33,13 +47,13 @@ namespace HISSAP1.Models.SiteModels
     //A. PERSONNEL COST
     [RegularExpression("([0-9]+)")]
     public float Salary { get; set; }
-    [RegularExpression("([0-9]+)")]
-    //[Display(Name = "Payroll Taxes, Assessments")]
-    //public float PayrollTaxesAssessment { get; set; }
-    public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }//TODO: keep?
-    [Display(Name = "Fringe Benefits")]
-    [RegularExpression("([0-9]+)")]
-    public float FringeBenefits { get; set; }
+
+    [Display(Name = "Payroll Taxes, Assessments")]
+    public float PayrollTaxesAssessmentTotal { get; set; }
+    //[Display(Name = "Fringe Benefits")]
+    //[RegularExpression("([0-9]+)")]
+    //public float FringeBenefits { get; set; }
+
     [Display(Name = "Personnel Cost")]
     [RegularExpression("([0-9]+)")]
     public float PersonnelCost { get; set; }
@@ -60,8 +74,13 @@ namespace HISSAP1.Models.SiteModels
 
     /* PREPARED BY */
 
+    public virtual FringeBenefit FringeBenefit { get; set; }//TODO: keep?
     //Navigation property
-    public virtual ICollection<PayrollTaxesAssessment> PayrollTaxesAssessments { get; set; }//TODO: I believe need...
+   /* public virtual ICollection<FringeBenefit> FringeBenefits { get; set; }*///TODO: I believe need...
+  
+    public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }//TODO: keep?
+    //Navigation property
+    /*public virtual ICollection<PayrollTaxesAssessment> PayrollTaxesAssessments { get; set; }*///TODO: I believe need...
 
     //Navigation property
     public virtual ICollection<BudgetFile> BudgetFiles { get; set; }

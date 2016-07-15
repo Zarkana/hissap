@@ -1,0 +1,110 @@
+﻿@model HISSAP1.Models.SiteModels.Budget
+
+@{
+  ViewBag.Title = "Edit";
+}
+
+<h2 class="buddy-header">Edit Budget</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+
+  <div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="thumbnail budget-header">
+      <div class="form-group">
+        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        @Html.Label("Status", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+          @{
+            var list = new SelectList(
+              new List<Object>{
+                  new { value = "Accepted" , text = "Active" },
+                  new { value = "Revision Requested" , text = "Revision Requested" },
+                  new { value = "Rejected" , text = "Rejected" },
+                  new { value = "Proposed" , text = "Proposed" },
+                  new { value = "New" , text = "New" }
+                }, "value", "text", 2);
+          }
+          @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })
+        </div>
+      </div>
+    </div>
+    <div class="form-page">
+      <div class="form-group">
+        @Html.LabelFor(model => model.TotalContractAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.TotalContractAmount, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.TotalContractAmount, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        @Html.LabelFor(model => model.TotalExpenses, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.TotalExpenses, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.TotalExpenses, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        @Html.LabelFor(model => model.PersonnelCost, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.PersonnelCost, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.PersonnelCost, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+      </div>
+    </div>
+  </div>
+            }
+
+@* Moved into separate pages *@
+
+@*<div id="dvCategoryResults">
+    @Html.Action("PayrollTaxesAssessmentPartial", "Partials", new { model = Model.PayrollTaxesAssessment })
+  </div>*@
+
+@*<div>
+    @Html.Action("FringeBenefitsPartial", "Partials")
+  </div>*@
+
+
+
+<div>
+  @Html.ActionLink("Back to List", "Index")
+</div>

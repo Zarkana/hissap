@@ -1,26 +1,32 @@
-/* line 5, ../../sass/base/table.scss */
+/* line 2, ../../sass/base/table.scss */
+table {
+  /*Should remove white spaces between td's*/
+  border-collapse: collapse;
+}
+
+/* line 6, ../../sass/base/table.scss */
 th {
   text-align: left;
 }
 
-/* line 9, ../../sass/base/table.scss */
+/* line 10, ../../sass/base/table.scss */
 table {
   background-color: transparent;
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
 }
-/* line 15, ../../sass/base/table.scss */
+/* line 16, ../../sass/base/table.scss */
 table .minimum {
   width: auto;
   white-space: nowrap;
 }
-/* line 19, ../../sass/base/table.scss */
+/* line 20, ../../sass/base/table.scss */
 table .maximum {
   width: 100%;
 }
 
-/* line 25, ../../sass/base/table.scss */
+/* line 26, ../../sass/base/table.scss */
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -33,13 +39,13 @@ table .maximum {
   border-top: 1px solid #ddd;
 }
 
-/* line 36, ../../sass/base/table.scss */
+/* line 37, ../../sass/base/table.scss */
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
 }
 
-/* line 40, ../../sass/base/table.scss */
+/* line 41, ../../sass/base/table.scss */
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
 .table > thead:first-child > tr:first-child > th,
@@ -49,17 +55,17 @@ table .maximum {
   border-top: 0;
 }
 
-/* line 48, ../../sass/base/table.scss */
+/* line 49, ../../sass/base/table.scss */
 .table > tbody + tbody {
   border-top: 2px solid #ddd;
 }
 
-/* line 51, ../../sass/base/table.scss */
+/* line 52, ../../sass/base/table.scss */
 .table .table {
   background-color: #fff;
 }
 
-/* line 54, ../../sass/base/table.scss */
+/* line 55, ../../sass/base/table.scss */
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
 .table-condensed > tfoot > tr > th,
@@ -69,12 +75,12 @@ table .maximum {
   padding: 5px;
 }
 
-/* line 62, ../../sass/base/table.scss */
+/* line 63, ../../sass/base/table.scss */
 .table-bordered {
   border: 1px solid #ddd;
 }
 
-/* line 65, ../../sass/base/table.scss */
+/* line 66, ../../sass/base/table.scss */
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
 .table-bordered > tfoot > tr > th,
@@ -84,30 +90,30 @@ table .maximum {
   border: 1px solid #ddd;
 }
 
-/* line 73, ../../sass/base/table.scss */
+/* line 74, ../../sass/base/table.scss */
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
   border-bottom-width: 2px;
 }
 
-/* line 77, ../../sass/base/table.scss */
+/* line 78, ../../sass/base/table.scss */
 .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
-/* line 80, ../../sass/base/table.scss */
+/* line 81, ../../sass/base/table.scss */
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;
 }
 
-/* line 83, ../../sass/base/table.scss */
+/* line 84, ../../sass/base/table.scss */
 table col[class*="col-"] {
   position: static;
   display: table-column;
   float: none;
 }
 
-/* line 88, ../../sass/base/table.scss */
+/* line 89, ../../sass/base/table.scss */
 table td[class*="col-"],
 table th[class*="col-"] {
   position: static;
@@ -115,7 +121,7 @@ table th[class*="col-"] {
   float: none;
 }
 
-/* line 94, ../../sass/base/table.scss */
+/* line 95, ../../sass/base/table.scss */
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
 .table > tfoot > tr > td.active,
@@ -131,7 +137,7 @@ table th[class*="col-"] {
   background-color: #f5f5f5;
 }
 
-/* line 108, ../../sass/base/table.scss */
+/* line 109, ../../sass/base/table.scss */
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
@@ -140,7 +146,7 @@ table th[class*="col-"] {
   background-color: #e8e8e8;
 }
 
-/* line 115, ../../sass/base/table.scss */
+/* line 116, ../../sass/base/table.scss */
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
 .table > tfoot > tr > td.success,
@@ -156,7 +162,7 @@ table th[class*="col-"] {
   background-color: #dff0d8;
 }
 
-/* line 129, ../../sass/base/table.scss */
+/* line 130, ../../sass/base/table.scss */
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td,
@@ -165,7 +171,7 @@ table th[class*="col-"] {
   background-color: #d0e9c6;
 }
 
-/* line 136, ../../sass/base/table.scss */
+/* line 137, ../../sass/base/table.scss */
 .table > thead > tr > td.info,
 .table > tbody > tr > td.info,
 .table > tfoot > tr > td.info,
@@ -181,7 +187,7 @@ table th[class*="col-"] {
   background-color: #d9edf7;
 }
 
-/* line 150, ../../sass/base/table.scss */
+/* line 151, ../../sass/base/table.scss */
 .table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover,
 .table-hover > tbody > tr.info:hover > td,
@@ -190,7 +196,7 @@ table th[class*="col-"] {
   background-color: #c4e3f3;
 }
 
-/* line 157, ../../sass/base/table.scss */
+/* line 158, ../../sass/base/table.scss */
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
 .table > tfoot > tr > td.warning,
@@ -206,7 +212,7 @@ table th[class*="col-"] {
   background-color: #fcf8e3;
 }
 
-/* line 171, ../../sass/base/table.scss */
+/* line 172, ../../sass/base/table.scss */
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td,
@@ -215,7 +221,7 @@ table th[class*="col-"] {
   background-color: #faf2cc;
 }
 
-/* line 178, ../../sass/base/table.scss */
+/* line 179, ../../sass/base/table.scss */
 .table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
 .table > tfoot > tr > td.danger,
@@ -231,7 +237,7 @@ table th[class*="col-"] {
   background-color: #f2dede;
 }
 
-/* line 192, ../../sass/base/table.scss */
+/* line 193, ../../sass/base/table.scss */
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover,
 .table-hover > tbody > tr.danger:hover > td,
@@ -240,14 +246,14 @@ table th[class*="col-"] {
   background-color: #ebcccc;
 }
 
-/* line 199, ../../sass/base/table.scss */
+/* line 200, ../../sass/base/table.scss */
 .table-responsive {
   min-height: .01%;
   overflow-x: auto;
 }
 
 @media screen and (max-width: 767px) {
-  /* line 204, ../../sass/base/table.scss */
+  /* line 205, ../../sass/base/table.scss */
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -256,12 +262,12 @@ table th[class*="col-"] {
     border: 1px solid #ddd;
   }
 
-  /* line 211, ../../sass/base/table.scss */
+  /* line 212, ../../sass/base/table.scss */
   .table-responsive > .table {
     margin-bottom: 0;
   }
 
-  /* line 214, ../../sass/base/table.scss */
+  /* line 215, ../../sass/base/table.scss */
   .table-responsive > .table > thead > tr > th,
   .table-responsive > .table > tbody > tr > th,
   .table-responsive > .table > tfoot > tr > th,
@@ -271,12 +277,12 @@ table th[class*="col-"] {
     white-space: nowrap;
   }
 
-  /* line 222, ../../sass/base/table.scss */
+  /* line 223, ../../sass/base/table.scss */
   .table-responsive > .table-bordered {
     border: 0;
   }
 
-  /* line 225, ../../sass/base/table.scss */
+  /* line 226, ../../sass/base/table.scss */
   .table-responsive > .table-bordered > thead > tr > th:first-child,
   .table-responsive > .table-bordered > tbody > tr > th:first-child,
   .table-responsive > .table-bordered > tfoot > tr > th:first-child,
@@ -286,7 +292,7 @@ table th[class*="col-"] {
     border-left: 0;
   }
 
-  /* line 233, ../../sass/base/table.scss */
+  /* line 234, ../../sass/base/table.scss */
   .table-responsive > .table-bordered > thead > tr > th:last-child,
   .table-responsive > .table-bordered > tbody > tr > th:last-child,
   .table-responsive > .table-bordered > tfoot > tr > th:last-child,
@@ -296,7 +302,7 @@ table th[class*="col-"] {
     border-right: 0;
   }
 
-  /* line 241, ../../sass/base/table.scss */
+  /* line 242, ../../sass/base/table.scss */
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
