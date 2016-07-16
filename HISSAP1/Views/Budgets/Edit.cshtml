@@ -6,7 +6,7 @@
 
 <h2 class="buddy-header">Edit Budget</h2>
 <div class="buddy-link">
-  @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
 </div>
 @using (Html.BeginForm())
 {
@@ -91,20 +91,8 @@
       </div>
     </div>
   </div>
-            }
-
-@* Moved into separate pages *@
-
-@*<div id="dvCategoryResults">
-    @Html.Action("PayrollTaxesAssessmentPartial", "Partials", new { model = Model.PayrollTaxesAssessment })
-  </div>*@
-
-@*<div>
-    @Html.Action("FringeBenefitsPartial", "Partials")
-  </div>*@
-
-
+}
 
 <div>
-  @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
 </div>
