@@ -1,11 +1,11 @@
-﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollItem
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeItem
 
 @{
   ViewBag.Title = "Create";
 }
 
 <h2 class="buddy-header">Add Item</h2>
-@using (Html.BeginForm("AddPayrollItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
+@using (Html.BeginForm("AddFringeItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
 {
   @Html.AntiForgeryToken()
   <div class="form-horizontal">
@@ -13,7 +13,7 @@
     <table class="budget-table">
       @Html.ValidationSummary(true, "", new { @class = "text-danger" })
       <tr>
-        <th>Budget Item</th>
+        <th>Fringe Item</th>
         <th class="amount">Amount</th>
         <th>Justification</th>
         <th></th>
@@ -36,7 +36,7 @@
         <td><input type="submit" value="Add" class="btn btn-default" /></td>
       </tr>
 
-      @Html.HiddenFor(model => model.PayrollTaxesAssessmentId)
+      @Html.HiddenFor(model => model.FringeBenefitId)
 
     </table>
   </div>

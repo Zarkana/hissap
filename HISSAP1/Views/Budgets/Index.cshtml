@@ -4,11 +4,9 @@
   ViewBag.Title = "Budget";
 }
 
-<h2 class="buddy-header">Budget Index</h2>
+<h2 class="buddy-header">Budgets</h2>
 <br />
-@*<p>
-      @Html.ActionLink("Create New", "CreateInitialBudget")
-  </p>*@
+
 @using (Html.BeginForm("CreateInitialBudget", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
 {
   //If no budgets make create button
@@ -32,29 +30,23 @@
     <th>
       @Html.DisplayNameFor(model => model.ContractNumber)
     </th>
-    <th>
-      @Html.DisplayNameFor(model => model.BudgetStatus)
-    </th>
     <th></th>
   </tr>
   @{
     var i = Model.Count();
     var total = Model.Count();
-   }
+  }
   @foreach (var item in Model)
   {
     <tr>
       <td>
-        @Html.DisplayFor(modelItem => item.Name) - Revision @i
+        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - Revision " + @i, "Details", new { id = item.Id })        
       </td>
       <td>
         @Html.DisplayFor(modelItem => item.DateCreated)
       </td>
       <td>
         @Html.DisplayFor(modelItem => item.ContractNumber)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => item.BudgetStatus)
       </td>
       <td style="text-align: center">
         @if (i == total)
@@ -64,10 +56,6 @@
             @Html.ActionLink("Details", "Details", new { id=item.Id })*@
           <span>|</span>
           @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        }
-        else
-        {
-          @Html.ActionLink("Details", "Details", new { id = item.Id })
         }
       </td>
     </tr>

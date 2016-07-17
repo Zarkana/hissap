@@ -50,23 +50,92 @@ namespace HISSAP1.Models.SiteModels
 
     [Display(Name = "Payroll Taxes, Assessments")]
     public float PayrollTaxesAssessmentTotal { get; set; }
-    //[Display(Name = "Fringe Benefits")]
-    //[RegularExpression("([0-9]+)")]
-    //public float FringeBenefits { get; set; }
+
+    [Display(Name = "Fringe Benefits")]
+    public float FringeBenefitsTotal { get; set; }
 
     [Display(Name = "Personnel Cost")]
-    [RegularExpression("([0-9]+)")]
     public float PersonnelCost { get; set; }
 
     //B. OTHER CURRENT EXPENSES
+    [Display(Name = "Audit Service")]
+    public float AuditService { get; set; }
+
+    [Display(Name = "Contractual Services - Administrative")]
+    public float ContractualServicesAdministrativeTotal { get; set; }
+
+    [Display(Name = "Contractual Services - Subcontracts")]
+    public float ContractualServicesSubcontractsTotal { get; set; }
+
+    public float Insurance { get; set; }
+
+    [Display(Name = "Lease/Rental of Equipment")]
+    public float LeaseRentalEquipment { get; set; }
+
+    [Display(Name = "Lease/Rental of Motor Vehicle")]
+    public float LeaseRentalMotorVehicle { get; set; }
+
+    [Display(Name = "Lease/Rental of Space")]
+    public float LeaseRentalSpace { get; set; }
+
+    public float Mileage { get; set; }
+
+    [Display(Name = "Postage, Freight, Delivery")]
+    public float PostageFreightDelivery { get; set; }
+
+    [Display(Name = "Publication, Printing")]
+    public float PublicationPrinting { get; set; }
+
+    [Display(Name = "Repair, Maintenance")]
+    public float RepairMaintenance { get; set; }
+
+    [Display(Name = "Staff Training")]
+    public float StaffTraining { get; set; }
+
+    public float Supplies { get; set; }
+
+    public float Telecommunication { get; set; }
+
+    public float Utilities { get; set; }
+
+    [Display(Name = "Program Activities")]
+    public float ProgramActivities { get; set; }
+
+    [Display(Name = "Indirect Cost")]
+    public float IndirectCost { get; set; }
+
+    [Display(Name = "Other")]
+    public float OtherTotal { get; set; }
+
+    [Display(Name = "Other Current Expenses")]
+    public float OtherCurrentExpenses { get; set; }
 
     //C. TRANSPORTATION
 
+    [Display(Name = "Airfare, Inter-Island")]
+    public float AirfareInterIslandTotal { get; set; }
+
+    [Display(Name = "Airfare, Out-of-State")]
+    public float AirfareOutStateTotal { get; set; }
+
+    public float Transportation { get; set; }
+
     //D. SUBSISTENCE/PER DIEM
+
+    [Display(Name = "Subsistence/Per Diem")]
+    public float SubsistencePerDiemTotal { get; set; }
 
     //E. EQUIPMENT PURCHASES
 
+    [Display(Name = "Equipment Purchases")]
+    public float EquipmentPurchasesTotal { get; set; }
+
     //F. MOTOR VEHICLE PURCHASES
+
+    [Display(Name = "Motor Vehicle Purchases")]
+    public float MotorVehiclePurchasesTotal { get; set; }
+
+    public float Total { get; set; }
 
     /* BUDGET FILES */
 
@@ -74,14 +143,9 @@ namespace HISSAP1.Models.SiteModels
 
     /* PREPARED BY */
 
-    public virtual FringeBenefit FringeBenefit { get; set; }//TODO: keep?
-    //Navigation property
-   /* public virtual ICollection<FringeBenefit> FringeBenefits { get; set; }*///TODO: I believe need...
-  
-    public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }//TODO: keep?
-    //Navigation property
-    /*public virtual ICollection<PayrollTaxesAssessment> PayrollTaxesAssessments { get; set; }*///TODO: I believe need...
-
+    public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }
+    public virtual FringeBenefit FringeBenefit { get; set; }
+    
     //Navigation property
     public virtual ICollection<BudgetFile> BudgetFiles { get; set; }
   }

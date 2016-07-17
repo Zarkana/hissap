@@ -27,16 +27,10 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     [Display(Name = "Temporary Disability Insurance")]
     public float TemporaryDisabilityInsurance { get; set; }
 
-    //[Display(Name = "Sum")]
-    //public float Sum1 { get; set; }
-
-    //[Display(Name = "Sum")]
-    //public float Sum2 { get; set; }
-
     [Display(Name = "Sum Total")]
     public float SumTotal { get; set; }
 
-    public virtual Budget Budget { get; set; }//Never seems to be stored?
+    public virtual Budget Budget { get; set; }
 
     //Navigation property
     public virtual ICollection<PayrollItem> PayrollItems { get; set; }

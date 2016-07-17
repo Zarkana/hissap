@@ -1,15 +1,14 @@
-﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollTaxesAssessment
-
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeBenefit
 @{
   ViewBag.Title = "PayrollTaxesAssessment";
 }
 
-<h2 class="buddy-header">Payroll Taxes & Assessments</h2>
+<h2 class="buddy-header">Fringe Benefit</h2>
 <div class="buddy-link">
   @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
 </div>
 
-@using (Html.BeginForm("EditPayrollTaxesAssessment", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+@using (Html.BeginForm("EditFringeBenefit", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
 {
   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
   @Html.HiddenFor(model => model.Id)
@@ -25,11 +24,11 @@
       </tr>
       <tr>
         <td>
-          @Html.LabelFor(model => model.SocialSecurity, htmlAttributes: new { @class = "control-label col-md-2" })
+          @Html.LabelFor(model => model.HealthInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
-          @Html.EditorFor(model => model.SocialSecurity, new { htmlAttributes = new { @class = "form-control value-add" } })
-          @Html.ValidationMessageFor(model => model.SocialSecurity, "", new { @class = "text-danger" })
+          @Html.EditorFor(model => model.HealthInsurance, new { htmlAttributes = new { @class = "form-control value-add" } })
+          @Html.ValidationMessageFor(model => model.HealthInsurance, "", new { @class = "text-danger" })
         </td>
         <td></td>
         <td></td>
@@ -37,11 +36,11 @@
 
       <tr>
         <td>
-          @Html.LabelFor(model => model.UnemploymentInsuranceFederal, htmlAttributes: new { @class = "control-label col-md-2" })
+          @Html.LabelFor(model => model.Retirement, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
-          @Html.EditorFor(model => model.UnemploymentInsuranceFederal, new { htmlAttributes = new { @class = "form-control value-add" } })
-          @Html.ValidationMessageFor(model => model.UnemploymentInsuranceFederal, "", new { @class = "text-danger" })
+          @Html.EditorFor(model => model.Retirement, new { htmlAttributes = new { @class = "form-control value-add" } })
+          @Html.ValidationMessageFor(model => model.Retirement, "", new { @class = "text-danger" })
         </td>
         <td></td>
         <td></td>
@@ -49,41 +48,17 @@
 
       <tr>
         <td>
-          @Html.LabelFor(model => model.UnemploymentInsuranceState, htmlAttributes: new { @class = "control-label col-md-2" })
+          @Html.LabelFor(model => model.LifeLongDisabilityInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
-          @Html.EditorFor(model => model.UnemploymentInsuranceState, new { htmlAttributes = new { @class = "form-control value-add" } })
-          @Html.ValidationMessageFor(model => model.UnemploymentInsuranceState, "", new { @class = "text-danger" })
+          @Html.EditorFor(model => model.LifeLongDisabilityInsurance, new { htmlAttributes = new { @class = "form-control value-add" } })
+          @Html.ValidationMessageFor(model => model.LifeLongDisabilityInsurance, "", new { @class = "text-danger" })
         </td>
         <td></td>
         <td></td>
       </tr>
 
-      <tr>
-        <td>
-          @Html.LabelFor(model => model.WorkersCompensation, htmlAttributes: new { @class = "control-label col-md-2" })
-        </td>
-        <td class="amount">
-          @Html.EditorFor(model => model.WorkersCompensation, new { htmlAttributes = new { @class = "form-control value-add" } })
-          @Html.ValidationMessageFor(model => model.WorkersCompensation, "", new { @class = "text-danger" })
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          @Html.LabelFor(model => model.TemporaryDisabilityInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
-        </td>
-        <td class="amount">
-          @Html.EditorFor(model => model.TemporaryDisabilityInsurance, new { htmlAttributes = new { @class = "form-control value-add" } })
-          @Html.ValidationMessageFor(model => model.TemporaryDisabilityInsurance, "", new { @class = "text-danger" })
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      @foreach (var item in Model.PayrollItems)
+      @foreach (var item in Model.FringeItems)
       {
         <tr>
           <td>
@@ -124,7 +99,7 @@
   </div>
 }
 <div id="dvCategoryResults">
-  @Html.Action("PayrollItemsPartial", "Partials")
+  @Html.Action("FringeItemsPartial", "Partials")
 </div>
 <div>
   @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
@@ -136,7 +111,7 @@
       var $ctrl = $(this);
       if (confirm('Do you really want to delete this item?')) {
         $.ajax({
-          url: '@Url.Action("DeletePayrollItem", "Budgets")',
+          url: '@Url.Action("DeleteFringeItem", "Budgets")',
           type: 'POST',
           data: { id: $(this).data('id') }
         }).done(function (data) {

@@ -16,7 +16,7 @@ $site-select-index: 1;*/
 .navbar {
   height: 50px;
   /*min-height: $navbar-min-height;*/
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   background-color: #28AF21;
   border: 1px solid #196f15;
   /*Styling for the center banner description of website*/

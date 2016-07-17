@@ -9,7 +9,7 @@ $child-navbar-color: lighten($light-gray, 20%);
 .navbar {
   height: $navbar-min-height;
   /*min-height: $navbar-min-height;*/
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   background-color: $navbar-color;
   border: 1px solid darken($navbar-color, 15%);
 
@@ -232,6 +232,5 @@ $child-navbar-color: lighten($light-gray, 20%);
          margin-left: 15px;
        }
     }
-
   }
 }

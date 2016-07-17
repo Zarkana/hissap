@@ -1,25 +1,75 @@
 ﻿@import "../base/variables.scss";
 
+#edit-budget-content {
+  margin-left: 20px;
+  label{
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+  .section-label{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+}
+
 .budget-header {
   display: inline-block;
-  padding: 5px 25px;
+  padding: 2px 25px;
   background-color: lighten($light-gray, 30%);
+  margin-bottom: 10px;
 
   .form-group {
     display: inline-block;
     margin-left: 20px;
   }
 
-  @media screen and (max-width: 960px) {
-    & {
-    }
+  #form-date-created input {
+    width: 170px;
   }
 
-  @media screen and (max-width: 760px) {
-    & {
+  #form-contract-number input {
+    width: 160px;
+  }
+
+  #form-status select {
+    width: 120px;
+  }
+
+  #form-contract-amount input {
+    width: 140px;
+  }
+}
+
+
+.invoice-information {
+  label{
+    font-weight: 100;
+    padding-bottom: 5px;
+    padding-top: 5px !important;
+  }
+  input {
+    width: 175px;
+    height: 26px;
+  }
+
+  #overview-budget-table {
+    margin-left: 30px;
+    width: 20%;
+
+    tr {
+      background-color: white;
+
+      td {
+        padding: 4px 8px;
+        min-width: 190px;
+      }
     }
   }
 }
+
+
+
 
 .form-page {
   padding-left: 40px;
@@ -28,7 +78,6 @@
 .budget-table {
   border-collapse: collapse;
   width: 90%;
-  margin-left: 3%;
 
   tr {
 
@@ -64,10 +113,9 @@
         width: 100%;
       }
 
-      span.amount-padding{
+      span.amount-padding {
         padding-left: 10px;
       }
-
     }
 
     td:nth-of-type(3), th:nth-of-type(3) {
@@ -79,8 +127,14 @@
   }
 }
 
+.edit-budget-table {
+  width: 65%;
+}
 
-.form-table-container{
+
+
+
+.form-table-container {
   /*position: relative;
   margin-bottom: 75px;*/
 }

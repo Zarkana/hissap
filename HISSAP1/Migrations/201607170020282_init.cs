@@ -32,7 +32,6 @@ namespace HISSAP1.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Temp = c.String(),
                         BudgetsSiteId = c.Int(nullable: false),
                         DateCreated = c.DateTime(nullable: false),
                         ContractNumber = c.String(nullable: false),
@@ -41,14 +40,38 @@ namespace HISSAP1.Migrations
                         TotalExpenses = c.Single(nullable: false),
                         Salary = c.Single(nullable: false),
                         PayrollTaxesAssessmentTotal = c.Single(nullable: false),
+                        FringeBenefitsTotal = c.Single(nullable: false),
                         PersonnelCost = c.Single(nullable: false),
-                        FringeBenefit_Id = c.Int(),
+                        AuditService = c.Single(nullable: false),
+                        ContractualServicesAdministrativeTotal = c.Single(nullable: false),
+                        ContractualServicesSubcontractsTotal = c.Single(nullable: false),
+                        Insurance = c.Single(nullable: false),
+                        LeaseRentalEquipment = c.Single(nullable: false),
+                        LeaseRentalMotorVehicle = c.Single(nullable: false),
+                        LeaseRentalSpace = c.Single(nullable: false),
+                        Mileage = c.Single(nullable: false),
+                        PostageFreightDelivery = c.Single(nullable: false),
+                        PublicationPrinting = c.Single(nullable: false),
+                        RepairMaintenance = c.Single(nullable: false),
+                        StaffTraining = c.Single(nullable: false),
+                        Supplies = c.Single(nullable: false),
+                        Telecommunication = c.Single(nullable: false),
+                        Utilities = c.Single(nullable: false),
+                        ProgramActivities = c.Single(nullable: false),
+                        IndirectCost = c.Single(nullable: false),
+                        OtherTotal = c.Single(nullable: false),
+                        OtherCurrentExpenses = c.Single(nullable: false),
+                        AirfareInterIslandTotal = c.Single(nullable: false),
+                        AirfareOutStateTotal = c.Single(nullable: false),
+                        Transportation = c.Single(nullable: false),
+                        SubsistencePerDiemTotal = c.Single(nullable: false),
+                        EquipmentPurchasesTotal = c.Single(nullable: false),
+                        MotorVehiclePurchasesTotal = c.Single(nullable: false),
+                        Total = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Sites", t => t.BudgetsSiteId, cascadeDelete: true)
-                .ForeignKey("dbo.FringeBenefits", t => t.FringeBenefit_Id)
-                .Index(t => t.BudgetsSiteId)
-                .Index(t => t.FringeBenefit_Id);
+                .Index(t => t.BudgetsSiteId);
             
             CreateTable(
                 "dbo.BudgetFiles",
@@ -149,13 +172,29 @@ namespace HISSAP1.Migrations
                 "dbo.FringeBenefits",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false),
                         HealthInsurance = c.Single(nullable: false),
                         Retirement = c.Single(nullable: false),
                         LifeLongDisabilityInsurance = c.Single(nullable: false),
                         SumTotal = c.Single(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Budgets", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
+                "dbo.FringeItems",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                        Amount = c.Single(nullable: false),
+                        Justification = c.String(),
+                        FringeBenefitId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.FringeBenefits", t => t.FringeBenefitId, cascadeDelete: true)
+                .Index(t => t.FringeBenefitId);
             
             CreateTable(
                 "dbo.PayrollTaxesAssessments",
@@ -281,7 +320,8 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.CurrentSites", "SelectedSite", "dbo.Sites");
             DropForeignKey("dbo.PayrollItems", "PayrollTaxesAssessmentId", "dbo.PayrollTaxesAssessments");
             DropForeignKey("dbo.PayrollTaxesAssessments", "Id", "dbo.Budgets");
-            DropForeignKey("dbo.Budgets", "FringeBenefit_Id", "dbo.FringeBenefits");
+            DropForeignKey("dbo.FringeItems", "FringeBenefitId", "dbo.FringeBenefits");
+            DropForeignKey("dbo.FringeBenefits", "Id", "dbo.Budgets");
             DropForeignKey("dbo.Sites", "SitesContractId", "dbo.Contracts");
             DropForeignKey("dbo.Contracts", "ContractsProviderId", "dbo.Providers");
             DropForeignKey("dbo.Addresses", "Provider_Id", "dbo.Providers");
@@ -304,6 +344,8 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.CurrentSites", new[] { "UserId" });
             DropIndex("dbo.PayrollItems", new[] { "PayrollTaxesAssessmentId" });
             DropIndex("dbo.PayrollTaxesAssessments", new[] { "Id" });
+            DropIndex("dbo.FringeItems", new[] { "FringeBenefitId" });
+            DropIndex("dbo.FringeBenefits", new[] { "Id" });
             DropIndex("dbo.Providers", new[] { "Address_AddressId" });
             DropIndex("dbo.ContractFiles", new[] { "ContractId" });
             DropIndex("dbo.Contracts", new[] { "ContractsProviderId" });
@@ -313,7 +355,6 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.Sites", new[] { "Address_AddressId" });
             DropIndex("dbo.Sites", new[] { "SitesContractId" });
             DropIndex("dbo.BudgetFiles", new[] { "Budget_Id" });
-            DropIndex("dbo.Budgets", new[] { "FringeBenefit_Id" });
             DropIndex("dbo.Budgets", new[] { "BudgetsSiteId" });
             DropIndex("dbo.Addresses", new[] { "Provider_Id" });
             DropIndex("dbo.Addresses", new[] { "Site_Id" });
@@ -325,6 +366,7 @@ namespace HISSAP1.Migrations
             DropTable("dbo.CurrentSites");
             DropTable("dbo.PayrollItems");
             DropTable("dbo.PayrollTaxesAssessments");
+            DropTable("dbo.FringeItems");
             DropTable("dbo.FringeBenefits");
             DropTable("dbo.Providers");
             DropTable("dbo.ContractFiles");
