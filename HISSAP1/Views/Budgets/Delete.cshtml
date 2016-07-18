@@ -9,82 +9,77 @@
   @Html.ActionLink("Back to List", "Index")
 </div>
 <h3>Are you sure you want to delete this?</h3>
-<div>
-  <hr />
-  <dl class="dl-horizontal">
-    <dt>
-      @Html.DisplayNameFor(model => model.BudgetsSite.SiteName)
-    </dt>
+<div id="edit-budget-content" class="form-horizontal">
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  @Html.HiddenFor(model => model.Id)
+  <div class="invoice-information">
+    <div class="thumbnail budget-header">
+      <div class="form-group" id="form-date-created">
+        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+        <br />
+        @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
+      </div>
 
-    <dd>
-      @Html.DisplayFor(model => model.BudgetsSite.SiteName)
-    </dd>
+      <div class="form-group" id="form-contract-number">
+        @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <br />
+        @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "text-danger" })
+      </div>
 
-    <dt>
-      @Html.DisplayNameFor(model => model.DateCreated)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.DateCreated)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.ContractNumber)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.ContractNumber)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.BudgetStatus)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.BudgetStatus)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.TotalContractAmount)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.TotalContractAmount)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.TotalExpenses)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.TotalExpenses)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.Salary)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.Salary)
-    </dd>
-
-    <dt>
-      @Html.DisplayNameFor(model => model.PersonnelCost)
-    </dt>
-
-    <dd>
-      @Html.DisplayFor(model => model.PersonnelCost)
-    </dd>
-
-  </dl>
-
-  @using (Html.BeginForm())
-  {
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-      <input type="submit" value="Delete" class="btn btn-default" /> |
-      @Html.ActionLink("Back to List", "Index")
+      <div class="form-group" id="form-status">
+        @Html.Label("Status", new { @class = "col-md-2 control-label" })
+        <br />
+        @{
+          var list = new SelectList(
+            new List<Object>{
+                  new { value = "Accepted" , text = "Active" },
+                  new { value = "Revision Requested" , text = "Revision Requested" },
+                  new { value = "Rejected" , text = "Rejected" },
+                  new { value = "Proposed" , text = "Proposed" },
+                  new { value = "New" , text = "New" }
+              }, "value", "text", 2);
+        }
+        @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })
+      </div>
     </div>
-  }
-</div>
+    <table id="overview-budget-table" class="budget-table edit-budget-table">
+      <tr id="form-contract-amount">
+        <td>
+          @Html.LabelFor(model => model.TotalContractAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td>
+          @Html.EditorFor(model => model.TotalContractAmount, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.TotalContractAmount, "", new { @class = "text-danger" })
+        </td>
+      </tr>
+      <tr id="form-total-expenses">
+        <td>
+          @Html.LabelFor(model => model.TotalExpenses, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td>
+          @Html.EditorFor(model => model.TotalExpenses, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.TotalExpenses, "", new { @class = "text-danger" })
+        </td>
+      </tr>
+      <tr id="form-total-expenses">
+        <td>
+          <label class="control-label">Balance</label>
+        </td>
+        <td>
+          <input type="text" class="form-control value-add" disabled="disabled" value="" />
+        </td>
+      </tr>
+    </table>
+  </div>
+    @using (Html.BeginForm())
+    {
+      @Html.AntiForgeryToken()
+
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+      </div>
+    }
+  </div>

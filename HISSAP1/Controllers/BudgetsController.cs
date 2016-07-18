@@ -272,6 +272,16 @@ namespace HISSAP1.Controllers
       return View("Details/FringeBenefit", model);
     }
 
+    [HttpGet]//GET: Returns the edit view
+    public ActionResult EditAdministrativeContractualService(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      ContractualAdministrativeService model = db.AdministrativeContractualServices.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("Details/AdministrativeContractualService", model);
+    }
+
     /*POST: EditObject(model)*/
 
     [HttpPost]//POST: Edits an already made model

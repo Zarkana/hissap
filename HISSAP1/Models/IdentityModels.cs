@@ -50,6 +50,9 @@ namespace HISSAP1.Models
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeBenefit> FringeBenefits { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeItem> FringeItems { get; set; }
 
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.ContractualAdministrativeService> AdministrativeContractualServices { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AdministrativeItem> AdministrativeItems { get; set; }
+
 
     //public System.Data.Entity.DbSet<HISSAP1.ViewModels.BudgetViewModel> BudgetViewModels { get; set; }
   }

@@ -145,7 +145,9 @@ namespace HISSAP1.Models.SiteModels
 
     public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }
     public virtual FringeBenefit FringeBenefit { get; set; }
-    
+    public virtual ContractualAdministrativeService AdministrativeContractualService { get; set; }
+
+
     //Navigation property
     public virtual ICollection<BudgetFile> BudgetFiles { get; set; }
   }

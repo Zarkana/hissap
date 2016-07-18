@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
 {
-  public class OtherBudgetInvoice
+  public class Airfare
   {
     [ForeignKey("Budget")]
     public int Id { get; set; }
@@ -18,16 +18,20 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     public virtual Budget Budget { get; set; }
 
     //Navigation property
-    public virtual ICollection<OtherItem> OtherBudgetItems { get; set; }
+    public virtual ICollection<Traveler> Travelers { get; set; }
   }
 
-  public class OtherItem
+  public class Traveler
   {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public float Amount { get; set; }
-    public string Justification { get; set; }
-    public int OtherBudgetInvoiceId { get; set; }
-    public virtual OtherBudgetInvoice OtherBudgetInvoice { get; set; }
+    public string Destination { get; set; }
+    [Display(Name = "Air Fare")]
+    public float AirFare { get; set; }
+    public float Transportation { get; set; }
+    [Display(Name = "Purpose of Travel")]
+    public string PurposeOfTravel { get; set; }
+    public int AirfareInterIslandId { get; set; }
+    public virtual Airfare Airfare { get; set; }
   }
 }

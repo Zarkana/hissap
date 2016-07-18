@@ -132,11 +132,11 @@
 }
 
 
-
-
 .form-table-container {
-  /*position: relative;
-  margin-bottom: 75px;*/
+  input.btn-success{
+    //Move input over to the left just a smidge
+    margin-left: 0;
+  }
 }
 
 .form-options {

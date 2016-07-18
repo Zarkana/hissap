@@ -45,5 +45,4 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     public int PayrollTaxesAssessmentId { get; set; }
     public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }
   }
-
 }

@@ -140,10 +140,9 @@ $site-select-index: 1;*/
   width: 65%;
 }
 
-/* line 137, ../../sass/modules/budget.scss */
-.form-table-container {
-  /*position: relative;
-  margin-bottom: 75px;*/
+/* line 136, ../../sass/modules/budget.scss */
+.form-table-container input.btn-success {
+  margin-left: 0;
 }
 
 /* line 142, ../../sass/modules/budget.scss */
