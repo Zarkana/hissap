@@ -516,6 +516,13 @@
     <Content Include="Views\PayrollItems\Index.cshtml" />
     <Content Include="Views\Partials\Budgets\PayrollItem.cshtml" />
     <Content Include="Views\Partials\Budgets\FringeItem.cshtml" />
+    <Content Include="Views\Budgets\Details\ContractualAdministrativeService.cshtml" />
+    <Content Include="Views\Budgets\Details\ContractualSubcontractsService.cshtml" />
+    <Content Include="Views\Budgets\Details\Other.cshtml" />
+    <Content Include="Views\Budgets\Details\AirfareInterIsland.cshtml" />
+    <Content Include="Views\Budgets\Details\AirfareOutOfState.cshtml" />
+    <Content Include="Views\Budgets\Details\SubsistencePerDiem.cshtml" />
+    <Content Include="Views\Budgets\Details\EquipmentPurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />

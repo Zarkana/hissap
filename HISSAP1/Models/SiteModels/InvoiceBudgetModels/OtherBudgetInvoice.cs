@@ -18,7 +18,7 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     public virtual Budget Budget { get; set; }
 
     //Navigation property
-    public virtual ICollection<OtherItem> OtherBudgetItems { get; set; }
+    public virtual ICollection<OtherItem> OtherItems { get; set; }
   }
 
   public class OtherItem

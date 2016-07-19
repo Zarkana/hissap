@@ -1,0 +1,119 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.EquipmentPurchase
+
+@{
+  ViewBag.Title = "Equipment Purchase";
+}
+
+<h2 class="buddy-header">Equipment Purchase</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
+</div>
+
+@using (Html.BeginForm("EditEquipmentPurchase", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+{
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  @Html.HiddenFor(model => model.Id)
+  @Html.AntiForgeryToken()
+  <div class="form-horizontal form-table-container">
+    <hr />
+    <table class="budget-table">
+      <tr>
+        <th>Name</th>
+        <th>Number of Items</th>
+        <th>Cost per Item</th>
+        <th>Justification</th>
+        <th></th>
+      </tr>
+      @foreach (var item in Model.EquipmentItems)
+      {
+        <tr>
+          <td>
+            <label class="control-label">@item.EquipmentDescription</label>
+          </td>
+          <td>
+            <label class="control-label">@item.NumberItems</label>
+          </td>
+          <td class="amount">
+            <input type="hidden" class="value-add" value="@item.CostPerItem" />
+            <span class="amount-padding">@item.CostPerItem</span>
+          </td>
+          <td>
+            <label class="control-label">@item.Justification</label>
+          </td>
+          <td>
+            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deleteEquipmentItem">X</a>
+          </td>
+        </tr>
+      }
+      <tr>
+        <td>
+          @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.HiddenFor(model => model.SumTotal)
+          <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
+          @Html.ValidationMessageFor(model => model.SumTotal, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+
+    </table>
+
+    <div class="form-group form-options">
+      <input type="submit" value="Save" class="btn btn-success" />
+      @* TODO: Implement cancel *@
+      @*<button type="submit" class="btn btn-default">Cancel</button>*@
+    </div>
+  </div>
+}
+<div id="dvCategoryResults">
+  @Html.Action("EquipmentItemPartial", "Partials")
+</div>
+<div>
+  @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
+</div>
+@section Scripts {
+  <script>
+    $('.deleteEquipmentItem').click(function (e) {
+      e.preventDefault();
+      var $ctrl = $(this);
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+          url: '@Url.Action("EquipmentItem", "Budgets")',
+          type: 'POST',
+          data: { id: $(this).data('id') }
+        }).done(function (data) {
+          if (data.Result == "OK") {
+            $ctrl.closest('tr').remove();
+            calculateSumTotal();
+          }
+          else if (data.Result.Message) {
+            alert(data.Result.Message);
+          }
+        }).fail(function () {
+          alert("There is something wrong. Please try again.");
+        })
+
+      }
+    });
+
+    calculateSumTotal();
+
+    $("input.value-add").change(function () {
+      calculateSumTotal();
+    });
+
+    function calculateSumTotal() {
+      var sum = $("#SumTotal, #dummy-SumTotal");
+      var total = 0;
+      $("input.value-add").each(function () {
+        item = Number($(this).val().trim());
+        if (item != null && !isNaN(item)) {
+          total += item;
+        }
+      });
+      $(sum).val(total);
+    }
+  </script>
+}

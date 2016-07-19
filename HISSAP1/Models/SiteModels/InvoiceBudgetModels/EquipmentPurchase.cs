@@ -12,6 +12,9 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     [ForeignKey("Budget")]
     public int Id { get; set; }
 
+    [Display(Name = "Sum Total")]
+    public float SumTotal { get; set; }
+
     public virtual Budget Budget { get; set; }
 
     //Navigation property

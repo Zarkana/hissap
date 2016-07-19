@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,11 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
 {
   public class SubsistencePerDiem
   {
+    [ForeignKey("Budget")]
     public int Id { get; set; }
+
+    [Display(Name = "Sum Total")]
+    public float SumTotal { get; set; }
 
     public virtual Budget Budget { get; set; }
 

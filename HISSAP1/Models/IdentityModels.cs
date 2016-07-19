@@ -50,10 +50,23 @@ namespace HISSAP1.Models
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeBenefit> FringeBenefits { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeItem> FringeItems { get; set; }
 
-    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.ContractualAdministrativeService> AdministrativeContractualServices { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.ContractualAdministrativeService> ContractualAdministrativeServices { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AdministrativeItem> AdministrativeItems { get; set; }
 
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.ContractualSubcontractsService> ContractualSubcontractsServices { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubcontractsItem> SubcontractsItems { get; set; }
 
-    //public System.Data.Entity.DbSet<HISSAP1.ViewModels.BudgetViewModel> BudgetViewModels { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.OtherBudgetInvoice> OtherBudgetInvoices { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.OtherItem> OtherItems { get; set; }
+
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AirfareInterIsland> AirfaresInterIsland { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AirfareOutOfState> AirfaresOutOfState { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.Traveler> Travelers { get; set; }
+
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubsistencePerDiem> SubsistencePerDiems { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubsistencePerDiemItem> SubsistencePerDiemItems { get; set; }
+
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.EquipmentPurchase> EquipmentPurchases { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.EquipmentItem> EquipmentItems { get; set; }
   }
 }

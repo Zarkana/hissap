@@ -62,10 +62,10 @@ namespace HISSAP1.Models.SiteModels
     public float AuditService { get; set; }
 
     [Display(Name = "Contractual Services - Administrative")]
-    public float ContractualServicesAdministrativeTotal { get; set; }
+    public float ContractualAdministrativeServicesTotal { get; set; }
 
     [Display(Name = "Contractual Services - Subcontracts")]
-    public float ContractualServicesSubcontractsTotal { get; set; }
+    public float ContractualSubcontractsServicesTotal { get; set; }
 
     public float Insurance { get; set; }
 
@@ -146,7 +146,12 @@ namespace HISSAP1.Models.SiteModels
     public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }
     public virtual FringeBenefit FringeBenefit { get; set; }
     public virtual ContractualAdministrativeService AdministrativeContractualService { get; set; }
-
+    public virtual ContractualSubcontractsService ContractualSubcontractsService { get; set; }
+    public virtual OtherBudgetInvoice OtherBudgetInvoice { get; set; }
+    public virtual AirfareInterIsland AirfareInterIsland { get; set; }
+    public virtual AirfareOutOfState AirfareOutOfState { get; set; }
+    public virtual SubsistencePerDiem SubsistencePerDiem { get; set; }
+    public virtual EquipmentPurchase EquipmentPurchase { get; set; }
 
     //Navigation property
     public virtual ICollection<BudgetFile> BudgetFiles { get; set; }
