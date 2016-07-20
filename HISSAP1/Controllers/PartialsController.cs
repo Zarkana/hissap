@@ -44,6 +44,37 @@ namespace HISSAP1.Controllers
     {
       return PartialView("Budgets/FringeItem");
     }
+
+    public ActionResult AdministrativeItemsPartial()
+    {
+      return PartialView("Budgets/AdministrativeItem");
+    }
+
+    public ActionResult SubcontractsItemsPartial()
+    {
+      return PartialView("Budgets/SubcontractsItem");
+    }
+
+    public ActionResult OtherItemsPartial()
+    {
+      return PartialView("Budgets/OtherItem");
+    }
+
+    public ActionResult TravelerPartial()
+    {
+      return PartialView("Budgets/Traveler");
+    }
+
+    public ActionResult SubsistencePerDiemItemsPartial()
+    {
+      return PartialView("Budgets/SubsistencePerDiemItem");
+    }
+
+    public ActionResult EquipmentItemsPartial()
+    {
+      return PartialView("Budgets/EquipmentItem");
+    }
+
   }
 
 

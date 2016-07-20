@@ -1,0 +1,49 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.EquipmentItem
+
+@{
+  ViewBag.Title = "Create";
+}
+
+<h2 class="buddy-header">Add Item</h2>
+@using (Html.BeginForm("AddEquipmentItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
+{
+  @Html.AntiForgeryToken()
+  <div class="form-horizontal">
+    <hr />
+    <table class="budget-table equipment">
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <tr>
+        <th>Equipment Description</th>
+        <th>Number of Items</th>        
+        <th class="amount">Cost Per Item</th>
+        <th>Justification</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="name">
+          @Html.EditorFor(model => model.EquipmentDescription, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.EquipmentDescription, "", new { @class = "text-danger" })
+        </td>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.NumberItems, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.NumberItems, "", new { @class = "text-danger" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.CostPerItem, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.CostPerItem, "", new { @class = "text-danger" })
+        </td>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.Justification, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Justification, "", new { @class = "text-danger" })
+        </td>
+        <td><input type="submit" value="Add" class="btn btn-default" /></td>
+      </tr>
+
+      @Html.HiddenFor(model => model.EquipmentPurchaseId)
+
+    </table>
+  </div>
+}
+
+
+

@@ -26,12 +26,14 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     public Guid Id { get; set; }
     public string Name { get; set; }
     public string Destination { get; set; }
+    public string TravelType { get; set; }//Inter Island or Out of State
     [Display(Name = "Air Fare")]
     public float AirFare { get; set; }
     public float Transportation { get; set; }
     [Display(Name = "Purpose of Travel")]
     public string PurposeOfTravel { get; set; }
-    public int AirfareInterIslandId { get; set; }
-    public virtual Airfare Airfare { get; set; }
+
+    public int AirfareTravelId { get; set; }
+    public virtual Airfare AirfareTravel { get; set; }
   }
 }

@@ -27,8 +27,10 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     [Display(Name = "No. Days")]
     public int NumberOfDays { get; set; }
     [Display(Name = "Per Diem/Subsistence")]
-    public string SubsistencePerDiem { get; set; }
+    public float SubsistencePerDiemAmount { get; set; }
     public int TravelerId { get; set; }
     public virtual Traveler Traveler{ get; set; }
+    public int SubsistencePerDiemId { get; set; }
+    public virtual SubsistencePerDiem SubsistencePerDiem { get; set; }
   }
 }

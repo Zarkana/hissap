@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
 {
-  public class AirfareOutOfState : Airfare
-  {
-  }
+  //public class AirfareOutOfState : Airfare
+  //{
+  //}
 }

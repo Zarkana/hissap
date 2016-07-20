@@ -16,30 +16,30 @@
   @Html.AntiForgeryToken()
   <div class="form-horizontal form-table-container">
     <hr />
-    <table class="budget-table">
+    <table class="budget-table contractual-administrative-service">
       <tr>
-        <th>Name</th>
+        <th class="name">Name</th>
         <th class="amount">Amount</th>
         <th>Services Provided</th>
-        <th>Sub-Contract Number</th>
+        <th>Sub-Contract</th>
         <th>Comments</th>
         <th></th>
       </tr>      
       @foreach (var item in Model.AdministrativeItems)
       {
         <tr>
-          <td>
+          <td class="name">
             <label class="control-label">@item.BusinessIndividualName</label>
-          </td>
-          <td>
-            <label class="control-label">@item.ServicesProvided</label>
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.Amount" />
-            <span class="amount-padding">@item.Amount</span>
+            <span>@item.Amount</span>
           </td>
           <td>
-            <label class="control-label">@item.SubContractNumber</label>
+            @item.ServicesProvided
+          </td>
+          <td>
+            @item.SubContractNumber
           </td>
           <td>
             @item.Comments
@@ -50,7 +50,7 @@
         </tr>
       }
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -58,6 +58,8 @@
           <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
           @Html.ValidationMessageFor(model => model.SumTotal, "", new { @class = "text-danger" })
         </td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
       </tr>

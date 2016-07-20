@@ -59,8 +59,7 @@ namespace HISSAP1.Models
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.OtherBudgetInvoice> OtherBudgetInvoices { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.OtherItem> OtherItems { get; set; }
 
-    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AirfareInterIsland> AirfaresInterIsland { get; set; }
-    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.AirfareOutOfState> AirfaresOutOfState { get; set; }
+    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.Airfare> Airfares { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.Traveler> Travelers { get; set; }
 
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubsistencePerDiem> SubsistencePerDiems { get; set; }

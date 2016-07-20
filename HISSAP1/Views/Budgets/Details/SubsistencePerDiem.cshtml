@@ -16,25 +16,25 @@
   @Html.AntiForgeryToken()
   <div class="form-horizontal form-table-container">
     <hr />
-    <table class="budget-table">
+    <table class="budget-table per-diem">
       <tr>
-        <th>Traveler</th>
+        <th class="name">Traveler</th>
+        <th class="amount">Subsistence Per Diem</th>
         <th>Number of Days</th>
-        <th>Subsistence Per Diem</th>
         <th></th>
-      </tr>      
+      </tr>
       @foreach (var item in Model.SubsistencePerDiemItems)
       {
         <tr>
-          <td>
+          <td class="name">
             <label class="control-label">@item.Traveler.Name</label>
-          </td>
-          <td>
-            <label class="control-label">@item.NumberOfDays</label>
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.SubsistencePerDiem" />
-            <span class="amount-padding">@item.SubsistencePerDiem</span>
+            <span>@item.SubsistencePerDiem</span>
+          </td>
+          <td>
+            <label class="control-label">@item.NumberOfDays</label>
           </td>
           <td>
             <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deleteSubsistencePerDiemItem">X</a>
@@ -42,7 +42,7 @@
         </tr>
       }
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -64,7 +64,7 @@
   </div>
 }
 <div id="dvCategoryResults">
-  @Html.Action("SubsistencePerDiemItemPartial", "Partials")
+  @Html.Action("SubsistencePerDiemItemsPartial", "Partials")
 </div>
 <div>
   @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })

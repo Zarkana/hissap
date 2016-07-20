@@ -112,11 +112,13 @@ namespace HISSAP1.Models.SiteModels
 
     //C. TRANSPORTATION
 
-    [Display(Name = "Airfare, Inter-Island")]
-    public float AirfareInterIslandTotal { get; set; }
+    public float AirfareTotal { get; set; }
 
-    [Display(Name = "Airfare, Out-of-State")]
-    public float AirfareOutStateTotal { get; set; }
+    //[Display(Name = "Airfare, Inter-Island")]
+    //public float AirfareInterIslandTotal { get; set; }
+
+    //[Display(Name = "Airfare, Out-of-State")]
+    //public float AirfareOutStateTotal { get; set; }
 
     public float Transportation { get; set; }
 
@@ -145,11 +147,12 @@ namespace HISSAP1.Models.SiteModels
 
     public virtual PayrollTaxesAssessment PayrollTaxesAssessment { get; set; }
     public virtual FringeBenefit FringeBenefit { get; set; }
-    public virtual ContractualAdministrativeService AdministrativeContractualService { get; set; }
+    public virtual ContractualAdministrativeService ContractualAdministrativeService { get; set; }
     public virtual ContractualSubcontractsService ContractualSubcontractsService { get; set; }
     public virtual OtherBudgetInvoice OtherBudgetInvoice { get; set; }
-    public virtual AirfareInterIsland AirfareInterIsland { get; set; }
-    public virtual AirfareOutOfState AirfareOutOfState { get; set; }
+    public virtual Airfare Airfare { get; set; }
+    //public virtual AirfareInterIsland AirfareInterIsland { get; set; }
+    //public virtual AirfareOutOfState AirfareOutOfState { get; set; }
     public virtual SubsistencePerDiem SubsistencePerDiem { get; set; }
     public virtual EquipmentPurchase EquipmentPurchase { get; set; }
 

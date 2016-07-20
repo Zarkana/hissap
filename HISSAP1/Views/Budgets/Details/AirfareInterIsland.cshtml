@@ -1,4 +1,4 @@
-﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.AirfareInterIsland
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.Airfare
 @{
   ViewBag.Title = "Airfare Inter Island";
 }
@@ -15,34 +15,34 @@
   @Html.AntiForgeryToken()
   <div class="form-horizontal form-table-container">
     <hr />
-    <table class="budget-table">
+    <table class="budget-table airfare">
       <tr>
-        <th>Name</th>
+        <th class="name">Name</th>
         <th>Destination</th>
         <th class="amount">Air Fare</th>
-        <th>Transportation</th>
+        <th class="amount">Transportation</th>
         <th>Purpose Of Travel</th>
         <th></th>
       </tr>
       @foreach (var item in Model.Travelers)
       {
         <tr>
-          <td>
+          <td class="name">
             <label class="control-label">@item.Name</label>
           </td>
           <td>
-            <label class="control-label">@item.Destination</label>
+            @item.Destination
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.AirFare" />
-            <span class="amount-padding">@item.AirFare</span>
+            <span>@item.AirFare</span>
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.Transportation" />
-            <span class="amount-padding">@item.Transportation</span>
+            <span>@item.Transportation</span>
           </td>
           <td>
-            <label class="control-label">@item.PurposeOfTravel</label>
+            @item.PurposeOfTravel
           </td>
           <td>
             <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deleteTraveler">X</a>
@@ -50,14 +50,16 @@
         </tr>
       }
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
+        <td></td>
         <td class="amount">
           @Html.HiddenFor(model => model.SumTotal)
           <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
           @Html.ValidationMessageFor(model => model.SumTotal, "", new { @class = "text-danger" })
         </td>
+        <td></td>
         <td></td>
         <td></td>
       </tr>

@@ -16,29 +16,29 @@
   @Html.AntiForgeryToken()
   <div class="form-horizontal form-table-container">
     <hr />
-    <table class="budget-table">
+    <table class="budget-table equipment">
       <tr>
-        <th>Name</th>
+        <th class="name">Equipment Description</th>
         <th>Number of Items</th>
-        <th>Cost per Item</th>
+        <th class="amount">Cost Per Item</th>
         <th>Justification</th>
         <th></th>
       </tr>
       @foreach (var item in Model.EquipmentItems)
       {
         <tr>
-          <td>
+          <td class="name">
             <label class="control-label">@item.EquipmentDescription</label>
           </td>
           <td>
-            <label class="control-label">@item.NumberItems</label>
+            @item.NumberItems
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.CostPerItem" />
-            <span class="amount-padding">@item.CostPerItem</span>
+            <span>@item.CostPerItem</span>
           </td>
           <td>
-            <label class="control-label">@item.Justification</label>
+            @item.Justification
           </td>
           <td>
             <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deleteEquipmentItem">X</a>
@@ -49,6 +49,7 @@
         <td>
           @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
+        <td></td>       
         <td class="amount">
           @Html.HiddenFor(model => model.SumTotal)
           <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
@@ -56,6 +57,7 @@
         </td>
         <td></td>
         <td></td>
+         
       </tr>
 
     </table>
@@ -68,7 +70,7 @@
   </div>
 }
 <div id="dvCategoryResults">
-  @Html.Action("EquipmentItemPartial", "Partials")
+  @Html.Action("EquipmentItemsPartial", "Partials")
 </div>
 <div>
   @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })

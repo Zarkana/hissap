@@ -12,13 +12,14 @@ using System.Globalization;
 using HISSAP1.Controllers;
 using HISSAP1.Helpers;
 using HISSAP1.Models.SiteModels.InvoiceBudgetModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HISSAP1.Controllers
 {
   public class BudgetsController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
-
     // GET: Budgets
     public ActionResult Index()
     {
@@ -79,17 +80,41 @@ namespace HISSAP1.Controllers
       CopiedBudget.DateCreated = DateTime.Now;
 
       //Reset primary ID's for Details objects
-      foreach (var item in CopiedBudget.PayrollTaxesAssessment.PayrollItems){item.Id = Guid.NewGuid();}
+      foreach (var item in CopiedBudget.PayrollTaxesAssessment.PayrollItems) { item.Id = Guid.NewGuid(); }
       CopiedBudget.PayrollTaxesAssessment.Id = 0;
       foreach (var item in CopiedBudget.FringeBenefit.FringeItems) { item.Id = Guid.NewGuid(); }
       CopiedBudget.FringeBenefit.Id = 0;
+      foreach (var item in CopiedBudget.ContractualAdministrativeService.AdministrativeItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualAdministrativeService.Id = 0;
+      foreach (var item in CopiedBudget.ContractualSubcontractsService.SubcontractsItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualSubcontractsService.Id = 0;
+      foreach (var item in CopiedBudget.OtherBudgetInvoice.OtherItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.OtherBudgetInvoice.Id = 0;
+      foreach (var item in CopiedBudget.Airfare.Travelers) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.Airfare.Id = 0;
+      //foreach (var item in CopiedBudget.AirfareInterIsland.Travelers) { item.Id = Guid.NewGuid(); }
+      //CopiedBudget.AirfareInterIsland.Id = 0;
+      //foreach (var item in CopiedBudget.AirfareOutOfState.Travelers) { item.Id = Guid.NewGuid(); }
+      //CopiedBudget.AirfareOutOfState.Id = 0;
+      foreach (var item in CopiedBudget.SubsistencePerDiem.SubsistencePerDiemItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.SubsistencePerDiem.Id = 0;
+      foreach (var item in CopiedBudget.EquipmentPurchase.EquipmentItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.EquipmentPurchase.Id = 0;
 
       if (ModelState.IsValid)
       {
         db.Budgets.Add(CopiedBudget);
         db.SaveChanges();
 
-        int lastId = db.Budgets.Max(item => item.Id);//TODO: Bad if taking from wrong site location
+        var UserStore = new UserStore<ApplicationUser>(db);
+        var UserManager = new UserManager<ApplicationUser>(UserStore);
+
+        var user = UserManager.FindById(User.Identity.GetUserId());
+
+        var budgets = db.Budgets.Where(c => c.BudgetsSite.Id == user.CurrentSite.SelectedSite);//Get all budgets from the currentsite
+
+        int lastId = budgets.Max(item => item.Id);
+
         return RedirectToAction("Modify", new { id = lastId });
       }
       ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);
@@ -160,6 +185,15 @@ namespace HISSAP1.Controllers
         //Detail Models
         db.Entry(budget.PayrollTaxesAssessment).State = EntityState.Modified;
         db.Entry(budget.FringeBenefit).State = EntityState.Modified;
+        db.Entry(budget.ContractualAdministrativeService).State = EntityState.Modified;
+        db.Entry(budget.ContractualSubcontractsService).State = EntityState.Modified;
+        db.Entry(budget.OtherBudgetInvoice).State = EntityState.Modified;
+        db.Entry(budget.Airfare).State = EntityState.Modified;
+        //db.Entry(budget.AirfareInterIsland).State = EntityState.Modified;
+        //db.Entry(budget.AirfareOutOfState).State = EntityState.Modified;
+        db.Entry(budget.SubsistencePerDiem).State = EntityState.Modified;
+        db.Entry(budget.EquipmentPurchase).State = EntityState.Modified;
+
         db.SaveChanges();
         return RedirectToAction("Modify", new { id = budget.Id });
       }
@@ -183,6 +217,14 @@ namespace HISSAP1.Controllers
       //Insert empty Detail Models
       tempBudget.PayrollTaxesAssessment = new PayrollTaxesAssessment();
       tempBudget.FringeBenefit = new FringeBenefit();
+      tempBudget.ContractualAdministrativeService = new ContractualAdministrativeService();
+      tempBudget.ContractualSubcontractsService = new ContractualSubcontractsService();
+      tempBudget.OtherBudgetInvoice = new OtherBudgetInvoice();
+      tempBudget.Airfare = new Airfare();
+      //tempBudget.AirfareInterIsland = new AirfareInterIsland();
+      //tempBudget.AirfareOutOfState = new AirfareOutOfState();
+      tempBudget.SubsistencePerDiem = new SubsistencePerDiem();
+      tempBudget.EquipmentPurchase = new EquipmentPurchase();
 
       if (ModelState.IsValid)
       {
@@ -219,9 +261,25 @@ namespace HISSAP1.Controllers
     {
       //Budget models
       PayrollTaxesAssessment payrollTaxesAssessment = db.PayrollTaxesAssessments.Find(id);
-      if (payrollTaxesAssessment != null){db.PayrollTaxesAssessments.Remove(payrollTaxesAssessment);}
+      if (payrollTaxesAssessment != null) { db.PayrollTaxesAssessments.Remove(payrollTaxesAssessment); }
       FringeBenefit fringeBenefit = db.FringeBenefits.Find(id);
       if (fringeBenefit != null) { db.FringeBenefits.Remove(fringeBenefit); }
+      ContractualAdministrativeService contractualAdministrativeService = db.ContractualAdministrativeServices.Find(id);
+      if (contractualAdministrativeService != null) { db.ContractualAdministrativeServices.Remove(contractualAdministrativeService); }
+      ContractualSubcontractsService contractualSubcontractsService = db.ContractualSubcontractsServices.Find(id);
+      if (contractualSubcontractsService != null) { db.ContractualSubcontractsServices.Remove(contractualSubcontractsService); }
+      OtherBudgetInvoice otherBudgetInvoice = db.OtherBudgetInvoices.Find(id);
+      if (otherBudgetInvoice != null) { db.OtherBudgetInvoices.Remove(otherBudgetInvoice); }
+      Airfare airfare = db.Airfares.Find(id);
+      if (airfare != null) { db.Airfares.Remove(airfare); }
+      //AirfareInterIsland airfareInterIsland = db.AirfaresInterIsland.Find(id);
+      //if (airfareInterIsland != null) { db.AirfaresInterIsland.Remove(airfareInterIsland); }
+      //AirfareOutOfState airfareOutOfState = db.AirfaresOutOfState.Find(id);
+      //if (airfareOutOfState != null) { db.AirfaresOutOfState.Remove(airfareOutOfState); }
+      SubsistencePerDiem subsistencePerDiem = db.SubsistencePerDiems.Find(id);
+      if (subsistencePerDiem != null) { db.SubsistencePerDiems.Remove(subsistencePerDiem); }
+      EquipmentPurchase equipmentPurchase = db.EquipmentPurchases.Find(id);
+      if (equipmentPurchase != null) { db.EquipmentPurchases.Remove(equipmentPurchase); }
 
       Budget budget = db.Budgets.Find(id);
       db.Budgets.Remove(budget);
@@ -232,7 +290,13 @@ namespace HISSAP1.Controllers
     //Helper Method to sort the index method by date added
     public IEnumerable<Budget> SortBudget()
     {
-      var budgets = db.Budgets.Include(b => b.BudgetsSite);
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      var budgets = db.Budgets.Where(c => c.BudgetsSite.Id == user.CurrentSite.SelectedSite);
+
       budgets = budgets.OrderByDescending(s => s.DateCreated);
 
       return budgets;
@@ -249,7 +313,7 @@ namespace HISSAP1.Controllers
     }
 
     /*BUDGET DETAILS METHODS*/
-    
+
     /*GET: EditObject(int? id)*/
 
     [HttpGet]//GET: Returns the edit view
@@ -295,13 +359,22 @@ namespace HISSAP1.Controllers
       OtherBudgetInvoice model = db.OtherBudgetInvoices.Find(id);
 
       if (model == null) { return HttpNotFound(); }
-      return View("Details/OtherBudgetInvoice", model);
+      return View("Details/Other", model);
     }
+    //[HttpGet]//GET: Returns the edit view
+    //public ActionResult EditAirfare(int? id)
+    //{
+    //  if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+    //  Airfare model = db.Airfares.Find(id);
+
+    //  if (model == null) { return HttpNotFound(); }
+    //  return View("Details/Airfare", model);
+    //}
     [HttpGet]//GET: Returns the edit view
     public ActionResult EditAirfareInterIsland(int? id)
     {
       if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-      AirfareInterIsland model = db.AirfaresInterIsland.Find(id);
+      Airfare model = db.Airfares.Find(id);
 
       if (model == null) { return HttpNotFound(); }
       return View("Details/AirfareInterIsland", model);
@@ -310,7 +383,7 @@ namespace HISSAP1.Controllers
     public ActionResult EditAirfareOutOfState(int? id)
     {
       if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-      AirfareOutOfState model = db.AirfaresOutOfState.Find(id);
+      Airfare model = db.Airfares.Find(id);
 
       if (model == null) { return HttpNotFound(); }
       return View("Details/AirfareOutOfState", model);
@@ -370,7 +443,7 @@ namespace HISSAP1.Controllers
     }
     [HttpPost]//POST: Edits an already made model
     [ValidateAntiForgeryToken]
-    public ActionResult EditContractualServicesAdministrative([Bind(Include = "Id,SumTotal,Budget")] ContractualAdministrativeService model, string returnUrl)
+    public ActionResult EditContractualAdministrativeService([Bind(Include = "Id,SumTotal,Budget")] ContractualAdministrativeService model, string returnUrl)
     {
       if (ModelState.IsValid)
       {
@@ -418,12 +491,12 @@ namespace HISSAP1.Controllers
     }
     [HttpPost]//POST: Edits an already made model
     [ValidateAntiForgeryToken]
-    public ActionResult EditAirfareInterIsland([Bind(Include = "Id,SumTotal,Budget")] AirfareInterIsland model, string returnUrl)
+    public ActionResult EditAirfareInterIsland([Bind(Include = "Id,SumTotal,Budget")] Airfare model, string returnUrl)
     {
       if (ModelState.IsValid)
       {
         Budget budget = db.Budgets.Find(model.Id);//Retrieve the budget
-        budget.AirfareInterIslandTotal = model.SumTotal;//Assign the new value to the total
+        budget.AirfareTotal = model.SumTotal;//Assign the new value to the total
 
         db.Entry(budget).State = EntityState.Modified;
         db.Entry(model).State = EntityState.Modified;
@@ -434,12 +507,28 @@ namespace HISSAP1.Controllers
     }
     [HttpPost]//POST: Edits an already made model
     [ValidateAntiForgeryToken]
-    public ActionResult EditAirfareOutOfState([Bind(Include = "Id,SumTotal,Budget")] AirfareOutOfState model, string returnUrl)
+    public ActionResult EditAirfareOutOfState([Bind(Include = "Id,SumTotal,Budget")] Airfare model, string returnUrl)
     {
       if (ModelState.IsValid)
       {
         Budget budget = db.Budgets.Find(model.Id);//Retrieve the budget
-        budget.AirfareOutStateTotal = model.SumTotal;//Assign the new value to the total
+        budget.AirfareTotal = model.SumTotal;//Assign the new value to the total
+
+        db.Entry(budget).State = EntityState.Modified;
+        db.Entry(model).State = EntityState.Modified;
+        db.SaveChanges();
+        return RedirectToAction("Modify", new { id = model.Id });
+      }
+      return Redirect(returnUrl);
+    }
+    [HttpPost]//POST: Edits an already made model
+    [ValidateAntiForgeryToken]
+    public ActionResult EditAirfare([Bind(Include = "Id,SumTotal,Budget")] Airfare model, string returnUrl)
+    {
+      if (ModelState.IsValid)
+      {
+        Budget budget = db.Budgets.Find(model.Id);//Retrieve the budget
+        budget.AirfareTotal = model.SumTotal;//Assign the new value to the total
 
         db.Entry(budget).State = EntityState.Modified;
         db.Entry(model).State = EntityState.Modified;
@@ -479,7 +568,7 @@ namespace HISSAP1.Controllers
         return RedirectToAction("Modify", new { id = model.Id });
       }
       return Redirect(returnUrl);
-    }  
+    }
 
     /*POST: AddItem(model, int id)*/
 
@@ -525,6 +614,150 @@ namespace HISSAP1.Controllers
       ViewBag.FringeBenefitId = new SelectList(db.FringeBenefits, "Id", "Id", model.FringeBenefitId);
       return View(model);
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddAdministrativeItem([Bind(Include = "Id,BusinessIndividualName,ServicesProvided,SubContractNumber,Comments,Amount,ContractualAdministrativeServiceId")] AdministrativeItem model, int id)
+    {
+      ModelState.Clear();
+      model.ContractualAdministrativeServiceId = id;
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.AdministrativeItems.Add(model);
+        db.SaveChanges();
+
+        ContractualAdministrativeService contractualAdministrativeService = db.ContractualAdministrativeServices.Find(model.ContractualAdministrativeServiceId);
+        int BudgetId = contractualAdministrativeService.Id;
+
+        return RedirectToAction("EditContractualAdministrativeService", new { id = BudgetId });
+      }
+
+      ViewBag.ContractualAdministrativeServicesId = new SelectList(db.ContractualAdministrativeServices, "Id", "Id", model.ContractualAdministrativeServiceId);
+      return View(model);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddSubcontractsItem([Bind(Include = "Id,BusinessIndividualName,ServicesProvided,SubContractNumber,Comments,Amount,ContractualSubcontractsServiceId")] SubcontractsItem model, int id)
+    {
+      ModelState.Clear();
+      model.ContractualSubcontractsServiceId = id;
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.SubcontractsItems.Add(model);
+        db.SaveChanges();
+
+        ContractualSubcontractsService contractualSubcontractsService = db.ContractualSubcontractsServices.Find(model.ContractualSubcontractsServiceId);
+        int BudgetId = contractualSubcontractsService.Id;
+
+        return RedirectToAction("EditContractualSubcontractsService", new { id = BudgetId });
+      }
+
+      ViewBag.ContractualSubcontractsServiceId = new SelectList(db.ContractualSubcontractsServices, "Id", "Id", model.ContractualSubcontractsServiceId);
+      return View(model);
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddOtherItem([Bind(Include = "Id,Name,Amount,Justification")] OtherItem model, int id)
+    {
+      ModelState.Clear();
+      model.OtherBudgetInvoiceId = id;
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.OtherItems.Add(model);
+        db.SaveChanges();
+
+        OtherBudgetInvoice otherBudgetInvoice = db.OtherBudgetInvoices.Find(model.OtherBudgetInvoiceId);
+        int BudgetId = otherBudgetInvoice.Id;
+
+        return RedirectToAction("EditOtherBudgetInvoice", new { id = BudgetId });
+      }
+
+      ViewBag.OtherBudgetInvoiceId = new SelectList(db.OtherBudgetInvoices, "Id", "Id", model.OtherBudgetInvoiceId);
+      return View(model);
+    }
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public ActionResult AddAirfareInterIsland([Bind(Include = "Id,Name,Destination,AirFare,Transportation,PurposeOfTravel")] Traveler model, int id)
+    //{
+    //  ModelState.Clear();
+    //  model.AirfareTravelId = id;
+    //  if (ModelState.IsValid)
+    //  {
+    //    model.Id = Guid.NewGuid();
+    //    db.Travelers.Add(model);
+    //    db.SaveChanges();
+
+    //    AirfareInterIsland airfareInterIsland = db.AirfaresInterIsland.Find(model.AirfareTravelId);
+    //    int BudgetId = airfareInterIsland.Id;
+
+    //    return RedirectToAction("EditAirfareInterIsland", new { id = BudgetId });
+    //  }
+
+    //  ViewBag.AirfareInterIslandId = new SelectList(db.AirfaresInterIsland, "Id", "Id", model.AirfareTravelId);
+    //  return View(model);
+    //}
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public ActionResult AddAirfareOutOfState([Bind(Include = "Id,Name,Destination,AirFare,Transportation,PurposeOfTravel")] Traveler model, int id)
+    //{
+    //  ModelState.Clear();
+    //  model.AirfareTravelId = id;
+    //  if (ModelState.IsValid)
+    //  {
+    //    model.Id = Guid.NewGuid();
+    //    db.Travelers.Add(model);
+    //    db.SaveChanges();
+
+    //    AirfareOutOfState airfareOutOfState = db.AirfaresOutOfState.Find(model.AirfareTravelId);
+    //    int BudgetId = airfareOutOfState.Id;
+
+    //    return RedirectToAction("EditAirfareOutOfState", new { id = BudgetId });
+    //  }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddTraveler([Bind(Include = "Id,Name,Destination,AirFare,Transportation,PurposeOfTravel")] Traveler model, int id)
+    {
+      ModelState.Clear();
+      model.AirfareTravelId = id;
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.Travelers.Add(model);
+        db.SaveChanges();
+
+        Airfare airfare = db.Airfares.Find(model.AirfareTravelId);
+        int BudgetId = airfare.Id;
+
+        return RedirectToAction("EditAirfareInterIsland", new { id = BudgetId });
+      }
+
+      ViewBag.AirfareId = new SelectList(db.Airfares, "Id", "Id", model.AirfareTravelId);
+      return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddEquipmentItem([Bind(Include = "Id,EquipmentDescription,NumberItems,CostPerItem,Justification")] EquipmentItem model, int id)
+    {
+      ModelState.Clear();
+      model.EquipmentPurchaseId = id;
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.EquipmentItems.Add(model);
+        db.SaveChanges();
+
+        EquipmentPurchase equipmentPurchase = db.EquipmentPurchases.Find(model.EquipmentPurchaseId);
+        int BudgetId = equipmentPurchase.Id;
+
+        return RedirectToAction("EditEquipmentPurchase", new { id = BudgetId });
+      }
+
+      ViewBag.EquipmentPurchaseId = new SelectList(db.EquipmentPurchases, "Id", "Id", model.EquipmentPurchaseId);
+      return View(model);
+    }
 
     /*POST: DeleteItem(string id)*/
 
@@ -567,7 +800,7 @@ namespace HISSAP1.Controllers
       try
       {
         Guid guid = new Guid(id);
-        FringeItem model= db.FringeItems.Find(guid);
+        FringeItem model = db.FringeItems.Find(guid);
         if (model == null)
         {
           Response.StatusCode = (int)HttpStatusCode.NotFound;
@@ -584,5 +817,174 @@ namespace HISSAP1.Controllers
         return Json(new { Result = "ERROR", Message = ex.Message });
       }
     }
+    [HttpPost]
+    public JsonResult DeleteAdministrativeItem(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        AdministrativeItem model = db.AdministrativeItems.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.AdministrativeItems.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+    [HttpPost]
+    public JsonResult DeleteSubcontractsItem(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        SubcontractsItem model = db.SubcontractsItems.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.SubcontractsItems.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+    [HttpPost]
+    public JsonResult DeleteOtherIem(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        OtherItem model = db.OtherItems.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.OtherItems.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+    [HttpPost]
+    public JsonResult DeleteTraveler(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        Traveler model = db.Travelers.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.Travelers.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+    [HttpPost]
+    public JsonResult DeleteSubsistencePerDiemItem(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        SubsistencePerDiemItem model = db.SubsistencePerDiemItems.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.SubsistencePerDiemItems.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+    [HttpPost]
+    public JsonResult DeleteEquipmentItem(string id)//TODO: Combine into one function
+    {
+      if (String.IsNullOrEmpty(id))
+      {
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return Json(new { Result = "Error" });
+      }
+      try
+      {
+        Guid guid = new Guid(id);
+        EquipmentItem model = db.EquipmentItems.Find(guid);
+        if (model == null)
+        {
+          Response.StatusCode = (int)HttpStatusCode.NotFound;
+          return Json(new { Result = "Error" });
+        }
+
+        //Remove from database
+        db.EquipmentItems.Remove(model);
+        db.SaveChanges();
+        return Json(new { Result = "OK" });
+      }
+      catch (Exception ex)
+      {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+      }
+    }
+
   }
 }

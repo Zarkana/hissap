@@ -1,0 +1,54 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.Traveler
+
+@{
+  ViewBag.Title = "Create";
+}
+
+<h2 class="buddy-header">Add Item</h2>
+@using (Html.BeginForm("AddTraveler", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
+{
+  @Html.AntiForgeryToken()
+  <div class="form-horizontal">
+    <hr />
+    <table class="budget-table">
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th class="amount">Airfare</th>
+        <th class="amount">Transportation</th>
+        <th>Purpose of Travel</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </td>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.Destination, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Destination, "", new { @class = "text-danger" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.AirFare, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.AirFare, "", new { @class = "text-danger" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.Transportation, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Transportation, "", new { @class = "text-danger" })
+        </td>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.PurposeOfTravel, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.PurposeOfTravel, "", new { @class = "text-danger" })
+        </td>
+        <td><input type="submit" value="Add" class="btn btn-default" /></td>
+      </tr>
+
+      @Html.HiddenFor(model => model.AirfareTravelId)
+
+    </table>
+  </div>
+}
+
+
+

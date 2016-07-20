@@ -18,13 +18,13 @@
     <hr />
     <table class="budget-table">
       <tr>
-        <th>Budget Item</th>
+        <th class="name">Budget Item</th>
         <th class="amount">Amount</th>
         <th>Justification</th>
         <th></th>
       </tr>
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.SocialSecurity, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -36,7 +36,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.UnemploymentInsuranceFederal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -48,7 +48,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.UnemploymentInsuranceState, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -60,7 +60,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.WorkersCompensation, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -72,7 +72,7 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.TemporaryDisabilityInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -86,12 +86,12 @@
       @foreach (var item in Model.PayrollItems)
       {
         <tr>
-          <td>
+          <td class="name">
             <label class="control-label">@item.Name</label>
           </td>
           <td class="amount">
             <input type="hidden" class="value-add" value="@item.Amount" />
-            <span class="amount-padding">@item.Amount</span>
+            <span>@item.Amount</span>
           </td>
           <td>
             @item.Justification
@@ -102,7 +102,7 @@
         </tr>
       }
       <tr>
-        <td>
+        <td class="name">
           @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td class="amount">
@@ -116,7 +116,7 @@
 
     </table>
 
-    <div class="form-group form-options">
+    <div class="form-options">
       <input type="submit" value="Save" class="btn btn-success" />
       @* TODO: Implement cancel *@
       @*<button type="submit" class="btn btn-default">Cancel</button>*@
