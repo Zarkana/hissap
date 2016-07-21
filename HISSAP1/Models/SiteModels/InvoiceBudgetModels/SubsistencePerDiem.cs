@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
 {
@@ -19,6 +20,9 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
 
     //Navigation property
     public virtual ICollection<SubsistencePerDiemItem> SubsistencePerDiemItems { get; set; }
+
+    //Navigation property
+    public virtual ICollection<Traveler> Travelers { get; set; }
   }
 
   public class SubsistencePerDiemItem
@@ -28,8 +32,13 @@ namespace HISSAP1.Models.SiteModels.InvoiceBudgetModels
     public int NumberOfDays { get; set; }
     [Display(Name = "Per Diem/Subsistence")]
     public float SubsistencePerDiemAmount { get; set; }
-    public int TravelerId { get; set; }
-    public virtual Traveler Traveler{ get; set; }
+
+    [Required]
+    public Guid TravelerId { get; set; }
+    //Foreign Key to the parent SubsistencePerDiem
+    [ForeignKey("TravelerId")]
+    public virtual Traveler Traveler { get; set; }
+
     public int SubsistencePerDiemId { get; set; }
     public virtual SubsistencePerDiem SubsistencePerDiem { get; set; }
   }

@@ -118,6 +118,7 @@ namespace HISSAP1.Controllers
         return RedirectToAction("Modify", new { id = lastId });
       }
       ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);
+
       return RedirectToAction("Index");
     }
 
@@ -395,6 +396,7 @@ namespace HISSAP1.Controllers
       SubsistencePerDiem model = db.SubsistencePerDiems.Find(id);
 
       if (model == null) { return HttpNotFound(); }
+
       return View("Details/SubsistencePerDiem", model);
     }
     [HttpGet]//GET: Returns the edit view
@@ -736,7 +738,31 @@ namespace HISSAP1.Controllers
       ViewBag.AirfareId = new SelectList(db.Airfares, "Id", "Id", model.AirfareTravelId);
       return View(model);
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult AddSubsistencePerDiemItem([Bind(Include = "Id,NumberOfDays,SubsistencePerDiemAmount,TravelerId,Travel,SubsistencePerDiemId,SubsistencePerDiem")] SubsistencePerDiemItem model, int id)
+    {
+      ModelState.Clear();
+      model.SubsistencePerDiemId = id;
 
+      model.Traveler = db.Travelers.Find(model.TravelerId);
+
+      if (ModelState.IsValid)
+      {
+        model.Id = Guid.NewGuid();
+        db.SubsistencePerDiemItems.Add(model);
+        db.SaveChanges();
+
+        SubsistencePerDiem subsistencePerDiem = db.SubsistencePerDiems.Find(model.SubsistencePerDiemId);
+        int BudgetId = subsistencePerDiem.Id;
+
+        return RedirectToAction("EditSubsistencePerDiem", new { id = BudgetId });
+      }
+
+      //TODO: Check if needed in all add item functions
+      ViewBag.SubsistencePerDiemId = new SelectList(db.SubsistencePerDiems, "Id", "Id", model.SubsistencePerDiemId);
+      return View(model);
+    }
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult AddEquipmentItem([Bind(Include = "Id,EquipmentDescription,NumberItems,CostPerItem,Justification")] EquipmentItem model, int id)

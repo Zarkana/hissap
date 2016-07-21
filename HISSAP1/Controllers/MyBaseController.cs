@@ -20,6 +20,8 @@ namespace HISSAP1.Controllers
       ViewBag.Sites = new SelectList(db.Sites, "Id", "SiteName");
       /*ViewBag.someThing = "someThing";*/ //Add whatever
 
+      ViewBag.Travelers = new SelectList(db.Travelers, "Id", "Name");
+
       base.OnActionExecuting(filterContext);
     }
 

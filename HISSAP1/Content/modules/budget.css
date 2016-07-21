@@ -157,7 +157,7 @@ $site-select-index: 1;*/
 }
 /* line 149, ../../sass/modules/budget.scss */
 .budget-table.per-diem .name {
-  width: 25%;
+  width: 20%;
   min-width: inherit;
 }
 /* line 153, ../../sass/modules/budget.scss */

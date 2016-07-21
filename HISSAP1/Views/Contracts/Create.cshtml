@@ -29,7 +29,7 @@
     @* TODO: Change to dropdown *@
     <!--Associate an organization with the account-->
     <div class="form-group">
-      @Html.Label("Associate an Provider", new { @class = "col-md-2 control-label" })
+      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
         @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
         @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })

@@ -122,10 +122,13 @@ namespace HISSAP1.Migrations
                         Transportation = c.Single(nullable: false),
                         PurposeOfTravel = c.String(),
                         AirfareTravelId = c.Int(nullable: false),
+                        SubsistencePerDiem_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Airfares", t => t.AirfareTravelId, cascadeDelete: true)
-                .Index(t => t.AirfareTravelId);
+                .ForeignKey("dbo.SubsistencePerDiems", t => t.SubsistencePerDiem_Id)
+                .Index(t => t.AirfareTravelId)
+                .Index(t => t.SubsistencePerDiem_Id);
             
             CreateTable(
                 "dbo.BudgetFiles",
@@ -376,15 +379,14 @@ namespace HISSAP1.Migrations
                         Id = c.Guid(nullable: false),
                         NumberOfDays = c.Int(nullable: false),
                         SubsistencePerDiemAmount = c.Single(nullable: false),
-                        TravelerId = c.Int(nullable: false),
+                        TravelerId = c.Guid(nullable: false),
                         SubsistencePerDiemId = c.Int(nullable: false),
-                        Traveler_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.SubsistencePerDiems", t => t.SubsistencePerDiemId, cascadeDelete: true)
-                .ForeignKey("dbo.Travelers", t => t.Traveler_Id)
-                .Index(t => t.SubsistencePerDiemId)
-                .Index(t => t.Traveler_Id);
+                .ForeignKey("dbo.Travelers", t => t.TravelerId, cascadeDelete: true)
+                .Index(t => t.TravelerId)
+                .Index(t => t.SubsistencePerDiemId);
             
             CreateTable(
                 "dbo.CurrentSites",
@@ -479,7 +481,8 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.CurrentSites", "SelectedSite", "dbo.Sites");
             DropForeignKey("dbo.ContractualAdministrativeServices", "Id", "dbo.Budgets");
-            DropForeignKey("dbo.SubsistencePerDiemItems", "Traveler_Id", "dbo.Travelers");
+            DropForeignKey("dbo.Travelers", "SubsistencePerDiem_Id", "dbo.SubsistencePerDiems");
+            DropForeignKey("dbo.SubsistencePerDiemItems", "TravelerId", "dbo.Travelers");
             DropForeignKey("dbo.SubsistencePerDiemItems", "SubsistencePerDiemId", "dbo.SubsistencePerDiems");
             DropForeignKey("dbo.SubsistencePerDiems", "Id", "dbo.Budgets");
             DropForeignKey("dbo.PayrollItems", "PayrollTaxesAssessmentId", "dbo.PayrollTaxesAssessments");
@@ -515,8 +518,8 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.CurrentSites", new[] { "SelectedSite" });
             DropIndex("dbo.CurrentSites", new[] { "UserId" });
-            DropIndex("dbo.SubsistencePerDiemItems", new[] { "Traveler_Id" });
             DropIndex("dbo.SubsistencePerDiemItems", new[] { "SubsistencePerDiemId" });
+            DropIndex("dbo.SubsistencePerDiemItems", new[] { "TravelerId" });
             DropIndex("dbo.SubsistencePerDiems", new[] { "Id" });
             DropIndex("dbo.PayrollItems", new[] { "PayrollTaxesAssessmentId" });
             DropIndex("dbo.PayrollTaxesAssessments", new[] { "Id" });
@@ -537,6 +540,7 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.Sites", new[] { "Address_AddressId" });
             DropIndex("dbo.Sites", new[] { "SitesContractId" });
             DropIndex("dbo.BudgetFiles", new[] { "Budget_Id" });
+            DropIndex("dbo.Travelers", new[] { "SubsistencePerDiem_Id" });
             DropIndex("dbo.Travelers", new[] { "AirfareTravelId" });
             DropIndex("dbo.Airfares", new[] { "Id" });
             DropIndex("dbo.Budgets", new[] { "BudgetsSiteId" });

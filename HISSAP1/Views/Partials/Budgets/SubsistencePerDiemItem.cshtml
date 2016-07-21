@@ -1,43 +1,44 @@
 ﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubsistencePerDiemItem
 
-  @{
-    ViewBag.Title = "Create";
-  }
+@{
+  ViewBag.Title = "Create";
+}
 
-  <h2 class="buddy-header">Add Item</h2>
-  @using (Html.BeginForm("AddSubsistencePerDiemItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
-  {
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-      <hr />
-      <table class="budget-table per-diem">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <tr>
-          <th class="name">Name</th>
-          <th class="amount">Per Diem/Subsistence</th>
-          <th>Number of Days</th>          
-          <th></th>
-        </tr>
-        <tr>
-          <td class="name">
-            @Html.EditorFor(model => model.Traveler.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Traveler.Name, "", new { @class = "text-danger" })
-          </td>
-          <td class="amount">
-            @Html.EditorFor(model => model.SubsistencePerDiemAmount, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SubsistencePerDiemAmount, "", new { @class = "text-danger" })
-          </td>
-          <td class="col-md-10">
-            @Html.EditorFor(model => model.NumberOfDays, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NumberOfDays, "", new { @class = "text-danger" })
-          </td>
-          <td><input type="submit" value="Add" class="btn btn-default" /></td>
-        </tr>
+<h2 class="buddy-header">Add Item</h2>
+@using (Html.BeginForm("AddSubsistencePerDiemItem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri, id = Url.RequestContext.RouteData.Values["id"] }))
+{
+  @Html.AntiForgeryToken()
+  <div class="form-horizontal">
+    <hr />
+    <table class="budget-table per-diem">
+      @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      <tr>
+        <th class="name">Traveler</th>
+        <th class="amount">Per Diem/Subsistence</th>
+        <th>Number of Days</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td class="name">
+          <!--Associate an organization with the account-->
+          @Html.DropDownListFor(m => m.TravelerId, ViewBag.Travelers as SelectList, new { @class = "input-sm" })
+          <!--Ends Here-->
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.SubsistencePerDiemAmount, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.SubsistencePerDiemAmount, "", new { @class = "text-danger" })
+        </td>
+        <td class="col-md-10">
+          @Html.EditorFor(model => model.NumberOfDays, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.NumberOfDays, "", new { @class = "text-danger" })
+        </td>
+        <td><input type="submit" value="Add" class="btn btn-default" /></td>
+      </tr>
+      @Html.HiddenFor(model => model.TravelerId)
+      @Html.HiddenFor(model => model.SubsistencePerDiemId)
 
-        @Html.HiddenFor(model => model.SubsistencePerDiemId)
-
-      </table>
-    </div>
-  }
+    </table>
+  </div>
+}
 
 
