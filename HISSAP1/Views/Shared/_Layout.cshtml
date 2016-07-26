@@ -6,6 +6,17 @@
   <title>@ViewBag.Title - HISSAP</title>
   @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
+  @{
+    if (ViewBag.Tier1 == null){ViewBag.Tier1 = false;}
+    if (ViewBag.Tier2 == null) { ViewBag.Tier2 = false; }
+    if (ViewBag.Tier3 == null) { ViewBag.Tier3 = false; }
+    if (ViewBag.Tier4 == null) { ViewBag.Tier4 = false; }
+    if (ViewBag.Tier5 == null) { ViewBag.Tier5 = false; }
+    if (ViewBag.Tier6 == null) { ViewBag.Tier6 = false; }
+
+    if (ViewBag.CanSubmitBudget == null) { ViewBag.CanSubmitBudget = false; }
+    if (ViewBag.CanPrepareBudget == null) { ViewBag.CanPrepareBudget = false; }
+  }
 
 </head>
 <body>
@@ -36,7 +47,9 @@
         </ul>
         <ul class="navbar-section right">
           <li class="navbar-item">@Html.ActionLink("Reports", "About", "Home")</li>
+          @if (ViewBag.Tier4) {
           <li class="navbar-item">@Html.ActionLink("Administration", "Administration", "Home")</li>
+          }
           <li class="navbar-item change-site">
             @Html.Action("ChangeSitePartial", "Partials")
           </li>

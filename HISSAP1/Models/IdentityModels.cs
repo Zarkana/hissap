@@ -21,6 +21,14 @@ namespace HISSAP1.Models
     }
     public int ProviderId { get; set; }//Added to allow for Providers...
 
+    [Required]
+    [Display(Name = "Can Submit Budget")]
+    public string CanSubmitBudget { get; set; }
+
+    [Required]
+    [Display(Name = "Can Prepare Budget")]
+    public string CanPrepareBudget { get; set; }
+
     public virtual CurrentSite CurrentSite { get; set; }//Added to allow for user settings                                                   
   }
 

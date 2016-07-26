@@ -84,6 +84,8 @@ namespace HISSAP1.Controllers
         user.UserName = model.UserName;
         user.Email = model.Email;
         user.ProviderId = model.SelectedProvider;//Added
+        user.CanPrepareBudget = model.CanPrepareBudget;//Added
+        user.CanSubmitBudget = model.CanSubmitBudget;//Added
 
         var adminresult = await UserManager.CreateAsync(user, model.Password);
 
@@ -172,7 +174,7 @@ namespace HISSAP1.Controllers
     // POST: /Users/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,ProviderId")] ApplicationUser formuser, string id, string RoleId)
+    public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,Email,ProviderId,CanSubmitBudget,CanPrepareBudget")] ApplicationUser formuser, string id, string RoleId)
     {
       if (id == null)
       {
@@ -183,6 +185,8 @@ namespace HISSAP1.Controllers
       user.UserName = formuser.UserName;
       user.Email = formuser.Email;
       user.ProviderId = formuser.ProviderId;//Added
+      user.CanSubmitBudget = formuser.CanSubmitBudget;//Added
+      user.CanPrepareBudget = formuser.CanPrepareBudget;//Added
       if (ModelState.IsValid)
       {
         //Update the user details

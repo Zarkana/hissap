@@ -10,7 +10,7 @@ using HISSAP1.Models;
 
 namespace HISSAP1.Controllers
 {
-    public class ApplicationUsersController : Controller
+    public class ApplicationUsersController : MyBaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

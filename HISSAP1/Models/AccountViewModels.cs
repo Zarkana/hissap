@@ -80,6 +80,14 @@ namespace HISSAP1.Models
     [Required]
     public int SelectedProvider { get; set; }
 
+    [Required]
+    [Display(Name = "Can Submit Budget")]
+    public string CanSubmitBudget { get; set; }
+
+    [Required]
+    [Display(Name = "Can Prepare Budget")]
+    public string CanPrepareBudget { get; set; }
+
     /*Retrieve list of names*/
     public IEnumerable<SelectListItem> ProviderList { get; set; }
 

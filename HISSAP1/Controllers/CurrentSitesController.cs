@@ -15,7 +15,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace HISSAP1.Controllers
 {
   [Authorize]
-  public class CurrentSitesController : Controller
+  public class CurrentSitesController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
 

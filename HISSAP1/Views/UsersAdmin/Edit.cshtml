@@ -52,11 +52,23 @@
       </div>
     </div>
 
+    <div class="form-group">      
+      @Html.Label("Can Prepare Budget: ", new { @class = "control-label" })
+      @Html.RadioButtonFor(m => m.CanPrepareBudget, "Yes")Yes
+      @Html.RadioButtonFor(m => m.CanPrepareBudget, "No")No
+    </div>
+
+    <div class="form-group">
+      @Html.Label("Can Submit Budget: ", new { @class = "control-label" })
+      @Html.RadioButtonFor(m => m.CanSubmitBudget, "Yes")Yes
+      @Html.RadioButtonFor(m => m.CanSubmitBudget, "No")No
+    </div>
+
     <div class="form-group">
       <input type="submit" class="btn btn-default" value="Save" />
     </div>
   </div>
-}
+          }
 
 @section Scripts {
   @Scripts.Render("~/bundles/jqueryval")

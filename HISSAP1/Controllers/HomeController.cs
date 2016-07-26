@@ -56,7 +56,7 @@ namespace HISSAP1.Controllers
       return View();
     }
 
-    [Authorization(Roles = "System Administrator, State Administrator, Provider Administrator")]
+    [Authorization(Roles = "System Administrator,State Administrator,Provider Administrator")]
     public ActionResult Administration()
     {
       //ViewBag.Message = "Your administration page.";

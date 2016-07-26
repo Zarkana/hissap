@@ -10,22 +10,21 @@
     @Html.HiddenFor(model => model.UserId)
     <a href="">@Html.DisplayFor(model => model.Site.SiteName)<b><span class="arrow-down">&#9662;</span></b></a>
     <div class="drop-down select-site">
-
-      @if (Request.IsAuthenticated && (User.IsInRole("System Administrator") || User.IsInRole("State Administrator")))
+      @if (ViewBag.Tier5)
       {
-      @* Only used to filter the Contracts *@
-      <div class="form-group inline-block">
-        @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
-        @*@Html.DropDownListFor(m => m.Site.SitesContract.ContractsProvider, (SelectList)ViewBag.Providers, new { @class = "input-sm" })*@
-        @Html.DropDownList("SelectedProvider", null, htmlAttributes: new { @class = "input-sm", @onchange = "FillContract()" })
-      </div>
+        @* Only used to filter the Contracts *@
+        <div class="form-group inline-block">
+          @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
+          @*@Html.DropDownListFor(m => m.Site.SitesContract.ContractsProvider, (SelectList)ViewBag.Providers, new { @class = "input-sm" })*@
+          @Html.DropDownList("SelectedProvider", null, htmlAttributes: new { @class = "input-sm", @onchange = "FillContract()" })
+        </div>
       }
       else
       {
         @*<div class="form-group inline-block">
-          @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
-          @Html.DisplayFor(model => model.Site.SitesContract.ContractsProvider.Name)
-        </div>*@
+            @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
+            @Html.DisplayFor(model => model.Site.SitesContract.ContractsProvider.Name)
+          </div>*@
         <select id="SelectedProvider" class="collapse">
           <option selected="selected" value="@Html.DisplayFor(model => model.Site.SitesContract.ContractsProvider.Id)"></option>
         </select>
@@ -49,5 +48,5 @@
         <input class="btn btn-default" value="Switch" type="submit" />
       </div>
     </div>
-  }
-}
+          }
+        }

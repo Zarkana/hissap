@@ -21,7 +21,8 @@
       <tr>
         <td class="name">
           <!--Associate an organization with the account-->
-          @Html.DropDownListFor(m => m.TravelerId, ViewBag.Travelers as SelectList, new { @class = "input-sm" })
+          @*@Html.DropDownListFor(m => m.TravelerId, ViewBag.Travelers as SelectList, new { @class = "input-sm" })*@
+          @Html.DropDownListFor(m => m.TravelerId, (IEnumerable<SelectListItem>)ViewBag.Travelers, new { @class = "input-sm" })
           <!--Ends Here-->
         </td>
         <td class="amount">

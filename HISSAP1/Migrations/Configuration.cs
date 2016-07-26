@@ -93,6 +93,8 @@ namespace HISSAP1.Migrations
           UserName = "john",
           Email = "john@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          CanPrepareBudget = "No",
+          CanSubmitBudget = "No",
           ProviderId = 1
         };
 
@@ -104,6 +106,8 @@ namespace HISSAP1.Migrations
           UserName = "ron",
           Email = "ronn@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          CanPrepareBudget = "No",
+          CanSubmitBudget = "Yes",
           ProviderId = 1
         };
 
@@ -115,6 +119,8 @@ namespace HISSAP1.Migrations
           UserName = "admin",
           Email = "jsc940@gmail.com",
           SecurityStamp = "7b9fba01-718b-4802-a741-6c1c22bb015b",
+          CanPrepareBudget = "Yes",
+          CanSubmitBudget = "Yes",
           ProviderId = 2
         };
 

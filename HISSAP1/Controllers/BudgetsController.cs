@@ -14,9 +14,11 @@ using HISSAP1.Helpers;
 using HISSAP1.Models.SiteModels.InvoiceBudgetModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using HISSAP1.CustomFilters;
 
 namespace HISSAP1.Controllers
 {
+  [Authorization(Roles = "Provider Fiscal,System Administrator,State Administrator,Provider Administrator")]
   public class BudgetsController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();

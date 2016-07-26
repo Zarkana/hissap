@@ -407,6 +407,8 @@ namespace HISSAP1.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         ProviderId = c.Int(nullable: false),
+                        CanSubmitBudget = c.String(nullable: false),
+                        CanPrepareBudget = c.String(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
