@@ -129,46 +129,51 @@ namespace HISSAP1.Migrations
       //}
       Contract Contract1 = new Contract
       {
-        ContractName = "Boys and Girls",
+        ContractName = "12-032 | 2016 - 2017",
         ContractsProviderId = Provider1.Id,
         ContractsProvider = Provider1,
         ContractNumber = "12-032",
+        Year = "2016-2017",
         Status = "Active"
       };
 
       Contract Contract2 = new Contract
       {
-        ContractName = "Coalition",
+        ContractName = "12-033 | 2016 - 2017",
         ContractsProviderId = Provider2.Id,
         ContractsProvider = Provider2,
         ContractNumber = "12-033",
+        Year = "2016-2017",
         Status = "Active"
       };
 
       Contract Contract3 = new Contract
       {
-        ContractName = "SPF-PFS",
+        ContractName = "12-034 | 2016 - 2017",
         ContractsProviderId = Provider3.Id,
         ContractsProvider = Provider3,
         ContractNumber = "12-034",
+        Year = "2016-2017",
         Status = "Active"
       };
 
       Contract Contract4 = new Contract
       {
-        ContractName = "SP-P",
+        ContractName = "12-035 | 2016 - 2017",
         ContractsProviderId = Provider1.Id,
         ContractsProvider = Provider1,
-        ContractNumber = "12-034",
+        ContractNumber = "12-035",
+        Year = "2016-2017",
         Status = "Active"
       };
 
       Contract Contract5 = new Contract
       {
-        ContractName = "Coalition 2",
+        ContractName = "12-036 | 2016 - 2017",
         ContractsProviderId = Provider2.Id,
         ContractsProvider = Provider2,
-        ContractNumber = "12-034",
+        ContractNumber = "12-036",
+        Year = "2016-2017",
         Status = "Active"
       };
 

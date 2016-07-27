@@ -176,7 +176,7 @@ namespace HISSAP1.Controllers
 
       //Overwrite possibly tampered data
       budget.BudgetStatus = "New";//Keep new, state administrators change this later            
-      budget.Name = DateTime.Now.Year.ToString() + " " + budget.BudgetStatus + " Budget";//TODO: Make year reference database
+      budget.Name = DateTime.Now.Year.ToString() + " Budget";//TODO: Make year reference database
       budget.BudgetsSiteId = GetCurrentSite().Site.Id;
       budget.ContractNumber = GetCurrentSite().Site.SitesContract.ContractNumber;
       budget.DateCreated = DateTime.Now;
@@ -293,9 +293,9 @@ namespace HISSAP1.Controllers
     //Helper Method to sort the index method by date added
     public IEnumerable<Budget> SortBudget()
     {
+      //TODO: Make into function
       var UserStore = new UserStore<ApplicationUser>(db);
       var UserManager = new UserManager<ApplicationUser>(UserStore);
-
       var user = UserManager.FindById(User.Identity.GetUserId());
 
       var budgets = db.Budgets.Where(c => c.BudgetsSite.Id == user.CurrentSite.SelectedSite);

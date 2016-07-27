@@ -104,18 +104,54 @@ namespace HISSAP1.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Switch([Bind(Include = "UserId,SelectedSite")] CurrentSite currentSite, string returnUrl)
+    public ActionResult Switch([Bind(Include = "UserId,SelectedSite")] CurrentSite currentSite, string returnUrl, int? id)
     {
+      string controller = Request.Form["ViewsController"];
+      string action = Request.Form["ViewsAction"];
+
+      ModelState.Clear();
+
       if (ModelState.IsValid)
       {
-        db.Entry(currentSite).State = EntityState.Modified;
-        db.SaveChanges();
+        if (currentSite.Site != null)//Only do this if we have a site
+        {
+          db.Entry(currentSite).State = EntityState.Modified;
+          db.SaveChanges();
+        }
+
+        //If there IS an id
+        if (id != null)
+        {
+          //Try to find appropriate action to go to
+          if (action == "Create")
+          {
+            return RedirectToAction("Create", controller);
+          }
+          if (action == "Edit")
+          {
+            //TODO: Pass id into a redirectioaction
+          }
+          if (action == "Delete")
+          {
+            //TODO: Pass id into a redirectioaction
+          }
+          if (action == "Details")
+          {
+            //TODO: Pass id into a redirectioaction
+          }
+
+          //Return the index view
+          return RedirectToAction("Index", controller);
+        }
+
+        //If there is NO id in the url, then it is safe to return to the same page
         return Redirect(returnUrl);
       }
       //This action method is used for the edit page, not for the dropdown. Go to the partials controller for the dropdown
       ViewBag.SelectedContract = new SelectList(db.Contracts, "Id", "ContractName", currentSite.Site.SitesContract.Id);
       ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
       ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
+
       return Redirect(returnUrl);
     }
 
@@ -123,7 +159,8 @@ namespace HISSAP1.Controllers
     public ActionResult FillSite(int contract)
     {
       var sites = db.Sites.Where(c => c.SitesContractId == contract)
-        .Select(u => new {
+        .Select(u => new
+        {
           Id = u.Id,
           SiteName = u.SiteName
         });
@@ -144,7 +181,8 @@ namespace HISSAP1.Controllers
     public ActionResult FillContract(int provider)
     {
       var contracts = db.Contracts.Where(c => c.ContractsProviderId == provider)
-        .Select(u => new {
+        .Select(u => new
+        {
           Id = u.Id,
           ContractName = u.ContractName
         });

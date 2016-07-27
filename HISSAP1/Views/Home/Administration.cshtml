@@ -6,40 +6,44 @@
   <div class="col-md-3">
     <h2>Administration</h2>
     <ul class="site-tree">
-      <li><h2>Provider</h2></li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Manage Provider Info", "Index", "Providers")</h4>
-        <p class="branch-description">Change various provider details including address and contact information.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Create & Manage Contracts", "Index", "Contracts")</h4>
-        <p class="branch-description">Manage contract details including names, dates, ASO Log No, and Status.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Create & Manage Sites", "Index", "Sites")</h4>
-        <p class="branch-description">Create additional sites for a contract.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Manage Users", "Index", "UsersAdmin")</h4>
-        <p class="branch-description">Manage users within the organization.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Create Announcements", "Index", "Role")</h4>
-        <p class="branch-description">Create new provider announcements.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Manipulate Data", "Index", "Role")</h4>
-        <p class="branch-description">Copy entire plan or select components of plan from a contract.</p>
-      </li>
-      <li><h2>State</h2></li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("View Collaborators", "Index", "Role")</h4>
-        <p class="branch-description">Show public profiles of Provider and Staff.</p>
-      </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Manage User Roles", "Index", "Role")</h4>
-        <p class="branch-description">Add edit or remove system user roles.</p>
-      </li>
+      @if (ViewBag.Tier4)
+      {
+        <li>
+          <h4 class="branch">@Html.ActionLink("Manage Provider Info", "Index", "Providers")</h4>
+          <p class="branch-description">Change various provider details including address and contact information.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("Create & Manage Contracts", "Index", "Contracts")</h4>
+          <p class="branch-description">Manage contract details including names, dates, ASO Log No, and Status.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("Create & Manage Sites", "Index", "Sites")</h4>
+          <p class="branch-description">Create additional sites for a contract.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("Manage Users", "Index", "UsersAdmin")</h4>
+          <p class="branch-description">Manage users within the organization.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("Create Announcements", "Index", "Role")</h4>
+          <p class="branch-description">Create new provider announcements.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("Manipulate Data", "Index", "Role")</h4>
+          <p class="branch-description">Copy entire plan or select components of plan from a contract.</p>
+        </li>
+        <li>
+          <h4 class="branch">@Html.ActionLink("View Collaborators", "Index", "Role")</h4>
+          <p class="branch-description">Show public profiles of Provider and Staff.</p>
+        </li>
+      }
+      @if (ViewBag.Tier6)
+      {
+        <li>
+          <h4 class="branch">@Html.ActionLink("Manage User Roles", "Index", "Role")</h4>
+          <p class="branch-description">Add edit or remove system user roles.</p>
+        </li>
+      }
     </ul>
   </div>
 </div>

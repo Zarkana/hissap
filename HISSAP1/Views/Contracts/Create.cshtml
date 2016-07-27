@@ -18,31 +18,13 @@
   <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-      @Html.LabelFor(model => model.ContractName, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-10">
-        @Html.EditorFor(model => model.ContractName, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.ContractName, "", new { @class = "text-danger" })
-      </div>
-    </div>
-
-    @* TODO: Change to dropdown *@
-    <!--Associate an organization with the account-->
-    <div class="form-group">
-      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
-      <div class="col-md-10">
-        @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
-        @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
-      </div>
-    </div>
-    <!--Ends Here-->
     @*<div class="form-group">
-      @Html.LabelFor(model => model.ProviderId, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-10">
-        @Html.EditorFor(model => model.ProviderId, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.ProviderId, "", new { @class = "text-danger" })
-      </div>
-    </div>*@
+        @Html.LabelFor(model => model.ContractName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+          @Html.EditorFor(model => model.ContractName, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.ContractName, "", new { @class = "text-danger" })
+        </div>
+      </div>*@
 
     <div class="form-group">
       @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,16 +35,50 @@
     </div>
 
     <div class="form-group">
+      @Html.Label("Year", new { @class = "col-md-2 control-label" })
+      <div class="col-md-10">
+        @{
+          var yearList = new List<Object>();
+          int yearIterator = 0;
+          var currentYear = DateTime.Now;
+          var nextYear = DateTime.Now.AddYears(1);
+          while (yearIterator < 5)
+          {
+            string yearPeriod = currentYear.Year.ToString() + " - " + nextYear.Year.ToString();
+
+            yearList.Add(new { value = yearPeriod, text = yearPeriod });
+
+            currentYear = currentYear.AddYears(1);
+            nextYear = nextYear.AddYears(1);
+            yearIterator++;
+          }
+          var selectList = new SelectList(yearList, "value", "text", 2);
+        }
+        @Html.DropDownListFor(model => model.Year, selectList, new { @class = "input-sm" })
+      </div>
+    </div>
+
+    <!--Associate an organization with the account-->
+    <div class="form-group">
+      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
+      <div class="col-md-10">
+        @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
+        @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
+      </div>
+    </div>
+    <!--Ends Here-->
+
+    <div class="form-group">
       @Html.Label("Status", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
         @{
-          var list = new SelectList(
+          var statusList = new SelectList(
                           new List<Object>{
                                new { value = "Active" , text = "Active" },
                                new { value = "Inactive" , text = "Inactive" }
                             }, "value", "text", 2);
         }
-        @Html.DropDownListFor(model => model.Status, list, new { @class = "input-sm" })
+        @Html.DropDownListFor(model => model.Status, statusList, new { @class = "input-sm" })
       </div>
     </div>
 
@@ -85,7 +101,7 @@
       </div>
     </div>
   </div>
-}
+          }
 
 <div>
   @Html.ActionLink("Back to List", "Index")

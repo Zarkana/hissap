@@ -21,28 +21,37 @@
     <div class="form-group">
       @Html.LabelFor(model => model.ContractName, htmlAttributes: new { @class = "control-label col-md-2" })
       <div class="col-md-10">
-        @Html.EditorFor(model => model.ContractName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(model => model.ContractName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
         @Html.ValidationMessageFor(model => model.ContractName, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div class="form-group">
+      @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+        @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+        @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger"})
       </div>
     </div>
 
     <!--Associate a provider with the account-->
     <div class="form-group">
-      @Html.Label("Associate an Provider", new { @class = "col-md-2 control-label" })
+      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
         @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
         @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
       </div>
     </div>
     <!--Ends Here-->
-
-    <div class="form-group">
-      @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-10">
-        @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "text-danger" })
-      </div>
-    </div>
 
     <div class="form-group">
       @Html.Label("Status", new { @class = "col-md-2 control-label" })

@@ -16,7 +16,7 @@ namespace HISSAP1.Controllers
   {
     private ApplicationDbContext db = new ApplicationDbContext();
 
-    public ActionResult ChangeSitePartial()
+    public ActionResult ChangeSitePartial(string controller, string action)
     {
       string id = User.Identity.GetUserId();//Get user id
       if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }//check if exists
@@ -31,6 +31,9 @@ namespace HISSAP1.Controllers
       ViewBag.SelectedContract = new SelectList(db.Contracts, "Id", "ContractName", currentSite.Site.SitesContractId);
       ViewBag.SelectedSite = new SelectList(db.Sites, "Id", "SiteName", currentSite.SelectedSite);
       ViewBag.UserId = new SelectList(db.Users, "Id", "Email", currentSite.UserId);
+
+      ViewBag.ViewsController = controller;
+      ViewBag.ViewsAction = action;      
 
       return PartialView("_ChangeSitePartial", currentSite);
     }

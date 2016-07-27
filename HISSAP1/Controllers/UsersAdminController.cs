@@ -43,7 +43,14 @@ namespace HISSAP1.Controllers
     [HttpGet]
     public async Task<ActionResult> Index()
     {
-      return View(await UserManager.Users.ToListAsync());
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(context);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      var users = await UserManager.Users.Where(c => c.ProviderId == user.ProviderId).ToListAsync();
+
+      return View(users);
     }
 
     //

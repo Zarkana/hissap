@@ -13,7 +13,7 @@ namespace HISSAP1.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201607252228168_init"; }
+            get { return "201607260452269_init"; }
         }
         
         string IMigrationMetadata.Source

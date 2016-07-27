@@ -18,21 +18,21 @@ namespace HISSAP1.Models
     public string ContractName { get; set; }
 
     [Required]
-    [Display(Name = "Provider")]
-    public int ContractsProviderId { get; set; }
-
-    //Foreign Key to the parent provider
-    [ForeignKey("ContractsProviderId")]
-    public virtual Provider ContractsProvider { get; set; }
-
-    [Required]
     [Display(Name = "ASO Log Number")]
     /*TODO: Add validation*/
     public string ContractNumber { get; set; }
 
     [Required]
     [Display(Name = "Year")]
-    public int Year { get; set; }
+    public string Year { get; set; }
+    
+    [Required]
+    [Display(Name = "Provider")]
+    public int ContractsProviderId { get; set; }
+
+    //Foreign Key to the parent provider
+    [ForeignKey("ContractsProviderId")]
+    public virtual Provider ContractsProvider { get; set; }
 
     [Required]
     /*TODO: Add validation*/

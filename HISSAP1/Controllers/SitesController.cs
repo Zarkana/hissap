@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HISSAP1.Models;
 using HISSAP1.CustomFilters;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace HISSAP1.Controllers
 {
@@ -19,7 +21,16 @@ namespace HISSAP1.Controllers
     // GET: Sites
     public ActionResult Index()
     {
-      var sites = db.Sites.Include(s => s.SitesContract);
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      var sites = db.Sites.Where(c => c.Id == user.CurrentSite.Site.Id).Include(s => s.SitesContract);
+
+      sites = sites.OrderByDescending(s => s.SiteName);
+
+      //sites = db.Sites.Include(s => s.SitesContract);
       return View(sites.ToList());
     }
 

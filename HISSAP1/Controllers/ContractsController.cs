@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using HISSAP1.Models;
 using System.IO;
 using HISSAP1.CustomFilters;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace HISSAP1.Controllers
 {
@@ -20,7 +22,16 @@ namespace HISSAP1.Controllers
     // GET: Contracts
     public ActionResult Index()
     {
-      return View(db.Contracts.ToList());
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      var contracts = db.Contracts.Where(c => c.Id == user.CurrentSite.Site.SitesContract.Id);
+
+      contracts = contracts.OrderByDescending(s => s.ContractName);
+
+      return View(contracts.ToList());
     }
     //TODO: implement?
     // GET: Contracts/Details/5
@@ -49,8 +60,10 @@ namespace HISSAP1.Controllers
     // POST: Contracts/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create(Contract contract)
+    public ActionResult Create(Contract model)
     {
+      ModelState.Clear();
+      model.ContractName = model.ContractNumber + " | " + model.Year;
       if (ModelState.IsValid)
       {
         List<ContractFile> fileDetails = new List<ContractFile>();
@@ -74,13 +87,13 @@ namespace HISSAP1.Controllers
           }
         }
 
-        contract.ContractFiles = fileDetails;
-        db.Contracts.Add(contract);
+        model.ContractFiles = fileDetails;
+        db.Contracts.Add(model);
         db.SaveChanges();
         return RedirectToAction("Index");
       }
 
-      return View(contract);
+      return View(model);
     }
 
     // GET: Contracts/Edit/5

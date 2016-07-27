@@ -46,7 +46,7 @@
     </div>
     <!--Associate a provider with the account-->
     <div class="form-group">
-      @Html.Label("Associate an Provider", new { @class = "col-md-2 control-label" })
+      @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
         @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
         @Html.DropDownListFor(m => m.SelectedProvider, ViewBag.Providers as SelectList, new { @class = "input-sm" })
@@ -69,6 +69,20 @@
       </div>
     </div>
     <!--Ends Here-->
+
+    <div class="form-group">
+      @Html.Label("Can Prepare Budget: ", new { @class = "control-label" })
+      @Html.RadioButtonFor(m => m.CanPrepareBudget, "Yes")Yes
+      @Html.RadioButtonFor(m => m.CanPrepareBudget, "No")No
+    </div>
+
+    <div class="form-group">
+      @Html.Label("Can Submit Budget: ", new { @class = "control-label" })
+      @Html.RadioButtonFor(m => m.CanSubmitBudget, "Yes")Yes
+      @Html.RadioButtonFor(m => m.CanSubmitBudget, "No")No
+    </div>
+
+
     <div class="form-group">
       <input type="submit" class="btn btn-default" value="Create" />
     </div>

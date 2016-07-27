@@ -51,7 +51,7 @@
           <li class="navbar-item">@Html.ActionLink("Administration", "Administration", "Home")</li>
           }
           <li class="navbar-item change-site">
-            @Html.Action("ChangeSitePartial", "Partials")
+            @Html.Action("ChangeSitePartial", "Partials", new { controller = ViewContext.RouteData.Values["controller"], action = ViewContext.RouteData.Values["action"] })
           </li>
         </ul>
       </div>

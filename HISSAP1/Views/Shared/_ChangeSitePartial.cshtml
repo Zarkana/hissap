@@ -3,11 +3,14 @@
 @if (Request.IsAuthenticated)
 {
   //Html.Action("Edit", "CurrentSites");
-  using (Html.BeginForm("Switch", "CurrentSites", new { returnUrl = Request.Url.AbsoluteUri }))
+  using (Html.BeginForm("Switch", "CurrentSites", new { returnUrl = Request.Url.AbsoluteUri, id = ViewContext.RouteData.Values["id"] }))
   {
     @Html.AntiForgeryToken()
 
     @Html.HiddenFor(model => model.UserId)
+    //This will pass the current view from layout to the switch action method
+    @Html.Hidden("ViewsAction", (string)ViewBag.ViewsAction)
+    @Html.Hidden("ViewsController", (string)ViewBag.ViewsController)
     <a href="">@Html.DisplayFor(model => model.Site.SiteName)<b><span class="arrow-down">&#9662;</span></b></a>
     <div class="drop-down select-site">
       @if (ViewBag.Tier5)
@@ -15,16 +18,12 @@
         @* Only used to filter the Contracts *@
         <div class="form-group inline-block">
           @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
-          @*@Html.DropDownListFor(m => m.Site.SitesContract.ContractsProvider, (SelectList)ViewBag.Providers, new { @class = "input-sm" })*@
           @Html.DropDownList("SelectedProvider", null, htmlAttributes: new { @class = "input-sm", @onchange = "FillContract()" })
         </div>
       }
       else
       {
-        @*<div class="form-group inline-block">
-            @Html.Label("Provider: ", new { @class = "control-label col-md-2" })
-            @Html.DisplayFor(model => model.Site.SitesContract.ContractsProvider.Name)
-          </div>*@
+        @*TODO: Make sure that this is secure*@       
         <select id="SelectedProvider" class="collapse">
           <option selected="selected" value="@Html.DisplayFor(model => model.Site.SitesContract.ContractsProvider.Id)"></option>
         </select>
@@ -33,15 +32,11 @@
       @* Only used to filter the Sites *@
       <div class="form-group inline-block">
         @Html.Label("Contract: ", new { @class = "control-label col-md-2" })
-        @*@Html.DropDownListFor(m => m.Site.SitesContract, (SelectList)ViewBag.Contracts, new { @class = "input-sm", @onchange = "FillSite()" })*@
         @Html.DropDownList("SelectedContract", null, htmlAttributes: new { @class = "input-sm", @onchange = "FillSite()" })
-
       </div>
 
       <div class="form-group inline-block">
-        @*@Html.LabelFor(model => model.SelectedSite, "SelectedSite", htmlAttributes: new { @class = "control-label col-md-2" })*@
         @Html.Label("Site: ", new { @class = "control-label col-md-2" })
-        @*@Html.DropDownListFor(m => m.Site, (SelectList)ViewBag.Sites, new { @class = "input-sm" })*@
         @Html.DropDownList("SelectedSite", null, htmlAttributes: new { @class = "input-sm" })
       </div>
       <div id="change-site-input" class="form-group inline-block">

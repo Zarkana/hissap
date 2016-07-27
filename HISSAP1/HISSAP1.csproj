@@ -215,9 +215,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ModelStateDictionaryExtensions.cs" />
-    <Compile Include="Migrations\201607252228168_init.cs" />
-    <Compile Include="Migrations\201607252228168_init.Designer.cs">
-      <DependentUpon>201607252228168_init.cs</DependentUpon>
+    <Compile Include="Migrations\201607260452269_init.cs" />
+    <Compile Include="Migrations\201607260452269_init.Designer.cs">
+      <DependentUpon>201607260452269_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -411,6 +411,7 @@
     <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <Content Include="sass\components\thumbnail.scss" />
+    <None Include="Properties\PublishProfiles\Hissap.pubxml" />
     <None Include="sass\modules\budget.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -544,8 +545,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607252228168_init.resx">
-      <DependentUpon>201607252228168_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607260452269_init.resx">
+      <DependentUpon>201607260452269_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

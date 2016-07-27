@@ -1,6 +1,7 @@
 ﻿using HISSAP1.Controllers;
 using HISSAP1.CustomFilters;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,8 +21,17 @@ namespace HISSAP1.Models
 
     // GET: Providers
     public ActionResult Index()
-    {      
-      return View(db.Providers.ToList());
+    {
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      var providers = db.Providers.Where(c => c.Id == user.CurrentSite.Site.SitesContract.ContractsProvider.Id);
+
+      providers = providers.OrderByDescending(s => s.Name);
+
+      return View(providers.ToList());
     }
 
     // GET: Providers/Details/5

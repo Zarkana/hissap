@@ -187,9 +187,9 @@ namespace HISSAP1.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ContractName = c.String(nullable: false, maxLength: 100),
-                        ContractsProviderId = c.Int(nullable: false),
                         ContractNumber = c.String(nullable: false),
-                        Year = c.Int(nullable: false),
+                        Year = c.String(nullable: false),
+                        ContractsProviderId = c.Int(nullable: false),
                         Status = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

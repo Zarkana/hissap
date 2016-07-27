@@ -18,9 +18,6 @@
       @Html.DisplayNameFor(model => model.ContractsProvider.Name)
     </th>
     <th>
-      @Html.DisplayNameFor(model => model.ContractNumber)
-    </th>
-    <th>
       @Html.DisplayNameFor(model => model.Status)
     </th>
     <th>Total Files</th>
@@ -37,9 +34,6 @@
         @Html.DisplayFor(modelItem => item.ContractsProvider.Name)
       </td>
       <td>
-        @Html.DisplayFor(modelItem => item.ContractNumber)
-      </td>
-      <td>
         @Html.DisplayFor(modelItem => item.Status)
       </td>
       <td>
@@ -53,11 +47,15 @@
         }
       </td>
       <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
         @* TODO Add details *@
         @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
         @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+        @if (ViewBag.Tier6)
+        {
+        <span>|</span>
         <a href="javascript:void(0);" data-id="@item.Id" class="deleteContract">Delete</a>
+        }
       </td>
     </tr>
   }
