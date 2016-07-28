@@ -1,0 +1,69 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.SubsistencePerDiem
+
+@{
+  ViewBag.Title = "Subsistence Per Diem";
+}
+
+<h2 class="buddy-header">Subsistence Per Diem</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to Details", "Details", new { id = Model.Id })
+</div>
+
+@*@using (Html.BeginForm("EditSubsistencePerDiem", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+{
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  @Html.HiddenFor(model => model.Id)
+  @Html.AntiForgeryToken()*@
+  <div class="form-horizontal form-table-container">
+    <hr />
+    <table class="budget-table per-diem">
+      <tr>
+        <th class="name">Traveler</th>
+        <th class="amount">Subsistence Per Diem</th>
+        <th>Number of Days</th>
+        @*<th></th>*@
+      </tr>
+      @foreach (var item in Model.SubsistencePerDiemItems)
+      {
+        <tr>
+          <td class="name">
+            <label class="control-label">@item.Traveler.Name - @item.Traveler.Destination</label>
+          </td>
+          <td class="amount">
+            <input type="hidden" class="value-add" value="@item.SubsistencePerDiemAmount" />
+            <span>@item.SubsistencePerDiemAmount</span>
+          </td>
+          <td>
+            <label class="control-label">@item.NumberOfDays</label>
+          </td>
+          @*<td>
+            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deletePayrollItem">X</a>
+          </td>*@
+        </tr>
+      }
+      <tr>
+        <td class="name">
+          @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.HiddenFor(model => model.SumTotal)
+          <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
+          @Html.ValidationMessageFor(model => model.SumTotal, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        @*<td></td>*@
+      </tr>
+
+    </table>
+
+    @*<div class="form-options">
+      <input type="submit" value="Save" class="btn btn-success" />
+    </div>*@
+  </div>
+@*}*@
+@*<div id="dvCategoryResults">
+  @Html.Action("PayrollItemsPartial", "Partials")
+</div>*@
+<div>
+  @Html.ActionLink("Back to Details", "Details", new { id = Model.Id })
+</div>

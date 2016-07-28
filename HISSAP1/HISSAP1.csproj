@@ -241,9 +241,6 @@
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\PayrollTaxesAssessment.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\SubsistencePerDiem.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\ContractualSubcontractsServices.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -280,17 +277,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="obj\Debug\HISSAP1.0.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\HISSAP1.0.dll" />
-    <Content Include="obj\Debug\HISSAP1.0.pdb" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="config.rb" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\HISSAP1.0.csprojResolveAssemblyReference.cache" />
     <Content Include=".sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\ie.scssc" />
     <Content Include=".sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\print.scssc" />
     <Content Include=".sass-cache\63161829c6b24c844b434d663d2a2fb62f54be25\screen.scssc" />
@@ -350,7 +342,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -453,12 +447,23 @@
     <Content Include="Views\Partials\Budgets\Traveler.cshtml" />
     <Content Include="Views\Partials\Budgets\SubsistencePerDiemItem.cshtml" />
     <Content Include="Views\Partials\Budgets\EquipmentItem.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\AirfareInterIsland.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\AirfareOutOfState.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\ContractualAdministrativeService.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\ContractualSubcontractsService.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\EquipmentPurchase.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\FringeBenefit.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\Other.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\PayrollTaxesAssessment.cshtml" />
+    <Content Include="Views\Budgets\DetailsDetails\SubsistencePerDiem.cshtml" />
+    <None Include="Web.Hissap.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\images\" />
-    <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\AssessAndPlan\" />
   </ItemGroup>

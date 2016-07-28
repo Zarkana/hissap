@@ -6,7 +6,7 @@
 
 <h2 class="buddy-header">Propose Budget</h2>
 <div class="buddy-link">
-  @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
+  @Html.ActionLink("Back to Modify", "Modify", new { id = Model.Id })
 </div>
 @using (Html.BeginForm())
 {
@@ -33,19 +33,21 @@
         </div>
 
         <div class="form-group" id="form-status">
-          @Html.Label("Status", new { @class = "col-md-2 control-label" })
+          @Html.LabelFor(model => model.BudgetStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+          @*@Html.Label("Status", new { @class = "col-md-2 control-label" })*@
           <br />
-          @{
-            var list = new SelectList(
-              new List<Object>{
-                  new { value = "Accepted" , text = "Active" },
-                  new { value = "Revision Requested" , text = "Revision Requested" },
-                  new { value = "Rejected" , text = "Rejected" },
-                  new { value = "Proposed" , text = "Proposed" },
-                  new { value = "New" , text = "New" }
-                }, "value", "text", 2);
-          }
-          @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })
+          @*@{
+      var list = new SelectList(
+        new List<Object>{
+              new { value = "Accepted" , text = "Active" },
+              new { value = "Revision Requested" , text = "Revision Requested" },
+              new { value = "Rejected" , text = "Rejected" },
+              new { value = "Proposed" , text = "Proposed" },
+              new { value = "New" , text = "New" }
+          }, "value", "text", 2);
+    }
+    @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })*@
+          @Html.EditorFor(model => model.BudgetStatus, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
         </div>
       </div>
       <table id="overview-budget-table" class="budget-table edit">
@@ -450,7 +452,7 @@
       </div>
     </div>
     <div>
-      @Html.ActionLink("Back to List", "Modify", new { id = Model.Id })
+      @Html.ActionLink("Back to Modify", "Modify", new { id = Model.Id })
     </div>
 
   </div>

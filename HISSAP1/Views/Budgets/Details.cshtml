@@ -30,9 +30,10 @@
       </div>
 
       <div class="form-group" id="form-status">
-        @Html.Label("Status", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.BudgetStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+        @*@Html.Label("Status", new { @class = "col-md-2 control-label" })*@
         <br />
-        @{
+        @*@{
           var list = new SelectList(
             new List<Object>{
                   new { value = "Accepted" , text = "Active" },
@@ -42,7 +43,8 @@
                   new { value = "New" , text = "New" }
               }, "value", "text", 2);
         }
-        @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })
+        @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })*@
+        @Html.EditorFor(model => model.BudgetStatus, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
       </div>
     </div>
     <table id="overview-budget-table" class="budget-table edit">
@@ -100,7 +102,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.PayrollTaxesAssessmentTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="PayrollTaxesAssessmentTotal">
+          <a href="@Url.Action("DetailsPayrollTaxesAssessment", "Budgets", new { id = Model.Id })">Payroll Taxes, Assessments</a>
+        </label>                  
+          @*@Html.LabelFor(model => model.PayrollTaxesAssessmentTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@        
       </td>
       <td>
         @Html.EditorFor(model => model.PayrollTaxesAssessmentTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -110,7 +115,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.FringeBenefitsTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="FringeBenefitsTotal">
+          <a href="@Url.Action("DetailsFringeBenefit", "Budgets", new { id = Model.Id })">Fringe Benefits</a>
+        </label>      
+        @*@Html.LabelFor(model => model.FringeBenefitsTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.FringeBenefitsTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -148,7 +156,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.ContractualAdministrativeServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="ContractualAdministraticeServicesTotal">
+          <a href="@Url.Action("DetailsContractualAdministrativeService", "Budgets", new { id = Model.Id })">Contractual Services - Administrative</a>
+        </label> 
+        @*@Html.LabelFor(model => model.ContractualAdministrativeServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.ContractualAdministrativeServicesTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -158,7 +169,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.ContractualSubcontractsServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="ContractualSubcontractsServicesTotal">
+          <a href="@Url.Action("DetailsContractualSubcontractsService", "Budgets", new { id = Model.Id })">Contractual Services - Subcontracts</a>
+        </label> 
+        @*@Html.LabelFor(model => model.ContractualSubcontractsServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.ContractualSubcontractsServicesTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -308,7 +322,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.OtherTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="OtherTotal">
+          <a href="@Url.Action("DetailsOther", "Budgets", new { id = Model.Id })">Other</a>
+        </label> 
+        @*@Html.LabelFor(model => model.OtherTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.OtherTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -336,7 +353,11 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.AirfareTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="AirfareTotal">
+          <a href="@Url.Action("DetailsAirfare", "Budgets", new { id = Model.Id })">Airfare</a>
+        </label> 
+        @* TODO: Make both inter and outer here... *@
+        @*@Html.LabelFor(model => model.AirfareTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.AirfareTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -384,7 +405,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.SubsistencePerDiemTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="SubsistencePerDiemTotal">
+          <a href="@Url.Action("DetailsSubsistencePerDiem", "Budgets", new { id = Model.Id })">Subsistence/Per Diem</a>
+        </label>
+        @*@Html.LabelFor(model => model.SubsistencePerDiemTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.SubsistencePerDiemTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -402,7 +426,10 @@
 
     <tr>
       <td>
-        @Html.LabelFor(model => model.EquipmentPurchasesTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label" for="EquipmentPurchaseTotal">
+          <a href="@Url.Action("DetailsEquipmentPurchase", "Budgets", new { id = Model.Id })">Equipment Purchases</a>
+        </label>
+        @*@Html.LabelFor(model => model.EquipmentPurchasesTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.EquipmentPurchasesTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })

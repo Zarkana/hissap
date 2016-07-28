@@ -315,7 +315,83 @@ namespace HISSAP1.Controllers
       base.Dispose(disposing);
     }
 
+
     /*BUDGET DETAILS METHODS*/
+
+    /*GET: DetailsObject(int? id)*/
+
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsPayrollTaxesAssessment(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      PayrollTaxesAssessment model = db.PayrollTaxesAssessments.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/PayrollTaxesAssessment", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsFringeBenefit(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      FringeBenefit model = db.FringeBenefits.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/FringeBenefit", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsContractualAdministrativeService(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      ContractualAdministrativeService model = db.ContractualAdministrativeServices.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/ContractualAdministrativeService", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsContractualSubcontractsService(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      ContractualSubcontractsService model = db.ContractualSubcontractsServices.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/ContractualSubcontractsService", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsOther(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      OtherBudgetInvoice model = db.OtherBudgetInvoices.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/Other", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsAirfare(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      Airfare model = db.Airfares.Find(id);//TODO: make the logic here
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/AirfareOutOfState", model);//TODO: add interstate
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsSubsistencePerDiem(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      SubsistencePerDiem model = db.SubsistencePerDiems.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/SubsistencePerDiem", model);
+    }
+    [HttpGet]//GET: Returns the details view
+    public ActionResult DetailsEquipmentPurchase(int? id)
+    {
+      if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+      EquipmentPurchase model = db.EquipmentPurchases.Find(id);
+
+      if (model == null) { return HttpNotFound(); }
+      return View("DetailsDetails/EquipmentPurchase", model);
+    }
 
     /*GET: EditObject(int? id)*/
 

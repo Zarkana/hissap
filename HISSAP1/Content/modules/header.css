@@ -192,8 +192,8 @@ $site-select-index: 1;*/
 }
 /* line 162, ../../sass/modules/header.scss */
 .navbar.child {
-  background-color: gainsboro;
-  border: 1px solid #b6b6b6;
+  background-color: #eaeaea;
+  border: 1px solid #d1d1d1;
   /* For the currently selected site */
 }
 /* line 165, ../../sass/modules/header.scss */
@@ -207,7 +207,7 @@ $site-select-index: 1;*/
 }
 /* line 170, ../../sass/modules/header.scss */
 .navbar.child .navbar-item a:hover, .navbar.child .change-site a:hover {
-  background-color: #cfcfcf;
+  background-color: #e4e4e4;
 }
 /* line 176, ../../sass/modules/header.scss */
 .navbar.child .change-site {
@@ -219,8 +219,8 @@ $site-select-index: 1;*/
   max-width: 175px;
   overflow: hidden;
   white-space: nowrap;
-  border-left: double 4px darkgray;
-  border-right: double 4px darkgray;
+  border-left: solid 1px #d4d4d4;
+  border-right: solid 1px #d4d4d4;
   /*To make spacing better between down triangle and edge*/
   padding-right: 9px;
 }
@@ -235,21 +235,21 @@ $site-select-index: 1;*/
 }
 /* line 197, ../../sass/modules/header.scss */
 .navbar.child .change-site a.selected {
-  background-color: #cfcfcf;
+  background-color: #e3e3e3;
 }
 /* line 202, ../../sass/modules/header.scss */
 .navbar.child .drop-down {
   position: absolute;
   top: 49px;
   right: 0;
-  border-left: 4px double dimgray;
-  border-right: 4px double dimgray;
-  border-bottom: 1px solid dimgray;
+  border-bottom: 1px solid #bfbfbf;
+  border-left: 1px solid #c1c1c1;
+  border-right: 1px solid #c1c1c1;
   width: auto;
   white-space: nowrap;
   padding: 0 25px;
   display: none;
-  background-color: #cfcfcf;
+  background-color: #e7e7e7;
 }
 /* line 214, ../../sass/modules/header.scss */
 .navbar.child .drop-down.select-site {

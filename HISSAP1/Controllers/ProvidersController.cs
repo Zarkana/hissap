@@ -27,7 +27,13 @@ namespace HISSAP1.Models
       var UserManager = new UserManager<ApplicationUser>(UserStore);
       var user = UserManager.FindById(User.Identity.GetUserId());
 
+      //Retrieve just the current provider if user is a provider
       var providers = db.Providers.Where(c => c.Id == user.CurrentSite.Site.SitesContract.ContractsProvider.Id);
+      
+      if (User.IsInRole("State Administrator") || User.IsInRole("System Administrator"))//TODO: Make into function
+      {
+        providers = db.Providers.Select(c => c);//Show all providers if a state admin
+      }
 
       providers = providers.OrderByDescending(s => s.Name);
 

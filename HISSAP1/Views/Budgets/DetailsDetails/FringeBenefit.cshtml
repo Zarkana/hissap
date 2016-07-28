@@ -1,0 +1,104 @@
+﻿@model HISSAP1.Models.SiteModels.InvoiceBudgetModels.FringeBenefit
+@{
+  ViewBag.Title = "PayrollTaxesAssessment";
+}
+
+<h2 class="buddy-header">Fringe Benefit</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to Details", "Details", new { id = Model.Id })
+</div>
+
+@*@using (Html.BeginForm("EditFringeBenefit", "Budgets", new { returnUrl = Request.Url.AbsoluteUri }))
+{
+  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  @Html.HiddenFor(model => model.Id)
+  @Html.AntiForgeryToken()*@
+  <div class="form-horizontal form-table-container">
+    <hr />
+    <table class="budget-table">
+      <tr>
+        <th class="name">Budget Item</th>
+        <th class="amount">Amount</th>
+        <th>Justification</th>
+        @*<th></th>*@
+      </tr>
+      <tr>
+        <td class="name">
+          @Html.LabelFor(model => model.HealthInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.HealthInsurance, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.HealthInsurance, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        @*<td></td>*@
+      </tr>
+
+      <tr>
+        <td class="name">
+          @Html.LabelFor(model => model.Retirement, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.Retirement, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.Retirement, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        @*<td></td>*@
+      </tr>
+
+      <tr>
+        <td class="name">
+          @Html.LabelFor(model => model.LifeLongDisabilityInsurance, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.EditorFor(model => model.LifeLongDisabilityInsurance, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.LifeLongDisabilityInsurance, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        @*<td></td>*@
+      </tr>
+
+      @foreach (var item in Model.FringeItems)
+      {
+        <tr>
+          <td class="name">
+            <label class="control-label">@item.Name</label>
+          </td>
+          <td class="amount">
+            <input type="hidden" class="value-add" value="@item.Amount" />
+            <span>@item.Amount</span>
+          </td>
+          <td>
+            @item.Justification
+          </td>
+          @*<td>
+              <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem deletePayrollItem">X</a>
+            </td>*@
+        </tr>
+      }
+      <tr>
+        <td class="name">
+          @Html.LabelFor(model => model.SumTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td class="amount">
+          @Html.HiddenFor(model => model.SumTotal)
+          <input type="text" id="dummy-SumTotal" disabled="disabled" class="form-control" value="@Model.SumTotal" />
+          @Html.ValidationMessageFor(model => model.SumTotal, "", new { @class = "text-danger" })
+        </td>
+        <td></td>
+        @*<td></td>*@
+      </tr>
+
+    </table>
+
+    @*<div class="form-options">
+        <input type="submit" value="Save" class="btn btn-success" />
+      </div>*@
+  </div>
+  @*}*@
+  @*<div id="dvCategoryResults">
+      @Html.Action("PayrollItemsPartial", "Partials")
+    </div>*@
+  <div>
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.Id })
+  </div>

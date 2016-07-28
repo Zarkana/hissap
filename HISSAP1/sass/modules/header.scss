@@ -4,7 +4,7 @@
 $navbar-color: $first-color;
 $hover-color: lighten($third-color, 10%);
 
-$child-navbar-color: lighten($light-gray, 20%);
+$child-navbar-color: #eaeaea;
 
 .navbar {
   height: $navbar-min-height;
@@ -161,14 +161,14 @@ $child-navbar-color: lighten($light-gray, 20%);
   /*Differentiation*/
   &.child {
     background-color: $child-navbar-color;
-    border: 1px solid darken($child-navbar-color, 15%);
+    border: 1px solid darken($child-navbar-color, 10%);
     .navbar-item, .change-site { /*li*/
       position: relative;
       a {
         color: black;
 
         &:hover {
-          background-color: darken($child-navbar-color, 5%);
+          background-color: darken($child-navbar-color, 2.5%);
         }
       }
     }
@@ -180,8 +180,8 @@ $child-navbar-color: lighten($light-gray, 20%);
         max-width: 175px;        
         overflow: hidden;
         white-space: nowrap;
-        border-left: double 4px $light-gray;
-        border-right: double 4px $light-gray;
+        border-left: solid 1px darken($child-navbar-color, 8.5%);
+        border-right: solid 1px darken($child-navbar-color, 8.5%);
         /*To make spacing better between down triangle and edge*/
         padding-right: 9px;
         .arrow-down{
@@ -195,7 +195,7 @@ $child-navbar-color: lighten($light-gray, 20%);
     }
     .change-site{      
       a.selected {
-        background-color: darken($child-navbar-color, 5%);
+        background-color: darken($child-navbar-color, 2.75%);
       }
     }
 
@@ -203,14 +203,14 @@ $child-navbar-color: lighten($light-gray, 20%);
       position:absolute;
       top: $navbar-min-height - 1;
       right: 0;
-      border-left: 4px double $dark-gray;
-      border-right: 4px double $dark-gray;
-      border-bottom: 1px solid $dark-gray;
+      border-bottom: 1px solid darken($child-navbar-color,17%);
+      border-left: 1px solid darken($child-navbar-color,16%);
+      border-right: 1px solid darken($child-navbar-color,16%);
       width: auto;
       white-space: nowrap;
       padding: 0 25px;
       display: none;
-      background-color: darken($child-navbar-color,5%);
+      background-color: darken($child-navbar-color,1%);
        &.select-site {
          height: $navbar-min-height + 5;
        }

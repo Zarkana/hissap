@@ -113,7 +113,7 @@ namespace HISSAP1.Controllers
 
       if (ModelState.IsValid)
       {
-        if (currentSite.Site != null)//Only do this if we have a site
+        if (currentSite.SelectedSite != 0)//Only do this if we have a site
         {
           db.Entry(currentSite).State = EntityState.Modified;
           db.SaveChanges();
