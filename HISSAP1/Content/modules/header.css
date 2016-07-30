@@ -207,7 +207,7 @@ $site-select-index: 1;*/
 }
 /* line 170, ../../sass/modules/header.scss */
 .navbar.child .navbar-item a:hover, .navbar.child .change-site a:hover {
-  background-color: #e4e4e4;
+  background-color: #e3e3e3;
 }
 /* line 176, ../../sass/modules/header.scss */
 .navbar.child .change-site {
@@ -235,7 +235,7 @@ $site-select-index: 1;*/
 }
 /* line 197, ../../sass/modules/header.scss */
 .navbar.child .change-site a.selected {
-  background-color: #e3e3e3;
+  background-color: #e2e2e2;
 }
 /* line 202, ../../sass/modules/header.scss */
 .navbar.child .drop-down {
@@ -249,7 +249,7 @@ $site-select-index: 1;*/
   white-space: nowrap;
   padding: 0 25px;
   display: none;
-  background-color: #e7e7e7;
+  background-color: #e5e5e5;
 }
 /* line 214, ../../sass/modules/header.scss */
 .navbar.child .drop-down.select-site {

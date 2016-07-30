@@ -66,6 +66,7 @@ namespace HISSAP1.Models
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorization(Roles = "System Administrator, State Administrator")]
     public ActionResult Create([Bind(Include = "Id,Name,Address,ContactPerson,Phone,Website,Email")] Provider provider)
     {
       if (ModelState.IsValid)

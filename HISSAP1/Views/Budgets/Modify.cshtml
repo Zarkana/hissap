@@ -11,7 +11,7 @@
       @Html.ActionLink("Back to List", "Index")
     </div>
     <ul class="site-tree">
-      <li>        
+      <li>
         <h4 class="branch">@Html.ActionLink("SPO-H-205 - Modify Budget", "Edit", new { id = Model.Id })</h4>
       </li>
       <ul class="site-tree sub-list">
@@ -44,5 +44,21 @@
         </li>
       </ul>
     </ul>
+  </div>
+  @if (ViewBag.CanSubmitBudget)
+  {
+    using (Html.BeginForm("SubmitBudget", "Budgets", new { id = Model.Id }))
+    {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(model => model.Id)
+      <div class="form-group budget-submit">
+        <div class="col-md-offset-2 col-md-10">
+          <input type="submit" value="Submit Budget" class="btn btn-success" />
+        </div>
+      </div>
+    }
+  }
+  <div>
+    @Html.ActionLink("Back to List", "Index")
   </div>
 </div>

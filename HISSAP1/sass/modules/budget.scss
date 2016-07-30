@@ -171,3 +171,21 @@
 .form-options {
   padding-left: 10px;
 }
+
+
+.budget-submit{
+  margin-top: 25px;
+  margin-left: 52px;
+  margin-bottom: 35px;
+}
+
+.budget-footer{
+  margin-left: 120px;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: lighten($light-gray, 30%);
+  .btn{
+    margin-left: 15px;
+    display: inline-block;
+  }
+}

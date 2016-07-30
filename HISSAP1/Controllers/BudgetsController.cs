@@ -18,7 +18,7 @@ using HISSAP1.CustomFilters;
 
 namespace HISSAP1.Controllers
 {
-  [Authorization(Roles = "Provider Fiscal,System Administrator,State Administrator,Provider Administrator")]
+  [Authorization(Roles = "Provider Fiscal,Provider Administrator,System Administrator,State Administrator")]
   public class BudgetsController : MyBaseController
   {
     private ApplicationDbContext db = new ApplicationDbContext();
@@ -32,6 +32,17 @@ namespace HISSAP1.Controllers
     // GET: Modify
     public ActionResult Modify(int? id)
     {
+      //Validate if user is allowed to prepare budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanPrepareBudget != "Yes")//If they cannot prepare budgets
+      {
+        return RedirectToAction("Index");//Get them out of here
+      }
+
       if (id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -56,6 +67,15 @@ namespace HISSAP1.Controllers
       {
         return HttpNotFound();
       }
+
+      //Check if newest
+      ViewBag.IsNewestBudget = false;
+      int lastId = db.Budgets.Max(item => item.Id);
+      if(lastId == id)
+      {
+        ViewBag.IsNewestBudget = true;
+      }
+      
       return View(budget);
     }
 
@@ -77,7 +97,7 @@ namespace HISSAP1.Controllers
 
       ModelState.Clear();
       //Overwrite possibly tampered data
-      CopiedBudget.Name = DateTime.Now.Year.ToString() + " " + budget.BudgetStatus + " Budget";
+      CopiedBudget.Name = DateTime.Now.Year.ToString() + " Budget";//TODO: Make year reference database
       CopiedBudget.BudgetsSiteId = GetCurrentSite().Site.Id;
       CopiedBudget.DateCreated = DateTime.Now;
 
@@ -102,6 +122,8 @@ namespace HISSAP1.Controllers
       CopiedBudget.SubsistencePerDiem.Id = 0;
       foreach (var item in CopiedBudget.EquipmentPurchase.EquipmentItems) { item.Id = Guid.NewGuid(); }
       CopiedBudget.EquipmentPurchase.Id = 0;
+
+      CopiedBudget.BudgetStatus = "New";
 
       if (ModelState.IsValid)
       {
@@ -147,6 +169,17 @@ namespace HISSAP1.Controllers
     //Used to edit the current budget
     public ActionResult Edit([Bind(Include = "Id,BudgetsSiteId,DateCreated,ContractNumber,BudgetStatus,UnemploymentInsuranceState,UnemploymentInsuranceFederal,TotalContractAmount,TotalExpenses,Salary,PersonnelCost,AuditService,Insurance,LeaseRentalEquipment,LeaseRentalMotorVehicle,LeaseRentalSpace,Mileage,PostageFreightDelivery,PublicationPrinting,RepairMaintenance,StaffTraining,Supplies,Telecommunication,Utilities,ProgramActivities,IndirectCost,OtherCurrentExpenses,Transportation,Total")] Budget model)
     {
+      //Validate if user is allowed to prepare budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanPrepareBudget != "Yes")//If they cannot prepare budgets
+      {
+        return RedirectToAction("Index");//Get them out of here
+      }
+
       Budget budget = db.Budgets.Find(model.Id);
       //Modify to also accept changes from form
       ModelState.Clear();
@@ -208,11 +241,22 @@ namespace HISSAP1.Controllers
     [HttpPost]
     public ActionResult CreateInitialBudget()//Used to make initial budget
     {
+      //Validate if user is allowed to prepare budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanPrepareBudget != "Yes")//If they cannot prepare budgets
+      {
+        return RedirectToAction("Index");//Get them out of here
+      }
+
       Budget tempBudget = new Budget();
 
       ModelState.Clear();
       tempBudget.BudgetStatus = "New";
-      tempBudget.Name = DateTime.Now.Year.ToString() + " " + tempBudget.BudgetStatus + " Budget";
+      tempBudget.Name = DateTime.Now.Year.ToString() + " Budget";//TODO: Make year reference database
       tempBudget.BudgetsSiteId = GetCurrentSite().Site.Id;
       tempBudget.ContractNumber = GetCurrentSite().Site.SitesContract.ContractNumber;
       tempBudget.DateCreated = DateTime.Now;
@@ -245,6 +289,17 @@ namespace HISSAP1.Controllers
     // GET: Budgets/Delete/5
     public ActionResult Delete(int? id)
     {
+      //Validate if user is allowed to prepare budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanPrepareBudget != "Yes")//If they can NOT prepare budget
+      {
+        return RedirectToAction("Index");//Get them out of here
+      }
+
       if (id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -262,33 +317,45 @@ namespace HISSAP1.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int id)
     {
-      //Budget models
-      PayrollTaxesAssessment payrollTaxesAssessment = db.PayrollTaxesAssessments.Find(id);
-      if (payrollTaxesAssessment != null) { db.PayrollTaxesAssessments.Remove(payrollTaxesAssessment); }
-      FringeBenefit fringeBenefit = db.FringeBenefits.Find(id);
-      if (fringeBenefit != null) { db.FringeBenefits.Remove(fringeBenefit); }
-      ContractualAdministrativeService contractualAdministrativeService = db.ContractualAdministrativeServices.Find(id);
-      if (contractualAdministrativeService != null) { db.ContractualAdministrativeServices.Remove(contractualAdministrativeService); }
-      ContractualSubcontractsService contractualSubcontractsService = db.ContractualSubcontractsServices.Find(id);
-      if (contractualSubcontractsService != null) { db.ContractualSubcontractsServices.Remove(contractualSubcontractsService); }
-      OtherBudgetInvoice otherBudgetInvoice = db.OtherBudgetInvoices.Find(id);
-      if (otherBudgetInvoice != null) { db.OtherBudgetInvoices.Remove(otherBudgetInvoice); }
-      Airfare airfare = db.Airfares.Find(id);
-      if (airfare != null) { db.Airfares.Remove(airfare); }
-      //AirfareInterIsland airfareInterIsland = db.AirfaresInterIsland.Find(id);
-      //if (airfareInterIsland != null) { db.AirfaresInterIsland.Remove(airfareInterIsland); }
-      //AirfareOutOfState airfareOutOfState = db.AirfaresOutOfState.Find(id);
-      //if (airfareOutOfState != null) { db.AirfaresOutOfState.Remove(airfareOutOfState); }
-      SubsistencePerDiem subsistencePerDiem = db.SubsistencePerDiems.Find(id);
-      if (subsistencePerDiem != null) { db.SubsistencePerDiems.Remove(subsistencePerDiem); }
-      EquipmentPurchase equipmentPurchase = db.EquipmentPurchases.Find(id);
-      if (equipmentPurchase != null) { db.EquipmentPurchases.Remove(equipmentPurchase); }
-
-      Budget budget = db.Budgets.Find(id);
-      db.Budgets.Remove(budget);
+      DeleteBudget(id);
       db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    //Helper method to delete a budget
+    public void DeleteBudget(int id)
+    {
+      //Validate if user is allowed to prepare budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanPrepareBudget == "Yes")//Ensure user can prepare the budget
+      {
+        //Budget models
+        PayrollTaxesAssessment payrollTaxesAssessment = db.PayrollTaxesAssessments.Find(id);
+        if (payrollTaxesAssessment != null) { db.PayrollTaxesAssessments.Remove(payrollTaxesAssessment); }
+        FringeBenefit fringeBenefit = db.FringeBenefits.Find(id);
+        if (fringeBenefit != null) { db.FringeBenefits.Remove(fringeBenefit); }
+        ContractualAdministrativeService contractualAdministrativeService = db.ContractualAdministrativeServices.Find(id);
+        if (contractualAdministrativeService != null) { db.ContractualAdministrativeServices.Remove(contractualAdministrativeService); }
+        ContractualSubcontractsService contractualSubcontractsService = db.ContractualSubcontractsServices.Find(id);
+        if (contractualSubcontractsService != null) { db.ContractualSubcontractsServices.Remove(contractualSubcontractsService); }
+        OtherBudgetInvoice otherBudgetInvoice = db.OtherBudgetInvoices.Find(id);
+        if (otherBudgetInvoice != null) { db.OtherBudgetInvoices.Remove(otherBudgetInvoice); }
+        Airfare airfare = db.Airfares.Find(id);
+        if (airfare != null) { db.Airfares.Remove(airfare); }
+        SubsistencePerDiem subsistencePerDiem = db.SubsistencePerDiems.Find(id);
+        if (subsistencePerDiem != null) { db.SubsistencePerDiems.Remove(subsistencePerDiem); }
+        EquipmentPurchase equipmentPurchase = db.EquipmentPurchases.Find(id);
+        if (equipmentPurchase != null) { db.EquipmentPurchases.Remove(equipmentPurchase); }
+
+        Budget budget = db.Budgets.Find(id);
+        db.Budgets.Remove(budget);
+      }
+    }
+
 
     //Helper Method to sort the index method by date added
     public IEnumerable<Budget> SortBudget()
@@ -304,6 +371,160 @@ namespace HISSAP1.Controllers
 
       return budgets;
     }
+
+    // POST: Budgets/SubmitBudget
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    //Used to edit the current budget
+    public ActionResult SubmitBudget([Bind(Include = "Id")] Budget model)
+    {
+      Budget budget = db.Budgets.Find(model.Id);
+
+      //Validate if user is allowed to submit budget
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      if (user.CanSubmitBudget != "Yes")//If user can NOT submit budgets
+      {
+        ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);//TODO: DO I need this viewbag variable
+        return RedirectToAction("Modify", new { id = budget.Id });//Send them back to modify
+      }
+
+      var CopiedBudget = db.Budgets.AsNoTracking()
+                                   .FirstOrDefault(e => e.Id == budget.Id);
+
+      ModelState.Clear();
+      //Overwrite possibly tampered data
+      CopiedBudget.Name = DateTime.Now.Year.ToString() + " Budget";//TODO: Make year reference database
+      CopiedBudget.BudgetsSiteId = GetCurrentSite().Site.Id;
+      CopiedBudget.DateCreated = DateTime.Now;
+
+      //Reset primary ID's for Details objects
+      foreach (var item in CopiedBudget.PayrollTaxesAssessment.PayrollItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.PayrollTaxesAssessment.Id = 0;
+      foreach (var item in CopiedBudget.FringeBenefit.FringeItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.FringeBenefit.Id = 0;
+      foreach (var item in CopiedBudget.ContractualAdministrativeService.AdministrativeItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualAdministrativeService.Id = 0;
+      foreach (var item in CopiedBudget.ContractualSubcontractsService.SubcontractsItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualSubcontractsService.Id = 0;
+      foreach (var item in CopiedBudget.OtherBudgetInvoice.OtherItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.OtherBudgetInvoice.Id = 0;
+      foreach (var item in CopiedBudget.Airfare.Travelers) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.Airfare.Id = 0;
+      foreach (var item in CopiedBudget.SubsistencePerDiem.SubsistencePerDiemItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.SubsistencePerDiem.Id = 0;
+      foreach (var item in CopiedBudget.EquipmentPurchase.EquipmentItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.EquipmentPurchase.Id = 0;
+
+      CopiedBudget.BudgetStatus = "Submitted";//CHANGE TO SUBMITTED
+
+      if (ModelState.IsValid)
+      {
+        db.Budgets.Add(CopiedBudget);
+        db.SaveChanges();
+
+        var newBudgets = db.Budgets.Where(c => c.BudgetStatus == "New");
+        var revisionBudgets = db.Budgets.Where(c => c.BudgetStatus == "Revision Requested");
+
+        foreach (var item in newBudgets)
+        {
+          DeleteBudget(item.Id);
+        }
+        foreach (var item in revisionBudgets)
+        {
+          DeleteBudget(item.Id);
+        }
+
+        db.SaveChanges();
+
+        ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);//TODO: See if we need this viewbag variable
+        return RedirectToAction("Index");
+
+      }
+
+      ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);//TODO: DO I need this viewbag variable
+      return RedirectToAction("Modify", new { id = budget.Id });
+    }
+
+
+
+    // POST: Budgets/SubmitBudget
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    //Used to edit the current budget
+    [Authorization(Roles = "System Administrator,State Administrator")]
+    public ActionResult ResolveBudget([Bind(Include = "Id, BudgetStatus")] Budget model, int? id)
+    {
+      if (id == null)
+      {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      }
+      Budget budget = db.Budgets.Find(id);
+      if (budget == null)
+      {
+        return HttpNotFound();
+      }
+
+      var CopiedBudget = db.Budgets.AsNoTracking()
+                                   .FirstOrDefault(e => e.Id == budget.Id);
+
+      ModelState.Clear();
+      //Overwrite possibly tampered data
+      CopiedBudget.Name = DateTime.Now.Year.ToString() + " Budget";//TODO: Make year reference database
+      CopiedBudget.BudgetsSiteId = GetCurrentSite().Site.Id;
+      CopiedBudget.DateCreated = DateTime.Now;
+
+      //Reset primary ID's for Details objects
+      foreach (var item in CopiedBudget.PayrollTaxesAssessment.PayrollItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.PayrollTaxesAssessment.Id = 0;
+      foreach (var item in CopiedBudget.FringeBenefit.FringeItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.FringeBenefit.Id = 0;
+      foreach (var item in CopiedBudget.ContractualAdministrativeService.AdministrativeItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualAdministrativeService.Id = 0;
+      foreach (var item in CopiedBudget.ContractualSubcontractsService.SubcontractsItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.ContractualSubcontractsService.Id = 0;
+      foreach (var item in CopiedBudget.OtherBudgetInvoice.OtherItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.OtherBudgetInvoice.Id = 0;
+      foreach (var item in CopiedBudget.Airfare.Travelers) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.Airfare.Id = 0;
+      foreach (var item in CopiedBudget.SubsistencePerDiem.SubsistencePerDiemItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.SubsistencePerDiem.Id = 0;
+      foreach (var item in CopiedBudget.EquipmentPurchase.EquipmentItems) { item.Id = Guid.NewGuid(); }
+      CopiedBudget.EquipmentPurchase.Id = 0;
+
+      //CHANGE TO MODEL BUSGETSTATUS
+      if (model.BudgetStatus == "Approve")
+      {
+        CopiedBudget.BudgetStatus = "Approved";
+      }
+      else if (model.BudgetStatus == "Request Revision")
+      {
+        CopiedBudget.BudgetStatus = "Revision Requested";
+      }
+      else if(model.BudgetStatus == "Reject")
+      {
+        CopiedBudget.BudgetStatus = "Rejected";
+      }
+      else
+      {
+        CopiedBudget.BudgetStatus = "Submitted";//Reset to submitted
+      }
+
+      if (ModelState.IsValid)
+      {
+        db.Budgets.Add(CopiedBudget);
+
+        db.SaveChanges();
+
+        return RedirectToAction("Index");
+      }
+      ViewBag.BudgetsSiteId = new SelectList(db.Sites, "Id", "SiteName", budget.BudgetsSiteId);
+      return RedirectToAction("Modify", new { id = budget.Id });
+    }
+
 
 
     protected override void Dispose(bool disposing)

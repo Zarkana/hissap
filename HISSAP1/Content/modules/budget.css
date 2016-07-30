@@ -177,3 +177,23 @@ $site-select-index: 1;*/
 .form-options {
   padding-left: 10px;
 }
+
+/* line 176, ../../sass/modules/budget.scss */
+.budget-submit {
+  margin-top: 25px;
+  margin-left: 52px;
+  margin-bottom: 35px;
+}
+
+/* line 182, ../../sass/modules/budget.scss */
+.budget-footer {
+  margin-left: 120px;
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #f6f6f6;
+}
+/* line 187, ../../sass/modules/budget.scss */
+.budget-footer .btn {
+  margin-left: 15px;
+  display: inline-block;
+}

@@ -17,81 +17,7 @@ namespace HISSAP1.Controllers
 
     protected override ViewResult View(IView view, object model)
     {
-      ////TODO: may cause conflicts
-      //var UserStore = new UserStore<ApplicationUser>(db);
-      //var UserManager = new UserManager<ApplicationUser>(UserStore);
-
-      //var user = UserManager.FindById(User.Identity.GetUserId());
-
-      //ViewBag.Tier1 = false;
-      //ViewBag.Tier2 = false;
-      //ViewBag.Tier3 = false;
-      //ViewBag.Tier4 = false;
-      //ViewBag.Tier5 = false;
-      //ViewBag.Tier6 = false;
-      //ViewBag.CanPrepareBudget = false;
-      //ViewBag.CanSubmitBudget = false;
-
-      //if (Request.IsAuthenticated)
-      //{
-      //  //Get credentials
-      //  List<IdentityRole> roles = db.Roles.ToList();
-
-      //  roles.ForEach(delegate (IdentityRole role)
-      //  {
-      //    if (User.IsInRole(role.Name))
-      //    {
-      //      if (role.Name == "Provider Observer")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //      }
-      //      if (role.Name == "Provider Fiscal")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //        ViewBag.Tier2 = true;
-      //      }
-      //      if (role.Name == "Provider Agent")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //        ViewBag.Tier2 = true;
-      //        ViewBag.Tier3 = true;
-      //      }
-      //      if (role.Name == "Provider Administrator")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //        ViewBag.Tier2 = true;
-      //        ViewBag.Tier3 = true;
-      //        ViewBag.Tier4 = true;
-      //      }
-      //      if (role.Name == "State Administrator")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //        ViewBag.Tier2 = true;
-      //        ViewBag.Tier3 = true;
-      //        ViewBag.Tier4 = true;
-      //        ViewBag.Tier5 = true;
-      //      }
-      //      if (role.Name == "System Administrator")
-      //      {
-      //        ViewBag.Tier1 = true;
-      //        ViewBag.Tier2 = true;
-      //        ViewBag.Tier3 = true;
-      //        ViewBag.Tier4 = true;
-      //        ViewBag.Tier5 = true;
-      //        ViewBag.Tier6 = true;
-      //      }
-      //    }
-      //  });
-      //  if (user.CanPrepareBudget == "Yes")
-      //  {
-      //    ViewBag.CanPrepareBudget = true;
-      //  }
-      //  if (user.CanSubmitBudget == "Yes")
-      //  {
-      //    ViewBag.CanSubmitBudget = true;
-      //  }
-      //}//If authenticated
-
+      //May or may not use
       return base.View(view, model);
     }
 
@@ -135,6 +61,15 @@ namespace HISSAP1.Controllers
       ViewBag.Tier4 = false;
       ViewBag.Tier5 = false;
       ViewBag.Tier6 = false;
+
+      ViewBag.IsObserver = false;
+      ViewBag.IsStaff = false;
+      ViewBag.IsFiscal = false;
+      ViewBag.IsProviderAdministrator = false;
+      ViewBag.IsStateAdministrator = false;
+      ViewBag.IsSystemAdministrator = false;
+
+
       ViewBag.CanPrepareBudget = false;
       ViewBag.CanSubmitBudget = false;
 
@@ -149,21 +84,29 @@ namespace HISSAP1.Controllers
           {
             if (role.Name == "Provider Observer")
             {
+              ViewBag.IsObserver = true;
+
               ViewBag.Tier1 = true;
             }
-            if (role.Name == "Provider Fiscal")
+            if (role.Name == "Provider Staff")
             {
+              ViewBag.IsStaff = true;
+
               ViewBag.Tier1 = true;
               ViewBag.Tier2 = true;
             }
-            if (role.Name == "Provider Agent")
+            if (role.Name == "Provider Fiscal")
             {
+              ViewBag.IsFiscal = true;
+
               ViewBag.Tier1 = true;
               ViewBag.Tier2 = true;
               ViewBag.Tier3 = true;
             }
             if (role.Name == "Provider Administrator")
             {
+              ViewBag.IsProviderAdministrator = true;
+
               ViewBag.Tier1 = true;
               ViewBag.Tier2 = true;
               ViewBag.Tier3 = true;
@@ -171,6 +114,8 @@ namespace HISSAP1.Controllers
             }
             if (role.Name == "State Administrator")
             {
+              ViewBag.IsStateAdministrator = true;
+
               ViewBag.Tier1 = true;
               ViewBag.Tier2 = true;
               ViewBag.Tier3 = true;
@@ -179,6 +124,8 @@ namespace HISSAP1.Controllers
             }
             if (role.Name == "System Administrator")
             {
+              ViewBag.IsSystemAdministrator = true;
+
               ViewBag.Tier1 = true;
               ViewBag.Tier2 = true;
               ViewBag.Tier3 = true;

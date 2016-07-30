@@ -22,10 +22,13 @@
         <h4 class="branch">@Html.ActionLink("Create Service", "Index", "UsersAdmin")</h4>
         <p class="branch-description">Manage users within the organization.</p>
       </li>
-      <li>
-        <h4 class="branch">@Html.ActionLink("Propose Budget", "Index", "Budgets")</h4>
-        <p class="branch-description">Create new provider announcements.</p>
-      </li>
+      @if (ViewBag.Tier3)
+      {
+        <li>
+          <h4 class="branch">@Html.ActionLink("Propose Budget", "Index", "Budgets")</h4>
+          <p class="branch-description">Create new provider announcements.</p>
+        </li>
+      }
     </ul>
   </div>
 </div>

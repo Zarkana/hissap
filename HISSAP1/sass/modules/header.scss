@@ -168,7 +168,7 @@ $child-navbar-color: #eaeaea;
         color: black;
 
         &:hover {
-          background-color: darken($child-navbar-color, 2.5%);
+          background-color: darken($child-navbar-color, 2.75%);
         }
       }
     }
@@ -176,8 +176,8 @@ $child-navbar-color: #eaeaea;
     .change-site {
       height: ($navbar-min-height - 2);
       a {
-        height: ($navbar-min-height - 2);        
-        max-width: 175px;        
+        height: ($navbar-min-height - 2);
+        max-width: 175px;
         overflow: hidden;
         white-space: nowrap;
         border-left: solid 1px darken($child-navbar-color, 8.5%);
@@ -195,7 +195,7 @@ $child-navbar-color: #eaeaea;
     }
     .change-site{      
       a.selected {
-        background-color: darken($child-navbar-color, 2.75%);
+        background-color: darken($child-navbar-color, 3%);
       }
     }
 
@@ -210,7 +210,7 @@ $child-navbar-color: #eaeaea;
       white-space: nowrap;
       padding: 0 25px;
       display: none;
-      background-color: darken($child-navbar-color,1%);
+      background-color: darken($child-navbar-color,2%);
        &.select-site {
          height: $navbar-min-height + 5;
        }

@@ -52,7 +52,24 @@ namespace HISSAP1.Controllers
     // GET: Contracts/Create
     public ActionResult Create()
     {
-      ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      //ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
+
+      //TODO: Make use of a function and make cleaner
+      if (User.IsInRole("System Administrator") || User.IsInRole("State Administrator")) {
+        ViewBag.Providers = db.Providers
+                              .Select(o => new SelectListItem { Value = "" + o.Id, Text = o.Name }).ToList();
+      }
+      else
+      {
+        ViewBag.Providers = db.Providers.Select(o => o).Where(s => s.Id == user.CurrentSite.Site.SitesContract.ContractsProviderId).ToList();
+      }
+
+      ViewBag.Providers = new SelectList(ViewBag.Providers, "Id", "Name");
 
       return View();
     }
@@ -62,8 +79,32 @@ namespace HISSAP1.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Create(Contract model)
     {
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+
       ModelState.Clear();
       model.ContractName = model.ContractNumber + " | " + model.Year;
+
+      //TODO: Make use of a function and make cleaner
+      if (User.IsInRole("System Administrator") || User.IsInRole("State Administrator"))
+      {
+          //Nothing
+      }
+      else
+      {
+        //TODO: Make function that takes in user and returns that users currentsite provider
+        Provider provider = user.CurrentSite.Site.SitesContract.ContractsProvider;
+
+        model.ContractsProvider = provider;
+        model.ContractsProviderId = provider.Id;          
+      }
+
+
+
+
       if (ModelState.IsValid)
       {
         List<ContractFile> fileDetails = new List<ContractFile>();
@@ -108,6 +149,29 @@ namespace HISSAP1.Controllers
       {
         return HttpNotFound();
       }
+
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      //ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
+
+      //TODO: Make use of a function and make cleaner
+      if (User.IsInRole("System Administrator") || User.IsInRole("State Administrator"))
+      {
+        ViewBag.Providers = db.Providers
+                              .Select(o => new SelectListItem { Value = "" + o.Id, Text = o.Name }).ToList();
+      }
+      else
+      {
+        ViewBag.Providers = db.Providers.Select(o => o).Where(s => s.Id == user.CurrentSite.Site.SitesContract.ContractsProviderId).ToList();
+      }
+
+      ViewBag.Providers = new SelectList(ViewBag.Providers, "Id", "Name");
+
+
+
       ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
       return View(contract);
     }
@@ -117,8 +181,30 @@ namespace HISSAP1.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(Contract contract)
+    public ActionResult Edit(Contract model)
     {
+      //TODO: Make into function
+      var UserStore = new UserStore<ApplicationUser>(db);
+      var UserManager = new UserManager<ApplicationUser>(UserStore);
+      var user = UserManager.FindById(User.Identity.GetUserId());
+
+      ModelState.Clear();
+      //TODO: Make use of a function and make cleaner
+      if (User.IsInRole("System Administrator") || User.IsInRole("State Administrator"))
+      {
+        //Nothing
+      }
+      else
+      {
+        //TODO: Make function that takes in user and returns that users currentsite provider
+        Provider provider = user.CurrentSite.Site.SitesContract.ContractsProvider;
+
+        model.ContractsProvider = provider;
+        model.ContractsProviderId = provider.Id;
+      }
+
+
+
       if (ModelState.IsValid)
       {
 
@@ -135,7 +221,7 @@ namespace HISSAP1.Controllers
               FileName = fileName,
               Extension = Path.GetExtension(fileName),
               Id = Guid.NewGuid(),
-              ContractId = contract.Id/*Had to name ContractId to differentiate from Id, will likely not impact anything*/
+              ContractId = model.Id/*Had to name ContractId to differentiate from Id, will likely not impact anything*/
             };
             var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), fileDetail.Id + fileDetail.Extension);
             file.SaveAs(path);
@@ -144,11 +230,11 @@ namespace HISSAP1.Controllers
           }
         }
 
-        db.Entry(contract).State = EntityState.Modified;
+        db.Entry(model).State = EntityState.Modified;
         db.SaveChanges();
         return RedirectToAction("Index");
       }
-      return View(contract);
+      return View(model);
     }
 
 

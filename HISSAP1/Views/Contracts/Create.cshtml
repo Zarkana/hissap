@@ -60,11 +60,21 @@
 
     <!--Associate an organization with the account-->
     <div class="form-group">
+      @if (ViewBag.Tier5) {
       @Html.Label("Associate a Provider", new { @class = "col-md-2 control-label" })
       <div class="col-md-10">
         @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
-        @Html.DropDownListFor(m => m.ContractsProviderId, ViewBag.Providers as SelectList, new { @class = "input-sm" })
+        @Html.DropDownListFor(m => m.ContractsProvider.Id, ViewBag.Providers as SelectList, new { @class = "input-sm" })
       </div>
+      }
+      else
+      {
+        @Html.Label("Provider", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+          @*@Html.DropDownListFor(m => m.SelectedProvider, Model.ProviderList, "Please select")*@
+          @Html.DropDownListFor(m => m.ContractsProvider.Id, ViewBag.Providers as SelectList, new { @class = "input-sm", @disabled = "disabled" })
+        </div>
+      }
     </div>
     <!--Ends Here-->
 

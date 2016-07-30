@@ -7,12 +7,14 @@
   @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
   @{
-    if (ViewBag.Tier1 == null){ViewBag.Tier1 = false;}
-    if (ViewBag.Tier2 == null) { ViewBag.Tier2 = false; }
-    if (ViewBag.Tier3 == null) { ViewBag.Tier3 = false; }
-    if (ViewBag.Tier4 == null) { ViewBag.Tier4 = false; }
-    if (ViewBag.Tier5 == null) { ViewBag.Tier5 = false; }
-    if (ViewBag.Tier6 == null) { ViewBag.Tier6 = false; }
+    //TODO: Make better...
+    //Sets all these viebag values that could be null to false
+    if (ViewBag.Tier1 == null || ViewBag.IsObserver == null) {ViewBag.Tier1 = false; ViewBag.IsObserver = false;}
+    if (ViewBag.Tier2 == null || ViewBag.IsStaff == null) { ViewBag.Tier2 = false; ViewBag.IsStaff = false; }
+    if (ViewBag.Tier3 == null || ViewBag.IsFiscal == null) { ViewBag.Tier3 = false; ViewBag.IsFiscal = false; }
+    if (ViewBag.Tier4 == null || ViewBag.IsProviderAdministrator == null) { ViewBag.Tier4 = false; ViewBag.IsProviderAdministrator = false; }
+    if (ViewBag.Tier5 == null || ViewBag.IsStateAdministrator == null) { ViewBag.Tier5 = false; ViewBag.IsStateAdministrator = false; }
+    if (ViewBag.Tier6 == null || ViewBag.IsSystemAdministrator == null) { ViewBag.Tier6 = false; ViewBag.IsSystemAdministrator = false; }
 
     if (ViewBag.CanSubmitBudget == null) { ViewBag.CanSubmitBudget = false; }
     if (ViewBag.CanPrepareBudget == null) { ViewBag.CanPrepareBudget = false; }

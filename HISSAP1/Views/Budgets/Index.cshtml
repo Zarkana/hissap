@@ -34,13 +34,68 @@
   </tr>
   @{
     var i = Model.Count();
+
+    var x = 0;//Version
+    var y = 0;//Revision
+
+    //Count out the amount of each
+    foreach (var item in Model)
+    {
+      if (item.BudgetStatus == "Submitted")
+      {
+        x++;
+      }
+      if (item.BudgetStatus == "New")
+      {
+        y++;
+      }
+    }
+
+
+
     var total = Model.Count();
+
   }
   @foreach (var item in Model)
   {
+    //if (!(item.BudgetStatus == "New" && ViewBag.IsStateAdministrator))//Don't show budgets that are new/revisions to state administrators
+    //{
     <tr>
       <td>
-        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - Revision " + @i, "Details", new { id = item.Id })        
+        @{
+          string type = "";
+          if (item.BudgetStatus == "Submitted")
+          {
+            type = "Version";
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - " + type + " " + @x, "Details", new { id = item.Id })
+            x--;
+          }
+          else if (item.BudgetStatus == "New")
+          {
+            type = "Revision";
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - " + type + " " + @y, "Details", new { id = item.Id })
+            y--;
+          }
+          else if (item.BudgetStatus == "Revision Requested")
+          {
+            type = "Revision Requested";
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - " + type, "Details", new { id = item.Id })
+          }
+          else if (item.BudgetStatus == "Rejected")
+          {
+            type = "Rejected";
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - " + type, "Details", new { id = item.Id })
+          }
+          else if (item.BudgetStatus == "Approved")
+          {
+            type = "Approved";
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + " - " + type, "Details", new { id = item.Id })
+          }
+          else
+          {
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name) + "", "Details", new { id = item.Id })
+          }
+        }
       </td>
       <td>
         @Html.DisplayFor(modelItem => item.DateCreated)
@@ -48,18 +103,26 @@
       <td>
         @Html.DisplayFor(modelItem => item.ContractNumber)
       </td>
+      @* TODO: Apply all the validation in the controllers for what is done here *@
       <td style="text-align: center">
-        @if (i == total)
+        @if ((ViewBag.CanPrepareBudget && (item.BudgetStatus != "Submitted" && item.BudgetStatus != "Rejected" && item.BudgetStatus != "Approved")) || ViewBag.IsSystemAdministrator /*Back-door*/)
         {
-          @Html.ActionLink("Modify", "Create", new { id = item.Id })
-          @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id })*@
-          <span>|</span>
-          @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+          if (i == total)
+          {
+            @Html.ActionLink("Modify", "Create", new { id = item.Id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+              @Html.ActionLink("Details", "Details", new { id=item.Id })*@
+            if (item.BudgetStatus != "Revision Requested")
+            {
+              <span>|</span>
+              @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            }
+          }
         }
       </td>
     </tr>
-    i--;
-  }
+            //}
+            i--;
+          }
 
 </table>

@@ -18,14 +18,14 @@
       <div class="form-group" id="form-date-created">
         @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
         <br />
-        @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+        @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
         @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
       </div>
 
       <div class="form-group" id="form-contract-number">
         @Html.LabelFor(model => model.ContractNumber, htmlAttributes: new { @class = "control-label col-md-2" })
         <br />
-        @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+        @Html.EditorFor(model => model.ContractNumber, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
         @Html.ValidationMessageFor(model => model.ContractNumber, "", new { @class = "text-danger" })
       </div>
 
@@ -34,17 +34,17 @@
         @*@Html.Label("Status", new { @class = "col-md-2 control-label" })*@
         <br />
         @*@{
-          var list = new SelectList(
-            new List<Object>{
-                  new { value = "Accepted" , text = "Active" },
-                  new { value = "Revision Requested" , text = "Revision Requested" },
-                  new { value = "Rejected" , text = "Rejected" },
-                  new { value = "Proposed" , text = "Proposed" },
-                  new { value = "New" , text = "New" }
-              }, "value", "text", 2);
-        }
-        @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })*@
-        @Html.EditorFor(model => model.BudgetStatus, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+            var list = new SelectList(
+              new List<Object>{
+                    new { value = "Accepted" , text = "Active" },
+                    new { value = "Revision Requested" , text = "Revision Requested" },
+                    new { value = "Rejected" , text = "Rejected" },
+                    new { value = "Proposed" , text = "Proposed" },
+                    new { value = "New" , text = "New" }
+                }, "value", "text", 2);
+          }
+          @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm", @disabled = "disabled" })*@
+        @Html.EditorFor(model => model.BudgetStatus, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
       </div>
     </div>
     <table id="overview-budget-table" class="budget-table edit">
@@ -53,7 +53,7 @@
           @Html.LabelFor(model => model.TotalContractAmount, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td>
-          @Html.EditorFor(model => model.TotalContractAmount, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.EditorFor(model => model.TotalContractAmount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
           @Html.ValidationMessageFor(model => model.TotalContractAmount, "", new { @class = "text-danger" })
         </td>
       </tr>
@@ -62,7 +62,7 @@
           @Html.LabelFor(model => model.TotalExpenses, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
         <td>
-          @Html.EditorFor(model => model.TotalExpenses, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.EditorFor(model => model.TotalExpenses, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
           @Html.ValidationMessageFor(model => model.TotalExpenses, "", new { @class = "text-danger" })
         </td>
       </tr>
@@ -104,8 +104,8 @@
       <td>
         <label class="control-label" for="PayrollTaxesAssessmentTotal">
           <a href="@Url.Action("DetailsPayrollTaxesAssessment", "Budgets", new { id = Model.Id })">Payroll Taxes, Assessments</a>
-        </label>                  
-          @*@Html.LabelFor(model => model.PayrollTaxesAssessmentTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@        
+        </label>
+        @*@Html.LabelFor(model => model.PayrollTaxesAssessmentTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
         @Html.EditorFor(model => model.PayrollTaxesAssessmentTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
@@ -117,7 +117,7 @@
       <td>
         <label class="control-label" for="FringeBenefitsTotal">
           <a href="@Url.Action("DetailsFringeBenefit", "Budgets", new { id = Model.Id })">Fringe Benefits</a>
-        </label>      
+        </label>
         @*@Html.LabelFor(model => model.FringeBenefitsTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
@@ -158,7 +158,7 @@
       <td>
         <label class="control-label" for="ContractualAdministraticeServicesTotal">
           <a href="@Url.Action("DetailsContractualAdministrativeService", "Budgets", new { id = Model.Id })">Contractual Services - Administrative</a>
-        </label> 
+        </label>
         @*@Html.LabelFor(model => model.ContractualAdministrativeServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
@@ -171,7 +171,7 @@
       <td>
         <label class="control-label" for="ContractualSubcontractsServicesTotal">
           <a href="@Url.Action("DetailsContractualSubcontractsService", "Budgets", new { id = Model.Id })">Contractual Services - Subcontracts</a>
-        </label> 
+        </label>
         @*@Html.LabelFor(model => model.ContractualSubcontractsServicesTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
@@ -324,7 +324,7 @@
       <td>
         <label class="control-label" for="OtherTotal">
           <a href="@Url.Action("DetailsOther", "Budgets", new { id = Model.Id })">Other</a>
-        </label> 
+        </label>
         @*@Html.LabelFor(model => model.OtherTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
       <td>
@@ -355,7 +355,7 @@
       <td>
         <label class="control-label" for="AirfareTotal">
           <a href="@Url.Action("DetailsAirfare", "Budgets", new { id = Model.Id })">Airfare</a>
-        </label> 
+        </label>
         @* TODO: Make both inter and outer here... *@
         @*@Html.LabelFor(model => model.AirfareTotal, htmlAttributes: new { @class = "control-label col-md-2" })*@
       </td>
@@ -366,24 +366,24 @@
     </tr>
 
     @*<tr>
-      <td>
-        @Html.LabelFor(model => model.AirfareInterIslandTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-      </td>
-      <td>
-        @Html.EditorFor(model => model.AirfareInterIslandTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
-        @Html.ValidationMessageFor(model => model.AirfareInterIslandTotal, "", new { @class = "text-danger" })
-      </td>
-    </tr>
+        <td>
+          @Html.LabelFor(model => model.AirfareInterIslandTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td>
+          @Html.EditorFor(model => model.AirfareInterIslandTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.AirfareInterIslandTotal, "", new { @class = "text-danger" })
+        </td>
+      </tr>
 
-    <tr>
-      <td>
-        @Html.LabelFor(model => model.AirfareOutStateTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-      </td>
-      <td>
-        @Html.EditorFor(model => model.AirfareOutStateTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
-        @Html.ValidationMessageFor(model => model.AirfareOutStateTotal, "", new { @class = "text-danger" })
-      </td>
-    </tr>*@
+      <tr>
+        <td>
+          @Html.LabelFor(model => model.AirfareOutStateTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+        <td>
+          @Html.EditorFor(model => model.AirfareOutStateTotal, new { htmlAttributes = new { @class = "form-control value-add", @disabled = "disabled" } })
+          @Html.ValidationMessageFor(model => model.AirfareOutStateTotal, "", new { @class = "text-danger" })
+        </td>
+      </tr>*@
 
     <tr>
       <td>
@@ -468,6 +468,31 @@
   </table>
 </div>
 
+
+@if (ViewBag.Tier5 && ViewBag.IsNewestBudget)//Only state and system admin
+{
+  using (Html.BeginForm("ResolveBudget", "Budgets", new { id = Model.Id }))
+  {
+    if (Model.BudgetStatus == "Submitted" || Model.BudgetStatus == "Rejected" || Model.BudgetStatus == "Approved")//Only if it is submitted
+    {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(model => model.Id)
+      <div class="thumbnail budget-footer">
+        @Html.Label("Status", new { @class = "col-md-2 control-label" })
+        @{
+          var list = new SelectList(
+            new List<Object>{
+              new { value = "Approve" , text = "Approve" },
+              new { value = "Request Revision" , text = "Request Revision" },
+              new { value = "Reject" , text = "Reject" }
+              }, "value", "text", 2);
+        }
+        @Html.DropDownListFor(model => model.BudgetStatus, list, new { @class = "input-sm" })
+        <input type="submit" value="Resolve Budget" class="btn btn-success" />
+      </div>
+              }
+            }
+          }
 <p>
   @Html.ActionLink("Back to List", "Index")
 </p>

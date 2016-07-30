@@ -4,10 +4,17 @@
   ViewBag.Title = "Index";
 }
 
-<h2 class="buddy-header">Providers</h2>
+<h2 class="buddy-header">Providers</h2>      
+@if (ViewBag.Tier5)
+{
 <p class="buddy-link">
   @Html.ActionLink("Create New", "Create")
 </p>
+}
+else
+{
+  <br />
+}
 <table class="table">
   <tr>
     <th>
