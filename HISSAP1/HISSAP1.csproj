@@ -215,9 +215,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ModelStateDictionaryExtensions.cs" />
-    <Compile Include="Migrations\201607291235103_init.cs" />
-    <Compile Include="Migrations\201607291235103_init.Designer.cs">
-      <DependentUpon>201607291235103_init.cs</DependentUpon>
+    <Compile Include="Migrations\201607312335311_init.cs" />
+    <Compile Include="Migrations\201607312335311_init.Designer.cs">
+      <DependentUpon>201607312335311_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -473,8 +473,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607291235103_init.resx">
-      <DependentUpon>201607291235103_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607312335311_init.resx">
+      <DependentUpon>201607312335311_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

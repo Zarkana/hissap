@@ -30,122 +30,120 @@ namespace HISSAP1.Controllers
 
       var user = UserManager.FindById(User.Identity.GetUserId());
 
-
-      ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
-      ViewBag.Contracts = new SelectList(db.Contracts, "Id", "ContractName");
-      ViewBag.Sites = new SelectList(db.Sites, "Id", "SiteName");
-
-      //TODO: Look over this code, could be done better
-      if (Request.IsAuthenticated)
+      if (user != null)//Avoid this when user is not created
       {
-        var siteId = user.CurrentSite.Site.Id;//Get the current siteId
-        var budgets = db.Budgets.Where(c => c.BudgetsSite.Id == siteId);//Find the budgets with the current siteId;
-        if (budgets.Count() > 0)
+        ViewBag.Providers = new SelectList(db.Providers, "Id", "Name");
+        ViewBag.Contracts = new SelectList(db.Contracts, "Id", "ContractName");
+        ViewBag.Sites = new SelectList(db.Sites, "Id", "SiteName");
+
+        //TODO: Look over this code, could be done better
+        if (Request.IsAuthenticated)
         {
-          int lastId = budgets.Max(item => item.Id);//Find the newest budget's Id
-          var travelers = db.Travelers.Where(c => c.AirfareTravelId == lastId);//Get travelers from the newest budget
-                                                                               /*SelectList TravelersLists = new SelectList(travelers, "Id", "Name");*///Only insert travelers from the newest budget
-          IEnumerable<SelectListItem> TravelersList = travelers.AsEnumerable().Select(x => new SelectListItem
+          var siteId = user.CurrentSite.Site.Id;//Get the current siteId
+          var budgets = db.Budgets.Where(c => c.BudgetsSite.Id == siteId);//Find the budgets with the current siteId;
+          if (budgets.Count() > 0)
           {
-            Value = x.Id.ToString(),
-            Text = string.Format("{0} - {1}", x.Name, x.Destination)
-          });
-
-          ViewBag.Travelers = TravelersList;
-        }
-      }
-
-      ViewBag.Tier1 = false;
-      ViewBag.Tier2 = false;
-      ViewBag.Tier3 = false;
-      ViewBag.Tier4 = false;
-      ViewBag.Tier5 = false;
-      ViewBag.Tier6 = false;
-
-      ViewBag.IsObserver = false;
-      ViewBag.IsStaff = false;
-      ViewBag.IsFiscal = false;
-      ViewBag.IsProviderAdministrator = false;
-      ViewBag.IsStateAdministrator = false;
-      ViewBag.IsSystemAdministrator = false;
-
-
-      ViewBag.CanPrepareBudget = false;
-      ViewBag.CanSubmitBudget = false;
-
-      if (Request.IsAuthenticated)
-      {
-        //Get credentials
-        List<IdentityRole> roles = db.Roles.ToList();
-
-        roles.ForEach(delegate (IdentityRole role)
-        {
-          if (User.IsInRole(role.Name))
-          {
-            if (role.Name == "Provider Observer")
+            int lastId = budgets.Max(item => item.Id);//Find the newest budget's Id
+            var travelers = db.Travelers.Where(c => c.AirfareTravelId == lastId);//Get travelers from the newest budget
+                                                                                 /*SelectList TravelersLists = new SelectList(travelers, "Id", "Name");*///Only insert travelers from the newest budget
+            IEnumerable<SelectListItem> TravelersList = travelers.AsEnumerable().Select(x => new SelectListItem
             {
-              ViewBag.IsObserver = true;
+              Value = x.Id.ToString(),
+              Text = string.Format("{0} - {1}", x.Name, x.Destination)
+            });
 
-              ViewBag.Tier1 = true;
-            }
-            if (role.Name == "Provider Staff")
-            {
-              ViewBag.IsStaff = true;
-
-              ViewBag.Tier1 = true;
-              ViewBag.Tier2 = true;
-            }
-            if (role.Name == "Provider Fiscal")
-            {
-              ViewBag.IsFiscal = true;
-
-              ViewBag.Tier1 = true;
-              ViewBag.Tier2 = true;
-              ViewBag.Tier3 = true;
-            }
-            if (role.Name == "Provider Administrator")
-            {
-              ViewBag.IsProviderAdministrator = true;
-
-              ViewBag.Tier1 = true;
-              ViewBag.Tier2 = true;
-              ViewBag.Tier3 = true;
-              ViewBag.Tier4 = true;
-            }
-            if (role.Name == "State Administrator")
-            {
-              ViewBag.IsStateAdministrator = true;
-
-              ViewBag.Tier1 = true;
-              ViewBag.Tier2 = true;
-              ViewBag.Tier3 = true;
-              ViewBag.Tier4 = true;
-              ViewBag.Tier5 = true;
-            }
-            if (role.Name == "System Administrator")
-            {
-              ViewBag.IsSystemAdministrator = true;
-
-              ViewBag.Tier1 = true;
-              ViewBag.Tier2 = true;
-              ViewBag.Tier3 = true;
-              ViewBag.Tier4 = true;
-              ViewBag.Tier5 = true;
-              ViewBag.Tier6 = true;
-            }
+            ViewBag.Travelers = TravelersList;
           }
-        });
-        if (user.CanPrepareBudget == "Yes")
-        {
-          ViewBag.CanPrepareBudget = true;
-        }
-        if (user.CanSubmitBudget == "Yes")
-        {
-          ViewBag.CanSubmitBudget = true;
-        }
-      }//If authenticated
+
+          ViewBag.Tier1 = false;
+          ViewBag.Tier2 = false;
+          ViewBag.Tier3 = false;
+          ViewBag.Tier4 = false;
+          ViewBag.Tier5 = false;
+          ViewBag.Tier6 = false;
+
+          ViewBag.IsObserver = false;
+          ViewBag.IsStaff = false;
+          ViewBag.IsFiscal = false;
+          ViewBag.IsProviderAdministrator = false;
+          ViewBag.IsStateAdministrator = false;
+          ViewBag.IsSystemAdministrator = false;
 
 
+          ViewBag.CanPrepareBudget = false;
+          ViewBag.CanSubmitBudget = false;
+
+
+          //Get credentials
+          List<IdentityRole> roles = db.Roles.ToList();
+
+          roles.ForEach(delegate (IdentityRole role)
+          {
+            if (User.IsInRole(role.Name))
+            {
+              if (role.Name == "Provider Observer")
+              {
+                ViewBag.IsObserver = true;
+
+                ViewBag.Tier1 = true;
+              }
+              if (role.Name == "Provider Staff")
+              {
+                ViewBag.IsStaff = true;
+
+                ViewBag.Tier1 = true;
+                ViewBag.Tier2 = true;
+              }
+              if (role.Name == "Provider Fiscal")
+              {
+                ViewBag.IsFiscal = true;
+
+                ViewBag.Tier1 = true;
+                ViewBag.Tier2 = true;
+                ViewBag.Tier3 = true;
+              }
+              if (role.Name == "Provider Administrator")
+              {
+                ViewBag.IsProviderAdministrator = true;
+
+                ViewBag.Tier1 = true;
+                ViewBag.Tier2 = true;
+                ViewBag.Tier3 = true;
+                ViewBag.Tier4 = true;
+              }
+              if (role.Name == "State Administrator")
+              {
+                ViewBag.IsStateAdministrator = true;
+
+                ViewBag.Tier1 = true;
+                ViewBag.Tier2 = true;
+                ViewBag.Tier3 = true;
+                ViewBag.Tier4 = true;
+                ViewBag.Tier5 = true;
+              }
+              if (role.Name == "System Administrator")
+              {
+                ViewBag.IsSystemAdministrator = true;
+
+                ViewBag.Tier1 = true;
+                ViewBag.Tier2 = true;
+                ViewBag.Tier3 = true;
+                ViewBag.Tier4 = true;
+                ViewBag.Tier5 = true;
+                ViewBag.Tier6 = true;
+              }
+            }
+          });
+          if (user.CanPrepareBudget == "Yes")
+          {
+            ViewBag.CanPrepareBudget = true;
+          }
+          if (user.CanSubmitBudget == "Yes")
+          {
+            ViewBag.CanSubmitBudget = true;
+          }
+        }//If authenticated
+      }//If user is not null
 
       base.OnActionExecuting(filterContext);
     }
