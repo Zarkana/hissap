@@ -81,12 +81,24 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -196,17 +208,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationUsersController.cs" />
-    <Compile Include="Controllers\BudgetControllers\PayrollItemsController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CurrentSitesController.cs" />
+    <Compile Include="Controllers\IndxProbStateDataSourcesController.cs" />
     <Compile Include="Controllers\MyBaseController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OutcomesController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\PayrollTaxesAssessmentsController.cs" />
+    <Compile Include="Controllers\ProblemStatementsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
@@ -215,9 +230,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ModelStateDictionaryExtensions.cs" />
-    <Compile Include="Migrations\201607312335311_init.cs" />
-    <Compile Include="Migrations\201607312335311_init.Designer.cs">
-      <DependentUpon>201607312335311_init.cs</DependentUpon>
+    <Compile Include="Migrations\201608032328464_init.cs" />
+    <Compile Include="Migrations\201608032328464_init.Designer.cs">
+      <DependentUpon>201608032328464_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -225,6 +240,7 @@
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SiteModels\Outcome.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Models\CurrentSite.cs" />
@@ -241,8 +257,21 @@
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\PayrollTaxesAssessment.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\SubsistencePerDiem.cs" />
     <Compile Include="Models\SiteModels\InvoiceBudgetModels\ContractualSubcontractsServices.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\IndxMeasurementType.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\IndxMeasurementTool.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\IndxOutcomeType.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\OutcomeToIndxMeasurementType.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\OutcomeToIndxMeasurementTool.cs" />
+    <Compile Include="Models\SiteModels\OutcomeModels\OutcomeToIndxOutcomeType.cs" />
+    <Compile Include="Models\SiteModels\ProblemStatement.cs" />
+    <Compile Include="Models\SiteModels\ProblemStatementModels\IndxProbStateDataSource.cs" />
+    <Compile Include="Models\SiteModels\ProblemStatementModels\ProblemStatementToIndxProbStateDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CheckBoxViewModel.cs" />
+    <Compile Include="ViewModels\DropDownViewModel.cs" />
+    <Compile Include="ViewModels\OutcomeViewModel.cs" />
+    <Compile Include="ViewModels\ProblemStatementViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\HISSAP1.dll" />
@@ -271,6 +300,9 @@
     <Content Include="Content\components\progress-bar.css" />
     <Content Include="Content\components\tooltip.css" />
     <Content Include="Content\components\well.css" />
+    <Content Include="Content\images\logout-green.png" />
+    <Content Include="Content\images\logout-white.png" />
+    <Content Include="Content\modules\budget.css" />
     <Content Include="Content\modules\footer.css" />
     <Content Include="Content\modules\header.css" />
     <Content Include="Content\modules\login.css" />
@@ -326,7 +358,14 @@
     <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <Content Include="sass\components\thumbnail.scss" />
+    <Content Include="Content\fonts\avantgarde.eot" />
+    <Content Include="Content\fonts\avantgarde.svg" />
+    <Content Include="Content\fonts\avantgarde.ttf" />
+    <Content Include="Content\fonts\avantgarde.woff" />
+    <None Include="Properties\PublishProfiles\HISSAP - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Hissap-Azure.pubxml" />
     <None Include="Properties\PublishProfiles\Hissap.pubxml" />
+    <Content Include="sass\modules\assess-and-plan.scss" />
     <None Include="sass\modules\budget.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -456,16 +495,30 @@
     <Content Include="Views\Budgets\DetailsDetails\Other.cshtml" />
     <Content Include="Views\Budgets\DetailsDetails\PayrollTaxesAssessment.cshtml" />
     <Content Include="Views\Budgets\DetailsDetails\SubsistencePerDiem.cshtml" />
+    <Content Include="Views\ProblemStatements\Create.cshtml" />
+    <Content Include="Views\ProblemStatements\Delete.cshtml" />
+    <Content Include="Views\ProblemStatements\Details.cshtml" />
+    <Content Include="Views\ProblemStatements\Edit.cshtml" />
+    <Content Include="Views\ProblemStatements\Index.cshtml" />
+    <Content Include="Views\IndxProbStateDataSources\Create.cshtml" />
+    <Content Include="Views\IndxProbStateDataSources\Delete.cshtml" />
+    <Content Include="Views\IndxProbStateDataSources\Details.cshtml" />
+    <Content Include="Views\IndxProbStateDataSources\Edit.cshtml" />
+    <Content Include="Views\IndxProbStateDataSources\Index.cshtml" />
+    <Content Include="Views\Outcomes\Create.cshtml" />
+    <Content Include="Views\Outcomes\Delete.cshtml" />
+    <Content Include="Views\Outcomes\Details.cshtml" />
+    <Content Include="Views\Outcomes\Edit.cshtml" />
+    <Content Include="Views\Outcomes\Index.cshtml" />
     <None Include="Web.Hissap.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
-    <Folder Include="Content\fonts\" />
-    <Folder Include="Content\images\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Controllers\IndexControllers\" />
     <Folder Include="Views\AssessAndPlan\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -473,8 +526,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607312335311_init.resx">
-      <DependentUpon>201607312335311_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608032328464_init.resx">
+      <DependentUpon>201608032328464_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

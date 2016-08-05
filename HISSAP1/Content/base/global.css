@@ -267,7 +267,7 @@ dd {
   min-width: 150px;
   text-align: right;
   margin-right: 5px;
-  height: 20px;
+  min-height: 20px;
 }
 /* line 238, ../../sass/base/global.scss */
 .dl-horizontal.details-list dt:after {
@@ -275,7 +275,7 @@ dd {
 }
 /* line 243, ../../sass/base/global.scss */
 .dl-horizontal.details-list dd {
-  height: 20px;
+  min-height: 20px;
 }
 
 /* line 248, ../../sass/base/global.scss */

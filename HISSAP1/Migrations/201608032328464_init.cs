@@ -463,6 +463,44 @@ namespace HISSAP1.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.IndxProbStateDataSources",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.ProblemStatementToIndxProbStateDataSources",
+                c => new
+                    {
+                        ProblemStatementToIndxProbStateDataSourceId = c.Int(nullable: false, identity: true),
+                        ProblemStatementId = c.Int(nullable: false),
+                        IndxProbStateDataSourceId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ProblemStatementToIndxProbStateDataSourceId)
+                .ForeignKey("dbo.IndxProbStateDataSources", t => t.IndxProbStateDataSourceId, cascadeDelete: true)
+                .ForeignKey("dbo.ProblemStatements", t => t.ProblemStatementId, cascadeDelete: true)
+                .Index(t => t.ProblemStatementId)
+                .Index(t => t.IndxProbStateDataSourceId);
+            
+            CreateTable(
+                "dbo.ProblemStatements",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ProblemStatementsSiteId = c.Int(nullable: false),
+                        ProblemStatementDescription = c.String(nullable: false),
+                        Consequences = c.String(nullable: false),
+                        Resources = c.String(nullable: false),
+                        Gaps = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Sites", t => t.ProblemStatementsSiteId, cascadeDelete: true)
+                .Index(t => t.ProblemStatementsSiteId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -477,6 +515,9 @@ namespace HISSAP1.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ProblemStatementToIndxProbStateDataSources", "ProblemStatementId", "dbo.ProblemStatements");
+            DropForeignKey("dbo.ProblemStatements", "ProblemStatementsSiteId", "dbo.Sites");
+            DropForeignKey("dbo.ProblemStatementToIndxProbStateDataSources", "IndxProbStateDataSourceId", "dbo.IndxProbStateDataSources");
             DropForeignKey("dbo.CurrentSites", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -513,6 +554,9 @@ namespace HISSAP1.Migrations
             DropForeignKey("dbo.Airfares", "Id", "dbo.Budgets");
             DropForeignKey("dbo.AdministrativeItems", "ContractualAdministrativeServiceId", "dbo.ContractualAdministrativeServices");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.ProblemStatements", new[] { "ProblemStatementsSiteId" });
+            DropIndex("dbo.ProblemStatementToIndxProbStateDataSources", new[] { "IndxProbStateDataSourceId" });
+            DropIndex("dbo.ProblemStatementToIndxProbStateDataSources", new[] { "ProblemStatementId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -551,6 +595,9 @@ namespace HISSAP1.Migrations
             DropIndex("dbo.Addresses", new[] { "Provider_Id" });
             DropIndex("dbo.Addresses", new[] { "Site_Id" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ProblemStatements");
+            DropTable("dbo.ProblemStatementToIndxProbStateDataSources");
+            DropTable("dbo.IndxProbStateDataSources");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

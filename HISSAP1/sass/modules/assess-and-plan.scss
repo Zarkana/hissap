@@ -1,0 +1,34 @@
+﻿body {
+}
+
+/* Problem Statement */
+.table-problem-statement {
+  .options {
+    max-width: 60px;
+  }
+}
+
+.form-problem-statement {
+  margin-left: 20px;
+
+  h4 {
+    margin-top: 25px;
+    margin-bottom: 5px;
+  }
+
+  hr {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-left: 20px;
+    textarea {
+      max-width: 514px;
+      min-height: 64px;
+      width: 100%;
+      resize: vertical;
+      padding: 5px 10px;
+    }
+  }
+}

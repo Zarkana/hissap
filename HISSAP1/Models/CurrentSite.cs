@@ -44,7 +44,7 @@ namespace HISSAP1.Models
   public class MyContext : DbContext
   {
 
-    //TODO: Evaluate
+    //TODO: Evaluate, does not use base.OnModelCreating... may not need
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       
@@ -54,7 +54,7 @@ namespace HISSAP1.Models
     }
 
 
-
+    //TODO: Should this be here? Or in ApplicationDbContext...
     public virtual DbSet<ApplicationUser> User { get; set; }
     public virtual DbSet<CurrentSite> CurrentSite { get; set; }
   }

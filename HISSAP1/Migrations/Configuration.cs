@@ -3,6 +3,8 @@ namespace HISSAP1.Migrations
   using Microsoft.AspNet.Identity;
   using Microsoft.AspNet.Identity.EntityFramework;
   using Models;
+  using Models.SiteModels;
+  using Models.SiteModels.ProblemStatementModels;
   using System;
   using System.Data.Entity;
   using System.Data.Entity.Migrations;
@@ -310,6 +312,62 @@ namespace HISSAP1.Migrations
         new CurrentSite { UserId = StateAdministrator.Id, SelectedSite = Site1.Id, User = StateAdministrator },
         new CurrentSite { UserId = SystemAdministrator.Id, SelectedSite = Site1.Id, User = SystemAdministrator }
         );
+
+      //SEED INDEXES
+
+      context.IndxProbStateDataSources.AddOrUpdate(
+        new IndxProbStateDataSource { Name = "EPI Data with GIS Mapping" }, 
+        new IndxProbStateDataSource { Name = "Community Indicator Data" },
+        new IndxProbStateDataSource { Name = "ADP Profile of AOD Risk and Need Indicators 2004" },
+        new IndxProbStateDataSource { Name = "Alcohol and Alcohol Problems Science Database" },
+        new IndxProbStateDataSource { Name = "Alcohol Epidemiology Program (AEP)" },
+        new IndxProbStateDataSource { Name = "Centers for Disease Control (CDC) Wonder" },
+        new IndxProbStateDataSource { Name = "Criminal Justice Statistics Center (CJSC)" },
+        new IndxProbStateDataSource { Name = "Department of Finance Demographic Research Unit" },
+        new IndxProbStateDataSource { Name = "National Household Survey on Drug Abuse (NHSDA) - 2001" },
+        new IndxProbStateDataSource { Name = "National Household Survey on Drug Abuse (NHSDA) – 1998" },
+        new IndxProbStateDataSource { Name = "National Institute on Alcohol Abuse and Alcoholism (NIAAA) Quick Facts" },
+        new IndxProbStateDataSource { Name = "National Library of Medicine’s (NLM) Databases & Electronic Information Sources" },
+        new IndxProbStateDataSource { Name = "Partners in Information Access for the Public Health Workforce" },
+        new IndxProbStateDataSource { Name = "PREVLINE Databases" },
+        new IndxProbStateDataSource { Name = "SAMHSA National Survey on Drug Use & Health (NSDUH) - 2004" },
+        new IndxProbStateDataSource { Name = "SAMHSA Office of Applied Studies" },
+        new IndxProbStateDataSource { Name = "U.S. Census Bureau Census Lookup – 2000" },
+        new IndxProbStateDataSource { Name = "US Census Bureau – Quick Facts" },
+        new IndxProbStateDataSource { Name = "Youth Risk Behavior Surveillance System (YRBSS)" },
+        new IndxProbStateDataSource { Name = "2004 Household Survey of Alcohol and Drug Abuse in Hawaii" },
+        new IndxProbStateDataSource { Name = "2005 Survey of Retail Alcohol Sales to Underage Persons: A Report" },
+        new IndxProbStateDataSource { Name = "Alcohol Epidemiologic Data System (AEDS)" },
+        new IndxProbStateDataSource { Name = "Arrestee Drug Abuse Monitoring (ADAM) Program" },
+        new IndxProbStateDataSource { Name = "Behavioral Risk Factor Surveillance System (BRFSS)" },
+        new IndxProbStateDataSource { Name = "Birth Certificate Data from National Vital Statistics System" },
+        new IndxProbStateDataSource { Name = "Diagnostic Laboratory Service statistics, Honolulu" },
+        new IndxProbStateDataSource { Name = "Drug-related death data from Medical Examiners Office, City and County of Honolulu" },
+        new IndxProbStateDataSource { Name = "Drug-related data from Honolulu Police Department" },
+        new IndxProbStateDataSource { Name = "DUI in the City and County of Honolulu – Report" },
+        new IndxProbStateDataSource { Name = "Fatality Analysis Reporting System (FARS)" },
+        new IndxProbStateDataSource { Name = "Federal drug seizure statistics from Drug Enforcement Administration (DEA) Web page" },
+        new IndxProbStateDataSource { Name = "Hawaii Student Alcohol, Tobacco, and Other Drug Use (ATOD) Survey" },
+        new IndxProbStateDataSource { Name = "Hawaii Health Information Corporation (HHIC) online data" },
+        new IndxProbStateDataSource { Name = "Hawaii Health Survey" },
+        new IndxProbStateDataSource { Name = "HIDTA Annual Report" },
+        new IndxProbStateDataSource { Name = "Household Drug Survey, Center on the Family, University of Hawaii" },
+        new IndxProbStateDataSource { Name = "Illicit Drug Use in Honolulu and the State of Hawaii - Proceedings of the Community Epidemiology Working Group (CEWG), 2006" },
+        new IndxProbStateDataSource { Name = "National Survey on Drug Use and Health (NSDUH)" },
+        new IndxProbStateDataSource { Name = "National Survey on Substance Abuse" },
+        new IndxProbStateDataSource { Name = "Treatment Services (NSSATS)" },
+        new IndxProbStateDataSource { Name = "National Vital Statistics System (NVSS)" },
+        new IndxProbStateDataSource { Name = "Reducing Minors Access to Tobacco in Hawaii – Report on Annual Compliance Inspection and Law Enforcement Operation 2005-2006" },
+        new IndxProbStateDataSource { Name = "The Tax Burden on Tobacco. Historical Compilation, Vol. 37, 2002 (State Excise Tax Data)" },
+        new IndxProbStateDataSource { Name = "Treatment Episode Data Set (TEDS)" },
+        new IndxProbStateDataSource { Name = "Uniform Crime Report (UCR)" },
+        new IndxProbStateDataSource { Name = "Youth Risk Behavior Survey (YRBS)" },
+        new IndxProbStateDataSource { Name = "Youth Tobacco Survey (YTS)" },
+        new IndxProbStateDataSource { Name = "Other" }
+      );
+
+      //ProblemStatement var1 = new ProblemStatement();
+
 
       //  This method will be called after migrating to the latest version.
 

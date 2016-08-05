@@ -1,0 +1,79 @@
+﻿@model HISSAP1.ViewModels.ProblemStatementViewModel
+
+@{
+  ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">Problem Statement Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+  <hr />
+  <dl class="dl-horizontal details-list">
+
+    @*<dt>
+      @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.Name)
+    </dd>*@
+
+    <dt>
+      @Html.DisplayNameFor(model => model.ProblemStatementDescription)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.ProblemStatementDescription)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.Consequences)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.Consequences)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.Resources)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.Resources)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.Gaps)
+    </dt>
+
+    <dd>
+      @Html.DisplayFor(model => model.Gaps)
+    </dd>
+
+    <dt>
+      @Html.DisplayNameFor(model => model.DataSources)
+    </dt>
+
+    <dd>
+      <div class="index-list">
+        @foreach (var item in Model.DataSources)
+        {
+          if (item.Checked)
+          {
+            <span>@item.Name</span>
+            <br />
+          }
+        }
+      </div>
+    </dd>
+
+  </dl>
+</div>
+<br />
+<p>
+  @Html.ActionLink("Edit", "Edit", new { id = Model.ProblemStatementID }) |
+  @Html.ActionLink("Back to List", "Index")
+</p>

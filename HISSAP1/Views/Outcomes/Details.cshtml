@@ -1,0 +1,52 @@
+﻿@model HISSAP1.Models.SiteModels.Outcome
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">Outcome Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal details-list">
+        <dt>
+            @Html.DisplayNameFor(model => model.DesiredOutcome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesiredOutcome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutcomeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutcomeDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaselinePercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaselinePercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DesiredPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DesiredPercentage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

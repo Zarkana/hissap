@@ -59,7 +59,8 @@ namespace HISSAP1
                 /*Localized code tied to locations on a webpage*/
                 "~/Content/modules/header.css",
                 "~/Content/modules/login.css",
-                "~/Content/modules/budget.css"
+                "~/Content/modules/budget.css",
+                "~/Content/modules/assess-and-plan.css"
                 ));
     }
   }

@@ -50,7 +50,26 @@ namespace HISSAP1.Models
 
     public DbSet<CurrentSite> CurrentSite { get; set; }
 
-    public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.Budget> Budgets { get; set; }
+
+    //PROBLEM STATEMENT
+
+    public DbSet<SiteModels.ProblemStatement> ProblemStatements { get; set; }
+    public DbSet<SiteModels.ProblemStatementModels.IndxProbStateDataSource> IndxProbStateDataSources { get; set; }
+    public DbSet<HISSAP1.Models.SiteModels.ProblemStatementModels.ProblemStatementToIndxProbStateDataSource> ProblemStatementToIndxProbStateDataSources { get; set; }
+
+    //OUTCOMES
+
+    public DbSet<SiteModels.Outcome> Outcomes { get; set; }
+    public DbSet<SiteModels.OutcomeModels.IndxOutcomeType> IndxOutcomeTypes { get; set; }
+    public DbSet<HISSAP1.Models.SiteModels.OutcomeModels.OutcomeToIndxOutcomeType> OutcomeToIndxOutcomeTypes { get; set; }
+    public DbSet<SiteModels.OutcomeModels.IndxMeasurementTool> IndxMeasurementTools { get; set; }
+    public DbSet<HISSAP1.Models.SiteModels.OutcomeModels.OutcomeToIndxMeasurementTool> OutcomeToIndxMeasurementTools { get; set; }
+    public DbSet<SiteModels.OutcomeModels.IndxMeasurementType> IndxMeasurementTypes { get; set; }
+    public DbSet<HISSAP1.Models.SiteModels.OutcomeModels.OutcomeToIndxMeasurementType> OutcomeToIndxMeasurementTypes { get; set; }
+
+    //BUDGET
+
+    public DbSet<SiteModels.Budget> Budgets { get; set; }
 
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollTaxesAssessment> PayrollTaxesAssessments { get; set; }
     public System.Data.Entity.DbSet<HISSAP1.Models.SiteModels.InvoiceBudgetModels.PayrollItem> PayrollItems { get; set; }

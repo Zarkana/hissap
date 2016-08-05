@@ -1,4 +1,5 @@
 ﻿@import "variables.scss";
+
 fieldset {
   min-width: 0;
   padding: 0;
@@ -75,7 +76,7 @@ output {
   color: #555;
 }
 
-.form-control {
+.form-control, textarea {
   display: block;
   width: 100%;
   height: 34px;
@@ -94,12 +95,13 @@ output {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.form-control:focus {
+.form-control:focus, textarea:focus {
   border-color: lighten($third-color, 5%);
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(lighten($third-color, 5%), .6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(lighten($third-color, 5%), .6);
-}   
+}
+
 
 .form-control::-moz-placeholder {
   color: #999;
@@ -180,6 +182,20 @@ input[type="search"] {
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+
+.index-list {
+  display: inline-block;
+
+  .check-box {
+    position: relative;
+    bottom: -2px;
+  }
+
+  .checkbox-description {
+    margin-left: 3px;
+  }
 }
 
 .radio label,
