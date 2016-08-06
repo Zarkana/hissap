@@ -4,6 +4,7 @@ namespace HISSAP1.Migrations
   using Microsoft.AspNet.Identity.EntityFramework;
   using Models;
   using Models.SiteModels;
+  using Models.SiteModels.OutcomeModels;
   using Models.SiteModels.ProblemStatementModels;
   using System;
   using System.Data.Entity;
@@ -313,10 +314,10 @@ namespace HISSAP1.Migrations
         new CurrentSite { UserId = SystemAdministrator.Id, SelectedSite = Site1.Id, User = SystemAdministrator }
         );
 
-      //SEED INDEXES
+      //SEED PROBLEM STATE INDEXES
 
       context.IndxProbStateDataSources.AddOrUpdate(
-        new IndxProbStateDataSource { Name = "EPI Data with GIS Mapping" }, 
+        new IndxProbStateDataSource { Name = "EPI Data with GIS Mapping" },
         new IndxProbStateDataSource { Name = "Community Indicator Data" },
         new IndxProbStateDataSource { Name = "ADP Profile of AOD Risk and Need Indicators 2004" },
         new IndxProbStateDataSource { Name = "Alcohol and Alcohol Problems Science Database" },
@@ -366,8 +367,28 @@ namespace HISSAP1.Migrations
         new IndxProbStateDataSource { Name = "Other" }
       );
 
-      //ProblemStatement var1 = new ProblemStatement();
+      //SEED OUTCOME TYPE INDEXES
+      context.IndxOutcomeTypes.AddOrUpdate(
+        new IndxOutcomeType { Name = "Participant Level" },
+        new IndxOutcomeType { Name = "Community Level" }
+        );
 
+      //SEED OUTCOME MEASUREMENT TOOL INDEXES
+      context.IndxMeasurementTools.AddOrUpdate(
+        new IndxMeasurementTool { Name = "Observation" },
+        new IndxMeasurementTool { Name = "Standard Instruments" },
+        new IndxMeasurementTool { Name = "Questionnaires and Surveys" },
+        new IndxMeasurementTool { Name = "Interviews" },
+        new IndxMeasurementTool { Name = "Records (Archival)" },
+        new IndxMeasurementTool { Name = "Other (Specify in Description)" }
+        );
+
+      //SEED OUTCOME MEASUREMENT TYPE INDEXES
+      context.IndxMeasurementTypes.AddOrUpdate(
+        new IndxMeasurementType { Name = "Pre-Test" },
+        new IndxMeasurementType { Name = "Intermediate Test" },
+        new IndxMeasurementType { Name = "Post-Test" }
+        );
 
       //  This method will be called after migrating to the latest version.
 

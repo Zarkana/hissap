@@ -8,19 +8,19 @@
     <ul class="site-tree">
       <li>
         <h4 class="branch">@Html.ActionLink("Identify Problems", "Index", "ProblemStatements")</h4>
-        <p class="branch-description">Change various provider details including address and contact information.</p>
+        <p class="branch-description">This module is used to identify problems.</p>
       </li>
       <li>
-        <h4 class="branch">@Html.ActionLink("Identify Outcomes", "Index", "Contracts")</h4>
-        <p class="branch-description">Manage contract details including names, dates, ASO Log No, and Status.</p>
+        <h4 class="branch">@Html.ActionLink("Identify Outcomes", "Index", "Outcomes")</h4>
+        <p class="branch-description">This module is used to identify outcomes.</p>
       </li>
       <li>
         <h4 class="branch">@Html.ActionLink("Create Plan", "Index", "Sites")</h4>
-        <p class="branch-description">Create additional sites for a contract.</p>
+        <p class="branch-description">This module is used to plan programs.<p>
       </li>
       <li>
         <h4 class="branch">@Html.ActionLink("Create Service", "Index", "UsersAdmin")</h4>
-        <p class="branch-description">Manage users within the organization.</p>
+        <p class="branch-description">This module is used to plan services.</p>
       </li>
       @if (ViewBag.Tier3)
       {

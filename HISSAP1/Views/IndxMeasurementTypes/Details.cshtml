@@ -1,0 +1,28 @@
+﻿@model HISSAP1.Models.SiteModels.OutcomeModels.IndxMeasurementType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="buddy-header">IndxMeasurementType Details</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal details-list">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IndxMeasurementTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

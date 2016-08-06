@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HISSAP1.ViewModels
 {
@@ -12,7 +13,7 @@ namespace HISSAP1.ViewModels
     public string DesiredOutcome { get; set; }
     public string OutcomeDescription { get; set; }
     //Outcome Type Dropdown index
-    public List<DropDownViewModel> OutcomeTypes { set; get; }
+    public List<SelectListItem> OutcomeTypes { set; get; }
     public int SelectedOutcomeTypeId { set; get; }
 
     public float BaselinePercentage { get; set; }
@@ -20,11 +21,11 @@ namespace HISSAP1.ViewModels
 
     //DETAILS
     //Measurement Tool Dropdown index
-    public List<DropDownViewModel> MeasurementTools { set; get; }
+    public List<SelectListItem> MeasurementTools { set; get; }
     public int SelectedMeasurementToolId { set; get; }
 
     //Measurement Type Dropdown index
-    public List<DropDownViewModel> MeasurementTypes { set; get; }
+    public List<SelectListItem> MeasurementTypes { set; get; }
     public int SelectedMeasurementTypeId { set; get; }
 
     //Staff checkbox list

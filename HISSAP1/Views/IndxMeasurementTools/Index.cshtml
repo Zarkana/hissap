@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HISSAP1.Models.SiteModels.OutcomeModels.IndxMeasurementTool>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="buddy-header">Index</h2>
+<div class="buddy-link">
+  @Html.ActionLink("Back to List", "Index")
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IndxMeasurementToolID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IndxMeasurementToolID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IndxMeasurementToolID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -213,6 +213,9 @@
     <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CurrentSitesController.cs" />
+    <Compile Include="Controllers\IndxMeasurementToolsController.cs" />
+    <Compile Include="Controllers\IndxMeasurementTypesController.cs" />
+    <Compile Include="Controllers\IndxOutcomeTypesController.cs" />
     <Compile Include="Controllers\IndxProbStateDataSourcesController.cs" />
     <Compile Include="Controllers\MyBaseController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
@@ -230,10 +233,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ModelStateDictionaryExtensions.cs" />
-    <Compile Include="Migrations\201608032328464_init.cs" />
-    <Compile Include="Migrations\201608032328464_init.Designer.cs">
-      <DependentUpon>201608032328464_init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -510,6 +509,21 @@
     <Content Include="Views\Outcomes\Details.cshtml" />
     <Content Include="Views\Outcomes\Edit.cshtml" />
     <Content Include="Views\Outcomes\Index.cshtml" />
+    <Content Include="Views\IndxMeasurementTools\Create.cshtml" />
+    <Content Include="Views\IndxMeasurementTools\Delete.cshtml" />
+    <Content Include="Views\IndxMeasurementTools\Details.cshtml" />
+    <Content Include="Views\IndxMeasurementTools\Edit.cshtml" />
+    <Content Include="Views\IndxMeasurementTools\Index.cshtml" />
+    <Content Include="Views\IndxMeasurementTypes\Create.cshtml" />
+    <Content Include="Views\IndxMeasurementTypes\Delete.cshtml" />
+    <Content Include="Views\IndxMeasurementTypes\Details.cshtml" />
+    <Content Include="Views\IndxMeasurementTypes\Edit.cshtml" />
+    <Content Include="Views\IndxMeasurementTypes\Index.cshtml" />
+    <Content Include="Views\IndxOutcomeTypes\Create.cshtml" />
+    <Content Include="Views\IndxOutcomeTypes\Delete.cshtml" />
+    <Content Include="Views\IndxOutcomeTypes\Details.cshtml" />
+    <Content Include="Views\IndxOutcomeTypes\Edit.cshtml" />
+    <Content Include="Views\IndxOutcomeTypes\Index.cshtml" />
     <None Include="Web.Hissap.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -524,11 +538,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608032328464_init.resx">
-      <DependentUpon>201608032328464_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

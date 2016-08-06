@@ -1,7 +1,7 @@
 ﻿@model HISSAP1.Models.SiteModels.Outcome
 
 @{
-    ViewBag.Title = "Delete";
+  ViewBag.Title = "Delete";
 }
 
 <h2 class="buddy-header">Delete Outcome</h2>
@@ -10,48 +10,49 @@
 </div>
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DesiredOutcome)
-        </dt>
+  <hr />
+  <dl class="dl-horizontal">
+    <dt>
+      @Html.DisplayNameFor(model => model.DesiredOutcome)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DesiredOutcome)
-        </dd>
+    <dd>
+      @Html.DisplayFor(model => model.DesiredOutcome)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OutcomeDescription)
-        </dt>
+    <dt>
+      @Html.DisplayNameFor(model => model.OutcomeDescription)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutcomeDescription)
-        </dd>
+    <dd>
+      @Html.DisplayFor(model => model.OutcomeDescription)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BaselinePercentage)
-        </dt>
+    <dt>
+      @Html.DisplayNameFor(model => model.BaselinePercentage)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BaselinePercentage)
-        </dd>
+    <dd>
+      @Html.DisplayFor(model => model.BaselinePercentage)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DesiredPercentage)
-        </dt>
+    <dt>
+      @Html.DisplayNameFor(model => model.DesiredPercentage)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DesiredPercentage)
-        </dd>
+    <dd>
+      @Html.DisplayFor(model => model.DesiredPercentage)
+    </dd>
 
-    </dl>
+  </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+  @using (Html.BeginForm())
+  {
+    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+    <div class="form-actions no-color">
+      <input type="submit" value="Delete" class="btn btn-default" /> |
+      @Html.ActionLink("Back to List", "Index")
+    </div>
+  }
 </div>

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HISSAP1.ViewModels
 {
-  public class DropDownViewModel
-  {
-    public int Id { get; set; }
-    public string Name { get; set; }
-  }
+  //public class DropDownViewModel
+  //{
+  //  public int Id { get; set; }
+  //  public string Name { get; set; }
+  //}
 }

@@ -182,7 +182,6 @@ namespace HISSAP1.Controllers
       var MyViewModel = new ProblemStatementViewModel();
 
       MyViewModel.ProblemStatementID = id.Value;
-      //MyViewModel.Name = problemStatement.Name;
       MyViewModel.ProblemStatementDescription = problemStatement.ProblemStatementDescription;
       MyViewModel.Consequences = problemStatement.Consequences;
       MyViewModel.Resources = problemStatement.Resources;
